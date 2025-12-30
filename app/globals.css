@@ -1,7 +1,56 @@
+/* app/globals.css */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400;500&display=swap");
 
-html {
-  scroll-behavior: smooth;
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: #ffffff;
+  color: #1f2933;
+  font-family: "Inter", system-ui, sans-serif;
+  overflow-x: hidden;
 }
+
+h1 {
+  font-size: 3rem;
+  line-height: 1.2;
+  font-family: "Playfair Display", serif;
+}
+
+h2 {
+  font-size: 2.25rem;
+  font-family: "Playfair Display", serif;
+}
+
+h3 {
+  font-size: 1.5rem;
+  font-family: "Playfair Display", serif;
+}
+
+h4 {
+  font-family: "Playfair Display", serif;
+}
+
+p {
+  line-height: 1.7;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+}
+
+section {
+  padding-block: 6rem;
+}
+
+

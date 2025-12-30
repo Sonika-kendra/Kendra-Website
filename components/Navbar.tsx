@@ -1,23 +1,35 @@
+// components/Navbar.tsx
 "use client";
 
-import { Moon, Sun } from "lucide-react";
-import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
+import Link from "next/link";
+import { motion } from "framer-motion";
 
 export default function Navbar() {
-  const { theme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => setMounted(true), []);
-  if (!mounted) return null;
-
   return (
-    <nav className="sticky top-0 z-50 backdrop-blur bg-white/80 dark:bg-slate-900/80 border-b">
-      <div className="container mx-auto px-6 py-4 flex justify-between">
-        <span className="font-bold text-xl">Kendra International</span>
-        <button onClick={() => setTheme(theme === "dark" ? "light" : "dark")}>
-          {theme === "dark" ? <Sun /> : <Moon />}
-        </button>
+    <motion.header
+      initial={{ y: -40, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.4 }}
+      className="fixed top-0 z-50 w-full bg-brand.navy text-white"
+    >
+      <div className="container h-20 flex items-center justify-between">
+        <Link href="/" className="text-lg font-semibold tracking-wide">
+          Kendra International
+        </Link>
+
+        <nav className="hidden md:flex gap-10 text-sm uppercase tracking-wider">
+          <Link href="/services">Services</Link>
+          <Link href="/about">About</Link>
+          <Link href="/contact">Contact</Link>
+        </nav>
+
+        <Link
+          href="/contact"
+          className="px-6 py-3 rounded-md bg-brand.gold text-brand.navy font-medium hover:bg-brand.goldSoft transition"
+        >
+          Contact Us
+        </Link>
       </div>
-    </nav>
+    </motion.header>
   );
 }

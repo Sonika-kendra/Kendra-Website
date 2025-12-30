@@ -1,35 +1,26 @@
+// components/Services.tsx
 import Link from "next/link";
 
-type Service = {
-  title: string;
-  description: string;
-  slug: string;
-};
-
-export default function Services({
-  items,
-}: {
-  items: Service[];
-}) {
+export default function Services({ items }: any) {
   return (
-    <section id="services" className="py-24 bg-slate-50">
-      <div className="max-w-6xl mx-auto px-6">
-        <h2 className="text-4xl font-semibold text-center">
+    <section className="py-24 bg-brand.section">
+      <div className="container">
+        <h2 className="text-4xl text-center mb-16">
           Our Services
         </h2>
 
-        <div className="mt-16 grid gap-8 md:grid-cols-3">
-          {items.map((service) => (
+        <div className="grid md:grid-cols-3 gap-12">
+          {items.map((item: any) => (
             <Link
-              key={service.title}
-              href={service.slug}
-              className="rounded-2xl bg-white p-8 shadow-sm hover:shadow-md transition"
+              key={item.title}
+              href={item.slug}
+              className="bg-white border border-brand.border rounded-xl p-10 hover:shadow-lg transition"
             >
-              <h3 className="text-xl font-semibold">
-                {service.title}
+              <h3 className="text-2xl mb-4">
+                {item.title}
               </h3>
-              <p className="mt-4 text-slate-600">
-                {service.description}
+              <p className="text-brand.muted">
+                {item.description}
               </p>
             </Link>
           ))}

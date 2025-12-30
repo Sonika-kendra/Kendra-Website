@@ -1,32 +1,31 @@
-"use client";
-import AnimateIn from "./AnimateIn";
-
 export default function Hero({
   title,
   subtitle,
+  cta,
 }: {
   title: string;
   subtitle: string;
+  cta: string;
 }) {
   return (
-    <section className="min-h-screen flex items-center bg-gray-50 dark:bg-slate-950">
-      <div className="container mx-auto px-6 text-center">
-        <AnimateIn>
-          <h1 className="text-5xl md:text-6xl font-bold mb-6">{title}</h1>
-        </AnimateIn>
+    <section id="contact" className="scroll-mt-24 py-24">
+      <div className="container text-center">
+        <h1 className="text-5xl md:text-6xl leading-tight">
+          {title}
+        </h1>
 
-        <AnimateIn delay={0.1}>
-          <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-10">
-            {subtitle}
-          </p>
-        </AnimateIn>
+        <p className="mt-8 text-lg text-slate-300 max-w-3xl mx-auto">
+          {subtitle}
+        </p>
 
-        <AnimateIn delay={0.2}>
-          <a className="px-8 py-4 bg-accent text-black rounded-xl font-semibold">
-            Schedule a Call
-          </a>
-        </AnimateIn>
+        <a
+          href="#contact"
+          className="inline-block mt-12 px-10 py-4 bg-brand.gold text-brand.navy rounded-md font-medium hover:bg-brand.goldSoft transition"
+        >
+          {cta}
+        </a>
       </div>
     </section>
   );
 }
+
