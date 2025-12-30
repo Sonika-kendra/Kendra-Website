@@ -26,10 +26,10 @@ export default function Navbar() {
           </div>
         </Link>
 
-        <nav className="hidden md:flex gap-10 text-sm uppercase tracking-wider">
+        <nav className="hidden md:flex gap-10 text-md tracking-wider">
           <Link href="/">Home</Link>
-          <Link href="/services">Services</Link>
           <Link href="/about">About</Link>
+          <Link href="/services">Services</Link>
           <Link href="/contact">Contact</Link>
         </nav>
       </div>

@@ -13,7 +13,7 @@ interface ServicesProps {
 
 export default function Services({ items }: ServicesProps) {
   return (
-    <section className="py-24 bg-brand.section">
+    <section className="py-20 bg-brand.section">
       <div className="container">
         <h2 className="text-4xl text-center mb-16">
           Our Services
