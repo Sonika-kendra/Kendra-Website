@@ -1,10 +1,23 @@
 import "./globals.css";
-import Navbar from "@/components/layout/Navbar";
-import Footer from "@/components/layout/Footer";
+import { ThemeProvider } from "next-themes";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import type { Metadata } from "next";
 
-export const metadata = {
-  title: "Kendra International",
-  description: "Enterprise M&A & Business Consulting",
+export const metadata: Metadata = {
+  title: {
+    default: "Kendra International | M&A & Business Consulting",
+    template: "%s | Kendra International",
+  },
+  description:
+    "Strategic M&A advisory, business consulting, and cost optimization services.",
+  openGraph: {
+    title: "Kendra International",
+    description: "Strategic M&A and business consulting firm.",
+    url: "https://kendra-intl.com",
+    siteName: "Kendra International",
+    type: "website",
+  },
 };
 
 export default function RootLayout({
@@ -13,11 +26,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className="bg-white text-slate-800">
-        <Navbar />
-        {children}
-        <Footer />
+    <html lang="en" suppressHydrationWarning>
+      <body>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <Navbar />
+          {children}
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   );

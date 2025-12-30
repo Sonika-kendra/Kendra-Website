@@ -1,11 +1,14 @@
-import Hero from "@/components/blocks/Hero";
-import CTASection from "@/components/blocks/CTASection";
+import { homeContent } from "@/content/home";
+import Hero from "@/components/Hero";
+import Services from "@/components/Services";
+import CTA from "@/components/CTA";
 
-export default function Home() {
+export default function HomePage() {
   return (
     <>
-      <Hero />
-      <CTASection />
+      <Hero {...homeContent.hero} />
+      <Services items={homeContent.services} />
+      <CTA />
     </>
   );
 }

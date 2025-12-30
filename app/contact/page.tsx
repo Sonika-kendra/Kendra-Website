@@ -1,34 +1,26 @@
+// app/contact/page.tsx
 export default function ContactPage() {
   return (
-    <section className="py-32">
-      <div className="max-w-[720px] mx-auto px-6">
-        <h1 className="text-5xl font-semibold">
-          Contact Our Advisors
-        </h1>
+    <section className="py-24 max-w-3xl mx-auto px-6">
+      <h1 className="text-4xl font-semibold">Contact Us</h1>
 
-        <p className="mt-6 text-slate-600">
-          Tell us about your strategic priorities. Our team will respond
-          promptly.
-        </p>
-
-        <form className="mt-12 space-y-6">
-          <input
-            placeholder="Full Name"
-            className="w-full border p-4 rounded"
-          />
-          <input
-            placeholder="Email Address"
-            className="w-full border p-4 rounded"
-          />
-          <textarea
-            placeholder="How can we help?"
-            className="w-full border p-4 rounded h-40"
-          />
-          <button className="px-8 py-4 bg-accent text-white rounded">
-            Submit
-          </button>
-        </form>
-      </div>
+      <form className="mt-8 grid gap-4">
+        <input
+          className="border rounded-xl px-4 py-3"
+          placeholder="Name"
+        />
+        <input
+          className="border rounded-xl px-4 py-3"
+          placeholder="Email"
+        />
+        <textarea
+          className="border rounded-xl px-4 py-3"
+          placeholder="Message"
+        />
+        <button className="bg-brand.accent py-3 rounded-xl font-medium">
+          Send Message
+        </button>
+      </form>
     </section>
   );
 }

@@ -1,25 +1,22 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
-  content: [
-    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./app/**/*.{js,ts,jsx,tsx,mdx}",
-  ],
+  darkMode: ["class"],
+  content: ["./app/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}"],
+  // tailwind.config.ts
   theme: {
     extend: {
       colors: {
-        primary: "#0b3c5d",
-        accent: "#1f6fd2",
-        muted: "#f5f7fa",
-        text: "#1a1a1a",
-      },
-      fontFamily: {
-        heading: ["Poppins", "sans-serif"],
-        body: ["Open Sans", "sans-serif"],
+        brand: {
+          dark: "#0f172a",     // slate-900
+          primary: "#1e3a8a",  // blue-800
+          accent: "#fbbf24",   // amber-400
+          muted: "#64748b",    // slate-500
+        },
       },
     },
   },
   plugins: [],
 };
+
 export default config;

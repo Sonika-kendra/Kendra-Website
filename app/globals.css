@@ -2,19 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Import original fonts */
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Open+Sans:wght@400;500&display=swap");
-
 html {
   scroll-behavior: smooth;
-}
-
-body {
-  font-family: "Open Sans", sans-serif;
-  color: #1a1a1a;
-  background-color: #ffffff;
-}
-
-h1, h2, h3, h4 {
-  font-family: "Poppins", sans-serif;
 }
