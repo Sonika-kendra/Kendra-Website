@@ -8,7 +8,7 @@ export default function Hero({
   cta: string;
 }) {
   return (
-    <section id="contact" className="scroll-mt-24 py-24">
+    <section id="contact" className="scroll-mt-24 py-24 bg-primary">
       <div className="container text-center">
         <h1 className="text-5xl md:text-6xl leading-tight">
           {title}

@@ -10,11 +10,15 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        primary: "#104573",  // blue-800
+        secondary: "#6B9FBF",
+        accent: "#fbbf24",   // amber-400
+        muted: "#F2F2F2",    // slate-500
         brand: {
-          dark: "#0f172a",     // slate-900
-          primary: "#1e3a8a",  // blue-800
-          accent: "#fbbf24",   // amber-400
-          muted: "#64748b",    // slate-500
+          navy: "#0f172a",
+          blue: "#1e3a8a",
+          gold: "#fbbf24",
+          slate: "#64748b",
         },
       },
     },

@@ -1,7 +1,7 @@
 // components/Footer.tsx
 export default function Footer() {
   return (
-    <footer className="bg-brand.navy text-slate-300 py-20">
+    <footer className="bg-brand.navy text-slate-300 py-10 bg-black">
       <div className="container grid md:grid-cols-3 gap-12">
         <div>
           <h4 className="text-white text-lg mb-4">
