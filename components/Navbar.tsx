@@ -8,10 +8,10 @@ import Image from "next/image";
 export default function Navbar() {
   return (
     <motion.header
-      initial={{ y: -40, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.4 }}
-      className="fixed top-0 z-50 w-full bg-brand.navy text-white"
+      // initial={{ y: -40, opacity: 0 }}
+      // animate={{ y: 0, opacity: 1 }}
+      // transition={{ duration: 0.4 }}
+      className="fixed top-0 z-50 w-full bg-primary text-white"
     >
       <div className="container h-20 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-3">
