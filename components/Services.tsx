@@ -1,7 +1,17 @@
 // components/Services.tsx
 import Link from "next/link";
 
-export default function Services({ items }: any) {
+interface ServiceItem {
+  title: string;
+  slug: string;
+  description: string;
+}
+
+interface ServicesProps {
+  items: ServiceItem[];
+}
+
+export default function Services({ items }: ServicesProps) {
   return (
     <section className="py-24 bg-brand.section">
       <div className="container">
@@ -10,7 +20,7 @@ export default function Services({ items }: any) {
         </h2>
 
         <div className="grid md:grid-cols-3 gap-12">
-          {items.map((item: any) => (
+          {items.map((item) => (
             <Link
               key={item.title}
               href={item.slug}
