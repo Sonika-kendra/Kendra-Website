@@ -25,4 +25,24 @@ export const homeContent = {
       slug: "/services/cost",
     },
   ],
+
+  whyKendra: {
+    heading: "Why Kendra International?",
+    reasons: [
+      {
+        title: "Strategic Growth Platform",
+        points: [
+          "Accelerates expansion through acquisitions",
+          "Creates long-term enterprise value",
+        ],
+      },
+      {
+        title: "Trusted Capital & Expertise",
+        points: [
+          "Experienced investment leadership",
+          "Strong funding capacity and governance",
+        ],
+      },
+    ],
+  },
 };
