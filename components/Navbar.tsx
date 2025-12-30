@@ -15,15 +15,15 @@ export default function Navbar() {
     >
       <div className="container h-20 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-3">
-        <div className="relative w-36 h-36 flex-shrink-0">
-          <Image
-            src="/kendra-logo-200.png"      // place logo in /public/logo.png
-              alt="Kendra International Logo"
-              fill
-              className="object-contain"
-              priority
-          />
-        </div>
+          <div className="relative w-36 h-36 flex-shrink-0">
+            <Image
+              src="/kendra-logo-200.png"      // place logo in /public/logo.png
+                alt="Kendra International Logo"
+                fill
+                className="object-contain"
+                priority
+            />
+          </div>
         </Link>
 
         <nav className="hidden md:flex gap-10 text-sm uppercase tracking-wider">
