@@ -7,9 +7,9 @@ import WhyKendra from "@/components/WhyKendra";
 export default function HomePage() {
   return (
     <>
-      <Hero {...homeContent.hero} />
-      <Services items={homeContent.services} />
-      <WhyKendra {...homeContent.whyKendra} />
+      <Hero { ...homeContent.hero } />
+      <Services items = { homeContent.services } />
+      <WhyKendra { ...homeContent.whyKendra } />
       <CTA />
     </>
   );

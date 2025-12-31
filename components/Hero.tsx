@@ -1,3 +1,5 @@
+"use client";
+
 export default function Hero({
   title,
   subtitle,
@@ -19,7 +21,7 @@ export default function Hero({
         </p>
 
         <a
-          href="#contact"
+          href="/contact"
           className="inline-block mt-12 px-10 py-4 bg-brand.gold text-brand.navy rounded-md font-medium hover:bg-brand.goldSoft transition"
         >
           {cta}

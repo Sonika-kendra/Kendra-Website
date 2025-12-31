@@ -23,7 +23,7 @@ export default function WhyKendra({ heading, reasons }: WhyKendraProps) {
           {reasons.map((reason, index) => (
             <div
               key={index}
-              className="border border-gray-200 rounded-xl p-8 shadow-sm hover:shadow-md transition"
+              className="border border-gray-200 rounded-3xl p-8 shadow-sm hover:shadow-md transition"
             >
               <h3 className="text-2xl mb-4">
                 {reason.title}

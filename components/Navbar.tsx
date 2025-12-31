@@ -8,9 +8,6 @@ import Image from "next/image";
 export default function Navbar() {
   return (
     <motion.header
-      // initial={{ y: -40, opacity: 0 }}
-      // animate={{ y: 0, opacity: 1 }}
-      // transition={{ duration: 0.4 }}
       className="top-0 z-50 w-full bg-primary text-white"
     >
       <div className="container h-20 flex items-center justify-between">
@@ -18,10 +15,10 @@ export default function Navbar() {
           <div className="relative w-36 h-36 flex-shrink-0">
             <Image
               src="/kendra-logo-200.png"      // place logo in /public/logo.png
-                alt="Kendra International Logo"
-                fill
-                className="object-contain"
-                priority
+              alt="Kendra International Logo"
+              fill
+              className="object-contain"
+              priority
             />
           </div>
         </Link>
