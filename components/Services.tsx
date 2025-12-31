@@ -24,6 +24,7 @@ export default function Services({ items }: ServicesProps) {
             <Link
               key={item.title}
               href={item.slug}
+              prefetch
               className="bg-white border border-brand.border rounded-xl p-10 hover:shadow-lg transition"
             >
               <h3 className="text-2xl mb-4">

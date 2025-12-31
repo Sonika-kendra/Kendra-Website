@@ -1,4 +1,4 @@
-"use client";
+import Link from "next/link";
 
 export default function Hero({
   title,
@@ -20,12 +20,19 @@ export default function Hero({
           {subtitle}
         </p>
 
-        <a
+        {/* <a
           href="/contact"
           className="inline-block mt-12 px-10 py-4 bg-brand.gold text-brand.navy rounded-md font-medium hover:bg-brand.goldSoft transition"
         >
           {cta}
-        </a>
+        </a> */}
+        <Link
+          href="/contact"
+          className="inline-block mt-12 px-10 py-4 bg-brand.gold ..."
+        >
+          {cta}
+        </Link>
+
       </div>
     </section>
   );
