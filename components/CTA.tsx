@@ -1,15 +1,30 @@
+import Link from "next/link";
+
 export default function CTA() {
   return (
-    <section className="py-24 bg-secondary text-white text-center">
-      <h2 className="text-4xl font-bold mb-6">
-        Let’s Build Your Growth Strategy
-      </h2>
-      <p className="text-gray-300 mb-8">
-        Speak with our consultants today.
-      </p>
-      <a className="px-8 py-4 bg-accent text-black rounded-xl font-semibold">
-        Contact Us
-      </a>
+    <section className="scroll-mt-24 py-24 relative overflow-hidden bg-gradient-to-br from-secondary/20 via-secondary/50 to-secondary/80 text-primary">
+      <div className="max-w-3xl mx-auto text-center px-6">
+        <h2 className="text-4xl font-bold mb-6">
+          Let’s Build Your Growth Strategy
+        </h2>
+
+        <p className="text-primary/80 mb-6 text-lg">
+          Speak with our consultants today.
+        </p>
+
+<Link
+      href="/contact"
+      className={`
+        inline-flex items-center justify-center px-10 py-4
+        rounded-full bg-brand.gold text-black font-semibold
+        shadow-lg transition-all duration-300
+        hover:bg-brand.gold/90 hover:scale-105
+        active:scale-95 focus:outline-none focus:ring-2 focus:ring-brand.gold
+      `}
+    >
+      Contact Us
+    </Link>
+      </div>
     </section>
   );
 }
