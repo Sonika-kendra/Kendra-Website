@@ -4,6 +4,7 @@ const config: Config = {
   darkMode: ["class"],
   content: [
     "./app/**/*.{ts,tsx}",
+    "./pages/**/*.{ts,tsx}",
     "./components/**/*.{ts,tsx}",
     "./content/**/*.{ts,tsx}",
   ],
@@ -19,6 +20,7 @@ const config: Config = {
           blue: "#1e3a8a",
           gold: "#fbbf24",
           slate: "#64748b",
+          goldSoft: "#fde68a",
         },
       },
     },

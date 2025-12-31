@@ -49,8 +49,15 @@ a {
   padding-inline: 1.5rem;
 }
 
-section {
+/* :root {
+  --brand-navy: #0f172a;
+  --secondary: #6B9FBF;
+  --brand-gold-soft: #fde68a;
+} */
+
+
+/* section {
   padding-block: 6rem;
-}
+} */
 
 

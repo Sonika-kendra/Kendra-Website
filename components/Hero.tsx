@@ -10,22 +10,24 @@ export default function Hero({
   cta: string;
 }) {
   return (
-    <section id="contact" className="scroll-mt-24 py-36 bg-secondary">
+    <section
+      id="contact"
+      className="
+    scroll-mt-24 py-36
+    bg-gradient-to-br
+    from-white via-secondary/20 to-secondary/40
+  "
+    >
+
       <div className="container text-center">
-        <h1 className="text-5xl md:text-6xl leading-tight">
+        <h1 className="text-5xl md:text-6xl leading-tight text-primary">
           {title}
         </h1>
 
-        <p className="mt-8 text-lg text-slate-300 max-w-3xl mx-auto">
+        <p className="mt-8 text-lg text-brand.slate max-w-3xl mx-auto">
           {subtitle}
         </p>
 
-        {/* <a
-          href="/contact"
-          className="inline-block mt-12 px-10 py-4 bg-brand.gold text-brand.navy rounded-md font-medium hover:bg-brand.goldSoft transition"
-        >
-          {cta}
-        </a> */}
         <Link
           href="/contact"
           className="inline-block mt-12 px-10 py-4 bg-brand.gold ..."

@@ -1,7 +1,7 @@
 export const homeContent = {
   hero: {
-    title: "Strategic M&A & Business Consulting",
-    subtitle: "Helping organizations grow through acquisitions, transformation, and operational excellence.",
+    title: "ACCELERATING BUSINESS GROWTH & PROFITABILITY",
+    subtitle: "Expert-led transformation strategies to unlock hidden value and drive sustainable success for SMEs.",
     cta: "Schedule a Consultation",
   },
 
