@@ -7,22 +7,32 @@ export const homeContent = {
 
   services: [
     {
-      title: "Mergers & Acquisitions",
+      title: "Fueling Growth",
       description:
-        "Comprehensive buy-side and sell-side advisory services.",
+        "Identify new revenue streams, optimize sales cycles, and expand market reach.",
       slug: "/services/ma",
+      icon: "trending-up",
     },
     {
-      title: "Business Consulting",
+      title: "Optimizing Operations",
       description:
-        "Strategy-led consulting to improve performance and scalability.",
+        "Reduce costs and enhance efficiency through strategic outsourcing, automation, and digital transformation.",
       slug: "/services/consulting",
+      icon: "settings",
     },
     {
-      title: "Cost Rationalization",
+      title: "Strengthening Liquidity",
       description:
-        "Data-driven cost optimization aligned with growth objectives.",
+        "Improve cash flow, manage capital effectively, and build financial resilience for long-term success.",
       slug: "/services/cost",
+      icon: "wallet",
+    },
+    {
+      title: "M&A & Exit Strategy Planning",
+      description:
+        "Navigate mergers, acquisitions, and business transitions seamlessly, maximizing value and ensuring smooth transitions.",
+      slug: "/services/exit",
+      icon: "briefcase",
     },
   ],
 
