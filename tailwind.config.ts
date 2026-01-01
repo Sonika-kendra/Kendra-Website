@@ -11,17 +11,15 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        primary: "#104573",  // blue-800
-        secondary: "#6B9FBF",
-        accent: "#fbbf24",   // amber-400
-        muted: "#F2F2F2",    // slate-500
-        goldSoft: "#fde68a",
+        primary: "#292966",  
+        secondary: "#5C5C99",
+        accent: "#A3A3CC",   
+        muted: "#CCCCFF",   
         brand: {
-          navy: "#0f172a",
-          blue: "#1e3a8a",
-          gold: "#fbbf24",
-          slate: "#64748b",
-          goldSoft: "#fde68a",
+          primary: "#292966",  
+          secondary: "#5C5C99",
+          accent: "#A3A3CC",   
+          muted: "#CCCCFF", 
         },
       },
     },

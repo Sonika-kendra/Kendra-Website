@@ -1,5 +1,6 @@
+"use client";
+
 import Link from "next/link";
-import Image from "next/image";
 import SocialIcon from "./SocialIcon";
 import DarkModeToggle from "./DarkModeToggle";
 
@@ -7,6 +8,7 @@ import LinkedIn from "./icons/Linkedin";
 import WhatsApp from "./icons/Whatsapp";
 import Phone from "./icons/Phone";
 import Email from "./icons/Email";
+import Logo from "./Logo";
 
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -16,14 +18,7 @@ export default function Footer() {
       <div className="container grid gap-12 md:grid-cols-5">
         {/* Logo */}
         <div>
-          <Link href="/">
-            <Image
-              src="/kendra-logo-200.png"
-              alt="Kendra International"
-              width={140}
-              height={140}
-            />
-          </Link>
+          <Logo priority />
 
           <p className="mt-4 text-sm text-slate-600 dark:text-slate-300">
             © {year} Kendra International

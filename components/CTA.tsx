@@ -7,7 +7,7 @@ export default function CTA() {
         scroll-mt-24 py-24 relative overflow-hidden text-primary
         bg-gradient-to-br
         from-secondary/20 via-secondary/50 to-secondary/80
-        dark:from-primary/20 dark:via-primary/50 dark:to-primary/80
+        dark:from-accent/20 dark:via-accent/50 dark:to-accent/80
       "
     >
       <div className="max-w-3xl mx-auto text-center px-6">
@@ -23,7 +23,7 @@ export default function CTA() {
           href="/contact"
           className="
             inline-flex items-center justify-center px-10 py-4
-            rounded-full bg-brand.gold text-black font-semibold
+            rounded-full bg-brand.gold text-primary font-bold
             shadow-lg transition-all duration-300
             hover:bg-brand.gold/90 hover:scale-105
             active:scale-95 focus:outline-none focus:ring-2 focus:ring-brand.gold
