@@ -6,21 +6,24 @@ const config: Config = {
     "./app/**/*.{ts,tsx}",
     "./pages/**/*.{ts,tsx}",
     "./components/**/*.{ts,tsx}",
-    "./content/**/*.{ts,tsx}",
   ],
   theme: {
     extend: {
       colors: {
-        primary: "#292966",  
-        secondary: "#5C5C99",
-        accent: "#A3A3CC",   
-        muted: "#CCCCFF",   
-        brand: {
-          primary: "#292966",  
-          secondary: "#5C5C99",
-          accent: "#A3A3CC",   
-          muted: "#CCCCFF", 
-        },
+        bg: "rgb(var(--bg))",
+        text: "rgb(var(--text))",
+
+        primary: "rgb(var(--primary))",
+        secondary: "rgb(var(--secondary))",
+        accent: "rgb(var(--accent))",
+        muted: "rgb(var(--muted))",
+
+        card: "rgb(var(--card))",
+        border: "rgb(var(--border))",
+      },
+      backgroundImage: {
+        "brand-gradient": "var(--gradient-brand)",
+        "cta-gradient": "var(--gradient-cta)",
       },
     },
   },
