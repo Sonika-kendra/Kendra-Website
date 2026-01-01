@@ -1,7 +1,7 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
-  darkMode: ["class"],
+  darkMode: "class",
   content: [
     "./app/**/*.{ts,tsx}",
     "./pages/**/*.{ts,tsx}",
@@ -15,6 +15,7 @@ const config: Config = {
         secondary: "#6B9FBF",
         accent: "#fbbf24",   // amber-400
         muted: "#F2F2F2",    // slate-500
+        goldSoft: "#fde68a",
         brand: {
           navy: "#0f172a",
           blue: "#1e3a8a",
