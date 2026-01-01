@@ -11,7 +11,7 @@ export default function Hero({
 }) {
   return (
     <section
-      id="contact"
+      id="hero"
       className="
         scroll-mt-24 py-36 relative overflow-hidden text-primary
         bg-gradient-to-br
