@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { motion } from "motion/react";
 
 export default function Hero({
   title,
@@ -13,13 +16,55 @@ export default function Hero({
     <section
       id="hero"
       className="
-        scroll-mt-24 py-36 relative overflow-hidden text-primary
+        relative overflow-hidden py-36 text-primary
         bg-gradient-to-br
         from-secondary/20 via-secondary/50 to-secondary/80
         dark:from-accent/20 dark:via-accent/50 dark:to-accent/80
       "
     >
-      <div className="max-w-6xl mx-auto text-center px-6">
+      {/* Animated SVG background */}
+      <svg
+        viewBox="0 0 800 400"
+        className="absolute inset-0 w-full h-full opacity-40"
+        preserveAspectRatio="none"
+      >
+        {/* Path */}
+        <motion.path
+          d="M 0 300 C 200 100 400 500 800 200"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          className="text-brand.gold"
+          initial={{ pathLength: 0 }}
+          animate={{ pathLength: 1 }}
+          transition={{
+            duration: 4,
+            ease: "easeInOut",
+          }}
+        />
+
+        {/* Moving dot */}
+        <motion.circle
+          r="6"
+          fill="currentColor"
+          className="text-brand.gold"
+          animate={{
+            offsetDistance: ["0%", "100%"],
+          }}
+          transition={{
+            duration: 12,
+            repeat: Infinity,
+            ease: "linear",
+          }}
+          style={{
+            offsetPath:
+              "path('M 0 300 C 200 100 400 500 800 200')",
+          }}
+        />
+      </svg>
+
+      {/* Content */}
+      <div className="relative max-w-6xl mx-auto text-center px-6">
         <h1 className="text-5xl md:text-6xl font-bold leading-tight">
           {title}
         </h1>
