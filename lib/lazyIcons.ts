@@ -1,5 +1,4 @@
 // lib/lazyIcons.ts
-import dynamic from "next/dynamic";
 import { LucideIcon } from "lucide-react";
 
 export const lazyIcons: Record<string, () => Promise<{ default: LucideIcon }>> = {
