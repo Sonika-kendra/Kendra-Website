@@ -3,6 +3,7 @@ import Hero from "@/components/Hero";
 import Services from "@/components/Services";
 import CTA from "@/components/CTA";
 import WhyKendra from "@/components/WhyKendra";
+import BusinessHealthCheck from "@/components/BusinessHealthCheck";
 
 export default function HomePage() {
   return (
@@ -10,6 +11,7 @@ export default function HomePage() {
       <Hero { ...homeContent.hero } />
       <Services items = { homeContent.services } />
       <WhyKendra { ...homeContent.whyKendra } />
+      <BusinessHealthCheck />
       <CTA />
     </>
   );
