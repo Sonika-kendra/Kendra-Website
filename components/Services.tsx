@@ -17,12 +17,18 @@ interface ServicesProps {
   items: ServiceItem[];
 }
 
-const cardVariants: Variants = {
-  hidden: { opacity: 0, y: 24 },
+/**
+ * Subtle, system-first motion
+ */
+const itemVariants: Variants = {
+  hidden: { opacity: 0, y: 8 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.5, ease: [0.4, 0, 0.2, 1] },
+    transition: {
+      duration: 0.25,
+      ease: "easeOut",
+    },
   },
 };
 
@@ -30,13 +36,27 @@ export default function Services({ items }: ServicesProps) {
   const reduceMotion = useReducedMotion();
 
   return (
-    <section className="py-10 bg-brand.section">
-      <div className="container">
-        <motion.div
+    <section className="py-5 bg-brand.section">
+      <div className="px-7">
+        {/* HEADER */}
+        <header className="mb-6 text-center">
+          <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight">
+            Services
+          </h2>
+          <p className="mt-1 text-sm sm:text-base text-brand.muted">
+            What we can help you with
+          </p>
+        </header>
+
+        <motion.ul
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10"
+          className="
+            flex flex-col sm:flex-row
+            divide-y sm:divide-y-0 sm:divide-x
+            divide-brand.border
+          "
         >
           {items.map((item) => {
             const Icon = lazyIcons[item.icon]
@@ -44,44 +64,48 @@ export default function Services({ items }: ServicesProps) {
               : HelpCircle;
 
             return (
-              <motion.div
+              <motion.li
                 key={item.title}
-                variants={reduceMotion ? {} : cardVariants}
+                variants={reduceMotion ? undefined : itemVariants}
+                className="flex-1"
               >
                 <Link
                   href={item.slug}
-                  className="group block h-full bg-white border border-brand.border rounded-2xl p-10
-             transition-all hover:shadow-xl hover:-translate-y-1"
+                  className="
+                    group flex h-full flex-col items-center text-center
+                    px-6 py-8 gap-4
+                    transition-colors
+                    hover:bg-brand.primary/5
+                  "
                 >
-                  
-                  <div className="flex h-full flex-col">
-                    {/* ICON */}
-                    <div className="mb-8 flex justify-center">
-                      <div
-                        className="flex items-center justify-center
-                          w-20 h-20 rounded-2xl
-                          bg-brand.primary/10 text-brand.primary
-                          transition-all duration-300
-                          group-hover:scale-110 group-hover:bg-brand.primary/15"
-                      >
-                        <Icon className="w-10 h-10" aria-hidden />
-                      </div>
-                    </div>
+                  {/* ICON */}
+                  <div
+                    className="
+                      flex items-center justify-center
+                      w-12 h-12 rounded-md
+                      bg-brand.primary/10 text-brand.primary
+                      transition-colors
+                      group-hover:bg-brand.primary/15
+                    "
+                  >
+                    <Icon className="w-6 h-6" aria-hidden />
+                  </div>
 
-                    <h3 className="text-xl font-semibold mb-4">
+                  {/* CONTENT */}
+                  <div className="flex flex-col items-center">
+                    <h3 className="text-sm font-semibold tracking-tight mb-1">
                       {item.title}
                     </h3>
 
-                    <p className="text-brand.muted leading-relaxed flex-grow">
+                    <p className="text-sm text-brand.muted leading-relaxed">
                       {item.description}
                     </p>
                   </div>
                 </Link>
-
-              </motion.div>
+              </motion.li>
             );
           })}
-        </motion.div>
+        </motion.ul>
       </div>
     </section>
   );
