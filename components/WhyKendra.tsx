@@ -14,18 +14,17 @@ export default function WhyKendra({
   heading,
   reasons,
 }: WhyKendraProps) {
+  console.log(reasons);
+  
   return (
     <section
       id="why-kendra"
       className="
         relative overflow-hidden py-28
-        bg-gradient-to-br
-        from-secondary/20 via-secondary/50 to-secondary/80
-        dark:from-accent/20 dark:via-accent/50 dark:to-accent/80
-        text-primary
+        bg-white dark:bg-neutral-950
+        text-neutral-900 dark:text-neutral-100
       "
     >
-
       {/* Content */}
       <div className="relative max-w-6xl mx-auto px-6">
         <div
@@ -38,9 +37,9 @@ export default function WhyKendra({
           {/* Text */}
           <div className="max-w-2xl">
             <h2 className="text-4xl md:text-5xl font-bold">
-              Why Kendra?
+              {heading}
             </h2>
-            <p className="mt-6 text-lg text-primary/80">
+            <p className="mt-6 text-lg text-neutral-600 dark:text-neutral-400">
               A modern, performance-first approach to building
               scalable, elegant web experiences — without
               unnecessary complexity.
@@ -53,7 +52,7 @@ export default function WhyKendra({
             className="
               inline-flex items-center justify-center
               h-14 px-10 rounded-full
-              bg-brand.gold text-primary font-semibold
+              bg-brand.gold text-neutral-900 font-semibold
               shadow-lg transition-all duration-300
               hover:bg-brand.gold/90 hover:scale-105
               active:scale-95

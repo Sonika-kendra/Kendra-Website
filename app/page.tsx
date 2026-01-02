@@ -10,8 +10,8 @@ export default function HomePage() {
     <>
       <Hero { ...homeContent.hero } />
       <Services items = { homeContent.services } />
-      <WhyKendra { ...homeContent.whyKendra } />
       <BusinessHealthCheck />
+      <WhyKendra { ...homeContent.whyKendra } />
       <CTA />
     </>
   );

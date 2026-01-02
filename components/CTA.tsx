@@ -10,7 +10,7 @@ export default function CTA() {
         dark:from-accent/20 dark:via-accent/50 dark:to-accent/80
       "
     >
-      <div className="max-w-3xl mx-auto text-center px-6">
+      <div className="max-w-6xl mx-auto text-center px-6">
         <h2 className="text-4xl font-bold mb-6">
           Let’s Build Your Growth Strategy
         </h2>
