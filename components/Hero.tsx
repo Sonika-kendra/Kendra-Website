@@ -55,7 +55,7 @@ export default function Hero({
 
         {/* TEXT OVERLAY */}
         <div className="absolute inset-0 flex items-center">
-          {/* Gradient ONLY near text (not whole image) */}
+          {/* Gradient near text */}
           <div className="absolute inset-0 bg-gradient-to-r from-black/55 via-black/25 to-transparent" />
 
           <div className="relative w-full max-w-7xl px-6 m-10">
@@ -64,11 +64,11 @@ export default function Hero({
               <h1
                 className="
                   font-bold text-white
-                  leading-tight
+                  leading-snug
                   max-w-[22ch]
                   drop-shadow-[0_4px_10px_rgba(0,0,0,0.75)]
-                  text-[clamp(1.8rem,3.5vw,3.2rem)]
-                  lg:text-[clamp(2rem,2.8vw,3.5rem)]
+                  text-[clamp(1.4rem,2.6vw,2.6rem)]
+                  lg:text-[clamp(1.6rem,2.2vw,2.8rem)]
                 "
               >
                 {title}
@@ -77,24 +77,25 @@ export default function Hero({
               {/* SUBTITLE */}
               <p
                 className="
-                  mt-4 text-white/95
+                  mt-3 text-white/95
                   leading-snug
                   max-w-[36ch]
                   drop-shadow-[0_2px_6px_rgba(0,0,0,0.7)]
-                  text-[clamp(0.95rem,1.4vw,1.2rem)]
-                  lg:text-[clamp(1rem,1.2vw,1.35rem)]
+                  text-[clamp(0.9rem,1.3vw,1.1rem)]
+                  lg:text-[clamp(0.95rem,1.1vw,1.25rem)]
                 "
               >
                 {subtitle}
               </p>
 
-              {/* CTA */}
-              <div className="mt-8 flex flex-wrap gap-4">
+              {/* CTA BUTTONS */}
+              <div className="mt-6 flex flex-wrap gap-3">
                 <Link
                   href="/contact"
                   className="
-                    px-8 py-3 rounded-full
-                    bg-white text-black font-bold
+                    px-6 py-2 rounded-full
+                    bg-white text-black
+                    font-semibold text-sm
                     transition-all duration-300
                     hover:scale-105
                     active:scale-95
@@ -106,8 +107,9 @@ export default function Hero({
                 <Link
                   href="/contact"
                   className="
-                    px-8 py-3 rounded-full
-                    bg-white text-black font-bold
+                    px-6 py-2 rounded-full
+                    bg-white text-black
+                    font-semibold text-sm
                     transition-all duration-300
                     hover:scale-105
                     active:scale-95
@@ -115,11 +117,13 @@ export default function Hero({
                 >
                   Contact Us
                 </Link>
+
                 <Link
                   href="/services"
                   className="
-                    px-8 py-3 rounded-full
-                    bg-white text-black font-bold
+                    px-6 py-2 rounded-full
+                    bg-white text-black
+                    font-semibold text-sm
                     transition-all duration-300
                     hover:scale-105
                     active:scale-95
@@ -132,19 +136,19 @@ export default function Hero({
           </div>
         </div>
 
-        {/* NAV */}
+        {/* NAV ARROWS */}
         <div className="absolute inset-y-0 left-0 right-0 flex items-center justify-between px-6 pointer-events-none">
           <button
             onClick={prev}
             aria-label="Previous slide"
-            className="pointer-events-auto text-white text-5xl opacity-70 hover:opacity-100"
+            className="pointer-events-auto text-white text-4xl opacity-70 hover:opacity-100"
           >
             ‹
           </button>
           <button
             onClick={next}
             aria-label="Next slide"
-            className="pointer-events-auto text-white text-5xl opacity-70 hover:opacity-100"
+            className="pointer-events-auto text-white text-4xl opacity-70 hover:opacity-100"
           >
             ›
           </button>
