@@ -6,16 +6,13 @@ export default function LeadPopup() {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    const hasSeenPopup = localStorage.getItem("kendra_lead_popup");
+    // Show popup on every refresh
+    const timer = setTimeout(() => setOpen(true), 1200);
 
-    if (!hasSeenPopup) {
-      // slight delay feels more natural
-      setTimeout(() => setOpen(true), 1200);
-    }
+    return () => clearTimeout(timer);
   }, []);
 
   const closePopup = () => {
-    localStorage.setItem("kendra_lead_popup", "true");
     setOpen(false);
   };
 

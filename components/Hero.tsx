@@ -34,102 +34,116 @@ export default function Hero({
   const MotionImage = motion(Image);
 
   return (
-    <section id="hero" className="relative overflow-hidden py-5 text-primary">
-      <div
-        className="
-          mx-auto max-w-8xl px-6
-          grid grid-cols-1 lg:grid-cols-5
-          gap-20 items-center
-        "
-      >
-        {/* LEFT — TEXT */}
-        <div className="lg:col-span-2">
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-snug">
-            {title}
-          </h1>
-          <p className="mt-8 text-lg text-primary/80">{subtitle}</p>
-        </div>
+    <section id="hero" className="relative w-full overflow-hidden">
+      <div className="relative h-[360px] sm:h-[420px] lg:h-[520px] max-h-[560px] w-full">
+        <AnimatePresence mode="wait">
+          <MotionImage
+            key={index}
+            src={slides[index]}
+            alt="Hero slide"
+            fill
+            priority={index === 0}
+            sizes="100vw"
+            className="object-cover"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.6, ease: "easeInOut" }}
+          />
+        </AnimatePresence>
 
-        {/* RIGHT — CAROUSEL + CTA */}
-        <div className="lg:col-span-3">
-          {/* WRAPPER keeps buttons centered to carousel width */}
-          <div className="w-full">
-            {/* CAROUSEL */}
+        {/* DARK OVERLAY */}
+        <div className="absolute inset-0 bg-black/50 sm:bg-black/40" />
+
+        {/* TEXT OVERLAY */}
+        <div className="absolute inset-0 flex items-center m-10">
+          <div className="w-full max-w-7xl px-6">
             <div
               className="
-                relative w-full
-                h-[280px] sm:h-[360px] lg:h-[440px]
-                rounded-2xl overflow-hidden
+                w-full
+                lg:max-w-[35%]
+                rounded-2xl
+                bg-black/60 backdrop-blur-md
+                px-6 py-8 sm:px-8 sm:py-9
                 shadow-2xl
               "
             >
-              <AnimatePresence mode="wait">
-                <MotionImage
-                  key={index}
-                  src={slides[index]}
-                  alt="Hero slide"
-                  fill
-                  priority={index === 0}
-                  sizes="(min-width: 1024px) 60vw, 100vw"
-                  className="object-cover"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.6, ease: "easeInOut" }}
-                />
-              </AnimatePresence>
+              {/* TITLE */}
+              <h1
+                className="
+                  font-bold text-white drop-shadow-lg
+                  leading-tight
+                  max-w-[22ch]
+                  text-[clamp(1.8rem,3.5vw,3.2rem)]
+                  lg:text-[clamp(2rem,2.8vw,3.5rem)]
+                "
+              >
+                {title}
+              </h1>
 
-              {/* NAV ARROWS */}
-              <div className="absolute inset-y-0 left-0 right-0 flex items-center justify-between px-4 pointer-events-none">
-                <button
-                  onClick={prev}
-                  aria-label="Previous slide"
-                  className="pointer-events-auto text-white text-4xl drop-shadow-lg opacity-70 hover:opacity-100"
+              {/* SUBTITLE */}
+              <p
+                className="
+                  mt-4 text-white/90 drop-shadow
+                  leading-snug
+                  max-w-[36ch]
+                  text-[clamp(0.95rem,1.4vw,1.2rem)]
+                  lg:text-[clamp(1rem,1.2vw,1.35rem)]
+                "
+              >
+                {subtitle}
+              </p>
+
+              {/* CTA */}
+              <div className="mt-8 flex flex-wrap gap-4">
+                <Link
+                  href="/contact"
+                  className="
+                    px-8 py-3 rounded-full
+                    bg-white text-black font-bold
+                    transition-all duration-300
+                    hover:scale-105
+                    active:scale-95
+                  "
                 >
-                  ‹
-                </button>
-                <button
-                  onClick={next}
-                  aria-label="Next slide"
-                  className="pointer-events-auto text-white text-4xl drop-shadow-lg opacity-70 hover:opacity-100"
+                  {cta}
+                </Link>
+
+                <Link
+                  href="/contact"
+                  className="
+                    px-8 py-3 rounded-full
+                    border border-white
+                    text-white font-bold
+                    transition-all duration-300
+                    hover:bg-white/10
+                    hover:scale-105
+                    active:scale-95
+                  "
                 >
-                  ›
-                </button>
+                  Contact Us
+                </Link>
               </div>
             </div>
-
-            {/* CTA — CENTERED UNDER CAROUSEL */}
-            <div className="mt-6 flex justify-center gap-4">
-              <Link
-                href="/contact"
-                className="
-                  px-10 py-4 rounded-full
-                  bg-brand.gold text-primary font-bold
-                  shadow-lg
-                  transition-all duration-300
-                  hover:bg-brand.gold/90 hover:scale-105
-                  active:scale-95
-                "
-              >
-                {cta}
-              </Link>
-
-              <Link
-                href="/contact"
-                className="
-                  px-10 py-4 rounded-full
-                  border border-brand.gold
-                  text-primary font-bold
-                  shadow-lg
-                  transition-all duration-300
-                  hover:bg-brand.gold/10 hover:scale-105
-                  active:scale-95
-                "
-              >
-                Contact Us
-              </Link>
-            </div>
           </div>
+        </div>
+
+        {/* NAV */}
+        <div className="absolute inset-y-0 left-0 right-0 flex items-center justify-between px-6 pointer-events-none">
+          <button
+            onClick={prev}
+            aria-label="Previous slide"
+            className="pointer-events-auto text-white text-5xl opacity-70 hover:opacity-100"
+          >
+            ‹
+          </button>
+          <button
+            onClick={next}
+            aria-label="Next slide"
+            className="pointer-events-auto text-white text-5xl opacity-70 hover:opacity-100"
+          >
+            ›
+          </button>
         </div>
       </div>
     </section>
