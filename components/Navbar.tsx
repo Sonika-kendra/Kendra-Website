@@ -43,7 +43,7 @@ export default function Navbar() {
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.4 }}
     >
-      <div className="w-full h-16 flex items-center justify-between px-20">
+      <div className="w-full h-12 flex items-center justify-between px-20">
         <Logo width={150} height={40} priority />
 
         <nav

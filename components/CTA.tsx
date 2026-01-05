@@ -7,6 +7,8 @@ export default function CTA() {
         scroll-mt-24 py-24 relative overflow-hidden text-primary
         bg-gradient-to-br
         from-secondary/20 via-secondary/50 to-secondary/80
+
+        dark:bg-gradient-to-tl
         dark:from-accent/20 dark:via-accent/50 dark:to-accent/80
       "
     >
