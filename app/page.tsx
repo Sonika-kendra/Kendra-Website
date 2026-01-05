@@ -4,12 +4,14 @@ import Services from "@/components/Services";
 import CTA from "@/components/CTA";
 import WhyKendra from "@/components/WhyKendra";
 import BusinessHealthCheck from "@/components/BusinessHealthCheck";
-import LeadPopup  from "@/components/LeadPopup";
+import LeadPopup from "@/components/LeadPopup";
+import Notice from "@/components/Notice";
 
 export default function HomePage() {
   return (
     <>
       <LeadPopup />
+      <Notice />
       <Hero { ...homeContent.hero } />
       <Services items = { homeContent.services } />
       <BusinessHealthCheck />
