@@ -2,7 +2,8 @@ export const homeContent = {
   hero: {
     title: "ACCELERATING BUSINESS GROWTH & PROFITABILITY",
     subtitle: "Expert-led transformation strategies to unlock hidden value and drive sustainable success for SMEs.",
-    cta: "Schedule a Consultation",
+    cta: "Get Business Report",
+
   },
 
   services: [
