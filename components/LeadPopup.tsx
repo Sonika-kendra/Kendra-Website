@@ -47,6 +47,7 @@ export default function LeadPopup() {
       }, 2000);
     } catch (err) {
       alert("Something went wrong. Please try again.");
+      console.log(err);
     } finally {
       setLoading(false);
     }
