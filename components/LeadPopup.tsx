@@ -8,7 +8,8 @@ export default function LeadPopup() {
   const [success, setSuccess] = useState(false);
 
   const [form, setForm] = useState({
-    name: "",
+    firstName: "",
+    lastName: "",
     company: "",
     email: "",
   });
@@ -28,14 +29,29 @@ export default function LeadPopup() {
     e.preventDefault();
     setLoading(true);
 
+    const formData = new FormData(e.currentTarget as HTMLFormElement);
+
     try {
-      const res = await fetch("/api/lead", {
+      // const res = await fetch("/api/lead", {
+      //   method: "POST",
+      //   headers: { "Content-Type": "application/json" },
+      //   body: JSON.stringify(form),
+      // });
+
+      // if (!res.ok) throw new Error("Failed");
+
+      console.log(e);
+      
+      await fetch("/api/zoho/lead", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
+        body: JSON.stringify({
+          firstName: formData.get("firstName")?.toString() || "",
+          lastName: formData.get("lastName")?.toString() || "",
+          email: formData.get("email")?.toString() || "",
+          company: formData.get("company")?.toString() || "",
+        }),
       });
-
-      if (!res.ok) throw new Error("Failed");
 
       setSuccess(true);
 
@@ -43,7 +59,7 @@ export default function LeadPopup() {
       setTimeout(() => {
         setOpen(false);
         setSuccess(false);
-        setForm({ name: "", company: "", email: "" });
+        setForm({ firstName: "", lastName: "", company: "", email: "" });
       }, 2000);
     } catch (err) {
       alert("Something went wrong. Please try again.");
@@ -78,10 +94,19 @@ export default function LeadPopup() {
 
             <form className="space-y-3" onSubmit={handleSubmit}>
               <input
-                name="name"
-                value={form.name}
+                name="firstName"
+                value={form.firstName}
                 onChange={handleChange}
-                placeholder="Full Name"
+                placeholder="First Name"
+                className="w-full rounded-md border px-3 py-2"
+                required
+              />
+
+              <input
+                name="lastName"
+                value={form.lastName}
+                onChange={handleChange}
+                placeholder="Last Name"
                 className="w-full rounded-md border px-3 py-2"
                 required
               />
