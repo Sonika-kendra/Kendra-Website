@@ -24,6 +24,7 @@ export async function createZohoLead(accessToken: string, lead: {
             Phone: lead.phone || "",
             Company: lead.company || "Website Lead",
             Lead_Source: "Website",
+            Campaign_Name: "Website Enquiry",
             Owner: {
               id: process.env.ZOHO_USER_ID!
             }

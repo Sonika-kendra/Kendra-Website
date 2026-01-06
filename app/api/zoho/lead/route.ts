@@ -6,7 +6,7 @@ export async function POST(req: Request) {
   try {
     const body = await req.json();
     const { firstName, lastName, email, phone, company } = body;
-    const accessToken = await getZohoAccessToken();
+    const accessToken = await getZohoAccessToken(process.env.ZOHO_CRM_TOKEN!);
 
     const result = await createZohoLead(accessToken, {
       firstName: firstName,

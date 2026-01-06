@@ -3,14 +3,14 @@ let cachedToken: {
   expiry: number;
 } | null = null;
 
-export async function getZohoAccessToken() {
+export async function getZohoAccessToken(refreshToken: string): Promise<string> {
   // Use cached token if valid
   if (cachedToken && Date.now() < cachedToken.expiry) {
     return cachedToken.accessToken;
   }
 
   const params = new URLSearchParams({
-    refresh_token: process.env.ZOHO_REFRESH_TOKEN!,
+    refresh_token: refreshToken,
     client_id: process.env.ZOHO_CLIENT_ID!,
     client_secret: process.env.ZOHO_CLIENT_SECRET!,
     grant_type: "refresh_token",
