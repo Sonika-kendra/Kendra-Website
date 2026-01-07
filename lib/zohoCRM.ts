@@ -23,11 +23,11 @@ export async function createZohoLead(accessToken: string, lead: {
             Email: lead.email || "",
             Phone: lead.phone || "",
             Company: lead.company || "Website Lead",
-            Lead_Source: "Website",
-            Campaign_Name: "Website Enquiry",
-            Owner: {
-              id: process.env.ZOHO_USER_ID!
-            }
+            Lead_Source: process.env.ZOHO_LEAD_SOURCE!,
+            Campaign_Name: process.env.ZOHO_CAMPAIGN_NAME!,
+            // Owner: {
+            //   id: process.env.ZOHO_USER_ID!
+            // }
           },
         ],
       }),
@@ -35,11 +35,13 @@ export async function createZohoLead(accessToken: string, lead: {
   );
 
   const json = await res.json();
-  console.log("lead added successfully :: ", json.data[0].details);
+  console.log("lead added successfully :: ", json.data[0], json.data[0].details);
 
-  if (!res.ok) {
+  if (!res.ok || json.data?.[0]?.status !== "success") {
     console.error("Zoho CRM Error:", json);
-    throw new Error("Failed to create Zoho lead");
+    throw new Error(
+      json.data?.[0]?.message || "Failed to create Zoho lead"
+    );
   }
 
   return json.data[0].details.id as string;

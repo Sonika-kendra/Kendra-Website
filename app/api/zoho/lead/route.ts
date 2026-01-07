@@ -16,9 +16,9 @@ export async function POST(req: Request) {
       company: company
     });
 
-    if (email) {
-      await sendZohoLeadEmail(accessToken, result, email);
-    }
+    // if (email) {
+    //   await sendZohoLeadEmail(accessToken, result, email);
+    // }
 
     return NextResponse.json(
       { success: true, data: result },
