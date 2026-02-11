@@ -1,4 +1,5 @@
 import "./globals.css";
+import AnnouncementBar from "@/components/AnnouncementBar";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import type { Metadata, Viewport } from "next";
@@ -34,6 +35,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="font-sans antialiased">
+        <AnnouncementBar />
         <Navbar />
         {children}
         <Footer />
