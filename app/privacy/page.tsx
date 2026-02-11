@@ -1,11 +1,8 @@
 // app/privacy/page.tsx
 import type { Metadata } from "next";
+import { pageMeta } from "@/config/site";
 
-export const metadata: Metadata = {
-  title: "Privacy Policy | Kendra International",
-  description:
-    "Privacy policy outlining how Kendra International collects, uses, and protects personal information.",
-};
+export const metadata: Metadata = pageMeta.privacy as Metadata;
 
 export default function PrivacyPage() {
   return (

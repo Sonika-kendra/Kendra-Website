@@ -75,14 +75,9 @@ export default function LeadPopup() {
 
         {!success ? (
           <>
-            <h2 className="mb-2 text-xl font-bold font-serif text-navy">
-              Get a Complimentary Market Analysis and Growth Report!
-            </h2>
+            <h2 className="mb-2 text-xl font-bold font-serif text-navy">Get a Complimentary Market Analysis and Growth Report!</h2>
 
-            <p className="mb-6 text-sm text-slate-text/70">
-              Customised report for your sector and company, including insights
-              on how to increase business valuation.
-            </p>
+            <p className="mb-6 text-sm text-slate-text/70">Customised report for your sector and company, including insights on how to increase business valuation.</p>
 
             <form className="flex flex-col gap-3" onSubmit={handleSubmit}>
               <input
@@ -123,9 +118,7 @@ export default function LeadPopup() {
                 <input type="checkbox" required className="mt-0.5" />
                 <span>
                   I agree to the{" "}
-                  <a href="/privacy" className="underline text-navy">
-                    Privacy Policy
-                  </a>
+                  <a href="/privacy" className="underline text-navy">Privacy Policy</a>
                 </span>
               </label>
 
@@ -140,12 +133,8 @@ export default function LeadPopup() {
           </>
         ) : (
           <div className="py-10 text-center">
-            <h3 className="text-lg font-semibold text-navy">
-              Thank you!
-            </h3>
-            <p className="mt-2 text-sm text-slate-text/70">
-              {"We'll send your report shortly."}
-            </p>
+            <h3 className="text-lg font-semibold text-navy">Thank you!</h3>
+            <p className="mt-2 text-sm text-slate-text/70">{"We'll send your report shortly."}</p>
           </div>
         )}
       </div>

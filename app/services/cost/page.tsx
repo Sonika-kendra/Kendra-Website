@@ -1,12 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { TrendingUp, CheckCircle2 } from "lucide-react";
+import { pageMeta } from "@/config/site";
 
-export const metadata: Metadata = {
-  title: "Turnover & Transformation | Kendra International",
-  description:
-    "Fix and future-proof your finance with Kendra International's Turnover & Transformation service.",
-};
+export const metadata: Metadata = pageMeta.cost as Metadata;
 
 const process = [
   {

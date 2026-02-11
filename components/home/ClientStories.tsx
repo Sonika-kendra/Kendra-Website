@@ -34,9 +34,7 @@ export default function ClientStories() {
   return (
     <section className="py-16 md:py-20">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <h2 className="text-3xl sm:text-4xl font-bold text-navy text-center">
-          Client Success Stories
-        </h2>
+        <h2 className="text-3xl sm:text-4xl font-bold text-navy text-center">Client Success Stories</h2>
 
         <div className="mt-12 flex items-center gap-6">
           <button
@@ -54,12 +52,8 @@ export default function ClientStories() {
             {/* Content */}
             <div>
               <span className="text-sm font-semibold text-gold">{story.metric}</span>
-              <h3 className="mt-2 text-xl font-bold font-serif text-navy">
-                {story.title}
-              </h3>
-              <p className="mt-3 text-sm text-slate-text/70 leading-relaxed">
-                {story.description}
-              </p>
+              <h3 className="mt-2 text-xl font-bold font-serif text-navy">{story.title}</h3>
+              <p className="mt-3 text-sm text-slate-text/70 leading-relaxed">{story.description}</p>
             </div>
           </div>
 

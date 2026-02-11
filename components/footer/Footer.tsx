@@ -1,12 +1,13 @@
 "use client";
 
 import Link from "next/link";
-import SocialIcon from "./SocialIcon";
-import LinkedIn from "./icons/Linkedin";
-import WhatsApp from "./icons/Whatsapp";
-import Phone from "./icons/Phone";
-import Email from "./icons/Email";
-import Logo from "./Logo";
+import SocialIcon from "../common/SocialIcon";
+import LinkedIn from "../icons/Linkedin";
+import WhatsApp from "../icons/Whatsapp";
+import Phone from "../icons/Phone";
+import Email from "../icons/Email";
+import Logo from "../header/Logo";
+import { footer as FOOTER } from "@/config/site";
 
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -29,10 +30,9 @@ export default function Footer() {
               Quick Links
             </h5>
             <ul className="flex flex-col gap-2 text-sm">
-              <li><Link href="/" className="hover:text-gold transition-colors">Home</Link></li>
-              <li><Link href="/about" className="hover:text-gold transition-colors">About</Link></li>
-              <li><Link href="/services" className="hover:text-gold transition-colors">Services</Link></li>
-              <li><Link href="/contact" className="hover:text-gold transition-colors">Contact</Link></li>
+              {FOOTER.quickLinks.map((l) => (
+                <li key={l.href}><Link href={l.href} className="hover:text-gold transition-colors">{l.label}</Link></li>
+              ))}
             </ul>
           </div>
 
@@ -42,9 +42,9 @@ export default function Footer() {
               Services
             </h5>
             <ul className="flex flex-col gap-2 text-sm">
-              <li><Link href="/services/consulting" className="hover:text-gold transition-colors">FaaS</Link></li>
-              <li><Link href="/services/cost" className="hover:text-gold transition-colors">Turnover & Transformation</Link></li>
-              <li><Link href="/services/ma" className="hover:text-gold transition-colors">Buy & Build</Link></li>
+              {FOOTER.services.map((s) => (
+                <li key={s.href}><Link href={s.href} className="hover:text-gold transition-colors">{s.label}</Link></li>
+              ))}
             </ul>
           </div>
 
@@ -54,8 +54,9 @@ export default function Footer() {
               Legal
             </h5>
             <ul className="flex flex-col gap-2 text-sm">
-              <li><Link href="/privacy" className="hover:text-gold transition-colors">Privacy Policy</Link></li>
-              <li><Link href="/terms" className="hover:text-gold transition-colors">Terms & Conditions</Link></li>
+              {FOOTER.legal.map((l) => (
+                <li key={l.href}><Link href={l.href} className="hover:text-gold transition-colors">{l.label}</Link></li>
+              ))}
             </ul>
           </div>
 
@@ -65,18 +66,17 @@ export default function Footer() {
               Connect
             </h5>
             <div className="flex gap-3">
-              <SocialIcon href="https://linkedin.com" label="LinkedIn">
-                <LinkedIn className="h-5 w-5" />
-              </SocialIcon>
-              <SocialIcon href="https://wa.me/447000000000" label="WhatsApp">
-                <WhatsApp className="h-5 w-5" />
-              </SocialIcon>
-              <SocialIcon href="tel:+447000000000" label="Phone">
-                <Phone className="h-5 w-5" />
-              </SocialIcon>
-              <SocialIcon href="mailto:info@kendrainternational.com" label="Email">
-                <Email className="h-5 w-5" />
-              </SocialIcon>
+              {FOOTER.social.map((s) => {
+                const key = s.label;
+                return (
+                  <SocialIcon key={s.href} href={s.href} label={s.label}>
+                    {key === "LinkedIn" && <LinkedIn className="h-5 w-5" />}
+                    {key === "WhatsApp" && <WhatsApp className="h-5 w-5" />}
+                    {key === "Phone" && <Phone className="h-5 w-5" />}
+                    {key === "Email" && <Email className="h-5 w-5" />}
+                  </SocialIcon>
+                );
+              })}
             </div>
           </div>
         </div>

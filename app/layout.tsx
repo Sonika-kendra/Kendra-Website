@@ -1,27 +1,10 @@
 import "./globals.css";
-import AnnouncementBar from "@/components/AnnouncementBar";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+import { AnnouncementBar, Navbar } from "@/components/features/header";
+import { Footer } from "@/components/features/footer";
 import type { Metadata, Viewport } from "next";
+import { siteMeta } from "@/config/site";
 
-export const metadata: Metadata = {
-  title: {
-    default: "Kendra International | M&A & Business Consulting",
-    template: "%s | Kendra International",
-  },
-  description:
-    "Strategic M&A advisory, business consulting, and cost optimization services for scaling businesses smarter.",
-  icons: {
-    icon: "/favicon.png",
-  },
-  openGraph: {
-    title: "Kendra International",
-    description: "Strategic M&A and business consulting firm.",
-    url: "https://kendra-intl.com",
-    siteName: "Kendra International",
-    type: "website",
-  },
-};
+export const metadata: Metadata = siteMeta as unknown as Metadata;
 
 export const viewport: Viewport = {
   themeColor: "#1a2a4a",

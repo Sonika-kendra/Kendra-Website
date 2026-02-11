@@ -1,11 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { pageMeta } from "@/config/site";
 
-export const metadata: Metadata = {
-  title: "Services | Kendra International",
-  description:
-    "Explore Kendra International's services: FaaS, Turnover & Transformation, and Buy & Build.",
-};
+export const metadata: Metadata = pageMeta.services as Metadata;
 
 const services = [
   {

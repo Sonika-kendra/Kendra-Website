@@ -5,43 +5,7 @@ import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
-interface HeroSlide {
-  title: string;
-  subtitle: string;
-  cta: string;
-  ctaLink: string;
-}
-
-const slides: HeroSlide[] = [
-  {
-    title: "Scaling Businesses Smarter: Finance, Transformation, and M&A Support",
-    subtitle:
-      "Expert-led transformation strategies to unlock hidden value and drive sustainable success for SMEs.",
-    cta: "Explore Our Services",
-    ctaLink: "/services",
-  },
-  {
-    title: "Finance Function as a Service",
-    subtitle:
-      "Outsource, automate, and upgrade your finance operations with CFO-level expertise on demand.",
-    cta: "Learn More",
-    ctaLink: "/services/consulting",
-  },
-  {
-    title: "Turnover & Transformation",
-    subtitle:
-      "Fix and future-proof your finance function with hands-on operational improvement.",
-    cta: "Learn More",
-    ctaLink: "/services/cost",
-  },
-  {
-    title: "Buy & Build Strategy",
-    subtitle:
-      "Accelerating growth through acquisition — identifying targets, investors, and strategic fit.",
-    cta: "Learn More",
-    ctaLink: "/services/ma",
-  },
-];
+import { heroSlides as slides } from "@/config/site";
 
 const variants = {
   enter: (direction: number) => ({
@@ -188,4 +152,6 @@ export default function Hero() {
       </div>
     </section>
   );
+
+  
 }

@@ -6,24 +6,15 @@ import clsx from "clsx";
 import { useState } from "react";
 import Logo from "./Logo";
 import { ChevronDown, Menu, X } from "lucide-react";
+import { navLinks as NAV_LINKS, serviceLinks as SERVICE_LINKS } from "@/config/site";
 
 export default function Navbar() {
   const pathname = usePathname();
   const [servicesOpen, setServicesOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
-  const navLinks = [
-    { href: "/", label: "Home" },
-    { href: "/about", label: "About" },
-    { href: "/services", label: "Services", hasDropdown: true },
-    { href: "/contact", label: "Insights" },
-  ];
-
-  const serviceLinks = [
-    { href: "/services/consulting", label: "FaaS" },
-    { href: "/services/cost", label: "Turnover & Transformation" },
-    { href: "/services/ma", label: "Buy & Build" },
-  ];
+  const navLinks = NAV_LINKS;
+  const serviceLinks = SERVICE_LINKS;
 
   return (
     <header className="sticky top-0 z-50 w-full bg-navy">

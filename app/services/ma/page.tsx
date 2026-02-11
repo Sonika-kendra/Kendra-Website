@@ -1,11 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { pageMeta } from "@/config/site";
 
-export const metadata: Metadata = {
-  title: "Buy & Build | Kendra International",
-  description:
-    "Accelerating growth through acquisition with Kendra International's Buy & Build strategy.",
-};
+export const metadata: Metadata = pageMeta.ma as Metadata;
 
 const whatWeDo = [
   {

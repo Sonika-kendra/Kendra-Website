@@ -1,12 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { TrendingUp, CheckCircle2 } from "lucide-react";
+import { pageMeta } from "@/config/site";
 
-export const metadata: Metadata = {
-  title: "FaaS - Finance Function as a Service | Kendra International",
-  description:
-    "Outsource, automate, and upgrade your finance function with Kendra International's FaaS service.",
-};
+export const metadata: Metadata = pageMeta.consulting as Metadata;
 
 const whatWeDo = [
   {

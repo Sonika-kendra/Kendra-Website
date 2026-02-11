@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/config/site";
 
-export const metadata: Metadata = {
-  title: "Contact | Kendra International",
-  description: "Get in touch with Kendra International for strategic advisory services.",
-};
+export const metadata: Metadata = pageMeta.contact as Metadata;
 
 export default function ContactPage() {
   return (
