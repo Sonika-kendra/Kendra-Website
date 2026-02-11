@@ -1,8 +1,7 @@
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import type { Metadata } from "next";
-import { Providers } from "@/components/Providers";
+import type { Metadata, Viewport } from "next";
 
 export const metadata: Metadata = {
   title: {
@@ -10,7 +9,7 @@ export const metadata: Metadata = {
     template: "%s | Kendra International",
   },
   description:
-    "Strategic M&A advisory, business consulting, and cost optimization services.",
+    "Strategic M&A advisory, business consulting, and cost optimization services for scaling businesses smarter.",
   icons: {
     icon: "/favicon.png",
   },
@@ -23,6 +22,10 @@ export const metadata: Metadata = {
   },
 };
 
+export const viewport: Viewport = {
+  themeColor: "#1a2a4a",
+};
+
 export default function RootLayout({
   children,
 }: {
@@ -30,12 +33,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>
-        <Providers>
-          <Navbar />
-          {children}
-          <Footer />
-        </Providers>
+      <body className="font-sans antialiased">
+        <Navbar />
+        {children}
+        <Footer />
       </body>
     </html>
   );

@@ -2,37 +2,22 @@ import Link from "next/link";
 
 export default function CTA() {
   return (
-    <section
-      className="
-        scroll-mt-24 py-24 relative overflow-hidden text-primary
-        bg-gradient-to-br
-        from-secondary/20 via-secondary/50 to-secondary/80
-
-        dark:bg-gradient-to-tl
-        dark:from-accent/20 dark:via-accent/50 dark:to-accent/80
-      "
-    >
-      <div className="max-w-6xl mx-auto text-center px-6">
-        <h2 className="text-4xl font-bold mb-6">
-          Let’s Build Your Growth Strategy
+    <section className="py-16 md:py-20 text-center">
+      <div className="mx-auto max-w-3xl px-6">
+        <h2 className="text-3xl sm:text-4xl font-bold text-navy">
+          Ready to Get Started?
         </h2>
-
-        <p className="text-primary/80 mb-6 text-lg">
+        <p className="mt-4 text-slate-text/70">
           Speak with our consultants today.
         </p>
-
-        <Link
-          href="/contact"
-          className="
-            inline-flex items-center justify-center px-10 py-4
-            rounded-full bg-brand.gold text-primary font-bold
-            shadow-lg transition-all duration-300
-            hover:bg-brand.gold/90 hover:scale-105
-            active:scale-95 focus:outline-none focus:ring-2 focus:ring-brand.gold
-          "
-        >
-          Contact Us
-        </Link>
+        <div className="mt-8">
+          <Link
+            href="/contact"
+            className="inline-flex items-center justify-center rounded-md bg-navy px-8 py-3.5 text-sm font-semibold text-white transition-all hover:bg-navy/90 hover:shadow-lg"
+          >
+            Get Started
+          </Link>
+        </div>
       </div>
     </section>
   );

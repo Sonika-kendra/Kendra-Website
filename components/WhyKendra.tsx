@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import { User, Clock, TrendingUp } from "lucide-react";
 
 interface WhyKendraProps {
   heading: string;
@@ -10,57 +10,46 @@ interface WhyKendraProps {
   }[];
 }
 
-export default function WhyKendra({
-  heading,
-  reasons,
-}: WhyKendraProps) {
-  console.log(reasons);
-  
-  return (
-    <section
-      id="why-kendra"
-      className="
-        relative overflow-hidden py-28
-        bg-white dark:bg-neutral-950
-        text-neutral-900 dark:text-neutral-100
-      "
-    >
-      {/* Content */}
-      <div className="relative max-w-6xl mx-auto px-6">
-        <div
-          className="
-            flex flex-col items-center gap-10
-            md:flex-row md:justify-between
-            text-center md:text-left
-          "
-        >
-          {/* Text */}
-          <div className="max-w-2xl">
-            <h2 className="text-4xl md:text-5xl font-bold">
-              {heading}
-            </h2>
-            <p className="mt-6 text-lg text-neutral-600 dark:text-neutral-400">
-              A modern, performance-first approach to building
-              scalable, elegant web experiences — without
-              unnecessary complexity.
-            </p>
-          </div>
+const highlights = [
+  {
+    icon: User,
+    title: "Expertise",
+    description: "CFO-level expertise",
+  },
+  {
+    icon: Clock,
+    title: "Speed",
+    description: "Results in hours/days",
+  },
+  {
+    icon: TrendingUp,
+    title: "Results",
+    description: "Fast growth milestones",
+  },
+];
 
-          {/* CTA */}
-          <Link
-            href="/contact"
-            className="
-              inline-flex items-center justify-center
-              h-14 px-10 rounded-full
-              bg-brand.gold text-neutral-900 font-semibold
-              shadow-lg transition-all duration-300
-              hover:bg-brand.gold/90 hover:scale-105
-              active:scale-95
-              focus:outline-none focus:ring-2 focus:ring-brand.gold
-            "
-          >
-            Want to learn more?
-          </Link>
+export default function WhyKendra({ heading }: WhyKendraProps) {
+  return (
+    <section className="py-16 md:py-20 bg-off-white">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8 text-center">
+        <h2 className="text-3xl sm:text-4xl font-bold text-navy">
+          {heading}
+        </h2>
+
+        <div className="mt-12 grid gap-10 sm:grid-cols-3">
+          {highlights.map((item) => (
+            <div key={item.title} className="flex flex-col items-center">
+              <div className="flex h-16 w-16 items-center justify-center rounded-full border-2 border-steel/30 bg-white">
+                <item.icon className="h-7 w-7 text-navy" strokeWidth={1.5} />
+              </div>
+              <h3 className="mt-4 text-lg font-bold font-serif text-navy">
+                {item.title}
+              </h3>
+              <p className="mt-1 text-sm text-slate-text/70">
+                {item.description}
+              </p>
+            </div>
+          ))}
         </div>
       </div>
     </section>

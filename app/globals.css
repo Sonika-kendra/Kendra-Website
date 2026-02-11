@@ -3,80 +3,24 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Inter:wght@300;400;500;600;700&display=swap");
 
-/* Base tokens and theme variables */
 @layer base {
   :root {
-    /* Core (space-separated so rgb(var(--...)) works) */
+    --navy: 26 42 74;
+    --gold: 212 175 85;
+    --steel: 128 150 175;
+    --off-white: 247 248 250;
+    --slate-text: 51 65 85;
+
     --bg: 255 255 255;
-    --text: 31 41 51;
-
-    /* Brand (RGB triples) */
-    --primary: 41 41 102;
-    --secondary: 92 92 153;
-    --accent: 163 163 204;
-    --muted: 204 204 255;
-
-    /* UI surfaces */
+    --text: 51 65 85;
     --card: 255 255 255;
     --border: 229 231 235;
 
-    /*
-      Gradients: use rgba(var(--XXX), alpha) for wide compatibility.
-      These reference the numeric RGB variables above.
-    */
-    --gradient-brand: linear-gradient(
-      135deg,
-      rgba(var(--secondary), 0.25),
-      rgba(var(--secondary), 0.6),
-      rgba(var(--secondary), 0.85)
-    );
-
-    --gradient-cta: linear-gradient(
-      135deg,
-      rgba(var(--secondary), 0.20),
-      rgba(var(--accent), 0.60),
-      rgba(var(--secondary), 0.85)
-    );
+    --hero-gradient: linear-gradient(135deg, #1a2a4a 0%, #4a6a8a 40%, #8096af 70%, #a3b8cc 100%);
   }
 
-  /* Dark theme overrides */
-  .dark {
-    --bg: 0 0 0;
-    --text: 226 232 240;
-
-    --primary: 204 204 255;
-    --secondary: 163 163 204;
-    --accent: 92 92 153;
-    --muted: 41 41 102;
-
-    --card: 17 24 39;
-    --border: 55 65 81;
-
-    --gradient-brand: linear-gradient(
-      135deg,
-      rgba(var(--primary), 0.30),
-      rgba(var(--secondary), 0.60),
-      rgba(var(--accent), 0.85)
-    );
-
-    --gradient-cta: linear-gradient(
-      135deg,
-      rgba(var(--primary), 0.25),
-      rgba(var(--secondary), 0.60),
-      rgba(var(--accent), 0.85)
-    );
-  }
-
-  .container {
-    width: 100%;
-    max-width: 1200px;
-    margin-inline: auto;
-    padding-inline: 1.5rem;
-  }
-
-  /* Apply tokens to base elements */
   html,
   body {
     background-color: rgb(var(--bg));
@@ -92,6 +36,7 @@
   h3,
   h4 {
     font-family: "Playfair Display", serif;
+    color: rgb(var(--navy));
   }
 
   p {
@@ -103,11 +48,10 @@
     color: inherit;
   }
 
-  /* Optional: semantic component tokens using the variables */
-  .card {
-    background: rgb(var(--card));
-    color: rgb(var(--text));
-    border: 1px solid rgb(var(--border));
-    border-radius: 0.75rem;
+  .container {
+    width: 100%;
+    max-width: 1200px;
+    margin-inline: auto;
+    padding-inline: 1.5rem;
   }
 }

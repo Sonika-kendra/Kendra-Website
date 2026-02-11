@@ -1,38 +1,28 @@
 export const homeContent = {
   hero: {
-    title: "ACCELERATING BUSINESS GROWTH & PROFITABILITY",
-    subtitle: "Expert-led transformation strategies to unlock hidden value and drive sustainable success for SMEs.",
-    cta: "Get Business Report",
-
+    title: "Scaling Businesses Smarter: Finance, Transformation, and M&A Support",
+    subtitle:
+      "Expert-led transformation strategies to unlock hidden value and drive sustainable success for SMEs.",
+    cta: "Explore Our Services",
   },
 
   services: [
     {
-      title: "Fueling Growth",
-      description:
-        "Identify new revenue streams, optimize sales cycles, and expand market reach.",
-      slug: "/services/ma",
-      icon: "trending-up",
-    },
-    {
-      title: "Optimizing Operations",
-      description:
-        "Reduce costs and enhance efficiency through strategic outsourcing, automation, and digital transformation.",
+      title: "FaaS",
+      description: "Finance-Function as a Service",
       slug: "/services/consulting",
-      icon: "settings",
-    },
-    {
-      title: "Strengthening Liquidity",
-      description:
-        "Improve cash flow, manage capital effectively, and build financial resilience for long-term success.",
-      slug: "/services/cost",
       icon: "wallet",
     },
     {
-      title: "M&A & Exit Strategy Planning",
-      description:
-        "Navigate mergers, acquisitions, and business transitions seamlessly, maximizing value and ensuring smooth transitions.",
-      slug: "/services/exit",
+      title: "Turnover & Transformation",
+      description: "Fix and future-proof",
+      slug: "/services/cost",
+      icon: "settings",
+    },
+    {
+      title: "Buy & Build",
+      description: "Mergers and acquisitions strategy",
+      slug: "/services/ma",
       icon: "briefcase",
     },
   ],
@@ -41,18 +31,16 @@ export const homeContent = {
     heading: "Why Kendra International?",
     reasons: [
       {
-        title: "Strategic Growth Platform",
-        points: [
-          "Accelerates expansion through acquisitions",
-          "Creates long-term enterprise value",
-        ],
+        title: "Expertise",
+        points: ["CFO-level expertise"],
       },
       {
-        title: "Trusted Capital & Expertise",
-        points: [
-          "Experienced investment leadership",
-          "Strong funding capacity and governance",
-        ],
+        title: "Speed",
+        points: ["Results in hours/days"],
+      },
+      {
+        title: "Results",
+        points: ["Fast growth milestones"],
       },
     ],
   },
