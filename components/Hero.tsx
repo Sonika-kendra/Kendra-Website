@@ -31,7 +31,7 @@ export default function Hero({
     return () => clearInterval(interval);
   }, []);
 
-  const MotionImage = motion(Image);
+  const MotionImage = motion.create(Image);
 
   return (
     <section id="hero" className="relative w-full overflow-hidden">
