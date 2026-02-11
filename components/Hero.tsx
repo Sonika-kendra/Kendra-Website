@@ -1,15 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { motion, AnimatePresence } from "motion/react";
-import { useState, useEffect } from "react";
-import Image from "next/image";
-
-const slides = [
-  "/hero/slide-2.jpg",
-  "/hero/slide-1.png",
-  "/hero/slide-3.jpg",
-];
 
 export default function Hero({
   title,
@@ -20,132 +11,56 @@ export default function Hero({
   subtitle: string;
   cta: string;
 }) {
-  const [index, setIndex] = useState(0);
-
-  const next = () => setIndex((i) => (i + 1) % slides.length);
-  const prev = () =>
-    setIndex((i) => (i - 1 + slides.length) % slides.length);
-
-  useEffect(() => {
-    const interval = setInterval(next, 8000);
-    return () => clearInterval(interval);
-  }, []);
-
-  const MotionImage = motion.create(Image);
-
   return (
-    <section id="hero" className="relative w-full overflow-hidden">
-      <div className="relative h-[220px] sm:h-[260px] lg:h-[340px] w-full">
-        {/* SLIDES */}
-        <AnimatePresence mode="wait">
-          <MotionImage
-            key={index}
-            src={slides[index]}
-            alt="Hero slide"
-            fill
-            priority={index === 0}
-            sizes="100vw"
-            className="object-cover"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.6, ease: "easeInOut" }}
-          />
-        </AnimatePresence>
+    <section
+      id="hero"
+      className="relative w-full overflow-hidden"
+      style={{
+        background: "linear-gradient(135deg, #4a6a8a 0%, #8096af 50%, #a3b8cc 100%)",
+      }}
+    >
+      {/* Decorative curve */}
+      <div className="absolute bottom-0 right-0 w-1/2 h-1/2 opacity-20">
+        <svg viewBox="0 0 400 400" className="w-full h-full" aria-hidden="true">
+          <circle cx="400" cy="400" r="350" fill="none" stroke="white" strokeWidth="0.5" />
+          <circle cx="400" cy="400" r="250" fill="none" stroke="white" strokeWidth="0.5" />
+        </svg>
+      </div>
 
-        {/* TEXT OVERLAY */}
-        <div className="absolute inset-0 flex items-center">
-          <div className="absolute inset-0 bg-gradient-to-r from-black/55 via-black/25 to-transparent" />
+      <div className="relative mx-auto max-w-7xl px-6 lg:px-8 py-20 md:py-28 lg:py-36">
+        <div className="max-w-2xl">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight text-white">
+            {title}
+          </h1>
 
-          <div className="relative w-full max-w-2xl px-6 ml-20">
-            <h1
-              className="
-                font-bold text-white
-                leading-tight
-                drop-shadow-[0_4px_10px_rgba(0,0,0,0.75)]
-                text-[clamp(1.1rem,1.8vw,1.9rem)]
-              "
+          <p className="mt-4 text-base sm:text-lg text-white/90 leading-relaxed max-w-xl">
+            {subtitle}
+          </p>
+
+          <div className="mt-8">
+            <Link
+              href="/services"
+              className="inline-flex items-center justify-center rounded-md bg-navy px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-navy/90 hover:shadow-lg"
             >
-              {title}
-            </h1>
-
-            <p
-              className="
-                mt-3 text-white/95
-                leading-snug
-                drop-shadow-[0_2px_6px_rgba(0,0,0,0.7)]
-                text-[clamp(0.85rem,1.2vw,1.05rem)]
-              "
-            >
-              {subtitle}
-            </p>
-
-            <div className="mt-4 flex flex-wrap gap-2">
-              <Link
-                href="/contact"
-                className="
-                  px-4 py-1.5
-                  rounded-full
-                  bg-white text-black
-                  font-semibold
-                  text-xs
-                  hover:scale-105 active:scale-95
-                  transition
-                "
-              >
-                {cta}
-              </Link>
-
-              <Link
-                href="/contact"
-                className="
-                  px-4 py-1.5
-                  rounded-full
-                  bg-white text-black
-                  font-semibold
-                  text-xs
-                  hover:scale-105 active:scale-95
-                  transition
-                "
-              >
-                Contact Us
-              </Link>
-
-              <Link
-                href="/services"
-                className="
-                  px-4 py-1.5
-                  rounded-full
-                  bg-white text-black
-                  font-semibold
-                  text-xs
-                  hover:scale-105 active:scale-95
-                  transition
-                "
-              >
-                Services
-              </Link>
-            </div>
+              {cta}
+            </Link>
           </div>
         </div>
+      </div>
 
-        {/* NAV ARROWS */}
-        <div className="absolute inset-y-0 left-0 right-0 flex items-center justify-between px-6 pointer-events-none">
-          <button
-            onClick={prev}
-            aria-label="Previous slide"
-            className="pointer-events-auto text-white text-3xl opacity-70 hover:opacity-100"
-          >
-            ‹
-          </button>
-          <button
-            onClick={next}
-            aria-label="Next slide"
-            className="pointer-events-auto text-white text-3xl opacity-70 hover:opacity-100"
-          >
-            ›
-          </button>
-        </div>
+      {/* Bottom wave */}
+      <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none">
+        <svg
+          viewBox="0 0 1440 60"
+          className="w-full h-8 sm:h-12"
+          preserveAspectRatio="none"
+          aria-hidden="true"
+        >
+          <path
+            d="M0,60 L0,20 Q360,0 720,20 Q1080,40 1440,20 L1440,60 Z"
+            fill="white"
+          />
+        </svg>
       </div>
     </section>
   );

@@ -4,19 +4,19 @@ import Services from "@/components/Services";
 import CTA from "@/components/CTA";
 import WhyKendra from "@/components/WhyKendra";
 import BusinessHealthCheck from "@/components/BusinessHealthCheck";
-import LeadPopup from "@/components/LeadPopup";
-import Notice from "@/components/Notice";
+import ClientStories from "@/components/ClientStories";
+import GlobalFootprint from "@/components/GlobalFootprint";
 
 export default function HomePage() {
   return (
-    <>
-      <LeadPopup />
-      <Notice />
-      <Hero { ...homeContent.hero } />
-      <Services items = { homeContent.services } />
+    <main>
+      <Hero {...homeContent.hero} />
+      <Services items={homeContent.services} />
+      <WhyKendra {...homeContent.whyKendra} />
+      <ClientStories />
+      <GlobalFootprint />
       <BusinessHealthCheck />
-      <WhyKendra { ...homeContent.whyKendra } />
       <CTA />
-    </>
+    </main>
   );
 }

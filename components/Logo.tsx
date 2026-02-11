@@ -2,8 +2,6 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
 import clsx from "clsx";
 
 type LogoProps = {
@@ -17,35 +15,20 @@ type LogoProps = {
 
 export default function Logo({
   href = "/",
-  width = 120,
-  height = 120,
+  width = 180,
+  height = 60,
   className,
   priority = false,
   withLink = true,
 }: LogoProps) {
-  const { resolvedTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  // Prevent hydration mismatch
-  if (!mounted) return null;
-
-  const logoSrc =
-    resolvedTheme === "dark"
-      ? "/kendra-logo-light.png"
-      : "/kendra-logo-dark.png";
-
   const image = (
     <Image
-      src={logoSrc}
+      src="/kendra-logo.png"
       alt="Kendra International"
       width={width}
       height={height}
       priority={priority}
-      className={clsx("select-none", className)}
+      className={clsx("select-none object-contain", className)}
     />
   );
 
