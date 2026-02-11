@@ -11,6 +11,9 @@ export const metadata: Metadata = {
   },
   description:
     "Strategic M&A advisory, business consulting, and cost optimization services.",
+  icons: {
+    icon: "/favicon.png",
+  },
   openGraph: {
     title: "Kendra International",
     description: "Strategic M&A and business consulting firm.",
