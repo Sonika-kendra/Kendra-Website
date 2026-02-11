@@ -10,7 +10,7 @@ import GlobalFootprint from "@/components/GlobalFootprint";
 export default function HomePage() {
   return (
     <main>
-      <Hero {...homeContent.hero} />
+      <Hero />
       <Services items={homeContent.services} />
       <WhyKendra {...homeContent.whyKendra} />
       <ClientStories />
