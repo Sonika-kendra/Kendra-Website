@@ -1,94 +1,132 @@
 "use client";
 
 import { useState } from "react";
+import { MapPin, Send, CheckCircle2 } from "lucide-react";
 
 export default function GlobalFootprint() {
-  const [form, setForm] = useState({ name: "", email: "" });
+  const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => {
-      setSubmitted(false);
-      setForm({ name: "", email: "" });
-    }, 3000);
+    setLoading(true);
+    
+    try {
+      await fetch("/api/lead", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      }).catch(() => null);
+      
+      setSubmitted(true);
+      setTimeout(() => {
+        setSubmitted(false);
+        setForm({ name: "", email: "", message: "" });
+      }, 3000);
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
-    <section className="py-16 md:py-20 bg-off-white">
+    <section className="py-16 md:py-20">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <h2 className="text-3xl sm:text-4xl font-bold text-navy text-center">Global Footprint</h2>
+        <div className="text-center mb-12">
+          <h2 className="text-3xl sm:text-4xl font-bold text-navy">Global Reach, Local Touch</h2>
+          <p className="mt-3 text-slate-text/70 max-w-2xl mx-auto">Serving businesses across continents with personalized advisory</p>
+        </div>
 
         <div className="mt-12 grid gap-10 md:grid-cols-2 items-center">
-          {/* World map illustration */}
-          <div className="flex flex-col items-start">
-            {/* Simple world map dots */}
-            <svg viewBox="0 0 800 400" className="w-full h-auto opacity-30" aria-hidden="true">
-              <g fill="rgb(26,42,74)">
-                <circle cx="180" cy="120" r="3" /><circle cx="200" cy="110" r="3" />
-                <circle cx="160" cy="140" r="3" /><circle cx="190" cy="150" r="3" />
-                <circle cx="210" cy="130" r="3" /><circle cx="170" cy="160" r="3" />
-                <circle cx="150" cy="130" r="3" /><circle cx="220" cy="140" r="3" />
-                <circle cx="240" cy="250" r="3" /><circle cx="250" cy="270" r="3" />
-                <circle cx="230" cy="280" r="3" /><circle cx="260" cy="300" r="3" />
-                <circle cx="245" cy="310" r="3" />
-                <circle cx="400" cy="100" r="3" /><circle cx="420" cy="110" r="3" />
-                <circle cx="380" cy="120" r="3" /><circle cx="410" cy="130" r="3" />
-                <circle cx="430" cy="120" r="3" /><circle cx="440" cy="100" r="3" />
-                <circle cx="420" cy="200" r="3" /><circle cx="440" cy="220" r="3" />
-                <circle cx="430" cy="240" r="3" /><circle cx="450" cy="260" r="3" />
-                <circle cx="410" cy="230" r="3" />
-                <circle cx="520" cy="120" r="3" /><circle cx="550" cy="130" r="3" />
-                <circle cx="580" cy="110" r="3" /><circle cx="600" cy="140" r="3" />
-                <circle cx="620" cy="120" r="3" /><circle cx="640" cy="150" r="3" />
-                <circle cx="560" cy="160" r="3" /><circle cx="590" cy="170" r="3" />
-                <circle cx="640" cy="280" r="3" /><circle cx="660" cy="290" r="3" />
-                <circle cx="650" cy="270" r="3" /><circle cx="670" cy="280" r="3" />
-              </g>
-            </svg>
+          {/* Locations & Map */}
+          <div>
+            <div className="space-y-4">
+              <div className="flex items-start gap-3">
+                <div className="p-2 rounded-lg bg-gold/20 mt-1">
+                  <MapPin className="h-5 w-5 text-gold" strokeWidth={2} />
+                </div>
+                <div>
+                  <h3 className="font-semibold text-navy">Europe & UK</h3>
+                  <p className="text-sm text-slate-text/70">London, Frankfurt, Geneva</p>
+                </div>
+              </div>
+              
+              <div className="flex items-start gap-3">
+                <div className="p-2 rounded-lg bg-gold/20 mt-1">
+                  <MapPin className="h-5 w-5 text-gold" strokeWidth={2} />
+                </div>
+                <div>
+                  <h3 className="font-semibold text-navy">Asia Pacific</h3>
+                  <p className="text-sm text-slate-text/70">Singapore, Mumbai, Sydney</p>
+                </div>
+              </div>
 
-            <div className="mt-6">
-              <h3 className="text-2xl font-bold font-serif text-navy">{"Let's Start Building Your Success Story"}</h3>
-              <p className="mt-2 text-sm text-slate-text/70">We work with businesses across the globe to deliver measurable results.</p>
+              <div className="flex items-start gap-3">
+                <div className="p-2 rounded-lg bg-gold/20 mt-1">
+                  <MapPin className="h-5 w-5 text-gold" strokeWidth={2} />
+                </div>
+                <div>
+                  <h3 className="font-semibold text-navy">Americas</h3>
+                  <p className="text-sm text-slate-text/70">New York, Toronto, São Paulo</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-10 p-6 bg-off-white rounded-xl">
+              <p className="font-semibold text-navy mb-3">Ready to scale globally?</p>
+              <p className="text-sm text-slate-text/70 mb-4">Let&apos;s start building your international success story</p>
             </div>
           </div>
 
-          {/* Contact form */}
-          <div className="rounded-xl bg-white p-6 shadow-sm border border-border">
+          {/* Contact Form */}
+          <div className="bg-white rounded-2xl p-8 shadow-sm border border-border">
             {submitted ? (
-              <div className="py-10 text-center">
-                <p className="text-lg font-semibold text-navy">Thank you!</p>
+              <div className="py-12 text-center">
+                <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-50 mb-4">
+                  <CheckCircle2 className="h-8 w-8 text-green-600" />
+                </div>
+                <p className="text-lg font-display font-bold text-navy">Message Sent!</p>
                 <p className="mt-2 text-sm text-slate-text/70">{"We'll be in touch shortly."}</p>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <h3 className="font-display font-semibold text-navy mb-4">Get in Touch</h3>
+                
                 <input
                   type="text"
-                  placeholder="Name"
+                  placeholder="Your Name"
                   required
                   value={form.name}
                   onChange={(e) => setForm({ ...form, name: e.target.value })}
-                  className="rounded-lg border border-border px-4 py-3 text-sm text-slate-text outline-none focus:border-navy focus:ring-1 focus:ring-navy/20 transition-colors"
+                  className="w-full rounded-lg border border-border px-4 py-3 text-sm text-slate-text outline-none focus:border-navy focus:ring-1 focus:ring-navy/20 transition-colors"
                 />
+                
                 <input
                   type="email"
-                  placeholder="Email"
+                  placeholder="Work Email"
                   required
                   value={form.email}
                   onChange={(e) => setForm({ ...form, email: e.target.value })}
-                  className="rounded-lg border border-border px-4 py-3 text-sm text-slate-text outline-none focus:border-navy focus:ring-1 focus:ring-navy/20 transition-colors"
+                  className="w-full rounded-lg border border-border px-4 py-3 text-sm text-slate-text outline-none focus:border-navy focus:ring-1 focus:ring-navy/20 transition-colors"
                 />
+                
                 <textarea
-                  placeholder="Message"
-                  rows={3}
-                  className="rounded-lg border border-border px-4 py-3 text-sm text-slate-text outline-none focus:border-navy focus:ring-1 focus:ring-navy/20 transition-colors resize-none"
+                  placeholder="How can we help you?"
+                  rows={4}
+                  value={form.message}
+                  onChange={(e) => setForm({ ...form, message: e.target.value })}
+                  className="w-full rounded-lg border border-border px-4 py-3 text-sm text-slate-text outline-none focus:border-navy focus:ring-1 focus:ring-navy/20 transition-colors resize-none"
                 />
+                
                 <button
+                  disabled={loading}
                   type="submit"
-                  className="rounded-lg bg-navy px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-navy/90 hover:shadow-lg"
+                  className="w-full rounded-lg bg-navy px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-navy/90 hover:shadow-lg disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                 >
-                  Contact Us
+                  <Send className="h-4 w-4" />
+                  {loading ? "Sending..." : "Send Message"}
                 </button>
               </form>
             )}

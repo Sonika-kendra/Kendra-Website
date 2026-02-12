@@ -22,9 +22,9 @@ export default function Services({ items }: ServicesProps) {
             <Link
               key={item.title}
               href={item.slug}
-              className="group flex flex-col rounded-xl border border-border bg-card p-6 transition-all hover:shadow-lg hover:border-steel/40"
+              className="card-hover group flex flex-col p-6"
             >
-              <h3 className="text-lg font-bold font-serif text-navy">{item.title}</h3>
+              <h3 className="text-lg font-bold font-display text-navy">{item.title}</h3>
               <p className="mt-2 text-sm text-slate-text/80 leading-relaxed flex-1">{item.description}</p>
               <span className="mt-4 text-sm font-medium text-navy group-hover:text-gold transition-colors">Learn More</span>
             </Link>

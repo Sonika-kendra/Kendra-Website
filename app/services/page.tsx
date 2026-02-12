@@ -1,29 +1,36 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { pageMeta } from "@/config/site";
+import { Wallet, Zap, Building2 } from "lucide-react";
 
 export const metadata: Metadata = pageMeta.services as Metadata;
 
 const services = [
   {
-    title: "FaaS",
-    subtitle: "Finance-Function as a Service",
+    title: "Finance as a Service",
+    subtitle: "FaaS",
     description:
-      "Outsource, automate, and upgrade your finance function to reduce costs and improve accuracy.",
+      "Outsource your entire finance function or specific operations. Get CFO-level expertise, automated processes, and upgraded reporting—all at predictable cost.",
+    benefits: ["Cost reduction", "Process automation", "Better reporting"],
+    icon: Wallet,
     href: "/services/consulting",
   },
   {
-    title: "Turnover & Transformation",
-    subtitle: "Fix and future-proof",
+    title: "Operational Transformation",
+    subtitle: "Fix & Future-Proof",
     description:
-      "Identify challenges, optimize processes, and implement changes to improve your finance function and performance.",
+      "Identify operational bottlenecks and implement strategic changes. Improve efficiency, reduce costs, and strengthen your financial performance.",
+    benefits: ["Process optimization", "Cost cuts", "Efficiency gains"],
+    icon: Zap,
     href: "/services/cost",
   },
   {
-    title: "Buy & Build",
-    subtitle: "Mergers and acquisitions strategy",
+    title: "Buy & Build Strategy",
+    subtitle: "M&A Advisory",
     description:
-      "Accelerate growth through strategic acquisition targeting, investor matching, and M&A execution.",
+      "Navigate the complete M&A journey. From acquisition targeting and due diligence to post-merger integration, we ensure strategic fit and value creation.",
+    benefits: ["Deal sourcing", "Due diligence", "Integration support"],
+    icon: Building2,
     href: "/services/ma",
   },
 ];
@@ -36,15 +43,18 @@ export default function ServicesPage() {
         className="relative overflow-hidden"
         style={{
           background:
-            "linear-gradient(135deg, #4a6a8a 0%, #8096af 50%, #a3b8cc 100%)",
+            "linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%)",
         }}
       >
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-white/5 rounded-full blur-3xl" />
+        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-white/5 rounded-full blur-3xl" />
+        
         <div className="relative mx-auto max-w-7xl px-6 lg:px-8 py-20 md:py-28">
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white font-serif">
-            Our Services
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white font-display">
+            Strategic Services for Growth
           </h1>
           <p className="mt-3 text-lg text-white/90 max-w-2xl">
-            Comprehensive solutions for scaling your business smarter.
+            Tailored solutions to scale your business smarter, faster, and more profitably.
           </p>
         </div>
         <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none">
@@ -58,45 +68,93 @@ export default function ServicesPage() {
       <section className="py-16 md:py-20">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="grid gap-8 md:grid-cols-3">
-            {services.map((service) => (
-              <Link
-                key={service.title}
-                href={service.href}
-                className="group flex flex-col rounded-xl border border-border bg-card p-8 transition-all hover:shadow-lg hover:border-steel/40"
-              >
-                <h2 className="text-2xl font-bold font-serif text-navy group-hover:text-gold transition-colors">
-                  {service.title}
-                </h2>
-                <p className="mt-1 text-sm font-medium text-steel">
-                  {service.subtitle}
-                </p>
-                <p className="mt-4 text-sm text-slate-text/70 leading-relaxed flex-1">
-                  {service.description}
-                </p>
-                <span className="mt-6 text-sm font-medium text-navy group-hover:text-gold transition-colors">
-                  Learn More &rarr;
-                </span>
-              </Link>
-            ))}
+            {services.map((service) => {
+              const Icon = service.icon;
+              return (
+                <Link
+                  key={service.title}
+                  href={service.href}
+                  className="card-hover group flex flex-col p-8"
+                >
+                  <div className="flex items-start justify-between mb-4">
+                    <div>
+                      <p className="text-xs font-semibold text-slate-text/60 uppercase tracking-wider">{service.subtitle}</p>
+                      <h2 className="text-2xl font-bold font-display text-navy group-hover:text-gold transition-colors mt-1">
+                        {service.title}
+                      </h2>
+                    </div>
+                    <div className="p-3 bg-gold/20 rounded-lg group-hover:bg-gold/30 transition-colors">
+                      <Icon className="h-6 w-6 text-gold" strokeWidth={1.5} />
+                    </div>
+                  </div>
+                  
+                  <p className="mt-4 text-sm text-slate-text/70 leading-relaxed flex-1">
+                    {service.description}
+                  </p>
+                  
+                  <div className="mt-6 space-y-2">
+                    {service.benefits.map((benefit) => (
+                      <p key={benefit} className="text-xs text-slate-text/60 flex items-center gap-2">
+                        <span className="h-1 w-1 rounded-full bg-gold" />
+                        {benefit}
+                      </p>
+                    ))}
+                  </div>
+                  
+                  <span className="mt-6 inline-flex text-sm font-medium text-navy group-hover:text-gold transition-colors">
+                    Learn More &rarr;
+                  </span>
+                </Link>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Why Choose Section */}
+      <section className="py-16 md:py-20 bg-off-white">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8 text-center">
+          <h2 className="text-3xl sm:text-4xl font-bold text-navy">Why Our Services Work</h2>
+          <p className="mt-3 text-slate-text/70 max-w-2xl mx-auto">We combine deep expertise, rapid execution, and measurable results</p>
+          
+          <div className="mt-12 grid gap-6 md:grid-cols-3">
+            <div className="bg-white rounded-xl p-6 border border-border">
+              <h3 className="font-display font-semibold text-navy">Expert Team</h3>
+              <p className="mt-2 text-sm text-slate-text/70">20+ years of combined experience across finance, operations, and M&A</p>
+            </div>
+            <div className="bg-white rounded-xl p-6 border border-border">
+              <h3 className="font-display font-semibold text-navy">Rapid Execution</h3>
+              <p className="mt-2 text-sm text-slate-text/70">Results in days or weeks, not months—proven methodologies for speed</p>
+            </div>
+            <div className="bg-white rounded-xl p-6 border border-border">
+              <h3 className="font-display font-semibold text-navy">Measurable Impact</h3>
+              <p className="mt-2 text-sm text-slate-text/70">Clear KPIs and accountability—we&apos;re invested in your success</p>
+            </div>
           </div>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="py-16 md:py-20 text-center bg-off-white">
+      <section className="py-16 md:py-20 text-center">
         <div className="mx-auto max-w-3xl px-6">
           <h2 className="text-3xl sm:text-4xl font-bold text-navy">
-            Ready to Get Started?
+            Ready to Transform Your Business?
           </h2>
-          <p className="mt-4 text-slate-text/70">
-            Speak with our consultants today.
+          <p className="mt-4 text-slate-text/70 max-w-2xl mx-auto">
+            Let&apos;s discuss how our services can drive growth and unlock hidden value
           </p>
-          <div className="mt-8">
+          <div className="mt-8 flex gap-4 justify-center flex-wrap">
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center rounded-md bg-navy px-8 py-3.5 text-sm font-semibold text-white transition-all hover:bg-navy/90 hover:shadow-lg"
+              className="btn-primary"
             >
-              Contact Us
+              Schedule a Consultation
+            </Link>
+            <Link
+              href="/"
+              className="inline-flex items-center justify-center rounded-lg border border-navy text-navy px-8 py-3.5 text-sm font-semibold transition-all hover:bg-navy hover:text-white"
+            >
+              Back to Home
             </Link>
           </div>
         </div>

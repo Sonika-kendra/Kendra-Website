@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { CheckCircle2, X, Sparkles } from "lucide-react";
 
 export default function LeadPopup() {
   const [open, setOpen] = useState(false);
@@ -15,7 +16,7 @@ export default function LeadPopup() {
   });
 
   useEffect(() => {
-    const timer = setTimeout(() => setOpen(true), 1200);
+    const timer = setTimeout(() => setOpen(true), 2000);
     return () => clearTimeout(timer);
   }, []);
 
@@ -61,80 +62,101 @@ export default function LeadPopup() {
   if (!open) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4">
-      <div className="relative w-full max-w-md rounded-2xl bg-white p-8 shadow-xl">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm px-4 py-8">
+      <div className="relative w-full max-w-md rounded-2xl bg-white shadow-2xl overflow-hidden animate-fade-in">
+        {/* Decorative header */}
+        <div className="h-1 bg-gradient-to-r from-navy via-gold to-navy" />
+        
+        {/* Close button */}
         <button
           onClick={closePopup}
-          className="absolute right-4 top-4 text-slate-text/40 hover:text-slate-text transition-colors"
+          className="absolute right-4 top-4 p-1 rounded-lg text-slate-text/40 hover:text-slate-text hover:bg-slate-text/5 transition-colors z-10"
           aria-label="Close popup"
         >
-          <svg className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-            <path d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z" />
-          </svg>
+          <X className="h-5 w-5" />
         </button>
 
         {!success ? (
-          <>
-            <h2 className="mb-2 text-xl font-bold font-serif text-navy">Get a Complimentary Market Analysis and Growth Report!</h2>
-
-            <p className="mb-6 text-sm text-slate-text/70">Customised report for your sector and company, including insights on how to increase business valuation.</p>
+          <div className="p-8">
+            {/* Icon & Header */}
+            <div className="flex items-center gap-2 mb-2">
+              <div className="p-2 bg-gold/20 rounded-lg">
+                <Sparkles className="h-5 w-5 text-gold" strokeWidth={2} />
+              </div>
+              <h2 className="text-xl font-display font-bold text-navy">Special Offer!</h2>
+            </div>
+            
+            <p className="text-sm text-slate-text/70 leading-relaxed mb-6">
+              Get a free <strong>Market Analysis & Growth Report</strong> customized for your sector. Includes actionable insights to boost business valuation.
+            </p>
 
             <form className="flex flex-col gap-3" onSubmit={handleSubmit}>
-              <input
-                name="firstName"
-                value={form.firstName}
-                onChange={handleChange}
-                placeholder="First Name"
-                className="w-full rounded-lg border border-border px-4 py-2.5 text-sm outline-none focus:border-navy focus:ring-1 focus:ring-navy/20 transition-colors"
-                required
-              />
-              <input
-                name="lastName"
-                value={form.lastName}
-                onChange={handleChange}
-                placeholder="Last Name"
-                className="w-full rounded-lg border border-border px-4 py-2.5 text-sm outline-none focus:border-navy focus:ring-1 focus:ring-navy/20 transition-colors"
-                required
-              />
+              <div className="grid grid-cols-2 gap-3">
+                <input
+                  name="firstName"
+                  value={form.firstName}
+                  onChange={handleChange}
+                  placeholder="First Name *"
+                  className="rounded-lg border border-border px-4 py-2.5 text-sm outline-none focus:border-navy focus:ring-1 focus:ring-navy/20 transition-colors"
+                  required
+                />
+                <input
+                  name="lastName"
+                  value={form.lastName}
+                  onChange={handleChange}
+                  placeholder="Last Name *"
+                  className="rounded-lg border border-border px-4 py-2.5 text-sm outline-none focus:border-navy focus:ring-1 focus:ring-navy/20 transition-colors"
+                  required
+                />
+              </div>
+              
               <input
                 name="company"
                 value={form.company}
                 onChange={handleChange}
-                placeholder="Company"
+                placeholder="Company *"
                 className="w-full rounded-lg border border-border px-4 py-2.5 text-sm outline-none focus:border-navy focus:ring-1 focus:ring-navy/20 transition-colors"
                 required
               />
+              
               <input
                 name="email"
                 type="email"
                 value={form.email}
                 onChange={handleChange}
-                placeholder="Work Email"
+                placeholder="Work Email *"
                 className="w-full rounded-lg border border-border px-4 py-2.5 text-sm outline-none focus:border-navy focus:ring-1 focus:ring-navy/20 transition-colors"
                 required
               />
 
-              <label className="flex items-start gap-2 text-sm text-slate-text/70">
-                <input type="checkbox" required className="mt-0.5" />
+              <label className="flex items-start gap-2 text-xs text-slate-text/70 pt-2">
+                <input type="checkbox" required className="mt-1 flex-shrink-0" />
                 <span>
-                  I agree to the{" "}
-                  <a href="/privacy" className="underline text-navy">Privacy Policy</a>
+                  I agree to receive insights and analysis. Read our{" "}
+                  <a href="/privacy" className="underline text-navy hover:text-navy/80 transition-colors">Privacy Policy</a>
                 </span>
               </label>
 
               <button
                 disabled={loading}
                 type="submit"
-                className="w-full rounded-lg bg-navy py-2.5 text-sm font-semibold text-white hover:bg-navy/90 transition-colors disabled:opacity-60"
+                className="w-full rounded-lg bg-gradient-to-r from-navy to-navy/80 py-3 text-sm font-semibold text-white hover:shadow-lg transition-all disabled:opacity-60 disabled:cursor-not-allowed mt-2"
               >
-                {loading ? "Sending..." : "Get Report Now!"}
+                {loading ? "Sending..." : "Get Free Report"}
               </button>
             </form>
-          </>
+
+            <p className="mt-4 text-xs text-slate-text/60 text-center">
+              ✓ No credit card required · Free report within 24 hours
+            </p>
+          </div>
         ) : (
-          <div className="py-10 text-center">
-            <h3 className="text-lg font-semibold text-navy">Thank you!</h3>
-            <p className="mt-2 text-sm text-slate-text/70">{"We'll send your report shortly."}</p>
+          <div className="p-8 text-center py-12">
+            <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-50 mb-4">
+              <CheckCircle2 className="h-8 w-8 text-green-600" />
+            </div>
+            <h3 className="text-lg font-display font-bold text-navy">Success!</h3>
+            <p className="mt-2 text-sm text-slate-text/70">Check your email for your personalized report.</p>
           </div>
         )}
       </div>

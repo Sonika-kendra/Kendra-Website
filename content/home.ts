@@ -8,10 +8,10 @@ export interface HeroSlide {
 
 export const heroSlidContent = [
   {
-    title: "Scaling Businesses Smarter: Finance, Transformation, and M&A Support",
+    title: "Scale Smarter with Strategic Advisory",
     subtitle:
-    "Expert-led transformation strategies to unlock hidden value and drive sustainable success for SMEs.",
-    cta: "Explore Our Services",
+    "Expert-led M&A, transformation, and financial advisory for growth-focused SMEs. Measurable results delivered in days, not months.",
+    cta: "Start Your Transformation",
     ctaLink: "/",
     image: "/hero/slide-1.jpg",
   },
@@ -44,21 +44,21 @@ export const heroSlidContent = [
 export const homeContent = {
   services: [
     {
-      title: "FaaS",
-      description: "Finance-Function as a Service",
+      title: "Finance as a Service",
       slug: "/services/consulting",
+      description: "Outsource your finance function with CFO-level expertise, automated processes, and upgraded reporting.",
       icon: "wallet",
     },
     {
-      title: "Turnover & Transformation",
-      description: "Fix and future-proof",
+      title: "Operational Transformation",
       slug: "/services/cost",
+      description: "Fix inefficiencies and future-proof your business. Unlock hidden value through strategic restructuring.",
       icon: "settings",
     },
     {
-      title: "Buy & Build",
-      description: "Mergers and acquisitions strategy",
+      title: "Buy & Build Strategy",
       slug: "/services/ma",
+      description: "Strategic M&A advisory to identify, negotiate, and integrate the right acquisitions for growth.",
       icon: "briefcase",
     },
   ],

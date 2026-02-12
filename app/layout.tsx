@@ -7,7 +7,7 @@ import { siteMeta } from "@/config/site";
 export const metadata: Metadata = siteMeta as unknown as Metadata;
 
 export const viewport: Viewport = {
-  themeColor: "#1a2a4a",
+  themeColor: "#0f172a",
 };
 
 export default function RootLayout({

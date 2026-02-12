@@ -49,6 +49,10 @@ export default function Hero() {
     <section
       id="hero"
       className="relative w-full overflow-hidden"
+      style={{
+        background:
+          "linear-gradient(135deg, #0f172a 0%, #1e293b 40%, #334155 70%, #475569 100%)",
+      }}
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
@@ -114,7 +118,7 @@ export default function Hero() {
             transition={{ duration: 0.45, ease: "easeInOut" }}
             className="max-w-2xl"
           >
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight text-white font-serif">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight text-white font-display">
               {slides[current].title}
             </h1>
 
@@ -125,14 +129,14 @@ export default function Hero() {
             <div className="mt-8 flex flex-wrap gap-4">
               <Link
                 href={slides[current].ctaLink}
-                className="inline-flex items-center justify-center rounded-md bg-navy px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-navy/90 hover:shadow-lg border border-white/20"
+                className="btn-primary"
               >
                 {slides[current].cta}
               </Link>
 
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center rounded-md border border-white/40 px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-white/10"
+                className="btn-secondary"
               >
                 Contact Us
               </Link>

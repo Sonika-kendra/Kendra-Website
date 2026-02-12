@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { TrendingUp, CheckCircle2 } from "lucide-react";
+import { TrendingUp, CheckCircle2, Zap, BarChart3 } from "lucide-react";
 import { pageMeta } from "@/config/site";
 
 export const metadata: Metadata = pageMeta.consulting as Metadata;
@@ -8,22 +8,28 @@ export const metadata: Metadata = pageMeta.consulting as Metadata;
 const whatWeDo = [
   {
     title: "Outsource",
-    description: "Your finance function to reduce costs",
+    description: "Your finance function to reduce costs and free up internal resources for strategic initiatives",
+    icon: Zap,
   },
   {
     title: "Automate",
-    description: "Processes using modern technology",
+    description: "Processes using modern technology and proven frameworks for faster, error-free operations",
+    icon: BarChart3,
   },
   {
     title: "Upgrade",
-    description: "Reporting and analytics",
+    description: "Reporting and analytics to give you real-time visibility into financial performance",
+    icon: TrendingUp,
   },
 ];
 
 const benefits = [
-  "Focused financial management",
-  "Scalable solutions",
-  "Improved accuracy",
+  "30-50% reduction in finance function costs",
+  "Real-time financial reporting and insights",
+  "Improved compliance and audit readiness",
+  "Scalable infrastructure that grows with you",
+  "Access to CFO-level expertise",
+  "Technology implementation included",
 ];
 
 export default function FaaSPage() {
@@ -34,30 +40,28 @@ export default function FaaSPage() {
         className="relative overflow-hidden"
         style={{
           background:
-            "linear-gradient(135deg, #4a6a8a 0%, #8096af 50%, #a3b8cc 100%)",
+            "linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%)",
         }}
       >
-        <div className="absolute bottom-0 right-0 w-1/2 h-1/2 opacity-15">
-          <svg viewBox="0 0 400 400" className="w-full h-full" aria-hidden="true">
-            <circle cx="400" cy="400" r="350" fill="none" stroke="white" strokeWidth="0.5" />
-            <circle cx="400" cy="400" r="250" fill="none" stroke="white" strokeWidth="0.5" />
-          </svg>
-        </div>
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-white/5 rounded-full blur-3xl" />
+        <div className="absolute -bottom-20 -left-20 w-64 h-64 bg-white/5 rounded-full blur-3xl" />
 
         <div className="relative mx-auto max-w-7xl px-6 lg:px-8 py-20 md:py-28">
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold italic text-gold font-serif">
-            FAAS
-          </h1>
-          <p className="mt-3 text-lg sm:text-xl text-white/90">
-            Finance function as a Service
-          </p>
-          <div className="mt-8">
-            <Link
-              href="/contact"
-              className="inline-flex items-center justify-center rounded-md bg-navy px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-navy/90 hover:shadow-lg"
-            >
-              Learn More
-            </Link>
+          <div className="max-w-2xl">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white font-display">
+              Finance as a Service (FaaS)
+            </h1>
+            <p className="mt-4 text-lg sm:text-xl text-white/90">
+              Outsource your finance function to experienced CFOs and finance leaders. Reduce costs, improve controls, and get real-time insights.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-4">
+              <Link href="/contact" className="btn-primary">
+                Get Started
+              </Link>
+              <Link href="/about" className="btn-secondary">
+                Learn More
+              </Link>
+            </div>
           </div>
         </div>
 
@@ -71,23 +75,34 @@ export default function FaaSPage() {
       {/* What We Do */}
       <section className="py-16 md:py-20">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <h2 className="text-3xl sm:text-4xl font-bold text-navy">
-            What We Do
-          </h2>
-          <div className="mt-10 grid gap-6 sm:grid-cols-3">
-            {whatWeDo.map((item) => (
-              <div
-                key={item.title}
-                className="rounded-xl border border-border bg-card p-6"
-              >
-                <h3 className="text-xl font-bold font-serif text-navy">
-                  {item.title}
-                </h3>
-                <p className="mt-2 text-sm text-slate-text/70 leading-relaxed">
-                  {item.description}
-                </p>
-              </div>
-            ))}
+          <div className="text-center mb-12">
+            <h2 className="text-3xl sm:text-4xl font-bold text-navy font-display">
+              What We Deliver
+            </h2>
+            <p className="mt-3 text-slate-text/70 max-w-2xl mx-auto">
+              Comprehensive financial management services designed for growing businesses
+            </p>
+          </div>
+          <div className="mt-10 grid gap-8 sm:grid-cols-3">
+            {whatWeDo.map((item) => {
+              const Icon = item.icon;
+              return (
+                <div
+                  key={item.title}
+                  className="rounded-xl border border-border bg-white p-8 card-hover"
+                >
+                  <div className="inline-flex items-center justify-center h-12 w-12 rounded-lg bg-gold/20 mb-4">
+                    <Icon className="h-6 w-6 text-gold" strokeWidth={1.5} />
+                  </div>
+                  <h3 className="text-xl font-bold font-display text-navy">
+                    {item.title}
+                  </h3>
+                  <p className="mt-3 text-slate-text/70 leading-relaxed">
+                    {item.description}
+                  </p>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -95,23 +110,70 @@ export default function FaaSPage() {
       {/* Benefits */}
       <section className="py-16 md:py-20 bg-off-white">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="grid gap-10 md:grid-cols-2 items-center">
-            <div>
-              <h2 className="text-3xl sm:text-4xl font-bold text-navy">
-                Benefits
-              </h2>
-              <ul className="mt-8 flex flex-col gap-4">
-                {benefits.map((benefit) => (
-                  <li key={benefit} className="flex items-center gap-3">
-                    <CheckCircle2 className="h-5 w-5 text-steel flex-shrink-0" strokeWidth={1.5} />
-                    <span className="text-slate-text">{benefit}</span>
-                  </li>
-                ))}
-              </ul>
+          <h2 className="text-3xl sm:text-4xl font-bold text-navy font-display text-center mb-12">
+            Why Choose Our FaaS Solution?
+          </h2>
+          <div className="grid gap-6 md:grid-cols-2">
+            {benefits.map((benefit) => (
+              <div key={benefit} className="flex items-start gap-4">
+                <div className="flex-shrink-0">
+                  <div className="flex items-center justify-center h-10 w-10 rounded-lg bg-gold/20">
+                    <CheckCircle2 className="h-6 w-6 text-gold" strokeWidth={2} />
+                  </div>
+                </div>
+                <div>
+                  <p className="text-slate-text font-medium">{benefit}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* How It Works */}
+      <section className="py-16 md:py-20">
+        <div className="mx-auto max-w-4xl px-6 lg:px-8">
+          <h2 className="text-3xl sm:text-4xl font-bold text-navy font-display text-center mb-12">
+            How It Works
+          </h2>
+          <div className="space-y-8">
+            <div className="flex gap-6">
+              <div className="flex-shrink-0">
+                <div className="flex items-center justify-center h-12 w-12 rounded-full bg-gold text-white font-bold font-display">
+                  1
+                </div>
+              </div>
+              <div>
+                <h3 className="text-xl font-semibold text-navy font-display">Assessment</h3>
+                <p className="mt-2 text-slate-text/70">
+                  We analyze your current finance function, identify inefficiencies, and quantify potential savings.
+                </p>
+              </div>
             </div>
-            <div className="flex justify-center">
-              <div className="flex h-24 w-24 items-center justify-center rounded-2xl bg-white shadow-sm border border-border">
-                <TrendingUp className="h-12 w-12 text-navy" strokeWidth={1.5} />
+            <div className="flex gap-6">
+              <div className="flex-shrink-0">
+                <div className="flex items-center justify-center h-12 w-12 rounded-full bg-gold text-white font-bold font-display">
+                  2
+                </div>
+              </div>
+              <div>
+                <h3 className="text-xl font-semibold text-navy font-display">Optimization</h3>
+                <p className="mt-2 text-slate-text/70">
+                  We implement automation, improve processes, and set up modern tools for better financial management.
+                </p>
+              </div>
+            </div>
+            <div className="flex gap-6">
+              <div className="flex-shrink-0">
+                <div className="flex items-center justify-center h-12 w-12 rounded-full bg-gold text-white font-bold font-display">
+                  3
+                </div>
+              </div>
+              <div>
+                <h3 className="text-xl font-semibold text-navy font-display">Execution &amp; Support</h3>
+                <p className="mt-2 text-slate-text/70">
+                  Our team takes over day-to-day finance operations, reporting, and compliance while training your staff.
+                </p>
               </div>
             </div>
           </div>
@@ -119,17 +181,20 @@ export default function FaaSPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-16 md:py-20 text-center">
+      <section className="py-16 md:py-20 text-center bg-off-white">
         <div className="mx-auto max-w-3xl px-6">
-          <h2 className="text-3xl sm:text-4xl font-bold text-navy">
-            Ready to Get Started?
+          <h2 className="text-3xl sm:text-4xl font-bold text-navy font-display">
+            Ready to Transform Your Finance Function?
           </h2>
-          <div className="mt-8">
-            <Link
-              href="/contact"
-              className="inline-flex items-center justify-center rounded-md bg-navy px-8 py-3.5 text-sm font-semibold text-white transition-all hover:bg-navy/90 hover:shadow-lg"
-            >
-              Get Started
+          <p className="mt-4 text-slate-text/70 text-lg">
+            Let&apos;s discuss how FaaS can reduce costs and improve financial visibility for your business.
+          </p>
+          <div className="mt-8 flex flex-wrap gap-4 justify-center">
+            <Link href="/contact" className="btn-primary">
+              Schedule Consultation
+            </Link>
+            <Link href="/services" className="btn-secondary">
+              Back to Services
             </Link>
           </div>
         </div>

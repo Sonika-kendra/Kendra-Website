@@ -13,7 +13,7 @@ export default function CTA() {
         <div className="mt-8">
           <Link
             href="/contact"
-            className="inline-flex items-center justify-center rounded-md bg-navy px-8 py-3.5 text-sm font-semibold text-white transition-all hover:bg-navy/90 hover:shadow-lg"
+            className="btn-primary"
           >
             Get Started
           </Link>

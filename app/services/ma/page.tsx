@@ -1,23 +1,38 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { CheckCircle2, TrendingUp, Target, Briefcase, DollarSign } from "lucide-react";
 import { pageMeta } from "@/config/site";
 
 export const metadata: Metadata = pageMeta.ma as Metadata;
 
-const whatWeDo = [
+const capabilities = [
   {
-    title: "Potential Acquisition Target",
-    subtitle: "Growing companies",
-    points: ["Strategic fit", "Attractive valuations"],
+    title: "Target Identification",
+    description: "Strategic sourcing, fit analysis, and early-stage diligence to identify the right targets",
+    icon: Target,
   },
   {
-    title: "Potential Investor",
-    subtitle: "Capital providers",
-    points: ["Experience", "Funding capacity"],
+    title: "Due Diligence",
+    description: "Financial, legal, and operational due diligence to uncover risks and opportunities",
+    icon: Briefcase,
+  },
+  {
+    title: "Deal Structuring",
+    description: "Optimal purchase price allocation, payment terms, and earnout structures",
+    icon: DollarSign,
   },
 ];
 
-export default function BuyAndBuildPage() {
+const benefits = [
+  "Access to proprietary deal sourcing network",
+  "Reduced acquisition risk through rigorous diligence",
+  "Better deal economics through smart structuring",
+  "Smoother integration and faster value realization",
+  "Post-acquisition value creation strategies",
+  "Experienced M&A advisors at every stage",
+];
+
+export default function MAPage() {
   return (
     <main>
       {/* Hero */}
@@ -25,30 +40,28 @@ export default function BuyAndBuildPage() {
         className="relative overflow-hidden"
         style={{
           background:
-            "linear-gradient(135deg, #4a6a8a 0%, #8096af 50%, #a3b8cc 100%)",
+            "linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%)",
         }}
       >
-        <div className="absolute bottom-0 right-0 w-1/2 h-1/2 opacity-15">
-          <svg viewBox="0 0 400 400" className="w-full h-full" aria-hidden="true">
-            <circle cx="400" cy="400" r="350" fill="none" stroke="white" strokeWidth="0.5" />
-            <circle cx="400" cy="400" r="250" fill="none" stroke="white" strokeWidth="0.5" />
-          </svg>
-        </div>
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-white/5 rounded-full blur-3xl" />
+        <div className="absolute -bottom-20 -left-20 w-64 h-64 bg-white/5 rounded-full blur-3xl" />
 
         <div className="relative mx-auto max-w-7xl px-6 lg:px-8 py-20 md:py-28">
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold italic text-gold font-serif">
-            BUY<br />AND BUILD
-          </h1>
-          <p className="mt-3 text-lg sm:text-xl text-white/90">
-            Accelerating growth through acquisition
-          </p>
-          <div className="mt-8">
-            <Link
-              href="/contact"
-              className="inline-flex items-center justify-center rounded-md bg-navy px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-navy/90 hover:shadow-lg"
-            >
-              Learn More
-            </Link>
+          <div className="max-w-2xl">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white font-display">
+              M&A Advisory
+            </h1>
+            <p className="mt-4 text-lg sm:text-xl text-white/90">
+              Strategic growth through acquisitions. From target identification to post-close integration, we guide you through every phase.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-4">
+              <Link href="/contact" className="btn-primary">
+                Discuss Your Strategy
+              </Link>
+              <Link href="/about" className="btn-secondary">
+                Our Track Record
+              </Link>
+            </div>
           </div>
         </div>
 
@@ -59,35 +72,160 @@ export default function BuyAndBuildPage() {
         </div>
       </section>
 
-      {/* What We Do */}
+      {/* Our Capabilities */}
       <section className="py-16 md:py-20">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <h2 className="text-3xl sm:text-4xl font-bold text-navy">
-            What We Do
+          <div className="text-center mb-12">
+            <h2 className="text-3xl sm:text-4xl font-bold text-navy font-display">
+              Our M&A Capabilities
+            </h2>
+            <p className="mt-3 text-slate-text/70 max-w-2xl mx-auto">
+              End-to-end acquisition advisory to maximize deal value and success
+            </p>
+          </div>
+          <div className="grid gap-8 sm:grid-cols-3">
+            {capabilities.map((item) => {
+              const Icon = item.icon;
+              return (
+                <div
+                  key={item.title}
+                  className="rounded-xl border border-border bg-white p-8 card-hover"
+                >
+                  <div className="inline-flex items-center justify-center h-12 w-12 rounded-lg bg-gold/20 mb-4">
+                    <Icon className="h-6 w-6 text-gold" strokeWidth={1.5} />
+                  </div>
+                  <h3 className="text-xl font-bold font-display text-navy">
+                    {item.title}
+                  </h3>
+                  <p className="mt-3 text-slate-text/70 leading-relaxed">
+                    {item.description}
+                  </p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Why Partner With Us */}
+      <section className="py-16 md:py-20 bg-off-white">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <h2 className="text-3xl sm:text-4xl font-bold text-navy font-display text-center mb-12">
+            Why Choose Kendra for M&A
           </h2>
-          <div className="mt-10 grid gap-6 sm:grid-cols-2 max-w-3xl">
-            {whatWeDo.map((item) => (
-              <div
-                key={item.title}
-                className="rounded-xl border border-border bg-card p-6"
-              >
-                <h3 className="text-xl font-bold font-serif text-navy">
-                  {item.title}
-                </h3>
-                <p className="mt-2 text-sm text-slate-text/70">
-                  {item.subtitle}
+          <div className="grid gap-6 md:grid-cols-2 max-w-4xl mx-auto">
+            {benefits.map((benefit) => (
+              <div key={benefit} className="flex items-start gap-4">
+                <div className="flex-shrink-0">
+                  <div className="flex items-center justify-center h-10 w-10 rounded-lg bg-gold/20">
+                    <CheckCircle2 className="h-6 w-6 text-gold" strokeWidth={2} />
+                  </div>
+                </div>
+                <div>
+                  <p className="text-slate-text font-medium">{benefit}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Our Process */}
+      <section className="py-16 md:py-20">
+        <div className="mx-auto max-w-4xl px-6 lg:px-8">
+          <h2 className="text-3xl sm:text-4xl font-bold text-navy font-display text-center mb-12">
+            Our M&A Process
+          </h2>
+          <div className="space-y-8">
+            <div className="flex gap-6">
+              <div className="flex-shrink-0">
+                <div className="flex items-center justify-center h-12 w-12 rounded-full bg-gold text-white font-bold font-display">
+                  1
+                </div>
+              </div>
+              <div>
+                <h3 className="text-xl font-semibold text-navy font-display">Strategy & Planning</h3>
+                <p className="mt-2 text-slate-text/70">
+                  Define acquisition criteria, identify target markets, and build an acquisition roadmap aligned with your strategic goals.
                 </p>
-                <ul className="mt-4 flex flex-col gap-2">
-                  {item.points.map((point) => (
-                    <li
-                      key={point}
-                      className="flex items-center gap-2 text-sm text-slate-text"
-                    >
-                      <span className="h-1 w-1 rounded-full bg-navy flex-shrink-0" />
-                      {point}
-                    </li>
-                  ))}
-                </ul>
+              </div>
+            </div>
+            <div className="flex gap-6">
+              <div className="flex-shrink-0">
+                <div className="flex items-center justify-center h-12 w-12 rounded-full bg-gold text-white font-bold font-display">
+                  2
+                </div>
+              </div>
+              <div>
+                <h3 className="text-xl font-semibold text-navy font-display">Target Identification & Sourcing</h3>
+                <p className="mt-2 text-slate-text/70">
+                  Leverage our network and proprietary tools to identify and assess potential targets that match your criteria.
+                </p>
+              </div>
+            </div>
+            <div className="flex gap-6">
+              <div className="flex-shrink-0">
+                <div className="flex items-center justify-center h-12 w-12 rounded-full bg-gold text-white font-bold font-display">
+                  3
+                </div>
+              </div>
+              <div>
+                <h3 className="text-xl font-semibold text-navy font-display">Due Diligence & Valuation</h3>
+                <p className="mt-2 text-slate-text/70">
+                  Conduct comprehensive financial, operational, and legal due diligence to ensure informed decision-making.
+                </p>
+              </div>
+            </div>
+            <div className="flex gap-6">
+              <div className="flex-shrink-0">
+                <div className="flex items-center justify-center h-12 w-12 rounded-full bg-gold text-white font-bold font-display">
+                  4
+                </div>
+              </div>
+              <div>
+                <h3 className="text-xl font-semibold text-navy font-display">Deal Negotiation & Closing</h3>
+                <p className="mt-2 text-slate-text/70">
+                  Optimize deal structure, negotiate favorable terms, and navigate closing logistics to maximize value.
+                </p>
+              </div>
+            </div>
+            <div className="flex gap-6">
+              <div className="flex-shrink-0">
+                <div className="flex items-center justify-center h-12 w-12 rounded-full bg-gold text-white font-bold font-display">
+                  5
+                </div>
+              </div>
+              <div>
+                <h3 className="text-xl font-semibold text-navy font-display">Post-Acquisition Integration</h3>
+                <p className="mt-2 text-slate-text/70">
+                  Support 100-day integration planning, identify quick wins, and drive value capture post-close.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Industries We Serve */}
+      <section className="py-16 md:py-20 bg-off-white">
+        <div className="mx-auto max-w-4xl px-6 lg:px-8">
+          <h2 className="text-3xl sm:text-4xl font-bold text-navy font-display text-center mb-12">
+            Industries & Deal Types
+          </h2>
+          <div className="grid gap-4 sm:grid-cols-2">
+            {[
+              "SaaS & Technology",
+              "Financial Services",
+              "Manufacturing & Industrial",
+              "Professional Services",
+              "Healthcare & Wellness",
+              "Consumer & Retail",
+              "Platform Acquisitions",
+              "Bolt-on Acquisitions",
+            ].map((item) => (
+              <div key={item} className="flex items-center gap-3">
+                <TrendingUp className="h-5 w-5 text-gold flex-shrink-0" strokeWidth={2} />
+                <span className="text-slate-text font-medium">{item}</span>
               </div>
             ))}
           </div>
@@ -97,15 +235,18 @@ export default function BuyAndBuildPage() {
       {/* CTA */}
       <section className="py-16 md:py-20 text-center">
         <div className="mx-auto max-w-3xl px-6">
-          <h2 className="text-3xl sm:text-4xl font-bold text-navy">
-            Ready to Get Started?
+          <h2 className="text-3xl sm:text-4xl font-bold text-navy font-display">
+            Ready to Pursue Your Next Acquisition?
           </h2>
-          <div className="mt-8">
-            <Link
-              href="/contact"
-              className="inline-flex items-center justify-center rounded-md bg-navy px-8 py-3.5 text-sm font-semibold text-white transition-all hover:bg-navy/90 hover:shadow-lg"
-            >
-              Get Started
+          <p className="mt-4 text-slate-text/70 text-lg">
+            Let&apos;s discuss your growth strategy and how we can support your M&amp;A objectives.
+          </p>
+          <div className="mt-8 flex flex-wrap gap-4 justify-center">
+            <Link href="/contact" className="btn-primary">
+              Start the Conversation
+            </Link>
+            <Link href="/services" className="btn-secondary">
+              Back to Services
             </Link>
           </div>
         </div>
