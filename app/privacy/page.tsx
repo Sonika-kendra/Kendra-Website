@@ -1,6 +1,6 @@
 // app/privacy/page.tsx
 import type { Metadata } from "next";
-import { pageMeta } from "@/config/site";
+import { pageMeta } from "@config/site";
 
 export const metadata: Metadata = pageMeta.privacy as Metadata;
 

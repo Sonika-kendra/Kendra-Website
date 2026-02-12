@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { pageMeta } from "@/config/site";
+import { pageMeta } from "@config/site";
 import { Mail, Phone, MapPin, Send } from "lucide-react";
 
 export const metadata: Metadata = pageMeta.contact as Metadata;

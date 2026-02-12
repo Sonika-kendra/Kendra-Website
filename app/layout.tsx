@@ -1,8 +1,8 @@
 import "./globals.css";
-import { AnnouncementBar, Navbar } from "@/components/features/header";
-import { Footer } from "@/components/features/footer";
+import { AnnouncementBar, Navbar } from "@features/header";
+import { Footer } from "@features/footer";
 import type { Metadata, Viewport } from "next";
-import { siteMeta } from "@/config/site";
+import { siteMeta } from "@config/site";
 
 export const metadata: Metadata = siteMeta as unknown as Metadata;
 

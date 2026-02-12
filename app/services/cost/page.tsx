@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CheckCircle2, Zap, Target, BarChart3 } from "lucide-react";
-import { pageMeta } from "@/config/site";
+import { pageMeta } from "@config/site";
 
 export const metadata: Metadata = pageMeta.cost as Metadata;
 

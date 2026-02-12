@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { pageMeta } from "@/config/site";
+import { pageMeta } from "@config/site";
 import { Wallet, Zap, Building2 } from "lucide-react";
 
 export const metadata: Metadata = pageMeta.services as Metadata;

@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { createZohoLead, getZohoAccessToken } from "@/lib/services";
+import { createZohoLead, getZohoAccessToken } from "@lib/services";
 
 export async function POST(req: Request) {
   try {

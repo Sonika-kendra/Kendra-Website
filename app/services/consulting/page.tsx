@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { TrendingUp, CheckCircle2, Zap, BarChart3 } from "lucide-react";
-import { pageMeta } from "@/config/site";
+import { pageMeta } from "@config/site";
 
 export const metadata: Metadata = pageMeta.consulting as Metadata;
 
