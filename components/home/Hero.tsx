@@ -47,8 +47,7 @@ export default function Hero() {
       id="hero"
       className="relative w-full overflow-hidden"
       style={{
-        background:
-          "linear-gradient(135deg, #0f172a 0%, #1e293b 40%, #334155 70%, #475569 100%)",
+        background: "var(--hero-gradient)",
       }}
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}

@@ -7,10 +7,11 @@
 
 @layer base {
   :root {
-    --navy: 15 23 42;
-    --gold: 255 255 255;
-    --steel: 100 116 139;
-    --off-white: 255 255 255;
+    /* Core palette (light theme / default) */
+    --navy: 15 23 42; /* primary */
+    --gold: 255 255 255; /* accent on dark bg */
+    --steel: 100 116 139; /* secondary / muted */
+    --off-white: 248 250 252;
     --slate-text: 30 41 59;
 
     --bg: 255 255 255;
@@ -18,7 +19,35 @@
     --card: 255 255 255;
     --border: 226 232 240;
 
-    --hero-gradient: linear-gradient(135deg, #0f172a 0%, #1e293b 40%, #334155 70%, #64748b 100%);
+    --hero-gradient: linear-gradient(
+      135deg,
+      #0f172a 0%,
+      #1e293b 40%,
+      #334155 70%,
+      #64748b 100%
+    );
+  }
+
+  /* Black & white theme (driven by next-themes "dark" class) */
+  .dark {
+    --navy: 0 0 0;
+    --gold: 255 255 255;
+    --steel: 148 163 184;
+    --off-white: 15 23 42;
+    --slate-text: 209 213 219;
+
+    --bg: 0 0 0;
+    --text: 255 255 255;
+    --card: 15 23 42;
+    --border: 55 65 81;
+
+    --hero-gradient: linear-gradient(
+      135deg,
+      #000000 0%,
+      #111827 40%,
+      #020617 70%,
+      #020617 100%
+    );
   }
 
   html,
@@ -74,12 +103,12 @@
 @layer components {
   /* Primary button style */
   .btn-primary {
-    @apply inline-flex items-center justify-center rounded-md bg-navy px-6 py-3 text-sm font-semibold text-white transition-all duration-200 hover:bg-opacity-90 hover:shadow-lg;
+    @apply inline-flex items-center justify-center rounded-md bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition-all duration-200 hover:bg-opacity-90 hover:shadow-lg;
   }
 
   /* Secondary button style */
   .btn-secondary {
-    @apply inline-flex items-center justify-center rounded-md border-2 border-navy px-6 py-3 text-sm font-semibold text-navy transition-all duration-200 hover:bg-navy/5;
+    @apply inline-flex items-center justify-center rounded-md border-2 border-primary px-6 py-3 text-sm font-semibold text-primary transition-all duration-200 hover:bg-primary/5;
   }
 
   /* Card with hover lift effect */

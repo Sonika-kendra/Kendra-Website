@@ -11,10 +11,7 @@ export default function ServicesPage() {
       {/* Hero */}
       <section
         className="relative overflow-hidden"
-        style={{
-          background:
-            "linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%)",
-        }}
+        style={{ background: "var(--hero-gradient)" }}
       >
         <div className="absolute -top-40 -right-40 w-80 h-80 bg-white/5 rounded-full blur-3xl" />
         <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-white/5 rounded-full blur-3xl" />
