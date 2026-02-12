@@ -60,43 +60,12 @@ export const footer = {
   ],
 };
 
-export const heroSlides = [
-  {
-    title: homeContent.hero.title,
-    subtitle: homeContent.hero.subtitle,
-    cta: homeContent.hero.cta,
-    ctaLink: "/services",
-  },
-  {
-    title: "Finance Function as a Service",
-    subtitle:
-      "Outsource, automate, and upgrade your finance operations with CFO-level expertise on demand.",
-    cta: "Learn More",
-    ctaLink: "/services/consulting",
-  },
-  {
-    title: "Turnover & Transformation",
-    subtitle:
-      "Fix and future-proof your finance function with hands-on operational improvement.",
-    cta: "Learn More",
-    ctaLink: "/services/cost",
-  },
-  {
-    title: "Buy & Build Strategy",
-    subtitle:
-      "Accelerating growth through acquisition — identifying targets, investors, and strategic fit.",
-    cta: "Learn More",
-    ctaLink: "/services/ma",
-  },
-];
-
 export default {
   siteMeta,
   announcement,
   navLinks,
   serviceLinks,
   footer,
-  heroSlides,
   homeContent,
 };
 
