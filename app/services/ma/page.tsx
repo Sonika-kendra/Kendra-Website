@@ -1,36 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { CheckCircle2, TrendingUp, Target, Briefcase, DollarSign } from "lucide-react";
+import { CheckCircle2, TrendingUp } from "lucide-react";
 import { pageMeta } from "@config/site";
+import { maCapabilities, maBenefits, maIndustries } from "@content/services";
 
 export const metadata: Metadata = pageMeta.ma as Metadata;
-
-const capabilities = [
-  {
-    title: "Target Identification",
-    description: "Strategic sourcing, fit analysis, and early-stage diligence to identify the right targets",
-    icon: Target,
-  },
-  {
-    title: "Due Diligence",
-    description: "Financial, legal, and operational due diligence to uncover risks and opportunities",
-    icon: Briefcase,
-  },
-  {
-    title: "Deal Structuring",
-    description: "Optimal purchase price allocation, payment terms, and earnout structures",
-    icon: DollarSign,
-  },
-];
-
-const benefits = [
-  "Access to proprietary deal sourcing network",
-  "Reduced acquisition risk through rigorous diligence",
-  "Better deal economics through smart structuring",
-  "Smoother integration and faster value realization",
-  "Post-acquisition value creation strategies",
-  "Experienced M&A advisors at every stage",
-];
 
 export default function MAPage() {
   return (
@@ -84,7 +58,7 @@ export default function MAPage() {
             </p>
           </div>
           <div className="grid gap-8 sm:grid-cols-3">
-            {capabilities.map((item) => {
+            {maCapabilities.map((item) => {
               const Icon = item.icon;
               return (
                 <div
@@ -114,7 +88,7 @@ export default function MAPage() {
             Why Choose Kendra for M&A
           </h2>
           <div className="grid gap-6 md:grid-cols-2 max-w-4xl mx-auto">
-            {benefits.map((benefit) => (
+            {maBenefits.map((benefit) => (
               <div key={benefit} className="flex items-start gap-4">
                 <div className="flex-shrink-0">
                   <div className="flex items-center justify-center h-10 w-10 rounded-lg bg-white/20">
@@ -213,16 +187,7 @@ export default function MAPage() {
             Industries & Deal Types
           </h2>
           <div className="grid gap-4 sm:grid-cols-2">
-            {[
-              "SaaS & Technology",
-              "Financial Services",
-              "Manufacturing & Industrial",
-              "Professional Services",
-              "Healthcare & Wellness",
-              "Consumer & Retail",
-              "Platform Acquisitions",
-              "Bolt-on Acquisitions",
-            ].map((item) => (
+            {maIndustries.map((item) => (
               <div key={item} className="flex items-center gap-3">
                 <TrendingUp className="h-5 w-5 text-white flex-shrink-0" strokeWidth={2} />
                 <span className="text-slate-text font-medium">{item}</span>

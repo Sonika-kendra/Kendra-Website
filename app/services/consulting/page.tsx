@@ -1,36 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { TrendingUp, CheckCircle2, Zap, BarChart3 } from "lucide-react";
+import { CheckCircle2 } from "lucide-react";
 import { pageMeta } from "@config/site";
+import { consultingWhatWeDo, consultingBenefits } from "@content/services";
 
 export const metadata: Metadata = pageMeta.consulting as Metadata;
-
-const whatWeDo = [
-  {
-    title: "Outsource",
-    description: "Your finance function to reduce costs and free up internal resources for strategic initiatives",
-    icon: Zap,
-  },
-  {
-    title: "Automate",
-    description: "Processes using modern technology and proven frameworks for faster, error-free operations",
-    icon: BarChart3,
-  },
-  {
-    title: "Upgrade",
-    description: "Reporting and analytics to give you real-time visibility into financial performance",
-    icon: TrendingUp,
-  },
-];
-
-const benefits = [
-  "30-50% reduction in finance function costs",
-  "Real-time financial reporting and insights",
-  "Improved compliance and audit readiness",
-  "Scalable infrastructure that grows with you",
-  "Access to CFO-level expertise",
-  "Technology implementation included",
-];
 
 export default function FaaSPage() {
   return (
@@ -84,7 +58,7 @@ export default function FaaSPage() {
             </p>
           </div>
           <div className="mt-10 grid gap-8 sm:grid-cols-3">
-            {whatWeDo.map((item) => {
+            {consultingWhatWeDo.map((item) => {
               const Icon = item.icon;
               return (
                 <div
@@ -114,7 +88,7 @@ export default function FaaSPage() {
             Why Choose Our FaaS Solution?
           </h2>
           <div className="grid gap-6 md:grid-cols-2">
-            {benefits.map((benefit) => (
+            {consultingBenefits.map((benefit) => (
               <div key={benefit} className="flex items-start gap-4">
                 <div className="flex-shrink-0">
                   <div className="flex items-center justify-center h-10 w-10 rounded-lg bg-white/20">

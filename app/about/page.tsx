@@ -1,12 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CheckCircle2, Users, Target, Zap } from "lucide-react";
+import { aboutMeta } from "@content/about";
 
-export const metadata: Metadata = {
-  title: "About | Kendra International",
-  description:
-    "Learn about Kendra International - strategic advisory firm specializing in M&A, transformation, and finance services for scaling businesses.",
-};
+export const metadata: Metadata = aboutMeta;
 
 export default function AboutPage() {
   return (

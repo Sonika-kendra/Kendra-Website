@@ -1,36 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { CheckCircle2, Zap, Target, BarChart3 } from "lucide-react";
+import { CheckCircle2 } from "lucide-react";
 import { pageMeta } from "@config/site";
+import { costProcess, costBenefits } from "@content/services";
 
 export const metadata: Metadata = pageMeta.cost as Metadata;
-
-const process = [
-  {
-    title: "Diagnose",
-    description: "Identify cost drivers and inefficiencies across your organization through detailed analysis.",
-    icon: Target,
-  },
-  {
-    title: "Optimize",
-    description: "Implement targeted cost reduction initiatives without compromising quality or growth.",
-    icon: Zap,
-  },
-  {
-    title: "Monitor",
-    description: "Track savings with KPIs and dashboards to ensure sustained cost management.",
-    icon: BarChart3,
-  },
-];
-
-const benefits = [
-  "15-35% cost reduction in targeted areas",
-  "Improved operational efficiency",
-  "Better resource allocation",
-  "Sustainable cost controls",
-  "Enhanced profitability margins",
-  "Faster path to positive unit economics",
-];
 
 export default function CostOptimizationPage() {
   return (
@@ -84,7 +58,7 @@ export default function CostOptimizationPage() {
             </p>
           </div>
           <div className="grid gap-8 sm:grid-cols-3">
-            {process.map((item) => {
+            {costProcess.map((item) => {
               const Icon = item.icon;
               return (
                 <div
@@ -114,7 +88,7 @@ export default function CostOptimizationPage() {
             What You&apos;ll Achieve
           </h2>
           <div className="grid gap-6 md:grid-cols-2 max-w-4xl mx-auto">
-            {benefits.map((benefit) => (
+            {costBenefits.map((benefit) => (
               <div key={benefit} className="flex items-start gap-4">
                 <div className="flex-shrink-0">
                   <div className="flex items-center justify-center h-10 w-10 rounded-lg bg-white/20">
