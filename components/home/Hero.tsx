@@ -78,7 +78,7 @@ export default function Hero() {
       <div className="absolute inset-0 bg-black/55" />
 
       {/* Decorative circles */}
-      <div className="absolute bottom-0 right-0 w-1/2 h-1/2 opacity-30 text-accent pointer-events-none">
+      <div className="absolute bottom-0 right-0 w-1/2 h-1/2 opacity-60 text-accent pointer-events-none">
         <svg viewBox="0 0 400 400" className="w-full h-full" aria-hidden="true">
           <circle cx="400" cy="400" r="350" fill="none" stroke="currentColor" strokeWidth="1.8" />
           <circle cx="400" cy="400" r="250" fill="none" stroke="currentColor" strokeWidth="1.8" />
