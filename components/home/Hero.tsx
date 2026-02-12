@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { heroSlidContent as slides } from "../../content/home";
@@ -45,14 +46,12 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative w-full overflow-hidden"
-      style={{
-        background: "var(--hero-gradient)",
-      }}
+      className="relative w-full overflow-hidden h-[260px] md:h-[320px] lg:h-[380px]"
+      style={{ background: "var(--hero-gradient)" }}
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
-      {/* Background Image Animation */}
+      {/* Background Image */}
       <AnimatePresence initial={false} custom={direction}>
         <motion.div
           key={`bg-${current}`}
@@ -64,11 +63,13 @@ export default function Hero() {
           transition={{ duration: 0.6, ease: "easeInOut" }}
           className="absolute inset-0"
         >
-          <div
-            className="w-full h-full bg-cover bg-center"
-            style={{
-              backgroundImage: `url(${slides[current].image})`,
-            }}
+          <Image
+            src={slides[current].image}
+            alt={slides[current].title}
+            fill
+            priority={current === 0}
+            className="object-cover"
+            sizes="100vw"
           />
         </motion.div>
       </AnimatePresence>
@@ -77,17 +78,31 @@ export default function Hero() {
       <div className="absolute inset-0 bg-black/55" />
 
       {/* Decorative circles */}
-      <div className="absolute bottom-0 right-0 w-1/2 h-1/2 opacity-10 pointer-events-none">
+      <div className="absolute bottom-0 right-0 w-1/2 h-1/2 opacity-30 text-accent pointer-events-none">
         <svg viewBox="0 0 400 400" className="w-full h-full" aria-hidden="true">
-          <circle cx="400" cy="400" r="350" fill="none" stroke="white" strokeWidth="0.5" />
-          <circle cx="400" cy="400" r="250" fill="none" stroke="white" strokeWidth="0.5" />
+          <circle
+            cx="400"
+            cy="400"
+            r="350"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.8"
+          />
+          <circle
+            cx="400"
+            cy="400"
+            r="250"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.8"
+          />
         </svg>
       </div>
 
-      {/* Arrow buttons */}
+      {/* Navigation Arrows */}
       <button
         onClick={() => paginate(-1)}
-        className="absolute left-4 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center w-10 h-10 rounded-full bg-white/10 text-white backdrop-blur-sm transition-colors hover:bg-white/25"
+        className="absolute left-4 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center w-10 h-10 rounded-full bg-white/10 text-white backdrop-blur-sm hover:bg-white/25 transition"
         aria-label="Previous slide"
       >
         <ChevronLeft className="w-5 h-5" />
@@ -95,14 +110,14 @@ export default function Hero() {
 
       <button
         onClick={() => paginate(1)}
-        className="absolute right-4 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center w-10 h-10 rounded-full bg-white/10 text-white backdrop-blur-sm transition-colors hover:bg-white/25"
+        className="absolute right-4 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center w-10 h-10 rounded-full bg-white/10 text-white backdrop-blur-sm hover:bg-white/25 transition"
         aria-label="Next slide"
       >
         <ChevronRight className="w-5 h-5" />
       </button>
 
-      {/* Slide content */}
-      <div className="relative mx-auto max-w-7xl px-6 lg:px-8 py-12 md:py-14 lg:py-16 min-h-[260px] md:min-h-[300px]">
+      {/* Slide Content */}
+      <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8 h-full flex items-center">
         <AnimatePresence initial={false} custom={direction} mode="wait">
           <motion.div
             key={current}
@@ -135,8 +150,8 @@ export default function Hero() {
         </AnimatePresence>
       </div>
 
-      {/* Dot indicators */}
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex gap-2">
+      {/* Dot Indicators */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex gap-2">
         {slides.map((_, i) => (
           <button
             key={i}

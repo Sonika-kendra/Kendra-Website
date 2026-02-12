@@ -13,7 +13,7 @@ export const heroSlidContent = [
     "Expert-led M&A, transformation, and financial advisory for growth-focused SMEs. Measurable results delivered in days, not months.",
     cta: "Start Your Transformation",
     ctaLink: "/",
-    image: "/hero/slide-1.jpg",
+    image: "/hero/slide-1.png",
   },
   {
     title: "Finance Function as a Service",
