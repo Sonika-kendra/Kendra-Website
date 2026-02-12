@@ -142,52 +142,52 @@ export default function Hero() {
         </AnimatePresence>
       </div> */}
 
-<div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8 h-full flex items-center">
-  <AnimatePresence initial={false} custom={direction} mode="wait">
-    <motion.div
-      key={current}
-      custom={direction}
-      variants={variants}
-      initial="enter"
-      animate="center"
-      exit="exit"
-      transition={{ duration: 0.45, ease: "easeInOut" }}
-      className="max-w-2xl"
-    >
-      <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight text-white font-display">
-        {slides[current].title}
-      </h1>
+      <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8 h-full flex items-center">
+        <AnimatePresence initial={false} custom={direction} mode="wait">
+          <motion.div
+            key={current}
+            custom={direction}
+            variants={variants}
+            initial="enter"
+            animate="center"
+            exit="exit"
+            transition={{ duration: 0.45, ease: "easeInOut" }}
+            className="max-w-2xl"
+          >
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight text-white font-display">
+              {slides[current].title}
+            </h1>
 
-      <p className="mt-4 text-base sm:text-lg text-white/90 leading-relaxed max-w-xl font-sans">
-        {slides[current].subtitle}
-      </p>
+            <p className="mt-4 text-base sm:text-lg text-white/90 leading-relaxed max-w-xl font-sans">
+              {slides[current].subtitle}
+            </p>
 
-      {/* Updated Buttons */}
-      <div className="mt-8 flex flex-wrap gap-4">
-        <Link
-          href="/business-report"
-          className="inline-flex items-center justify-center rounded-md bg-gold px-6 py-3 text-sm font-semibold text-black transition-all duration-200 hover:brightness-110"
-        >
-          Get Business Report
-        </Link>
+            {/* Updated Buttons */}
+            <div className="mt-8 flex flex-wrap gap-4">
+              <Link
+                href="/business-report"
+                className="inline-flex items-center justify-center rounded-md border-2 border-gold px-6 py-3 text-sm font-semibold text-gold transition-all duration-200 hover:bg-gold/10"
+              >
+                Get Business Report
+              </Link>
 
-        <Link
-          href="/services"
-          className="inline-flex items-center justify-center rounded-md border-2 border-gold px-6 py-3 text-sm font-semibold text-gold transition-all duration-200 hover:bg-gold/10"
-        >
-          Services
-        </Link>
+              <Link
+                href="/services"
+                className="inline-flex items-center justify-center rounded-md border-2 border-gold px-6 py-3 text-sm font-semibold text-gold transition-all duration-200 hover:bg-gold/10"
+              >
+                Services
+              </Link>
 
-        <Link
-          href="/contact"
-          className="inline-flex items-center justify-center rounded-md border-2 border-gold px-6 py-3 text-sm font-semibold text-gold transition-all duration-200 hover:bg-gold/10"
-        >
-          Contact Us
-        </Link>
+              <Link
+                href="/contact"
+                className="inline-flex items-center justify-center rounded-md border-2 border-gold px-6 py-3 text-sm font-semibold text-gold transition-all duration-200 hover:bg-gold/10"
+              >
+                Contact Us
+              </Link>
+            </div>
+          </motion.div>
+        </AnimatePresence>
       </div>
-    </motion.div>
-  </AnimatePresence>
-</div>
 
 
       {/* Dot Indicators */}
@@ -197,9 +197,8 @@ export default function Hero() {
             key={i}
             onClick={() => goTo(i)}
             aria-label={`Go to slide ${i + 1}`}
-            className={`w-2.5 h-2.5 rounded-full transition-all ${
-              i === current ? "bg-gold scale-110" : "bg-gold/40 hover:bg-gold/60"
-            }`}
+            className={`w-2.5 h-2.5 rounded-full transition-all ${i === current ? "bg-gold scale-110" : "bg-gold/40 hover:bg-gold/60"
+              }`}
           />
         ))}
       </div>
