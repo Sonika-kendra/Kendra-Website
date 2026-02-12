@@ -9,7 +9,7 @@
   :root {
     /* Core palette (light theme / default) */
     --navy: 15 23 42; /* primary */
-    --gold: 255 255 255; /* accent on dark bg */
+    --gold: 234 179 8; /* accent on dark bg */
     --steel: 100 116 139; /* secondary / muted */
     --off-white: 248 250 252;
     --slate-text: 30 41 59;

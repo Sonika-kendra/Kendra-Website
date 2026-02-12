@@ -8,6 +8,7 @@ import Phone from "../icons/Phone";
 import Email from "../icons/Email";
 import Logo from "../header/Logo";
 import { footer as FOOTER } from "@/config/site";
+import DarkModeToggle from "../header/DarkModeToggle";
 
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -65,6 +66,7 @@ export default function Footer() {
             <h5 className="mb-3 text-sm font-semibold text-gold uppercase tracking-wider">
               Connect
             </h5>
+            
             <div className="flex gap-3">
               {FOOTER.social.map((s) => {
                 const key = s.label;
@@ -81,8 +83,11 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-10 border-t border-white/10 pt-6 text-center text-sm text-white/50">
-          &copy; {year} Kendra International. All rights reserved.
+        <div className="mt-10 border-t border-white/10 pt-6 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-white/50">
+          <p>
+            &copy; {year} Kendra International. All rights reserved.
+          </p>
+          <DarkModeToggle />
         </div>
       </div>
     </footer>
