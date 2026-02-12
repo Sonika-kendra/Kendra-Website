@@ -80,29 +80,15 @@ export default function Hero() {
       {/* Decorative circles */}
       <div className="absolute bottom-0 right-0 w-1/2 h-1/2 opacity-30 text-accent pointer-events-none">
         <svg viewBox="0 0 400 400" className="w-full h-full" aria-hidden="true">
-          <circle
-            cx="400"
-            cy="400"
-            r="350"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.8"
-          />
-          <circle
-            cx="400"
-            cy="400"
-            r="250"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.8"
-          />
+          <circle cx="400" cy="400" r="350" fill="none" stroke="currentColor" strokeWidth="1.8" />
+          <circle cx="400" cy="400" r="250" fill="none" stroke="currentColor" strokeWidth="1.8" />
         </svg>
       </div>
 
       {/* Navigation Arrows */}
       <button
         onClick={() => paginate(-1)}
-        className="absolute left-4 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center w-10 h-10 rounded-full bg-white/10 text-white backdrop-blur-sm hover:bg-white/25 transition"
+        className="absolute left-4 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center w-10 h-10 rounded-full bg-gold/20 text-gold backdrop-blur-sm hover:bg-gold/40 transition"
         aria-label="Previous slide"
       >
         <ChevronLeft className="w-5 h-5" />
@@ -110,14 +96,14 @@ export default function Hero() {
 
       <button
         onClick={() => paginate(1)}
-        className="absolute right-4 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center w-10 h-10 rounded-full bg-white/10 text-white backdrop-blur-sm hover:bg-white/25 transition"
+        className="absolute right-4 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center w-10 h-10 rounded-full bg-gold/20 text-gold backdrop-blur-sm hover:bg-gold/40 transition"
         aria-label="Next slide"
       >
         <ChevronRight className="w-5 h-5" />
       </button>
 
       {/* Slide Content */}
-      <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8 h-full flex items-center">
+      {/* <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8 h-full flex items-center">
         <AnimatePresence initial={false} custom={direction} mode="wait">
           <motion.div
             key={current}
@@ -138,17 +124,71 @@ export default function Hero() {
             </p>
 
             <div className="mt-8 flex flex-wrap gap-4">
-              <Link href={slides[current].ctaLink} className="btn-primary">
+              <Link
+                href={slides[current].ctaLink}
+                className="inline-flex items-center justify-center rounded-md bg-gold px-6 py-3 text-sm font-semibold text-black transition-all duration-200 hover:brightness-110"
+              >
                 {slides[current].cta}
               </Link>
 
-              <Link href="/contact" className="btn-secondary">
+              <Link
+                href="/contact"
+                className="inline-flex items-center justify-center rounded-md border-2 border-gold px-6 py-3 text-sm font-semibold text-gold transition-all duration-200 hover:bg-gold/10"
+              >
                 Contact Us
               </Link>
             </div>
           </motion.div>
         </AnimatePresence>
+      </div> */}
+
+<div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8 h-full flex items-center">
+  <AnimatePresence initial={false} custom={direction} mode="wait">
+    <motion.div
+      key={current}
+      custom={direction}
+      variants={variants}
+      initial="enter"
+      animate="center"
+      exit="exit"
+      transition={{ duration: 0.45, ease: "easeInOut" }}
+      className="max-w-2xl"
+    >
+      <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight text-white font-display">
+        {slides[current].title}
+      </h1>
+
+      <p className="mt-4 text-base sm:text-lg text-white/90 leading-relaxed max-w-xl font-sans">
+        {slides[current].subtitle}
+      </p>
+
+      {/* Updated Buttons */}
+      <div className="mt-8 flex flex-wrap gap-4">
+        <Link
+          href="/business-report"
+          className="inline-flex items-center justify-center rounded-md bg-gold px-6 py-3 text-sm font-semibold text-black transition-all duration-200 hover:brightness-110"
+        >
+          Get Business Report
+        </Link>
+
+        <Link
+          href="/services"
+          className="inline-flex items-center justify-center rounded-md border-2 border-gold px-6 py-3 text-sm font-semibold text-gold transition-all duration-200 hover:bg-gold/10"
+        >
+          Services
+        </Link>
+
+        <Link
+          href="/contact"
+          className="inline-flex items-center justify-center rounded-md border-2 border-gold px-6 py-3 text-sm font-semibold text-gold transition-all duration-200 hover:bg-gold/10"
+        >
+          Contact Us
+        </Link>
       </div>
+    </motion.div>
+  </AnimatePresence>
+</div>
+
 
       {/* Dot Indicators */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex gap-2">
@@ -158,9 +198,7 @@ export default function Hero() {
             onClick={() => goTo(i)}
             aria-label={`Go to slide ${i + 1}`}
             className={`w-2.5 h-2.5 rounded-full transition-all ${
-              i === current
-                ? "bg-white scale-110"
-                : "bg-white/40 hover:bg-white/60"
+              i === current ? "bg-gold scale-110" : "bg-gold/40 hover:bg-gold/60"
             }`}
           />
         ))}
