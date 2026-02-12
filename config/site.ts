@@ -23,18 +23,36 @@ export const announcement = {
   ctaHref: "/contact",
 };
 
-export const navLinks = [
-  { href: "/", label: "Home" },
-  { href: "/about", label: "About" },
-  { href: "/services", label: "Services", hasDropdown: true },
-  { href: "/contact", label: "Insights" },
+export type NavItem = {
+  href: string;
+  label: string;
+  children?: NavItem[];
+};
+
+export const navLinks: NavItem[] = [
+  {
+    href: "/",
+    label: "Home",
+  },
+  {
+    href: "/about",
+    label: "About",
+  },
+  {
+    href: "/services",
+    label: "Services",
+    children: [
+      { href: "/services/consulting", label: "FaaS" },
+      { href: "/services/cost", label: "Turnover & Transformation" },
+      { href: "/services/ma", label: "Buy & Build" },
+    ],
+  },
+  {
+    href: "/contact",
+    label: "Contact",
+  },
 ];
 
-export const serviceLinks = [
-  { href: "/services/consulting", label: "FaaS" },
-  { href: "/services/cost", label: "Turnover & Transformation" },
-  { href: "/services/ma", label: "Buy & Build" },
-];
 
 export const footer = {
   quickLinks: [
@@ -64,7 +82,6 @@ export default {
   siteMeta,
   announcement,
   navLinks,
-  serviceLinks,
   footer,
   homeContent,
 };

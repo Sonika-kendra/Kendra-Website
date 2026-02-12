@@ -31,13 +31,13 @@ export default function AnnouncementBar() {
             ))}
         </p>
 
-        <button
+        {/* <button
           onClick={() => setVisible(false)}
           className="absolute right-4 flex items-center justify-center rounded-full p-1 text-[#8b6f3d]/70 transition-colors hover:text-[#6f552c]"
           aria-label="Dismiss announcement"
         >
           <X className="h-4 w-4" />
-        </button>
+        </button> */}
       </div>
     </div>
   );
