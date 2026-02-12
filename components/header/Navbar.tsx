@@ -40,7 +40,7 @@ export default function Navbar() {
                   <button
                     className={clsx(
                       "flex items-center gap-1 text-sm font-medium transition-colors",
-                      isActive ? "text-gold" : "text-white/80 hover:text-gold"
+                      isActive ? "text-white" : "text-white/80 hover:text-white"
                     )}
                   >
                     {link.label}
@@ -80,7 +80,7 @@ export default function Navbar() {
 
           <Link
             href="/contact"
-            className="ml-4 rounded-md border border-gold px-5 py-2 text-sm font-medium text-gold transition-colors hover:bg-gold hover:text-navy"
+            className="ml-4 rounded-md border border-white px-5 py-2 text-sm font-medium text-white transition-colors hover:bg-white hover:text-navy"
           >
             Contact
           </Link>
@@ -104,7 +104,7 @@ export default function Navbar() {
               <Link
                 href={link.href}
                 onClick={() => setMobileOpen(false)}
-                className="block py-3 text-sm font-medium text-white/80 hover:text-gold"
+                className="block py-3 text-sm font-medium text-white/80 hover:text-white"
               >
                 {link.label}
               </Link>
@@ -115,7 +115,7 @@ export default function Navbar() {
                       key={s.href}
                       href={s.href}
                       onClick={() => setMobileOpen(false)}
-                      className="block py-2 text-sm text-white/60 hover:text-gold"
+                      className="block py-2 text-sm text-white/60 hover:text-white"
                     >
                       {s.label}
                     </Link>
@@ -127,7 +127,7 @@ export default function Navbar() {
           <Link
             href="/contact"
             onClick={() => setMobileOpen(false)}
-            className="mt-4 block rounded-md border border-gold px-5 py-2 text-center text-sm font-medium text-gold"
+            className="mt-4 block rounded-md border border-white px-5 py-2 text-center text-sm font-medium text-white"
           >
             Contact
           </Link>

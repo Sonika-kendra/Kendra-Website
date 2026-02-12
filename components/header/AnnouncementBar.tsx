@@ -11,7 +11,7 @@ export default function AnnouncementBar() {
   if (!visible) return null;
 
   return (
-    <div className="relative z-50 bg-gold text-navy">
+    <div className="relative z-50 bg-white text-navy">
       <div className="mx-auto flex max-w-7xl items-center justify-center px-6 py-2 text-sm font-medium lg:px-8">
         <p className="text-center font-sans">
           {announcement.message.split(announcement.ctaLabel).map((part, i, arr) => (

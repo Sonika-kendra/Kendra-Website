@@ -45,15 +45,15 @@ export default function WhyKendra({ heading }: WhyKendraProps) {
             const Icon = item.icon;
             return (
               <div key={item.title} className="group card-hover p-8">
-                <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-gold/20 mb-4 group-hover:bg-gold/30 transition-colors">
-                  <Icon className="h-7 w-7 text-gold" strokeWidth={1.5} />
+                <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-white/20 mb-4 group-hover:bg-white/30 transition-colors">
+                  <Icon className="h-7 w-7 text-white" strokeWidth={1.5} />
                 </div>
-                <h3 className="text-lg font-bold font-display text-navy group-hover:text-gold transition-colors">{item.title}</h3>
+                <h3 className="text-lg font-bold font-display text-navy group-hover:text-white transition-colors">{item.title}</h3>
                 <p className="mt-2 text-sm text-slate-text/70 leading-relaxed">{item.description}</p>
                 <ul className="mt-4 space-y-2">
                   {item.features.map((feature) => (
                     <li key={feature} className="text-xs text-slate-text/60 flex items-center gap-2">
-                      <span className="h-1.5 w-1.5 rounded-full bg-gold" />
+                      <span className="h-1.5 w-1.5 rounded-full bg-white" />
                       {feature}
                     </li>
                   ))}

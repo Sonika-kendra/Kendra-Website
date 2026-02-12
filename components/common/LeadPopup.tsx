@@ -65,7 +65,7 @@ export default function LeadPopup() {
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm px-4 py-8">
       <div className="relative w-full max-w-md rounded-2xl bg-white shadow-2xl overflow-hidden animate-fade-in">
         {/* Decorative header */}
-        <div className="h-1 bg-gradient-to-r from-navy via-gold to-navy" />
+        <div className="h-1 bg-gradient-to-r from-navy via-white to-navy" />
         
         {/* Close button */}
         <button
@@ -80,8 +80,8 @@ export default function LeadPopup() {
           <div className="p-8">
             {/* Icon & Header */}
             <div className="flex items-center gap-2 mb-2">
-              <div className="p-2 bg-gold/20 rounded-lg">
-                <Sparkles className="h-5 w-5 text-gold" strokeWidth={2} />
+              <div className="p-2 bg-white/20 rounded-lg">
+                <Sparkles className="h-5 w-5 text-white" strokeWidth={2} />
               </div>
               <h2 className="text-xl font-display font-bold text-navy">Special Offer!</h2>
             </div>

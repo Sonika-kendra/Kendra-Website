@@ -44,8 +44,8 @@ export default function GlobalFootprint() {
           <div>
             <div className="space-y-4">
               <div className="flex items-start gap-3">
-                <div className="p-2 rounded-lg bg-gold/20 mt-1">
-                  <MapPin className="h-5 w-5 text-gold" strokeWidth={2} />
+                <div className="p-2 rounded-lg bg-white/20 mt-1">
+                  <MapPin className="h-5 w-5 text-white" strokeWidth={2} />
                 </div>
                 <div>
                   <h3 className="font-semibold text-navy">Europe & UK</h3>
@@ -54,8 +54,8 @@ export default function GlobalFootprint() {
               </div>
               
               <div className="flex items-start gap-3">
-                <div className="p-2 rounded-lg bg-gold/20 mt-1">
-                  <MapPin className="h-5 w-5 text-gold" strokeWidth={2} />
+                <div className="p-2 rounded-lg bg-white/20 mt-1">
+                  <MapPin className="h-5 w-5 text-white" strokeWidth={2} />
                 </div>
                 <div>
                   <h3 className="font-semibold text-navy">Asia Pacific</h3>
@@ -64,8 +64,8 @@ export default function GlobalFootprint() {
               </div>
 
               <div className="flex items-start gap-3">
-                <div className="p-2 rounded-lg bg-gold/20 mt-1">
-                  <MapPin className="h-5 w-5 text-gold" strokeWidth={2} />
+                <div className="p-2 rounded-lg bg-white/20 mt-1">
+                  <MapPin className="h-5 w-5 text-white" strokeWidth={2} />
                 </div>
                 <div>
                   <h3 className="font-semibold text-navy">Americas</h3>

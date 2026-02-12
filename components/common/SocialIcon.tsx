@@ -15,7 +15,7 @@ export default function SocialIcon({ href, label, children }: Props) {
       aria-label={label}
       target="_blank"
       rel="noopener noreferrer"
-      className="text-white/60 hover:text-gold transition-colors"
+      className="text-white/60 hover:text-white transition-colors"
     >
       {children}
     </a>

@@ -42,12 +42,12 @@ export default function ContactPage() {
                 <div className="flex items-start gap-4">
                   <div className="flex-shrink-0">
                     <div className="flex items-center justify-center h-12 w-12 rounded-lg bg-gold/20">
-                      <Mail className="h-6 w-6 text-gold" strokeWidth={1.5} />
+                      <Mail className="h-6 w-6 text-white" strokeWidth={1.5} />
                     </div>
                   </div>
                   <div>
                     <h3 className="font-display font-semibold text-navy">Email</h3>
-                    <a href="mailto:hello@kendra.global" className="mt-2 text-slate-text/80 hover:text-gold transition">
+                    <a href="mailto:hello@kendra.global" className="mt-2 text-slate-text/80 hover:text-white transition">
                       hello@kendra.global
                     </a>
                   </div>
@@ -58,12 +58,12 @@ export default function ContactPage() {
                 <div className="flex items-start gap-4">
                   <div className="flex-shrink-0">
                     <div className="flex items-center justify-center h-12 w-12 rounded-lg bg-gold/20">
-                      <Phone className="h-6 w-6 text-gold" strokeWidth={1.5} />
+                      <Phone className="h-6 w-6 text-white" strokeWidth={1.5} />
                     </div>
                   </div>
                   <div>
                     <h3 className="font-display font-semibold text-navy">Phone</h3>
-                    <a href="tel:+44..." className="mt-2 text-slate-text/80 hover:text-gold transition">
+                    <a href="tel:+44..." className="mt-2 text-slate-text/80 hover:text-white transition">
                       Available on request
                     </a>
                   </div>
@@ -74,7 +74,7 @@ export default function ContactPage() {
                 <div className="flex items-start gap-4">
                   <div className="flex-shrink-0">
                     <div className="flex items-center justify-center h-12 w-12 rounded-lg bg-gold/20">
-                      <MapPin className="h-6 w-6 text-gold" strokeWidth={1.5} />
+                      <MapPin className="h-6 w-6 text-white" strokeWidth={1.5} />
                     </div>
                   </div>
                   <div>
@@ -88,7 +88,7 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              <div className="bg-gold/10 border border-gold/30 rounded-xl p-6">
+              <div className="bg-white/10 border border-white/30 rounded-xl p-6">
                 <h3 className="font-display font-semibold text-navy">Response Time</h3>
                 <p className="mt-2 text-sm text-slate-text/80">
                   We typically respond to inquiries within 24 business hours.
@@ -110,7 +110,7 @@ export default function ContactPage() {
                         id="firstName"
                         name="firstName"
                         required
-                        className="mt-2 block w-full rounded-lg border border-border bg-white px-4 py-3 text-slate-text transition duration-200 placeholder:text-slate-text/40 focus:outline-none focus:ring-2 focus:ring-gold/50 focus:border-gold"
+                        className="mt-2 block w-full rounded-lg border border-border bg-white px-4 py-3 text-slate-text transition duration-200 placeholder:text-slate-text/40 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-white"
                         placeholder="Your first name"
                       />
                     </div>
@@ -123,7 +123,7 @@ export default function ContactPage() {
                         id="lastName"
                         name="lastName"
                         required
-                        className="mt-2 block w-full rounded-lg border border-border bg-white px-4 py-3 text-slate-text transition duration-200 placeholder:text-slate-text/40 focus:outline-none focus:ring-2 focus:ring-gold/50 focus:border-gold"
+                        className="mt-2 block w-full rounded-lg border border-border bg-white px-4 py-3 text-slate-text transition duration-200 placeholder:text-slate-text/40 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-white"
                         placeholder="Your last name"
                       />
                     </div>
@@ -138,7 +138,7 @@ export default function ContactPage() {
                       id="email"
                       name="email"
                       required
-                      className="mt-2 block w-full rounded-lg border border-border bg-white px-4 py-3 text-slate-text transition duration-200 placeholder:text-slate-text/40 focus:outline-none focus:ring-2 focus:ring-gold/50 focus:border-gold"
+                      className="mt-2 block w-full rounded-lg border border-border bg-white px-4 py-3 text-slate-text transition duration-200 placeholder:text-slate-text/40 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-white"
                       placeholder="you@company.com"
                     />
                   </div>
@@ -151,7 +151,7 @@ export default function ContactPage() {
                       type="text"
                       id="company"
                       name="company"
-                      className="mt-2 block w-full rounded-lg border border-border bg-white px-4 py-3 text-slate-text transition duration-200 placeholder:text-slate-text/40 focus:outline-none focus:ring-2 focus:ring-gold/50 focus:border-gold"
+                      className="mt-2 block w-full rounded-lg border border-border bg-white px-4 py-3 text-slate-text transition duration-200 placeholder:text-slate-text/40 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-white"
                       placeholder="Your company"
                     />
                   </div>
@@ -165,14 +165,14 @@ export default function ContactPage() {
                       name="message"
                       rows={5}
                       required
-                      className="mt-2 block w-full rounded-lg border border-border bg-white px-4 py-3 text-slate-text transition duration-200 placeholder:text-slate-text/40 focus:outline-none focus:ring-2 focus:ring-gold/50 focus:border-gold resize-none"
+                      className="mt-2 block w-full rounded-lg border border-border bg-white px-4 py-3 text-slate-text transition duration-200 placeholder:text-slate-text/40 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-white resize-none"
                       placeholder="Tell us about your project or challenge..."
                     />
                   </div>
 
                   <button
                     type="submit"
-                    className="w-full bg-gold text-navy font-semibold py-3 px-6 rounded-lg hover:bg-gold/90 transition duration-200 flex items-center justify-center gap-2 group"
+                    className="w-full bg-white text-navy font-semibold py-3 px-6 rounded-lg hover:bg-white/90 transition duration-200 flex items-center justify-center gap-2 group"
                   >
                     Send Message
                     <Send className="h-4 w-4 group-hover:translate-x-1 transition-transform" strokeWidth={2} />

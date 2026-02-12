@@ -91,8 +91,8 @@ export default function CostOptimizationPage() {
                   key={item.title}
                   className="rounded-xl border border-border bg-white p-8 card-hover"
                 >
-                  <div className="inline-flex items-center justify-center h-12 w-12 rounded-lg bg-gold/20 mb-4">
-                    <Icon className="h-6 w-6 text-gold" strokeWidth={1.5} />
+                  <div className="inline-flex items-center justify-center h-12 w-12 rounded-lg bg-white/20 mb-4">
+                    <Icon className="h-6 w-6 text-white" strokeWidth={1.5} />
                   </div>
                   <h3 className="text-xl font-bold font-display text-navy">
                     {item.title}
@@ -117,8 +117,8 @@ export default function CostOptimizationPage() {
             {benefits.map((benefit) => (
               <div key={benefit} className="flex items-start gap-4">
                 <div className="flex-shrink-0">
-                  <div className="flex items-center justify-center h-10 w-10 rounded-lg bg-gold/20">
-                    <CheckCircle2 className="h-6 w-6 text-gold" strokeWidth={2} />
+                  <div className="flex items-center justify-center h-10 w-10 rounded-lg bg-white/20">
+                    <CheckCircle2 className="h-6 w-6 text-white" strokeWidth={2} />
                   </div>
                 </div>
                 <div>
@@ -137,25 +137,25 @@ export default function CostOptimizationPage() {
             Cost Reduction Areas
           </h2>
           <div className="grid gap-8 md:grid-cols-2">
-            <div className="border-l-4 border-gold pl-6">
+            <div className="border-l-4 border-white pl-6">
               <h3 className="text-lg font-semibold text-navy font-display">Operations</h3>
               <p className="mt-2 text-slate-text/70">
                 Streamline workflows, eliminate redundancies, and optimize resource allocation across your operations.
               </p>
             </div>
-            <div className="border-l-4 border-gold pl-6">
+            <div className="border-l-4 border-white pl-6">
               <h3 className="text-lg font-semibold text-navy font-display">Technology & Systems</h3>
               <p className="mt-2 text-slate-text/70">
                 Rationalize tech stack, consolidate subscriptions, and implement automation for better ROI.
               </p>
             </div>
-            <div className="border-l-4 border-gold pl-6">
+            <div className="border-l-4 border-white pl-6">
               <h3 className="text-lg font-semibold text-navy font-display">Procurement & Vendor Management</h3>
               <p className="mt-2 text-slate-text/70">
                 Renegotiate contracts, consolidate suppliers, and establish better procurement processes.
               </p>
             </div>
-            <div className="border-l-4 border-gold pl-6">
+            <div className="border-l-4 border-white pl-6">
               <h3 className="text-lg font-semibold text-navy font-display">Org Structure & Staffing</h3>
               <p className="mt-2 text-slate-text/70">
                 Right-size your team, improve productivity, and eliminate organizational redundancies.

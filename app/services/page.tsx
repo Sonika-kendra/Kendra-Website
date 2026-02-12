@@ -79,12 +79,12 @@ export default function ServicesPage() {
                   <div className="flex items-start justify-between mb-4">
                     <div>
                       <p className="text-xs font-semibold text-slate-text/60 uppercase tracking-wider">{service.subtitle}</p>
-                      <h2 className="text-2xl font-bold font-display text-navy group-hover:text-gold transition-colors mt-1">
+                      <h2 className="text-2xl font-bold font-display text-navy group-hover:text-white transition-colors mt-1">
                         {service.title}
                       </h2>
                     </div>
-                    <div className="p-3 bg-gold/20 rounded-lg group-hover:bg-gold/30 transition-colors">
-                      <Icon className="h-6 w-6 text-gold" strokeWidth={1.5} />
+                    <div className="p-3 bg-white/20 rounded-lg group-hover:bg-white/30 transition-colors">
+                      <Icon className="h-6 w-6 text-white" strokeWidth={1.5} />
                     </div>
                   </div>
                   
@@ -95,13 +95,13 @@ export default function ServicesPage() {
                   <div className="mt-6 space-y-2">
                     {service.benefits.map((benefit) => (
                       <p key={benefit} className="text-xs text-slate-text/60 flex items-center gap-2">
-                        <span className="h-1 w-1 rounded-full bg-gold" />
+                        <span className="h-1 w-1 rounded-full bg-white" />
                         {benefit}
                       </p>
                     ))}
                   </div>
                   
-                  <span className="mt-6 inline-flex text-sm font-medium text-navy group-hover:text-gold transition-colors">
+                  <span className="mt-6 inline-flex text-sm font-medium text-navy group-hover:text-white transition-colors">
                     Learn More &rarr;
                   </span>
                 </Link>

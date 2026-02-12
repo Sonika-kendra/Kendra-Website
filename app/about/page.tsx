@@ -71,32 +71,32 @@ export default function AboutPage() {
 
           <div className="grid gap-8 md:grid-cols-4">
             <div className="bg-white rounded-xl p-6 border border-border text-center">
-              <div className="inline-flex items-center justify-center p-3 bg-gold/20 rounded-lg mb-4">
-                <Target className="h-6 w-6 text-gold" strokeWidth={1.5} />
+              <div className="inline-flex items-center justify-center p-3 bg-white/20 rounded-lg mb-4">
+                <Target className="h-6 w-6 text-white" strokeWidth={1.5} />
               </div>
               <h3 className="font-display font-semibold text-navy">Focus on Results</h3>
               <p className="mt-2 text-sm text-slate-text/70">Every recommendation is measured by impact on your bottom line</p>
             </div>
 
             <div className="bg-white rounded-xl p-6 border border-border text-center">
-              <div className="inline-flex items-center justify-center p-3 bg-gold/20 rounded-lg mb-4">
-                <Zap className="h-6 w-6 text-gold" strokeWidth={1.5} />
+              <div className="inline-flex items-center justify-center p-3 bg-white/20 rounded-lg mb-4">
+                <Zap className="h-6 w-6 text-white" strokeWidth={1.5} />
               </div>
               <h3 className="font-display font-semibold text-navy">Speed & Efficiency</h3>
               <p className="mt-2 text-sm text-slate-text/70">Rapid deployment with proven methodologies that deliver fast outcomes</p>
             </div>
 
             <div className="bg-white rounded-xl p-6 border border-border text-center">
-              <div className="inline-flex items-center justify-center p-3 bg-gold/20 rounded-lg mb-4">
-                <Users className="h-6 w-6 text-gold" strokeWidth={1.5} />
+              <div className="inline-flex items-center justify-center p-3 bg-white/20 rounded-lg mb-4">
+                <Users className="h-6 w-6 text-white" strokeWidth={1.5} />
               </div>
               <h3 className="font-display font-semibold text-navy">Partnership Mindset</h3>
               <p className="mt-2 text-sm text-slate-text/70">We succeed when you succeed—aligned incentives, shared goals</p>
             </div>
 
             <div className="bg-white rounded-xl p-6 border border-border text-center">
-              <div className="inline-flex items-center justify-center p-3 bg-gold/20 rounded-lg mb-4">
-                <CheckCircle2 className="h-6 w-6 text-gold" strokeWidth={1.5} />
+              <div className="inline-flex items-center justify-center p-3 bg-white/20 rounded-lg mb-4">
+                <CheckCircle2 className="h-6 w-6 text-white" strokeWidth={1.5} />
               </div>
               <h3 className="font-display font-semibold text-navy">Transparency</h3>
               <p className="mt-2 text-sm text-slate-text/70">Clear communication, honest assessments, no hidden agendas</p>
@@ -115,8 +115,8 @@ export default function AboutPage() {
           <div className="space-y-6">
             <div className="flex gap-4">
               <div className="flex-shrink-0">
-                <div className="flex items-center justify-center h-12 w-12 rounded-lg bg-gold/20">
-                  <CheckCircle2 className="h-6 w-6 text-gold" strokeWidth={2} />
+                <div className="flex items-center justify-center h-12 w-12 rounded-lg bg-white/20">
+                  <CheckCircle2 className="h-6 w-6 text-white" strokeWidth={2} />
                 </div>
               </div>
               <div>
@@ -127,8 +127,8 @@ export default function AboutPage() {
 
             <div className="flex gap-4">
               <div className="flex-shrink-0">
-                <div className="flex items-center justify-center h-12 w-12 rounded-lg bg-gold/20">
-                  <CheckCircle2 className="h-6 w-6 text-gold" strokeWidth={2} />
+                <div className="flex items-center justify-center h-12 w-12 rounded-lg bg-white/20">
+                  <CheckCircle2 className="h-6 w-6 text-white" strokeWidth={2} />
                 </div>
               </div>
               <div>
@@ -139,8 +139,8 @@ export default function AboutPage() {
 
             <div className="flex gap-4">
               <div className="flex-shrink-0">
-                <div className="flex items-center justify-center h-12 w-12 rounded-lg bg-gold/20">
-                  <CheckCircle2 className="h-6 w-6 text-gold" strokeWidth={2} />
+                <div className="flex items-center justify-center h-12 w-12 rounded-lg bg-white/20">
+                  <CheckCircle2 className="h-6 w-6 text-white" strokeWidth={2} />
                 </div>
               </div>
               <div>
