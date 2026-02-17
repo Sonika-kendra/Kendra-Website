@@ -1,162 +1,185 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { CheckCircle2, X, Sparkles } from "lucide-react";
+import { useState } from "react";
+import { CheckCircle2, TrendingUp } from "lucide-react";
 
-export default function LeadPopup() {
-  const [open, setOpen] = useState(false);
+interface LeadPopUpProps {
+  open: boolean;
+  onClose: () => void;
+}
+
+export default function LeadPopUp({ open, onClose }: LeadPopUpProps) {
+  const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [success, setSuccess] = useState(false);
-
-  const [form, setForm] = useState({
+  const [error, setError] = useState("");
+  const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
-    company: "",
     email: "",
+    phone: "",
+    company: "",
   });
 
-  useEffect(() => {
-    const timer = setTimeout(() => setOpen(true), 2000);
-    return () => clearTimeout(timer);
-  }, []);
+  if (!open) return null; // hide when closed
 
-  const closePopup = () => setOpen(false);
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+    setError("");
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setLoading(true);
+    if (!formData.firstName || !formData.lastName || !formData.email) {
+      setError("Please fill in all required fields (*)");
+      return;
+    }
 
-    const formData = new FormData(e.currentTarget as HTMLFormElement);
+    setLoading(true);
+    setError("");
 
     try {
-      await fetch("/api/zoho/lead", {
+      const res = await fetch("/api/zoho/lead", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          firstName: formData.get("firstName")?.toString() || "",
-          lastName: formData.get("lastName")?.toString() || "",
-          email: formData.get("email")?.toString() || "",
-          company: formData.get("company")?.toString() || "",
-        }),
+        body: JSON.stringify(formData),
       });
+      if (!res.ok) throw new Error("Submission failed");
 
-      setSuccess(true);
+      setSubmitted(true);
 
+      // reset form and close modal after 2s
       setTimeout(() => {
-        setOpen(false);
-        setSuccess(false);
-        setForm({ firstName: "", lastName: "", company: "", email: "" });
+        setSubmitted(false);
+        setFormData({ firstName: "", lastName: "", email: "", phone: "", company: "" });
+        onClose();
       }, 2000);
     } catch (err) {
-      alert("Something went wrong. Please try again.");
-      console.error(err);
+      setError(err instanceof Error ? err.message : "Something went wrong");
     } finally {
       setLoading(false);
     }
   };
 
-  if (!open) return null;
-
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm px-4 py-8">
-      <div className="relative w-full max-w-md rounded-2xl bg-white shadow-2xl overflow-hidden animate-fade-in">
-        {/* Decorative header */}
-        <div className="h-1 bg-gradient-to-r from-navy via-white to-navy" />
-        
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4 py-8"
+      onClick={onClose} // close on overlay click
+    >
+      <div
+        className="relative w-full max-w-md rounded-2xl bg-white shadow-2xl overflow-hidden"
+        onClick={(e) => e.stopPropagation()} // prevent closing when clicking inside
+      >
         {/* Close button */}
         <button
-          onClick={closePopup}
-          className="absolute right-4 top-4 p-1 rounded-lg text-slate-text/40 hover:text-slate-text hover:bg-slate-text/5 transition-colors z-10"
-          aria-label="Close popup"
+          onClick={onClose}
+          className="absolute right-4 top-4 p-1 text-slate-text/40 hover:text-slate-text transition-colors z-10"
+          aria-label="Close modal"
         >
-          <X className="h-5 w-5" />
+          <svg className="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
+            <path
+              fillRule="evenodd"
+              d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+              clipRule="evenodd"
+            />
+          </svg>
         </button>
 
-        {!success ? (
-          <div className="p-8">
-            {/* Icon & Header */}
-            <div className="flex items-center gap-2 mb-2">
-              <div className="p-2 bg-white/20 rounded-lg">
-                <Sparkles className="h-5 w-5 text-white" strokeWidth={2} />
-              </div>
-              <h2 className="text-xl font-display font-bold text-navy">Special Offer!</h2>
+        {submitted ? (
+          <div className="p-8 text-center">
+            <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-50 mb-4">
+              <CheckCircle2 className="h-8 w-8 text-green-600" />
             </div>
-            
-            <p className="text-sm text-slate-text/70 leading-relaxed mb-6">
-              Get a free <strong>Market Analysis & Growth Report</strong> customized for your sector. Includes actionable insights to boost business valuation.
+            <h3 className="text-xl font-bold text-navy">Report Submitted!</h3>
+            <p className="mt-2 text-slate-text/70">
+              You'll receive your personalized report shortly.
             </p>
+          </div>
+        ) : (
+          <div className="p-8 space-y-6">
+            <div className="flex flex-col items-center gap-2 mb-4">
+              <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-navy/10">
+                <TrendingUp className="h-6 w-6 text-navy" />
+              </div>
+              <h3 className="text-xl font-bold text-navy">Get Your Analysis</h3>
+              <p className="text-sm text-slate-text/70 text-center">
+                Enter your details to receive a complimentary market report.
+              </p>
+            </div>
 
-            <form className="flex flex-col gap-3" onSubmit={handleSubmit}>
+            {error && (
+              <div className="p-3 rounded-lg bg-red-50 border border-red-200">
+                <p className="text-sm text-red-700">{error}</p>
+              </div>
+            )}
+
+            <form onSubmit={handleSubmit} className="space-y-4">
               <div className="grid grid-cols-2 gap-3">
                 <input
+                  type="text"
                   name="firstName"
-                  value={form.firstName}
-                  onChange={handleChange}
                   placeholder="First Name *"
-                  className="rounded-lg border border-border px-4 py-2.5 text-sm outline-none focus:border-navy focus:ring-1 focus:ring-navy/20 transition-colors"
+                  value={formData.firstName}
+                  onChange={handleInputChange}
                   required
+                  className="rounded-lg border border-slate-200 px-4 py-3 focus:border-navy focus:ring-1 focus:ring-navy/20 outline-none text-sm"
                 />
                 <input
+                  type="text"
                   name="lastName"
-                  value={form.lastName}
-                  onChange={handleChange}
                   placeholder="Last Name *"
-                  className="rounded-lg border border-border px-4 py-2.5 text-sm outline-none focus:border-navy focus:ring-1 focus:ring-navy/20 transition-colors"
+                  value={formData.lastName}
+                  onChange={handleInputChange}
                   required
+                  className="rounded-lg border border-slate-200 px-4 py-3 focus:border-navy focus:ring-1 focus:ring-navy/20 outline-none text-sm"
                 />
               </div>
-              
+
               <input
-                name="company"
-                value={form.company}
-                onChange={handleChange}
-                placeholder="Company *"
-                className="w-full rounded-lg border border-border px-4 py-2.5 text-sm outline-none focus:border-navy focus:ring-1 focus:ring-navy/20 transition-colors"
-                required
-              />
-              
-              <input
-                name="email"
                 type="email"
-                value={form.email}
-                onChange={handleChange}
+                name="email"
                 placeholder="Work Email *"
-                className="w-full rounded-lg border border-border px-4 py-2.5 text-sm outline-none focus:border-navy focus:ring-1 focus:ring-navy/20 transition-colors"
+                value={formData.email}
+                onChange={handleInputChange}
                 required
+                className="w-full rounded-lg border border-slate-200 px-4 py-3 focus:border-navy focus:ring-1 focus:ring-navy/20 outline-none text-sm"
+              />
+
+              <input
+                type="text"
+                name="company"
+                placeholder="Company (optional)"
+                value={formData.company}
+                onChange={handleInputChange}
+                className="w-full rounded-lg border border-slate-200 px-4 py-3 focus:border-navy focus:ring-1 focus:ring-navy/20 outline-none text-sm"
+              />
+
+              <input
+                type="tel"
+                name="phone"
+                placeholder="Phone (optional)"
+                value={formData.phone}
+                onChange={handleInputChange}
+                className="w-full rounded-lg border border-slate-200 px-4 py-3 focus:border-navy focus:ring-1 focus:ring-navy/20 outline-none text-sm"
               />
 
               <label className="flex items-start gap-2 text-xs text-slate-text/70 pt-2">
-                <input type="checkbox" required className="mt-1 flex-shrink-0" />
+                <input type="checkbox" required className="mt-1" />
                 <span>
-                  I agree to receive insights and analysis. Read our{" "}
-                  <a href="/privacy" className="underline text-navy hover:text-navy/80 transition-colors">Privacy Policy</a>
+                  I agree to receive insights and analysis. See our{" "}
+                  <a href="/privacy" className="underline text-navy hover:text-navy/80">
+                    Privacy Policy
+                  </a>
                 </span>
               </label>
 
               <button
-                disabled={loading}
                 type="submit"
-                className="w-full rounded-lg bg-gradient-to-r from-navy to-navy/80 py-3 text-sm font-semibold text-white hover:shadow-lg transition-all disabled:opacity-60 disabled:cursor-not-allowed mt-2"
+                disabled={loading}
+                className="w-full rounded-lg bg-navy py-3 text-sm font-semibold text-white hover:bg-navy/90 transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
               >
-                {loading ? "Sending..." : "Get Free Report"}
+                {loading ? "Processing..." : "Get My Report"}
               </button>
             </form>
-
-            <p className="mt-4 text-xs text-slate-text/60 text-center">
-              ✓ No credit card required · Free report within 24 hours
-            </p>
-          </div>
-        ) : (
-          <div className="p-8 text-center py-12">
-            <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-50 mb-4">
-              <CheckCircle2 className="h-8 w-8 text-green-600" />
-            </div>
-            <h3 className="text-lg font-display font-bold text-navy">Success!</h3>
-            <p className="mt-2 text-sm text-slate-text/70">Check your email for your personalized report.</p>
           </div>
         )}
       </div>

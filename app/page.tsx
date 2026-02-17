@@ -1,3 +1,7 @@
+"use client";
+
+import { useEffect, useRef } from "react";
+import { useModal } from "@/context/ModalContext";
 import { homeContent } from "@content/home";
 import {
   Hero,
@@ -10,6 +14,16 @@ import {
 import { CTA } from "@features/footer";
 
 export default function HomePage() {
+  const { openLeadPopUp } = useModal();
+  const hasOpenedRef = useRef(false); // local flag
+
+  useEffect(() => {
+    if (!hasOpenedRef.current) {
+      openLeadPopUp();
+      hasOpenedRef.current = true; // mark as opened
+    }
+  }, [openLeadPopUp]);
+
   return (
     <main>
       <Hero />
@@ -17,8 +31,8 @@ export default function HomePage() {
       <WhyKendra {...homeContent.whyKendra} />
       <ClientStories />
       <GlobalFootprint />
-      <BusinessHealthCheck />
       <CTA />
+      <BusinessHealthCheck />
     </main>
   );
 }

@@ -3,6 +3,7 @@
 
 import { ThemeProvider } from "next-themes";
 import { themeConfig } from "@/config/theme";
+import { ModalProvider } from "@/context/ModalContext";
 
 export function Providers({ children }: { children: React.ReactNode }) {
   return (
@@ -12,7 +13,9 @@ export function Providers({ children }: { children: React.ReactNode }) {
       enableSystem={themeConfig.enableSystem}
       disableTransitionOnChange={themeConfig.disableTransitionOnChange}
     >
-      {children}
+      <ModalProvider>
+        {children}
+      </ModalProvider>
     </ThemeProvider>
   );
 }

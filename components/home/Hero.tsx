@@ -6,6 +6,7 @@ import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { heroSlidContent as slides } from "../../content/home";
+import { useModal } from "@/context/ModalContext";
 
 const variants = {
   enter: (direction: number) => ({
@@ -23,6 +24,7 @@ const variants = {
 };
 
 export default function Hero() {
+  const { openLeadPopUp } = useModal();
   const [current, setCurrent] = useState(0);
   const [direction, setDirection] = useState(1);
   const [isPaused, setIsPaused] = useState(false);
@@ -215,23 +217,25 @@ export default function Hero() {
 
             {/* Updated Buttons */}
             <div className="mt-8 flex flex-wrap gap-4">
-              <Link
-                href="/business-report"
-                className="inline-flex items-center justify-center rounded-md border-2 border-white px-6 py-3 text-sm font-semibold text-white transition-all duration-200 hover:bg-white/10"
-              >
-                Get Business Report
-              </Link>
+<button
+  type="button"
+  onClick={openLeadPopUp}
+  className="inline-flex items-center justify-center rounded-md border-2 border-white px-6 py-3 text-sm font-semibold text-white transition-all duration-200 hover:bg-white hover:text-black"
+>
+  Get Business Report
+</button>
+
 
               <Link
                 href="/services"
-                className="inline-flex items-center justify-center rounded-md border-2 border-white px-6 py-3 text-sm font-semibold text-white transition-all duration-200 hover:bg-white/10"
+                className="inline-flex items-center justify-center rounded-md border-2 border-white px-6 py-3 text-sm font-semibold text-white transition-all duration-200 hover:bg-white hover:text-black"
               >
                 Services
               </Link>
 
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center rounded-md border-2 border-white px-6 py-3 text-sm font-semibold text-white transition-all duration-200 hover:bg-white/10"
+                className="inline-flex items-center justify-center rounded-md border-2 border-white px-6 py-3 text-sm font-semibold text-white transition-all duration-200 hover:bg-white hover:text-black"
               >
                 Contact Us
               </Link>
