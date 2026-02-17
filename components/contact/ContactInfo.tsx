@@ -6,8 +6,8 @@ export function ContactInfo() {
       <div className="bg-off-white rounded-xl p-6">
         <div className="flex items-start gap-4">
           <div className="flex-shrink-0">
-            <div className="flex items-center justify-center h-12 w-12 rounded-lg bg-gold/20">
-              <Mail className="h-6 w-6 text-white" strokeWidth={1.5} />
+            <div className="flex items-center justify-center h-12 w-12 rounded-lg bg-steel/20">
+              <Mail className="h-6 w-6 text-navy" strokeWidth={1.5} />
             </div>
           </div>
           <div>
@@ -25,8 +25,8 @@ export function ContactInfo() {
       <div className="bg-off-white rounded-xl p-6">
         <div className="flex items-start gap-4">
           <div className="flex-shrink-0">
-            <div className="flex items-center justify-center h-12 w-12 rounded-lg bg-gold/20">
-              <Phone className="h-6 w-6 text-white" strokeWidth={1.5} />
+            <div className="flex items-center justify-center h-12 w-12 rounded-lg bg-steel/20">
+              <Phone className="h-6 w-6 text-navy" strokeWidth={1.5} />
             </div>
           </div>
           <div>
@@ -44,8 +44,8 @@ export function ContactInfo() {
       <div className="bg-off-white rounded-xl p-6">
         <div className="flex items-start gap-4">
           <div className="flex-shrink-0">
-            <div className="flex items-center justify-center h-12 w-12 rounded-lg bg-gold/20">
-              <MapPin className="h-6 w-6 text-white" strokeWidth={1.5} />
+            <div className="flex items-center justify-center h-12 w-12 rounded-lg bg-steel/20">
+              <MapPin className="h-6 w-6 text-navy" strokeWidth={1.5} />
             </div>
           </div>
           <div>
@@ -68,4 +68,3 @@ export function ContactInfo() {
     </div>
   );
 }
-

@@ -17,10 +17,10 @@
     --secondary-foreground: 30 41 59;
     --muted: 241 245 249;
     --muted-foreground: 100 116 139;
-    --accent: 234 179 8;
-    --accent-foreground: 15 23 42;
+    --accent: 100 116 139;
+    --accent-foreground: 248 250 252;
     --border: 226 232 240;
-    --ring: 234 179 8;
+    --ring: 100 116 139;
 
     /* Legacy aliases kept for compatibility with existing class names. */
     --navy: var(--primary);
@@ -51,10 +51,10 @@
     --secondary-foreground: 241 245 249;
     --muted: 30 41 59;
     --muted-foreground: 148 163 184;
-    --accent: 250 204 21;
-    --accent-foreground: 15 23 42;
+    --accent: 148 163 184;
+    --accent-foreground: 2 6 23;
     --border: 51 65 85;
-    --ring: 250 204 21;
+    --ring: 148 163 184;
 
     --hero-gradient: linear-gradient(
       135deg,

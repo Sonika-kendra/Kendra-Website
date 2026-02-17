@@ -63,12 +63,12 @@ export default function ClientStories() {
                 {/* Metrics & Icon - left column */}
                 <div className="md:col-span-2">
                   <div className="flex items-center gap-4 mb-6">
-                    <div className="p-4 bg-gold/20 rounded-lg">
-                      <Icon className="h-7 w-7 text-gold" strokeWidth={1.5} />
+                    <div className="p-4 bg-steel/20 rounded-lg">
+                      <Icon className="h-7 w-7 text-steel" strokeWidth={1.5} />
                     </div>
                     <div>
                       <p className="text-xs font-semibold text-slate-text/60 uppercase tracking-wider">{story.industry}</p>
-                      <p className="text-sm font-semibold text-gold mt-1">{story.metric}</p>
+                      <p className="text-sm font-semibold text-steel mt-1">{story.metric}</p>
                     </div>
                   </div>
                 </div>

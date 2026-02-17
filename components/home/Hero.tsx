@@ -78,7 +78,7 @@ export default function Hero() {
       <div className="absolute inset-0 bg-black/55" />
 
       {/* Decorative circles */}
-      <div className="absolute bottom-0 right-0 w-1/2 h-1/2 opacity-60 text-accent pointer-events-none">
+      <div className="absolute bottom-0 right-0 w-1/2 h-1/2 opacity-60 text-white pointer-events-none">
         <svg viewBox="0 0 400 400" className="w-full h-full" aria-hidden="true">
           <circle cx="400" cy="400" r="350" fill="none" stroke="currentColor" strokeWidth="1.8" />
           <circle cx="400" cy="400" r="250" fill="none" stroke="currentColor" strokeWidth="1.8" />
@@ -88,7 +88,7 @@ export default function Hero() {
       {/* Navigation Arrows */}
       <button
         onClick={() => paginate(-1)}
-        className="absolute left-4 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center w-10 h-10 rounded-full bg-gold/20 text-gold backdrop-blur-sm hover:bg-gold/40 transition"
+        className="absolute left-4 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center w-10 h-10 rounded-full bg-white/20 text-white backdrop-blur-sm hover:bg-white/40 transition"
         aria-label="Previous slide"
       >
         <ChevronLeft className="w-5 h-5" />
@@ -96,7 +96,7 @@ export default function Hero() {
 
       <button
         onClick={() => paginate(1)}
-        className="absolute right-4 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center w-10 h-10 rounded-full bg-gold/20 text-gold backdrop-blur-sm hover:bg-gold/40 transition"
+        className="absolute right-4 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center w-10 h-10 rounded-full bg-white/20 text-white backdrop-blur-sm hover:bg-white/40 transition"
         aria-label="Next slide"
       >
         <ChevronRight className="w-5 h-5" />
@@ -126,14 +126,14 @@ export default function Hero() {
             <div className="mt-8 flex flex-wrap gap-4">
               <Link
                 href={slides[current].ctaLink}
-                className="inline-flex items-center justify-center rounded-md bg-gold px-6 py-3 text-sm font-semibold text-black transition-all duration-200 hover:brightness-110"
+                className="inline-flex items-center justify-center rounded-md bg-white px-6 py-3 text-sm font-semibold text-black transition-all duration-200 hover:brightness-110"
               >
                 {slides[current].cta}
               </Link>
 
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center rounded-md border-2 border-gold px-6 py-3 text-sm font-semibold text-gold transition-all duration-200 hover:bg-gold/10"
+                className="inline-flex items-center justify-center rounded-md border-2 border-white px-6 py-3 text-sm font-semibold text-white transition-all duration-200 hover:bg-white/10"
               >
                 Contact Us
               </Link>
@@ -166,21 +166,21 @@ export default function Hero() {
             <div className="mt-8 flex flex-wrap gap-4">
               <Link
                 href="/business-report"
-                className="btn-accent-outline"
+                className="inline-flex items-center justify-center rounded-md border-2 border-white px-6 py-3 text-sm font-semibold text-white transition-all duration-200 hover:bg-white/10"
               >
                 Get Business Report
               </Link>
 
               <Link
                 href="/services"
-                className="btn-accent-outline"
+                className="inline-flex items-center justify-center rounded-md border-2 border-white px-6 py-3 text-sm font-semibold text-white transition-all duration-200 hover:bg-white/10"
               >
                 Services
               </Link>
 
               <Link
                 href="/contact"
-                className="btn-accent-outline"
+                className="inline-flex items-center justify-center rounded-md border-2 border-white px-6 py-3 text-sm font-semibold text-white transition-all duration-200 hover:bg-white/10"
               >
                 Contact Us
               </Link>
@@ -197,7 +197,7 @@ export default function Hero() {
             key={i}
             onClick={() => goTo(i)}
             aria-label={`Go to slide ${i + 1}`}
-            className={`w-2.5 h-2.5 rounded-full transition-all ${i === current ? "bg-gold scale-110" : "bg-gold/40 hover:bg-gold/60"
+            className={`w-2.5 h-2.5 rounded-full transition-all ${i === current ? "bg-white scale-110" : "bg-white/40 hover:bg-white/60"
               }`}
           />
         ))}

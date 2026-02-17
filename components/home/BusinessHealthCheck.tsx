@@ -97,14 +97,14 @@ export default function BusinessHealthCheck() {
             <div className="absolute inset-0 bg-gradient-to-br from-navy via-navy to-navy/80 opacity-95" />
             
             {/* Decorative elements */}
-            <div className="absolute top-0 right-0 w-96 h-96 bg-gold/5 rounded-full blur-3xl" />
-            <div className="absolute bottom-0 left-1/2 w-96 h-96 bg-gold/5 rounded-full blur-3xl" />
+            <div className="absolute top-0 right-0 w-96 h-96 bg-steel/5 rounded-full blur-3xl" />
+            <div className="absolute bottom-0 left-1/2 w-96 h-96 bg-steel/5 rounded-full blur-3xl" />
             
             {/* Content */}
             <div className="relative p-8 md:p-16 text-center text-white">
               <div className="flex justify-center mb-6">
-                <div className="p-3 bg-gold/20 rounded-full">
-                  <TrendingUp className="h-8 w-8 text-gold" strokeWidth={1.5} />
+                <div className="p-3 bg-steel/20 rounded-full">
+                  <TrendingUp className="h-8 w-8 text-steel" strokeWidth={1.5} />
                 </div>
               </div>
               
@@ -116,17 +116,17 @@ export default function BusinessHealthCheck() {
               
               <div className="mt-12 grid gap-6 md:grid-cols-3">
                 <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
-                  <CheckCircle2 className="h-6 w-6 text-gold mx-auto mb-3" />
+                  <CheckCircle2 className="h-6 w-6 text-steel mx-auto mb-3" />
                   <h3 className="font-semibold mb-2">Revenue Analysis</h3>
                   <p className="text-sm text-white/70">Track growth trends and identify opportunities</p>
                 </div>
                 <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
-                  <CheckCircle2 className="h-6 w-6 text-gold mx-auto mb-3" />
+                  <CheckCircle2 className="h-6 w-6 text-steel mx-auto mb-3" />
                   <h3 className="font-semibold mb-2">Margin Health</h3>
                   <p className="text-sm text-white/70">Understand profitability metrics</p>
                 </div>
                 <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
-                  <CheckCircle2 className="h-6 w-6 text-gold mx-auto mb-3" />
+                  <CheckCircle2 className="h-6 w-6 text-steel mx-auto mb-3" />
                   <h3 className="font-semibold mb-2">Quick Snapshot</h3>
                   <p className="text-sm text-white/70">Actionable insights in moments</p>
                 </div>
@@ -135,7 +135,7 @@ export default function BusinessHealthCheck() {
               <div className="mt-12">
                 <button
                   onClick={() => setShowModal(true)}
-                  className="inline-flex items-center justify-center rounded-lg bg-gold text-navy px-10 py-3.5 text-sm font-semibold transition-all hover:bg-gold/90 hover:shadow-lg hover:shadow-gold/30"
+                  className="inline-flex items-center justify-center rounded-lg bg-steel text-white px-10 py-3.5 text-sm font-semibold transition-all hover:bg-steel/90 hover:shadow-lg hover:shadow-steel/30"
                 >
                   Start Your Analysis
                 </button>
