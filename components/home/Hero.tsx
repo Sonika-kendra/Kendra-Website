@@ -85,29 +85,30 @@ export default function Hero() {
         </svg>
       </div> */}
 
-      {/* Slow Circular Gold Waves */}
-<motion.div className="absolute bottom-0 right-0 w-1/2 h-1/2 pointer-events-none">
-  <svg viewBox="0 0 400 400" className="w-full h-full">
-    <defs>
-      <linearGradient id="goldWave" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="#B8860B" />
-        <stop offset="50%" stopColor="#F6E27A" />
-        <stop offset="100%" stopColor="#D4AF37" />
-      </linearGradient>
-    </defs>
+{/* Two Full Circular White Waves - Right Side */}
+<motion.div className="absolute inset-0 flex items-center justify-end pr-12 pointer-events-none">
+  <svg viewBox="0 0 400 400" className="w-[60%] h-[60%] max-w-[500px]">
+    
+    {/* Static Center Dot */}
+    <circle
+      cx="200"
+      cy="200"
+      r="6"
+      fill="white"
+    />
 
     {/* Wave 1 */}
     <motion.circle
-      cx="400"
-      cy="400"
+      cx="200"
+      cy="200"
       r="0"
       fill="none"
-      stroke="url(#goldWave)"
-      strokeWidth="2.5"
-      initial={{ r: 0, opacity: 0.5 }}
-      animate={{ r: 320, opacity: 0 }}
+      stroke="white"
+      strokeWidth="2"
+      initial={{ r: 0, opacity: 0.25 }}
+      animate={{ r: 180, opacity: 0 }}
       transition={{
-        duration: 6,
+        duration: 8,
         repeat: Infinity,
         ease: "easeOut",
       }}
@@ -115,39 +116,22 @@ export default function Hero() {
 
     {/* Wave 2 */}
     <motion.circle
-      cx="400"
-      cy="400"
+      cx="200"
+      cy="200"
       r="0"
       fill="none"
-      stroke="url(#goldWave)"
-      strokeWidth="2"
-      initial={{ r: 0, opacity: 0.4 }}
-      animate={{ r: 300, opacity: 0 }}
+      stroke="white"
+      strokeWidth="1.8"
+      initial={{ r: 0, opacity: 0.2 }}
+      animate={{ r: 180, opacity: 0 }}
       transition={{
-        duration: 6,
-        repeat: Infinity,
-        ease: "easeOut",
-        delay: 2,
-      }}
-    />
-
-    {/* Wave 3 */}
-    <motion.circle
-      cx="400"
-      cy="400"
-      r="0"
-      fill="none"
-      stroke="url(#goldWave)"
-      strokeWidth="1.5"
-      initial={{ r: 0, opacity: 0.35 }}
-      animate={{ r: 280, opacity: 0 }}
-      transition={{
-        duration: 6,
+        duration: 8,
         repeat: Infinity,
         ease: "easeOut",
         delay: 4,
       }}
     />
+    
   </svg>
 </motion.div>
 
