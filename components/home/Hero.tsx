@@ -166,21 +166,21 @@ export default function Hero() {
             <div className="mt-8 flex flex-wrap gap-4">
               <Link
                 href="/business-report"
-                className="inline-flex items-center justify-center rounded-md border-2 border-gold px-6 py-3 text-sm font-semibold text-gold transition-all duration-200 hover:bg-gold/10"
+                className="btn-accent-outline"
               >
                 Get Business Report
               </Link>
 
               <Link
                 href="/services"
-                className="inline-flex items-center justify-center rounded-md border-2 border-gold px-6 py-3 text-sm font-semibold text-gold transition-all duration-200 hover:bg-gold/10"
+                className="btn-accent-outline"
               >
                 Services
               </Link>
 
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center rounded-md border-2 border-gold px-6 py-3 text-sm font-semibold text-gold transition-all duration-200 hover:bg-gold/10"
+                className="btn-accent-outline"
               >
                 Contact Us
               </Link>

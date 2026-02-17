@@ -1,6 +1,8 @@
 "use client";
 
 import { ReactNode } from "react";
+import clsx from "clsx";
+import { ui } from "@/config/theme";
 
 interface Props {
   href: string;
@@ -15,7 +17,7 @@ export default function SocialIcon({ href, label, children }: Props) {
       aria-label={label}
       target="_blank"
       rel="noopener noreferrer"
-      className="text-white/60 hover:text-white transition-colors"
+      className={clsx(ui.socialIcon, ui.interactive.focusRing)}
     >
       {children}
     </a>

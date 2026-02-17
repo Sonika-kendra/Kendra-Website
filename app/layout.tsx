@@ -3,12 +3,13 @@ import { AnnouncementBar, Navbar } from "@features/header";
 import { Footer } from "@features/footer";
 import type { Metadata, Viewport } from "next";
 import { siteMeta } from "@config/site";
+import { themeConfig, ui } from "@config/theme";
 import { Providers } from "@features/common";
 
 export const metadata: Metadata = siteMeta as unknown as Metadata;
 
 export const viewport: Viewport = {
-  themeColor: "#0f172a",
+  themeColor: [...themeConfig.viewportThemeColor],
 };
 
 export default function RootLayout({
@@ -17,8 +18,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className="font-sans antialiased">
+    <html lang="en" suppressHydrationWarning>
+      <body className={ui.layout.body}>
         <Providers>
           <AnnouncementBar />
           <Navbar />

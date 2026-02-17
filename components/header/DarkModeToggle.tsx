@@ -3,6 +3,8 @@
 import { Monitor, Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
+import clsx from "clsx";
+import { themeModes, ui } from "@/config/theme";
 
 type ThemeId = "light" | "dark" | "system";
 
@@ -12,40 +14,38 @@ const THEMES: { id: ThemeId; icon: React.ElementType }[] = [
   { id: "system", icon: Monitor },
 ];
 
+const isThemeId = (value: string): value is ThemeId =>
+  themeModes.includes(value as ThemeId);
+
 export default function ThemeSwitcher() {
-  const { resolvedTheme, setTheme } = useTheme();
+  const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => setMounted(true), []);
   if (!mounted) return null;
 
+  const selectedTheme: ThemeId =
+    theme && isThemeId(theme) ? theme : themeModes[2];
+
   return (
-    <div className="inline-flex w-fit items-center gap-1 rounded-full border border-white/20 bg-white/60 p-1 backdrop-blur-md shadow-lg dark:bg-black/30 dark:backdrop-blur-none">
+    <div className={ui.themeSwitcher.shell}>
       {THEMES.map(({ id, icon: Icon }) => {
-        const isActive = resolvedTheme === id;
+        const isActive = selectedTheme === id;
 
         return (
           <button
             key={id}
             aria-label={`Set ${id} theme`}
             onClick={() => setTheme(id)}
-            className="relative inline-flex items-center justify-center p-1"
+            className={clsx(
+              ui.themeSwitcher.button,
+              ui.interactive.focusRing,
+              isActive ? ui.themeSwitcher.active : ui.themeSwitcher.inactive
+            )}
           >
-            <span
-              className={[
-                "flex items-center justify-center rounded-full p-2 transition-all duration-300",
-                isActive
-                  ? "bg-white/60 shadow-md dark:bg-neutral-800"
-                  : "opacity-60 hover:opacity-100",
-              ].join(" ")}
-            >
-              <Icon
-                className={[
-                  "h-5 w-5 transition-transform duration-300",
-                  isActive ? "scale-110" : "scale-90",
-                ].join(" ")}
-              />
-            </span>
+            <Icon
+              className={clsx(ui.themeSwitcher.icon, isActive ? "scale-110" : "scale-95")}
+            />
           </button>
         );
       })}

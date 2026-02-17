@@ -1,5 +1,7 @@
 import type { Config } from "tailwindcss";
 
+const withOpacity = (variable: string) => `rgb(var(${variable}) / <alpha-value>)`;
+
 const config: Config = {
   darkMode: "class",
   content: [
@@ -10,26 +12,31 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        navy: "rgb(var(--navy))",
-        gold: "rgb(var(--gold))",
-        steel: "rgb(var(--steel))",
-        "off-white": "rgb(var(--off-white))",
-        "slate-text": "rgb(var(--slate-text))",
-        bg: "rgb(var(--bg))",
-        text: "rgb(var(--text))",
-        card: "rgb(var(--card))",
-        border: "rgb(var(--border))",
+        /* Legacy names (kept for compatibility) */
+        navy: withOpacity("--navy"),
+        gold: withOpacity("--gold"),
+        steel: withOpacity("--steel"),
+        "off-white": withOpacity("--off-white"),
+        "slate-text": withOpacity("--slate-text"),
+        bg: withOpacity("--bg"),
+        text: withOpacity("--text"),
 
-        // Semantic aliases (use these going forward)
-        primary: "rgb(var(--navy))",
-        "primary-foreground": "rgb(var(--off-white))",
-        secondary: "rgb(var(--steel))",
-        "secondary-foreground": "rgb(var(--off-white))",
-        background: "rgb(var(--bg))",
-        foreground: "rgb(var(--text))",
-        muted: "rgb(var(--off-white))",
-        "muted-foreground": "rgb(var(--slate-text))",
-        accent: "rgb(var(--gold))",
+        /* Semantic theme tokens */
+        border: withOpacity("--border"),
+        input: withOpacity("--border"),
+        ring: withOpacity("--ring"),
+        background: withOpacity("--background"),
+        foreground: withOpacity("--foreground"),
+        card: withOpacity("--card"),
+        "card-foreground": withOpacity("--card-foreground"),
+        primary: withOpacity("--primary"),
+        "primary-foreground": withOpacity("--primary-foreground"),
+        secondary: withOpacity("--secondary"),
+        "secondary-foreground": withOpacity("--secondary-foreground"),
+        muted: withOpacity("--muted"),
+        "muted-foreground": withOpacity("--muted-foreground"),
+        accent: withOpacity("--accent"),
+        "accent-foreground": withOpacity("--accent-foreground"),
       },
       fontFamily: {
         sans: ["Inter", "system-ui", "sans-serif"],

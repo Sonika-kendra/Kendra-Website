@@ -9,61 +9,84 @@ import Email from "../icons/Email";
 import Logo from "../header/Logo";
 import { footer as FOOTER } from "@/config/site";
 import DarkModeToggle from "../header/DarkModeToggle";
+import clsx from "clsx";
+import { ui } from "@/config/theme";
 
 export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="bg-navy text-white/80">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8 py-12">
+    <footer className={ui.footer.root}>
+      <div className={ui.footer.container}>
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-5">
           {/* Brand */}
           <div className="lg:col-span-1">
             <Logo width={160} height={48} priority />
-            <p className="mt-4 text-sm text-white/60">
+            <p className={clsx("mt-4", ui.footer.bodyText)}>
               Scaling businesses smarter through finance, transformation, and M&A support.
             </p>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h5 className="mb-3 text-sm font-semibold text-gold uppercase tracking-wider">
+            <h5 className={ui.footer.heading}>
               Quick Links
             </h5>
             <ul className="flex flex-col gap-2 text-sm">
               {FOOTER.quickLinks.map((l) => (
-                <li key={l.href}><Link href={l.href} className="hover:text-gold transition-colors">{l.label}</Link></li>
+                <li key={l.href}>
+                  <Link
+                    href={l.href}
+                    className={clsx(ui.footer.link, ui.interactive.focusRing)}
+                  >
+                    {l.label}
+                  </Link>
+                </li>
               ))}
             </ul>
           </div>
 
           {/* Services */}
           <div>
-            <h5 className="mb-3 text-sm font-semibold text-gold uppercase tracking-wider">
+            <h5 className={ui.footer.heading}>
               Services
             </h5>
             <ul className="flex flex-col gap-2 text-sm">
               {FOOTER.services.map((s) => (
-                <li key={s.href}><Link href={s.href} className="hover:text-gold transition-colors">{s.label}</Link></li>
+                <li key={s.href}>
+                  <Link
+                    href={s.href}
+                    className={clsx(ui.footer.link, ui.interactive.focusRing)}
+                  >
+                    {s.label}
+                  </Link>
+                </li>
               ))}
             </ul>
           </div>
 
           {/* Legal */}
           <div>
-            <h5 className="mb-3 text-sm font-semibold text-gold uppercase tracking-wider">
+            <h5 className={ui.footer.heading}>
               Legal
             </h5>
             <ul className="flex flex-col gap-2 text-sm">
               {FOOTER.legal.map((l) => (
-                <li key={l.href}><Link href={l.href} className="hover:text-gold transition-colors">{l.label}</Link></li>
+                <li key={l.href}>
+                  <Link
+                    href={l.href}
+                    className={clsx(ui.footer.link, ui.interactive.focusRing)}
+                  >
+                    {l.label}
+                  </Link>
+                </li>
               ))}
             </ul>
           </div>
 
           {/* Contact */}
           <div>
-            <h5 className="mb-3 text-sm font-semibold text-gold uppercase tracking-wider">
+            <h5 className={ui.footer.heading}>
               Connect
             </h5>
             
@@ -83,7 +106,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-10 border-t border-white/10 pt-6 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-white/50">
+        <div className={ui.footer.divider}>
           <p>
             &copy; {year} Kendra International. All rights reserved.
           </p>

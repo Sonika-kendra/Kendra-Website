@@ -7,6 +7,7 @@ import { useState, useRef, useEffect } from "react";
 import Logo from "./Logo";
 import { ChevronDown, Menu, X } from "lucide-react";
 import { navLinks } from "@/config/site";
+import { ui } from "@/config/theme";
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -32,13 +33,13 @@ export default function Navbar() {
   }, []);
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-gray-100 border-b border-gray-200">
-      <div className="mx-auto flex h-14 max-w-7xl items-center justify-between px-6">
+    <header className={ui.nav.header}>
+      <div className={ui.nav.shell}>
         {/* Logo */}
         <Logo width={130} height={36} priority />
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-2">
+        <nav className={ui.nav.desktop}>
           {navLinks.map((link) => {
             const isActive =
               link.href === "/"
@@ -61,10 +62,12 @@ export default function Navbar() {
                       )
                     }
                     className={clsx(
-                      "flex items-center gap-1 px-4 py-1.5 text-sm font-medium rounded-md transition-all",
+                      ui.nav.linkBase,
+                      "flex items-center gap-1",
+                      ui.interactive.focusRing,
                       isActive
-                        ? "bg-navy text-white"
-                        : "text-slate-800 hover:bg-gray-300 hover:text-slate-900"
+                        ? ui.nav.linkActive
+                        : ui.nav.linkInactive
                     )}
                   >
                     {link.label}
@@ -77,13 +80,16 @@ export default function Navbar() {
                   </button>
 
                   {openDropdown === link.href && (
-                    <div className="absolute top-full left-0 mt-2 w-56 rounded-md bg-white py-2 shadow-md border border-gray-200">
+                    <div className={ui.nav.dropdownPanel}>
                       {link.children?.map((child) => (
                         <Link
                           key={child.href}
                           href={child.href}
                           onClick={() => setOpenDropdown(null)}
-                          className="block px-4 py-2 text-sm font-medium text-slate-800 rounded-md transition-all hover:bg-gray-300 hover:text-slate-900"
+                          className={clsx(
+                            ui.nav.dropdownLink,
+                            ui.interactive.focusRing
+                          )}
                         >
                           {child.label}
                         </Link>
@@ -99,10 +105,11 @@ export default function Navbar() {
                 key={link.href}
                 href={link.href}
                 className={clsx(
-                  "px-4 py-1.5 text-sm font-medium rounded-md transition-all",
+                  ui.nav.linkBase,
+                  ui.interactive.focusRing,
                   isActive
-                    ? "bg-navy text-white"
-                    : "text-slate-800 hover:bg-gray-300 hover:text-slate-900"
+                    ? ui.nav.linkActive
+                    : ui.nav.linkInactive
                 )}
               >
                 {link.label}
@@ -114,7 +121,7 @@ export default function Navbar() {
         {/* Mobile Toggle */}
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
-          className="md:hidden text-slate-800"
+          className={clsx(ui.nav.mobileToggle, ui.interactive.focusRing)}
           aria-label="Toggle menu"
         >
           {mobileOpen ? (
@@ -127,13 +134,13 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {mobileOpen && (
-        <div className="md:hidden bg-white border-t border-gray-200 px-6 py-4">
+        <div className={ui.nav.mobilePanel}>
           {navLinks.map((link) => (
             <div key={link.href}>
               <Link
                 href={link.href}
                 onClick={() => setMobileOpen(false)}
-                className="block py-2 text-sm font-medium text-slate-700 hover:text-navy"
+                className={clsx(ui.nav.mobileLink, ui.interactive.focusRing)}
               >
                 {link.label}
               </Link>
@@ -145,7 +152,10 @@ export default function Navbar() {
                       key={child.href}
                       href={child.href}
                       onClick={() => setMobileOpen(false)}
-                      className="block py-1.5 text-sm text-slate-500 hover:text-navy"
+                      className={clsx(
+                        ui.nav.mobileChildLink,
+                        ui.interactive.focusRing
+                      )}
                     >
                       {child.label}
                     </Link>
