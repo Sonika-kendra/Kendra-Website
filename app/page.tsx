@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { useModal } from "@/context/ModalContext";
-import { homeAboutUsContent, homeContent, homeServiceContent } from "@content/home";
+import { homeAboutUsContent, homeServiceContent, whyKendra } from "@content/home";
 import {
   Hero,
   Services,
@@ -28,7 +28,7 @@ export default function HomePage() {
     <main>
       <Hero />
       {/* <Services items={homeContent.services} /> */}
-      {/* <WhyKendra {...homeContent.whyKendra} /> */}
+      {/* <WhyKendra {...whyKendra} /> */}
       <Services
       items={homeServiceContent}
       aboutContent={homeAboutUsContent}

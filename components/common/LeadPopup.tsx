@@ -91,7 +91,7 @@ export default function LeadPopUp({ open, onClose }: LeadPopUpProps) {
             </div>
             <h3 className="text-xl font-bold text-navy">Report Submitted!</h3>
             <p className="mt-2 text-slate-text/70">
-              You'll receive your personalized report shortly.
+              You&apos;ll receive your personalized report shortly.
             </p>
           </div>
         ) : (

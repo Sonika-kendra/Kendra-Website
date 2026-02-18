@@ -186,4 +186,61 @@
   .animate-gold-glow {
     animation: goldGlow 2s infinite;
   }
+
+
+/* Breathing Dot Grid - Theme Aware */
+.breathing-grid {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+
+  /* Use foreground color so it adapts in dark mode */
+  background-image:
+    radial-gradient(
+      circle,
+      rgb(var(--foreground) / 0.25) 2px,
+      transparent 2px
+    );
+
+  background-size: 22px 22px;
+  background-position: center;
+
+  animation: breatheGrid 6s ease-in-out infinite;
+}
+
+/* Soft fade above grid - Theme Aware */
+.about-fade-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+
+  background: radial-gradient(
+    circle at center,
+    rgba(0,0,0,0) 0%,
+    rgb(var(--background) / 0.4) 70%,
+    rgb(var(--background) / 0.75) 100%
+  );
+}
+
+
+/* Breathing animation */
+@keyframes breatheGrid {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(0.95);
+    opacity: 0.5;
+  }
+}
+
+
+
 }

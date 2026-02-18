@@ -78,6 +78,24 @@ export const homeServiceContent = [
   },
 ];
 
+export const whyKendra = {
+  heading: "Why Kendra International?",
+  reasons: [
+    {
+      title: "Expertise",
+      points: ["CFO-level expertise"],
+    },
+    {
+      title: "Speed",
+      points: ["Results in hours/days"],
+    },
+    {
+      title: "Results",
+      points: ["Fast growth milestones"],
+    },
+  ],
+};
+
 export const homeContent = {
   // services: [
   //   {
