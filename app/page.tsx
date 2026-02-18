@@ -2,14 +2,13 @@
 
 import { useEffect, useRef } from "react";
 import { useModal } from "@/context/ModalContext";
-import { homeAboutUsContent, homeServiceContent, whyKendra } from "@content/home";
+import { homeAboutUsContent, homeServiceContent } from "@content/home";
 import {
   Hero,
   Services,
   ClientStories,
   GlobalFootprint,
-  BusinessHealthCheck,
-  WhyKendra,
+  BusinessHealthCheck
 } from "@features/home";
 import { CTA } from "@features/footer";
 
