@@ -17,40 +17,44 @@ interface ServicesProps {
 
 export default function Services({ items, aboutContent }: ServicesProps) {
   return (
-    <section className="w-full h-auto bg-gray-50 my-5">
+    <section className="w-full h-auto bg-background my-5">
       <div className="flex flex-col lg:flex-row w-full h-full">
 
-{/* About Us Section - 1/3 */}
-<div className="lg:w-1/3 flex flex-col justify-start p-8 lg:p-16">
-  <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
-    {aboutContent.heading}
-  </h2>
+        {/* About Us Section - 1/3 */}
+        <div className="lg:w-1/3 flex flex-col justify-start p-8 lg:p-16">
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+            {aboutContent.heading}
+          </h2>
 
-  <p className="text-lg text-gray-700">
-    {aboutContent.description}
-  </p>
+          <p className="text-lg text-muted-foreground">
+            {aboutContent.description}
+          </p>
 
-  <Link
-    href="/about"
-    className="mt-4 inline-flex items-center text-base font-medium text-black hover:text-blue-600 transition-colors"
-  >
-    Discover
-    <svg
-      className="ml-1 w-4 h-4"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth={2}
-      viewBox="0 0 24 24"
-    >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        d="M5 12h14m0 0l-6-6m6 6l-6 6"
-      />
-    </svg>
-  </Link>
-</div>
+          <Link
+            href="/about"
+            className="mt-4 relative inline-flex items-center text-base font-medium text-foreground hover:text-accent transition-colors duration-300 group"
+          >
+            <span className="relative">
+              Discover
+              <span className="absolute left-0 -bottom-1 h-[2px] w-0 bg-current transition-all duration-300 ease-out group-hover:w-full" />
+            </span>
 
+            <svg
+              className="ml-2 w-4 h-4 opacity-0 transition-all duration-300 ease-out group-hover:opacity-100 group-hover:translate-x-1"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth={2}
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M5 12h14m0 0l-6-6m6 6l-6 6"
+              />
+            </svg>
+          </Link>
+
+        </div>
 
         {/* Services Section - 2/3 */}
         <div className="lg:w-2/3 flex flex-wrap p-4">
@@ -68,7 +72,7 @@ export default function Services({ items, aboutContent }: ServicesProps) {
               />
 
               {/* Overlay */}
-              <div className="absolute inset-0 bg-black/55 group-hover:bg-black/45 transition-colors duration-300" />
+              <div className="absolute inset-0 bg-primary/55 group-hover:bg-primary/45 transition-colors duration-300" />
 
               {/* Content */}
               <div className="relative p-6 flex flex-col h-full justify-between">
@@ -80,18 +84,27 @@ export default function Services({ items, aboutContent }: ServicesProps) {
                   />
                 </div>
 
-                <h3 className="text-2xl font-bold text-white mb-1">
+                <h3 className="text-2xl font-bold text-primary-foreground mb-1">
                   {item.title}
                 </h3>
 
-                <p className="text-base text-white/90 flex-1">
+                <p className="text-base text-primary-foreground/90 flex-1">
                   {item.description}
                 </p>
 
-                <span className="mt-4 inline-flex items-center text-base font-medium text-white group-hover:text-blue-200 transition-colors">
-                  Discover
+                <span className="mt-4 relative inline-flex items-center text-base font-medium text-primary-foreground group-hover:text-accent-foreground transition-colors duration-300">
+
+                  {/* Text */}
+                  <span className="relative">
+                    Discover
+
+                    {/* Animated underline */}
+                    <span className="absolute left-0 -bottom-1 h-[2px] w-0 bg-current transition-all duration-300 ease-out group-hover:w-full" />
+                  </span>
+
+                  {/* Arrow */}
                   <svg
-                    className="ml-1 w-4 h-4"
+                    className="ml-2 w-4 h-4 opacity-0 transition-all duration-300 ease-out group-hover:opacity-100 group-hover:translate-x-1"
                     fill="none"
                     stroke="currentColor"
                     strokeWidth={2}
@@ -104,6 +117,7 @@ export default function Services({ items, aboutContent }: ServicesProps) {
                     />
                   </svg>
                 </span>
+
               </div>
             </Link>
           ))}
