@@ -19,22 +19,46 @@ export default function Services({ items, aboutContent }: ServicesProps) {
   return (
     <section className="w-full h-auto bg-gray-50 my-5">
       <div className="flex flex-col lg:flex-row w-full h-full">
-        {/* About Us Section */}
-        <div className="lg:w-1/2 flex flex-col justify-center p-8 lg:p-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-navy">
-            {aboutContent.heading}
-          </h2>
-          <p className="text-lg text-gray-700">{aboutContent.description}</p>
-        </div>
 
-        {/* Services Section */}
-        <div className="lg:w flex flex-wrap">
+{/* About Us Section - 1/3 */}
+<div className="lg:w-1/3 flex flex-col justify-start p-8 lg:p-16">
+  <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
+    {aboutContent.heading}
+  </h2>
+
+  <p className="text-lg text-gray-700">
+    {aboutContent.description}
+  </p>
+
+  <Link
+    href="/about"
+    className="mt-4 inline-flex items-center text-base font-medium text-black hover:text-blue-600 transition-colors"
+  >
+    Discover
+    <svg
+      className="ml-1 w-4 h-4"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={2}
+      viewBox="0 0 24 24"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M5 12h14m0 0l-6-6m6 6l-6 6"
+      />
+    </svg>
+  </Link>
+</div>
+
+
+        {/* Services Section - 2/3 */}
+        <div className="lg:w-2/3 flex flex-wrap p-4">
           {items.slice(0, 4).map((item) => (
             <Link
               key={item.title}
               href={item.slug}
               className="relative flex-1 h-[280px] sm:h-[320px] lg:h-[360px] flex flex-col overflow-hidden shadow-lg group hover:shadow-2xl transition-shadow duration-300"
-
               style={{ flexBasis: "calc(50% - 1rem)" }}
             >
               {/* Background Image */}
@@ -42,9 +66,9 @@ export default function Services({ items, aboutContent }: ServicesProps) {
                 className="absolute inset-0 bg-cover bg-center"
                 style={{ backgroundImage: `url(${item.image})` }}
               />
+
               {/* Overlay */}
               <div className="absolute inset-0 bg-black/55 group-hover:bg-black/45 transition-colors duration-300" />
-
 
               {/* Content */}
               <div className="relative p-6 flex flex-col h-full justify-between">
@@ -53,24 +77,31 @@ export default function Services({ items, aboutContent }: ServicesProps) {
                     src={`/icons/${item.icon}.svg`}
                     alt={item.title}
                     className="w-8 h-8 filter brightness-0 invert"
-
                   />
                 </div>
 
+                <h3 className="text-2xl font-bold text-white mb-1">
+                  {item.title}
+                </h3>
 
-                <h3 className="text-xl font-bold text-white mb-1">{item.title}</h3>
-                <p className="text-sm text-white/90 flex-1">{item.description}</p>
+                <p className="text-base text-white/90 flex-1">
+                  {item.description}
+                </p>
 
-                <span className="mt-4 inline-flex items-center text-sm font-medium text-white group-hover:text-blue-200 transition-colors">
-                  Learn More
+                <span className="mt-4 inline-flex items-center text-base font-medium text-white group-hover:text-blue-200 transition-colors">
+                  Discover
                   <svg
-                    className="ml-2 w-4 h-4"
+                    className="ml-1 w-4 h-4"
                     fill="none"
                     stroke="currentColor"
                     strokeWidth={2}
                     viewBox="0 0 24 24"
                   >
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14m0 0l-6-6m6 6l-6 6" />
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M5 12h14m0 0l-6-6m6 6l-6 6"
+                    />
                   </svg>
                 </span>
               </div>
