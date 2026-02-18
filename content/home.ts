@@ -44,22 +44,32 @@ export const heroSlidContent = [
 export const homeContent = {
   services: [
     {
-      title: "Finance as a Service",
-      slug: "/services/consulting",
-      description: "Outsource your finance function with CFO-level expertise, automated processes, and upgraded reporting.",
-      icon: "wallet",
+      title: "Fueling Growth",
+      slug: "/services/fueling-growth",
+      description: "Identify new revenue streams, optimize sales cycles, and expand market reach.",
+      icon: "growth",
+      image: "/images/services/growth.jpg",
     },
     {
-      title: "Operational Transformation",
-      slug: "/services/cost",
-      description: "Fix inefficiencies and future-proof your business. Unlock hidden value through strategic restructuring.",
-      icon: "settings",
+      title: "Optimizing Operations",
+      slug: "/services/optimizing-operations",
+      description: "Reduce costs and enhance efficiency through strategic outsourcing, automation, and digital transformation.",
+      icon: "operations",
+      image: "/images/services/operations.jpg",
     },
     {
-      title: "Buy & Build Strategy",
-      slug: "/services/ma",
-      description: "Strategic M&A advisory to identify, negotiate, and integrate the right acquisitions for growth.",
-      icon: "briefcase",
+      title: "Strengthening Liquidity",
+      slug: "/services/strengthening-liquidity",
+      description: "Improve cash flow, manage capital effectively, and build financial resilience for long-term success.",
+      icon: "liquidity",
+      image: "/images/services/liquidity.jpg",
+    },
+    {
+      title: "M&A & Exit Strategy Planning",
+      slug: "/services/ma-exit-strategy",
+      description: "Navigate mergers, acquisitions, and business transitions seamlessly, maximizing value and ensuring smooth transitions.",
+      icon: "strategy",
+      image: "/images/services/mergers.jpg",
     },
   ],
 
@@ -81,3 +91,45 @@ export const homeContent = {
     ],
   },
 };
+
+
+// export const homeContent = {
+//   services: [
+//     {
+//       title: "Finance as a Service",
+//       slug: "/services/consulting",
+//       description: "Outsource your finance function with CFO-level expertise, automated processes, and upgraded reporting.",
+//       icon: "wallet",
+//     },
+//     {
+//       title: "Operational Transformation",
+//       slug: "/services/cost",
+//       description: "Fix inefficiencies and future-proof your business. Unlock hidden value through strategic restructuring.",
+//       icon: "settings",
+//     },
+//     {
+//       title: "Buy & Build Strategy",
+//       slug: "/services/ma",
+//       description: "Strategic M&A advisory to identify, negotiate, and integrate the right acquisitions for growth.",
+//       icon: "briefcase",
+//     },
+//   ],
+
+//   whyKendra: {
+//     heading: "Why Kendra International?",
+//     reasons: [
+//       {
+//         title: "Expertise",
+//         points: ["CFO-level expertise"],
+//       },
+//       {
+//         title: "Speed",
+//         points: ["Results in hours/days"],
+//       },
+//       {
+//         title: "Results",
+//         points: ["Fast growth milestones"],
+//       },
+//     ],
+//   },
+// };
