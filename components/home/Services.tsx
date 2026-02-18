@@ -28,12 +28,13 @@ export default function Services({ items, aboutContent }: ServicesProps) {
         </div>
 
         {/* Services Section */}
-        <div className="lg:w-1/2 flex flex-wrap">
+        <div className="lg:w flex flex-wrap">
           {items.slice(0, 4).map((item) => (
             <Link
               key={item.title}
               href={item.slug}
-              className="relative flex-1 flex flex-col min-h-[280px] overflow-hidden shadow-lg group hover:shadow-2xl transition-shadow duration-300"
+              className="relative flex-1 h-[280px] sm:h-[320px] lg:h-[360px] flex flex-col overflow-hidden shadow-lg group hover:shadow-2xl transition-shadow duration-300"
+
               style={{ flexBasis: "calc(50% - 1rem)" }}
             >
               {/* Background Image */}

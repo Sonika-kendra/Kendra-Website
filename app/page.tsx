@@ -9,6 +9,7 @@ import {
   ClientStories,
   GlobalFootprint,
   BusinessHealthCheck,
+  WhyKendra,
 } from "@features/home";
 import { CTA } from "@features/footer";
 
@@ -27,11 +28,11 @@ export default function HomePage() {
     <main>
       <Hero />
       {/* <Services items={homeContent.services} /> */}
+      {/* <WhyKendra {...homeContent.whyKendra} /> */}
       <Services
       items={homeServiceContent}
       aboutContent={homeAboutUsContent}
     />
-      {/* <WhyKendra {...homeContent.whyKendra} /> */}
       <ClientStories />
       <GlobalFootprint />
       <CTA />

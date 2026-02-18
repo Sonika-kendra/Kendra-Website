@@ -63,18 +63,18 @@ export const homeServiceContent = [
     image: "/services/service-2.jpg",
   },
   {
-    title: "Strengthening Liquidity",
-    slug: "/services/strengthening-liquidity",
-    description: "Improve cash flow, manage capital effectively, and build financial resilience for long-term success.",
-    icon: "liquidity",
-    image: "/services/service-3.jpg",
-  },
-  {
     title: "M&A & Exit Strategy Planning",
     slug: "/services/ma-exit-strategy",
     description: "Navigate mergers, acquisitions, and business transitions seamlessly, maximizing value and ensuring smooth transitions.",
     icon: "strategy",
     image: "/services/service-4.jpg",
+  },
+  {
+    title: "Strengthening Liquidity",
+    slug: "/services/strengthening-liquidity",
+    description: "Improve cash flow, manage capital effectively, and build financial resilience for long-term success.",
+    icon: "liquidity",
+    image: "/services/service-3.jpg",
   },
 ];
 
