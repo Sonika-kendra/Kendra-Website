@@ -42,19 +42,20 @@ export default function Services({ items, aboutContent }: ServicesProps) {
                 style={{ backgroundImage: `url(${item.image})` }}
               />
               {/* Overlay */}
-              <div className="absolute inset-0 bg-black/40 group-hover:bg-black/30 transition-colors" />
+              <div className="absolute inset-0 bg-black/55 group-hover:bg-black/45 transition-colors duration-300" />
+
 
               {/* Content */}
               <div className="relative p-6 flex flex-col h-full justify-between">
                 <div className="flex items-center mb-2">
-                  <div className="w-12 h-12 flex items-center justify-center rounded-full bg-white/80">
-                    <img
-                      src={`/icons/${item.icon}.svg`}
-                      alt={item.title}
-                      className="w-6 h-6"
-                    />
-                  </div>
+                  <img
+                    src={`/icons/${item.icon}.svg`}
+                    alt={item.title}
+                    className="w-8 h-8 filter brightness-0 invert"
+
+                  />
                 </div>
+
 
                 <h3 className="text-xl font-bold text-white mb-1">{item.title}</h3>
                 <p className="text-sm text-white/90 flex-1">{item.description}</p>
