@@ -12,22 +12,29 @@ interface ServiceItem {
 
 interface ServicesProps {
   items: ServiceItem[];
+  aboutContent: { heading: string; description: string };
 }
 
-export default function Services({ items }: ServicesProps) {
+export default function Services({ items, aboutContent }: ServicesProps) {
   return (
-    <section className="py-16 md:py-20 bg-gray-50">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <h2 className="text-3xl md:text-4xl font-bold text-center text-navy mb-12">
-          Strategic Solutions to Empower Your Business
-        </h2>
+    <section className="w-full h-auto bg-gray-50 my-5">
+      <div className="flex flex-col lg:flex-row w-full h-full">
+        {/* About Us Section */}
+        <div className="lg:w-1/2 flex flex-col justify-center p-8 lg:p-16">
+          <h2 className="text-3xl md:text-4xl font-bold text-navy">
+            {aboutContent.heading}
+          </h2>
+          <p className="text-lg text-gray-700">{aboutContent.description}</p>
+        </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8">
+        {/* Services Section */}
+        <div className="lg:w-1/2 flex flex-wrap">
           {items.slice(0, 4).map((item) => (
             <Link
               key={item.title}
               href={item.slug}
-              className="relative flex flex-col h-64 rounded-2xl overflow-hidden shadow-lg group hover:shadow-2xl transition-shadow duration-300"
+              className="relative flex-1 flex flex-col min-h-[280px] overflow-hidden shadow-lg group hover:shadow-2xl transition-shadow duration-300"
+              style={{ flexBasis: "calc(50% - 1rem)" }}
             >
               {/* Background Image */}
               <div
