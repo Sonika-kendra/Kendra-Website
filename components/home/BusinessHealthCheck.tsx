@@ -104,11 +104,11 @@ export default function BusinessHealthCheck() {
             <div className="relative p-8 md:p-16 text-center text-white">
               <div className="flex justify-center mb-6">
                 <div className="p-3 bg-steel/20 rounded-full">
-                  <TrendingUp className="h-8 w-8 text-steel" strokeWidth={1.5} />
+                  <TrendingUp className="h-8 w-8 text-white" strokeWidth={1.5} />
                 </div>
               </div>
               
-              <h2 className="text-3xl sm:text-4xl font-display font-bold">Business Health Check Analyzer</h2>
+              <h2 className="text-3xl sm:text-4xl font-display font-bold text-white">Business Health Check Analyzer</h2>
               <p className="mt-4 text-white/80 max-w-2xl mx-auto leading-relaxed text-lg">
                 Get instant insights into your business performance. Our AI-powered analyzer evaluates revenue growth, 
                 margin health, and operational efficiency in seconds.
@@ -116,19 +116,19 @@ export default function BusinessHealthCheck() {
               
               <div className="mt-12 grid gap-6 md:grid-cols-3">
                 <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
-                  <CheckCircle2 className="h-6 w-6 text-steel mx-auto mb-3" />
-                  <h3 className="font-semibold mb-2">Revenue Analysis</h3>
-                  <p className="text-sm text-white/70">Track growth trends and identify opportunities</p>
+                  <CheckCircle2 className="h-6 w-6 text-white mx-auto mb-3" />
+                  <h3 className="font-semibold mb-2 text-white">Revenue Analysis</h3>
+                  <p className="text-sm text-white">Track growth trends and identify opportunities</p>
                 </div>
                 <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
-                  <CheckCircle2 className="h-6 w-6 text-steel mx-auto mb-3" />
-                  <h3 className="font-semibold mb-2">Margin Health</h3>
-                  <p className="text-sm text-white/70">Understand profitability metrics</p>
+                  <CheckCircle2 className="h-6 w-6 text-white mx-auto mb-3" />
+                  <h3 className="font-semibold mb-2 text-white">Margin Health</h3>
+                  <p className="text-sm text-white">Understand profitability metrics</p>
                 </div>
                 <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
-                  <CheckCircle2 className="h-6 w-6 text-steel mx-auto mb-3" />
-                  <h3 className="font-semibold mb-2">Quick Snapshot</h3>
-                  <p className="text-sm text-white/70">Actionable insights in moments</p>
+                  <CheckCircle2 className="h-6 w-6 text-white mx-auto mb-3" />
+                  <h3 className="font-semibold mb-2 text-white">Quick Snapshot</h3>
+                  <p className="text-sm text-white">Actionable insights in moments</p>
                 </div>
               </div>
 
@@ -165,15 +165,15 @@ export default function BusinessHealthCheck() {
                 <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-50 mb-4">
                   <CheckCircle2 className="h-8 w-8 text-green-600" />
                 </div>
-                <h3 className="text-xl font-display font-bold text-navy">Analysis Submitted!</h3>
+                <h3 className="text-xl font-display font-bold text-white">Analysis Submitted!</h3>
                 <p className="mt-2 text-slate-text/70">We&apos;ll generate your personalized report and send it to your email shortly.</p>
               </div>
             ) : (
               <div className="p-8">
                 <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-navy/10 mb-4">
-                  <TrendingUp className="h-6 w-6 text-navy" />
+                  <TrendingUp className="h-6 w-6 text-white" />
                 </div>
-                <h3 className="text-xl font-display font-bold text-navy">Quick Analysis</h3>
+                <h3 className="text-xl font-display font-bold text-white">Quick Analysis</h3>
                 <p className="mt-2 text-sm text-slate-text/70">Share your details and get instant insights</p>
 
                 <form onSubmit={handleSubmit} className="mt-6 space-y-4">
@@ -270,7 +270,7 @@ export default function BusinessHealthCheck() {
                     <input type="checkbox" required className="mt-1" />
                     <span>
                       I agree to receive insights and analysis. See our{" "}
-                      <a href="/privacy" className="underline text-navy hover:text-navy/80">Privacy Policy</a>
+                      <a href="/privacy" className="underline text-white hover:text-white/80">Privacy Policy</a>
                     </span>
                   </label>
 
