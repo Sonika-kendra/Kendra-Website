@@ -68,8 +68,8 @@ export default function ClientTestimonials() {
   const next = () => setIndex((i) => (i + 1) % testimonials.length);
 
   return (
-    <section className="w-screen h-screen flex items-center justify-center bg-gradient-to-b from-slate-100 to-slate-200 overflow-hidden border">
-      <div className="relative w-full h-full flex items-center justify-center [perspective:2000px]">
+    <section className="w-screen min-h-[70vh] flex items-center justify-center bg-gradient-to-b from-slate-100 to-slate-200 overflow-hidden">
+      <div className="relative w-full max-w-6xl flex items-center justify-center [perspective:2000px]">
         <AnimatePresence initial={false}>
           {testimonials.map((testimonial, i) => {
             const offset = (i - index + testimonials.length) % testimonials.length;
@@ -98,19 +98,19 @@ export default function ClientTestimonials() {
                   if (info.offset.x < -60) next();
                   else if (info.offset.x > 60) prev();
                 }}
-                className="absolute w-full h-full flex items-center justify-center"
+                className="absolute w-full max-h-[70vh] flex items-center justify-center"
                 style={{ transformStyle: "preserve-3d" }}
               >
                 {/* Card */}
-                <div className="bg-white rounded-3xl shadow-2xl overflow-hidden w-3/5 h-3/5 flex flex-col md:flex-row">
+                <div className="bg-white rounded-3xl shadow-2xl overflow-hidden w-4/5 h-[60vh] flex flex-col md:flex-row">
                   {/* LEFT SIDE — TEXT CONTENT */}
-                  <div className="flex-1 p-10 flex flex-col justify-center text-left">
+                  <div className="flex-1 p-6 flex flex-col justify-center text-left">
                     <p className="text-slate-700 text-lg md:text-xl leading-relaxed">
                       <span className="text-5xl text-gray-300 mr-2">“</span>
                       {testimonial.quote}
                       <span className="text-5xl text-gray-300 ml-2">”</span>
                     </p>
-                    <div className="mt-6">
+                    <div className="mt-4">
                       <h3 className="text-2xl md:text-3xl font-semibold text-navy">
                         {testimonial.name}
                       </h3>
