@@ -10,6 +10,7 @@ import { blogPosts } from "@/content/blog";
 export default function Blog() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [sidebarIndex, setSidebarIndex] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
 
   const total = blogPosts.length;
 
@@ -22,18 +23,19 @@ export default function Blog() {
     return () => clearInterval(interval);
   }, [total]);
 
-  /* ---------------- Sidebar Auto Slide ---------------- */
+  /* ---------------- Sidebar Auto Slide (Pause on Hover) ---------------- */
   useEffect(() => {
+    if (isHovered) return;
+
     const interval = setInterval(() => {
       setSidebarIndex((prev) => (prev === total - 1 ? 0 : prev + 1));
     }, 7000);
 
     return () => clearInterval(interval);
-  }, [total]);
+  }, [total, isHovered]);
 
   const featured = blogPosts[currentIndex];
 
-  // Get 3 posts in loop
   const sidebarPosts = [
     blogPosts[sidebarIndex],
     blogPosts[(sidebarIndex + 1) % total],
@@ -46,17 +48,17 @@ export default function Blog() {
   const handlePrev = () =>
     setSidebarIndex((prev) => (prev === 0 ? total - 1 : prev - 1));
 
+  const handleSelect = (index: number) => {
+    setCurrentIndex(index);
+  };
+
   return (
-    <section className="w-full bg-white py-24">
-      <div className="max-w-7xl mx-auto px-6">
-        {/* Section Header */}
+    <section className="w-full bg-white py-2">
+      <div className="max-w-7xl mx-auto px-2">
         <div className="mb-16 border-b border-gray-200 pb-6">
           <h2 className="text-5xl font-bold tracking-tight text-gray-900">
             Blogs
           </h2>
-          {/* <p className="text-gray-500 mt-3 max-w-2xl">
-            Long-form thinking, technical depth, and perspectives from our team.
-          </p> */}
         </div>
 
         <div className="grid lg:grid-cols-3 gap-16">
@@ -102,8 +104,12 @@ export default function Blog() {
             </AnimatePresence>
           </div>
 
-          {/* ---------------- Sidebar Vertical Carousel ---------------- */}
-          <div className="relative h-[650px] overflow-hidden">
+          {/* ---------------- Sidebar ---------------- */}
+          <div
+            className="relative h-[650px] overflow-hidden"
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+          >
             {/* Controls */}
             <div className="absolute right-0 top-0 flex flex-col gap-2 z-10">
               <button
@@ -129,34 +135,54 @@ export default function Blog() {
                 transition={{ duration: 0.5 }}
                 className="space-y-10 pr-12"
               >
-                {sidebarPosts.map((post) => (
-                  <article key={post.id} className="flex gap-6 group">
-                    <div className="relative w-28 h-28 flex-shrink-0">
-                      <Image
-                        src={post.image}
-                        alt={post.title}
-                        fill
-                        className="object-cover"
-                      />
-                    </div>
+                {sidebarPosts.map((post) => {
+                  const isActive = post.id === featured.id;
 
-                    <div>
-                      <div className="text-xs text-gray-400 mb-1">
-                        {post.date}
+                  return (
+                    <article
+                      key={post.id}
+                      onClick={() =>
+                        handleSelect(
+                          blogPosts.findIndex((p) => p.id === post.id)
+                        )
+                      }
+                      className={`flex gap-6 group cursor-pointer transition-all duration-300 ${
+                        isActive
+                          ? "opacity-100 scale-105"
+                          : "opacity-60 hover:opacity-100"
+                      }`}
+                    >
+                      <div className="relative w-28 h-28 flex-shrink-0">
+                        <Image
+                          src={post.image}
+                          alt={post.title}
+                          fill
+                          className="object-cover"
+                        />
                       </div>
 
-                      <h4 className="text-lg font-medium text-gray-900 group-hover:underline">
-                        <Link href={`/blog/${post.slug}`}>
-                          {post.title}
-                        </Link>
-                      </h4>
+                      <div>
+                        <div className="text-xs text-gray-400 mb-1">
+                          {post.date}
+                        </div>
 
-                      <p className="text-sm text-gray-500 mt-2 line-clamp-2">
-                        {post.excerpt}
-                      </p>
-                    </div>
-                  </article>
-                ))}
+                        <h4
+                          className={`text-lg font-medium ${
+                            isActive
+                              ? "text-black"
+                              : "text-gray-900 group-hover:underline"
+                          }`}
+                        >
+                          {post.title}
+                        </h4>
+
+                        <p className="text-sm text-gray-500 mt-2 line-clamp-2">
+                          {post.excerpt}
+                        </p>
+                      </div>
+                    </article>
+                  );
+                })}
               </motion.div>
             </AnimatePresence>
           </div>
