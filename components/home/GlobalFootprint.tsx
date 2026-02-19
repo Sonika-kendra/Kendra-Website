@@ -1,135 +1,75 @@
 "use client";
 
-import { useState } from "react";
-import { MapPin, Send, CheckCircle2 } from "lucide-react";
+import { MapPin } from "lucide-react";
 
 export default function GlobalFootprint() {
-  const [form, setForm] = useState({ name: "", email: "", message: "" });
-  const [submitted, setSubmitted] = useState(false);
-  const [loading, setLoading] = useState(false);
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setLoading(true);
-    
-    try {
-      await fetch("/api/lead", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
-      }).catch(() => null);
-      
-      setSubmitted(true);
-      setTimeout(() => {
-        setSubmitted(false);
-        setForm({ name: "", email: "", message: "" });
-      }, 3000);
-    } catch (err) {
-      console.error(err);
-    } finally {
-      setLoading(false);
-    }
-  };
+  const locations = [
+    { name: "Ottawa", x: 22, y: 25 },
+    { name: "San Francisco", x: 10, y: 30 },
+    { name: "Miami", x: 15, y: 40 },
+    { name: "Mexico City", x: 13, y: 45 },
+    { name: "Amsterdam", x: 50, y: 20 },
+    { name: "Berlin", x: 55, y: 25 },
+    { name: "Casablanca", x: 45, y: 35 },
+    { name: "Riyadh", x: 65, y: 35 },
+    { name: "Beijing", x: 85, y: 25 },
+    { name: "Tokyo", x: 95, y: 25 },
+    { name: "Singapore", x: 90, y: 50 },
+  ];
 
   return (
-    <section className="py-16 md:py-20">
+    <section className="py-16 md:py-20 bg-gray-900 text-white">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl sm:text-4xl font-bold text-navy">Global Reach, Local Touch</h2>
-          <p className="mt-3 text-slate-text/70 max-w-2xl mx-auto">Serving businesses across continents with personalized advisory</p>
-        </div>
-
-        <div className="mt-12 grid gap-10 md:grid-cols-2 items-center">
-          {/* Locations & Map */}
-          <div>
-            <div className="space-y-4">
-              <div className="flex items-start gap-3">
-                <div className="p-2 rounded-lg bg-white/20 mt-1">
-                  <MapPin className="h-5 w-5 text-white" strokeWidth={2} />
-                </div>
-                <div>
-                  <h3 className="font-semibold text-navy">Europe & UK</h3>
-                  <p className="text-sm text-slate-text/70">London, Frankfurt, Geneva</p>
-                </div>
-              </div>
-              
-              <div className="flex items-start gap-3">
-                <div className="p-2 rounded-lg bg-white/20 mt-1">
-                  <MapPin className="h-5 w-5 text-white" strokeWidth={2} />
-                </div>
-                <div>
-                  <h3 className="font-semibold text-navy">Asia Pacific</h3>
-                  <p className="text-sm text-slate-text/70">Singapore, Mumbai, Sydney</p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-3">
-                <div className="p-2 rounded-lg bg-white/20 mt-1">
-                  <MapPin className="h-5 w-5 text-white" strokeWidth={2} />
-                </div>
-                <div>
-                  <h3 className="font-semibold text-navy">Americas</h3>
-                  <p className="text-sm text-slate-text/70">New York, Toronto, São Paulo</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="mt-10 p-6 bg-off-white rounded-xl">
-              <p className="font-semibold text-navy mb-3">Ready to scale globally?</p>
-              <p className="text-sm text-slate-text/70 mb-4">Let&apos;s start building your international success story</p>
-            </div>
+        <div className="flex flex-col md:flex-row justify-between items-start mb-12 gap-8">
+          {/* Left Text */}
+          <div className="md:w-1/3">
+            <h2 className="text-3xl sm:text-4xl font-bold mb-4">Global Footprint</h2>
+            <p className="text-slate-300">
+              Shinery is a leader in offshore wind farms across Europe, with over 30 years of experience.
+              Our company has 102 GW installed and 81 GW under construction.
+            </p>
+            <button className="mt-6 px-5 py-2 bg-green-600 rounded-lg text-sm font-semibold hover:bg-green-700 transition">
+              View more details
+            </button>
           </div>
 
-          {/* Contact Form */}
-          <div className="bg-white rounded-2xl p-8 shadow-sm border border-border">
-            {submitted ? (
-              <div className="py-12 text-center">
-                <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-50 mb-4">
-                  <CheckCircle2 className="h-8 w-8 text-green-600" />
-                </div>
-                <p className="text-lg font-display font-bold text-navy">Message Sent!</p>
-                <p className="mt-2 text-sm text-slate-text/70">{"We'll be in touch shortly."}</p>
+          {/* Map */}
+          <div className="relative md:w-2/3 h-96 rounded-xl overflow-hidden">
+            <img
+              src="/globalFootPrint/world.svg"
+              alt="World Map"
+              className="w-full h-full object-cover"
+            />
+            {locations.map((loc) => (
+              <div
+                key={loc.name}
+                className="absolute transform -translate-x-1/2 -translate-y-1/2"
+                style={{ left: `${loc.x}%`, top: `${loc.y}%` }}
+                title={loc.name}
+              >
+                <MapPin className="h-6 w-6 text-red-500" />
               </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="space-y-4">
-                <h3 className="font-display font-semibold text-navy mb-4">Get in Touch</h3>
-                
-                <input
-                  type="text"
-                  placeholder="Your Name"
-                  required
-                  value={form.name}
-                  onChange={(e) => setForm({ ...form, name: e.target.value })}
-                  className="w-full rounded-lg border border-border px-4 py-3 text-sm text-slate-text outline-none focus:border-navy focus:ring-1 focus:ring-navy/20 transition-colors"
-                />
-                
-                <input
-                  type="email"
-                  placeholder="Work Email"
-                  required
-                  value={form.email}
-                  onChange={(e) => setForm({ ...form, email: e.target.value })}
-                  className="w-full rounded-lg border border-border px-4 py-3 text-sm text-slate-text outline-none focus:border-navy focus:ring-1 focus:ring-navy/20 transition-colors"
-                />
-                
-                <textarea
-                  placeholder="How can we help you?"
-                  rows={4}
-                  value={form.message}
-                  onChange={(e) => setForm({ ...form, message: e.target.value })}
-                  className="w-full rounded-lg border border-border px-4 py-3 text-sm text-slate-text outline-none focus:border-navy focus:ring-1 focus:ring-navy/20 transition-colors resize-none"
-                />
-                
-                <button
-                  disabled={loading}
-                  type="submit"
-                  className="w-full rounded-lg bg-navy px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-navy/90 hover:shadow-lg disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2"
-                >
-                  <Send className="h-4 w-4" />
-                  {loading ? "Sending..." : "Send Message"}
-                </button>
-              </form>
-            )}
+            ))}
+          </div>
+        </div>
+
+        {/* Optional Stats Section */}
+        <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+          <div>
+            <p className="text-2xl font-bold">10,000+</p>
+            <p className="text-sm text-slate-300">Solar Systems Installed</p>
+          </div>
+          <div>
+            <p className="text-2xl font-bold">50+</p>
+            <p className="text-sm text-slate-300">Countries Served</p>
+          </div>
+          <div>
+            <p className="text-2xl font-bold">5M</p>
+            <p className="text-sm text-slate-300">Tons of CO2 Offset</p>
+          </div>
+          <div>
+            <p className="text-2xl font-bold">10+</p>
+            <p className="text-sm text-slate-300">Years of Innovating</p>
           </div>
         </div>
       </div>

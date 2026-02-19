@@ -34,7 +34,7 @@ export default function HomePage() {
     />
       <ClientStories />
       <GlobalFootprint />
-      <CTA />
+      {/* <CTA /> */}
       <BusinessHealthCheck />
     </main>
   );
