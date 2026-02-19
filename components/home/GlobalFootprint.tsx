@@ -1,22 +1,31 @@
 "use client";
 
-import { MapPin } from "lucide-react";
+import { ComposableMap, Geographies, Geography, Marker } from "react-simple-maps";
+
+const geoUrl = "/world-110m.json"; // TopoJSON world map in public folder
+
+// Define location type with exact tuple coordinates
+interface Location {
+  name: string;
+  coordinates: [number, number]; // [longitude, latitude]
+}
+
+// List of locations
+const locations: Location[] = [
+  { name: "Ottawa", coordinates: [-75.6972, 45.4215] },
+  { name: "San Francisco", coordinates: [-122.4194, 37.7749] },
+  { name: "Miami", coordinates: [-80.1918, 25.7617] },
+  { name: "Mexico City", coordinates: [-99.1332, 19.4326] },
+  { name: "Amsterdam", coordinates: [4.9041, 52.3676] },
+  { name: "Berlin", coordinates: [13.4050, 52.5200] },
+  { name: "Casablanca", coordinates: [-7.5898, 33.5731] },
+  { name: "Riyadh", coordinates: [46.6753, 24.7136] },
+  { name: "Beijing", coordinates: [116.4074, 39.9042] },
+  { name: "Tokyo", coordinates: [139.6503, 35.6762] },
+  { name: "Singapore", coordinates: [103.8198, 1.3521] },
+];
 
 export default function GlobalFootprint() {
-  const locations = [
-    { name: "Ottawa", x: 22, y: 25 },
-    { name: "San Francisco", x: 10, y: 30 },
-    { name: "Miami", x: 15, y: 40 },
-    { name: "Mexico City", x: 13, y: 45 },
-    { name: "Amsterdam", x: 50, y: 20 },
-    { name: "Berlin", x: 55, y: 25 },
-    { name: "Casablanca", x: 45, y: 35 },
-    { name: "Riyadh", x: 65, y: 35 },
-    { name: "Beijing", x: 85, y: 25 },
-    { name: "Tokyo", x: 95, y: 25 },
-    { name: "Singapore", x: 90, y: 50 },
-  ];
-
   return (
     <section className="py-16 md:py-20 bg-gray-900 text-white">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
@@ -33,27 +42,38 @@ export default function GlobalFootprint() {
             </button>
           </div>
 
-          {/* Map */}
-          <div className="relative md:w-2/3 h-96 rounded-xl overflow-hidden">
-            <img
-              src="/globalFootPrint/world.svg"
-              alt="World Map"
-              className="w-full h-full object-cover"
-            />
-            {locations.map((loc) => (
-              <div
-                key={loc.name}
-                className="absolute transform -translate-x-1/2 -translate-y-1/2"
-                style={{ left: `${loc.x}%`, top: `${loc.y}%` }}
-                title={loc.name}
-              >
-                <MapPin className="h-6 w-6 text-red-500" />
-              </div>
-            ))}
+          {/* SVG Map */}
+          <div className="md:w-2/3 h-96">
+            <ComposableMap
+              projection="geoEqualEarth"
+              projectionConfig={{ scale: 160 }}
+              style={{ width: "100%", height: "100%" }}
+            >
+              <Geographies geography="https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json">
+                {({ geographies }) =>
+                  geographies.map((geo) => (
+                    <Geography
+                      key={geo.rsmKey}
+                      geography={geo}
+                      fill="#334155"
+                      stroke="#475569"
+                      strokeWidth={0.5}
+                    />
+                  ))
+                }
+              </Geographies>
+
+              {locations.map((loc) => (
+                <Marker key={loc.name} coordinates={loc.coordinates}>
+                  <circle r={5} fill="red" stroke="#fff" strokeWidth={1} />
+                </Marker>
+              ))}
+            </ComposableMap>
           </div>
+
         </div>
 
-        {/* Optional Stats Section */}
+        {/* Stats Section */}
         <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
           <div>
             <p className="text-2xl font-bold">10,000+</p>
