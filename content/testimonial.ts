@@ -13,14 +13,14 @@ export const testimonials = [
     name: "Priya Mehta",
     role: "Operations Lead",
     image: "/images/priya.jpg",
-    type: "image",
+    type: "video",
   },
   {
     quote: "Since adopting this solution, our workflow has become seamless. Tasks that used to take hours now take minutes. Highly recommend it!",
     name: "Michael Lee",
     role: "Software Engineer",
     image: "/images/michael.jpg",
-    type: "video",
+    type: "image",
   },
   {
     quote: "The analytics and reporting features have given us insights we never had before. We can now make data-driven decisions faster than ever.",
