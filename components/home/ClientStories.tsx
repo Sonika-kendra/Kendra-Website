@@ -1,112 +1,121 @@
 "use client";
 
 import { useState } from "react";
-import { ChevronLeft, ChevronRight, TrendingUp, Target, Award } from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { testimonials } from "@/content/testimonial";
 
-const stories = [
-  {
-    title: "Tech Scale-Up Achieves 3x Revenue Growth",
-    description:
-      "Through strategic FaaS implementation, we helped a growing tech company triple their revenue while maintaining lean operations and improving operational efficiency by 45%.",
-    metric: "3x Revenue",
-    icon: TrendingUp,
-    industry: "Technology",
-  },
-  {
-    title: "Manufacturing Firm Cuts Costs by 40%",
-    description:
-      "Our Turnover & Transformation service identified key inefficiencies and implemented changes that reduced operating costs significantly, improving EBITDA margins from 12% to 24%.",
-    metric: "40% Cost Reduction",
-    icon: Target,
-    industry: "Manufacturing",
-  },
-  {
-    title: "Successful Cross-Border Acquisition",
-    description:
-      "Our Buy & Build strategy enabled a mid-market company to complete its first international acquisition seamlessly, integrating operations within 6 months.",
-    metric: "First International M&A",
-    icon: Award,
-    industry: "Financial Services",
-  },
-];
-
-export default function ClientStories() {
+export default function ClientTestimonials() {
   const [index, setIndex] = useState(0);
-  const story = stories[index];
-  const Icon = story.icon;
 
-  const prev = () => setIndex((i) => (i - 1 + stories.length) % stories.length);
-  const next = () => setIndex((i) => (i + 1) % stories.length);
+  const prev = () =>
+    setIndex((i) => (i - 1 + testimonials.length) % testimonials.length);
+
+  const next = () =>
+    setIndex((i) => (i + 1) % testimonials.length);
 
   return (
-    <section className="py-16 md:py-20 bg-off-white">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl sm:text-4xl font-bold text-navy">Client Success Stories</h2>
-          <p className="mt-3 text-slate-text/70 max-w-2xl mx-auto">Real results from real clients who scaled smarter with Kendra</p>
-        </div>
+    <section className="pt-24 md:pt-32 pb-16 md:pb-24 min-h-[80vh] flex items-center justify-center bg-gradient-to-b from-slate-100 to-slate-200">
+      <div className="relative w-full max-w-5xl h-[620px] flex items-center justify-center overflow-hidden [perspective:2000px]">
+        
+        <AnimatePresence initial={false}>
+          {testimonials.map((testimonial, i) => {
+            const offset =
+              (i - index + testimonials.length) % testimonials.length;
 
-        <div className="mt-12">
-          <div className="flex items-center gap-4 md:gap-8">
-            {/* Previous button */}
-            <button
-              onClick={prev}
-              className="flex-shrink-0 flex h-12 w-12 items-center justify-center rounded-full border border-border bg-white text-slate-text hover:bg-navy hover:text-white hover:border-navy transition-all"
-              aria-label="Previous story"
-            >
-              <ChevronLeft className="h-6 w-6" />
-            </button>
+            const normalized =
+              offset > testimonials.length / 2
+                ? offset - testimonials.length
+                : offset;
 
-            {/* Story content */}
-            <div className="flex-1 bg-white rounded-2xl p-8 md:p-12 border border-border shadow-sm">
-              <div className="grid gap-8 md:grid-cols-5 items-start">
-                {/* Metrics & Icon - left column */}
-                <div className="md:col-span-2">
-                  <div className="flex items-center gap-4 mb-6">
-                    <div className="p-4 bg-steel/20 rounded-lg">
-                      <Icon className="h-7 w-7 text-steel" strokeWidth={1.5} />
-                    </div>
-                    <div>
-                      <p className="text-xs font-semibold text-slate-text/60 uppercase tracking-wider">{story.industry}</p>
-                      <p className="text-sm font-semibold text-steel mt-1">{story.metric}</p>
-                    </div>
+            // Only 1 slide on each side (very subtle preview)
+            if (Math.abs(normalized) > 1) return null;
+
+            const isCenter = normalized === 0;
+            const isVideo = testimonial.type === "video";
+
+            return (
+              <motion.div
+                key={testimonial.name}
+                initial={{ opacity: 0 }}
+                animate={{
+                  x: normalized * 160, // smaller movement
+                  scale: isCenter ? 1 : 0.75, // much smaller side slides
+                  rotateY: isCenter ? 0 : normalized > 0 ? -15 : 15,
+                  opacity: isCenter ? 1 : 0.25, // barely visible
+                  zIndex: 10 - Math.abs(normalized),
+                  filter: isCenter ? "blur(0px)" : "blur(3px)",
+                }}
+                transition={{
+                  type: "spring",
+                  stiffness: 200,
+                  damping: 25,
+                }}
+                drag={isCenter ? "x" : false}
+                dragConstraints={{ left: 0, right: 0 }}
+                dragElastic={0.2}
+                onDragEnd={(e, info) => {
+                  if (info.offset.x < -60) next();
+                  else if (info.offset.x > 60) prev();
+                }}
+                className="absolute"
+                style={{ transformStyle: "preserve-3d" }}
+              >
+                <div className="bg-white rounded-3xl shadow-2xl overflow-hidden w-96 text-center">
+
+                  {/* Media */}
+                  <div className="relative">
+                    {isVideo ? (
+                      <video
+                        src={testimonial.image}
+                        className="w-full h-96 object-cover"
+                        controls
+                      />
+                    ) : (
+                      <img
+                        src={testimonial.image}
+                        alt={testimonial.name}
+                        className="w-full h-96 object-cover"
+                      />
+                    )}
+                  </div>
+
+                  {/* Quote */}
+                  <p className="mt-4 px-6 text-slate-700 text-base sm:text-lg leading-relaxed">
+                    <span className="text-4xl text-gray-300 mr-2">“</span>
+                    {testimonial.quote}
+                    <span className="text-4xl text-gray-300 ml-2">”</span>
+                  </p>
+
+                  {/* Name & Role */}
+                  <div className="mt-4 mb-6">
+                    <h3 className="text-xl font-semibold text-navy">
+                      {testimonial.name}
+                    </h3>
+                    <p className="text-sm text-slate-500">
+                      {testimonial.role}
+                    </p>
                   </div>
                 </div>
+              </motion.div>
+            );
+          })}
+        </AnimatePresence>
 
-                {/* Story text - right columns */}
-                <div className="md:col-span-3">
-                  <h3 className="text-2xl font-bold font-display text-navy">{story.title}</h3>
-                  <p className="mt-4 text-slate-text/70 leading-relaxed">{story.description}</p>
-                </div>
-              </div>
-            </div>
+        {/* Navigation Arrows */}
+        <button
+          onClick={prev}
+          className="absolute left-4 top-1/2 -translate-y-1/2 bg-white rounded-full p-3 shadow hover:bg-navy hover:text-white transition-colors z-30"
+        >
+          <ChevronLeft className="w-6 h-6" />
+        </button>
 
-            {/* Next button */}
-            <button
-              onClick={next}
-              className="flex-shrink-0 flex h-12 w-12 items-center justify-center rounded-full border border-border bg-white text-slate-text hover:bg-navy hover:text-white hover:border-navy transition-all"
-              aria-label="Next story"
-            >
-              <ChevronRight className="h-6 w-6" />
-            </button>
-          </div>
-
-          {/* Dots */}
-          <div className="mt-8 flex justify-center gap-3">
-            {stories.map((_, i) => (
-              <button
-                key={i}
-                onClick={() => setIndex(i)}
-                className={`transition-all ${
-                  i === index 
-                    ? "w-8 h-2.5 bg-navy rounded-full" 
-                    : "w-2.5 h-2.5 bg-steel/30 rounded-full hover:bg-steel/50"
-                }`}
-                aria-label={`Go to story ${i + 1}`}
-              />
-            ))}
-          </div>
-        </div>
+        <button
+          onClick={next}
+          className="absolute right-4 top-1/2 -translate-y-1/2 bg-white rounded-full p-3 shadow hover:bg-navy hover:text-white transition-colors z-30"
+        >
+          <ChevronRight className="w-6 h-6" />
+        </button>
       </div>
     </section>
   );
