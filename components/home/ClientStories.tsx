@@ -4,6 +4,7 @@ import { useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { testimonials } from "@/content/testimonial";
+import Image from "next/image";
 
 interface Testimonial {
     quote: string;
@@ -14,48 +15,59 @@ interface Testimonial {
 }
 
 function Media({ testimonial }: { testimonial: Testimonial }) {
-    const [error, setError] = useState(false);
+  const [error, setError] = useState(false);
 
-    if (error || !testimonial.image) {
-        return null; // No placeholder
-    }
+  if (error || !testimonial.image) {
+    return null;
+  }
 
-    const commonClasses = "object-cover md:rounded-r-3xl";
+  const commonClasses = "object-cover md:rounded-r-3xl";
 
-    if (testimonial.type === "video") {
-        return (
-            <video
-                key={testimonial.image}
-                src={testimonial.image}
-                className={`w-full h-full ${commonClasses}`}
-                controls
-                onError={() => setError(true)}
-            />
-        );
-    }
-
-    if (testimonial.type === "svg") {
-        return (
-            <img
-                key={testimonial.image}
-                src={testimonial.image}
-                alt={testimonial.name}
-                className={`w-1/2 h-1/2 ${commonClasses}`} // smaller size
-                onError={() => setError(true)}
-            />
-        );
-    }
-
+  if (testimonial.type === "video") {
     return (
-        <img
-            key={testimonial.image}
-            src={testimonial.image}
-            alt={testimonial.name}
-            className={`w-full h-full ${commonClasses}`}
-            onError={() => setError(true)}
-        />
+      <video
+        key={testimonial.image}
+        src={testimonial.image}
+        className={`w-full h-full ${commonClasses}`}
+        controls
+        onError={() => setError(true)}
+      />
     );
+  }
+
+  // SVG (smaller display)
+  if (testimonial.type === "svg") {
+    return (
+      <div className="relative w-1/2 h-1/2">
+        <Image
+          key={testimonial.image}
+          src={testimonial.image}
+          alt={testimonial.name}
+          fill
+          className={commonClasses}
+          onError={() => setError(true)}
+          sizes="50vw"
+        />
+      </div>
+    );
+  }
+
+  // Default image
+  return (
+    <div className="relative w-full h-full">
+      <Image
+        key={testimonial.image}
+        src={testimonial.image}
+        alt={testimonial.name}
+        fill
+        className={commonClasses}
+        onError={() => setError(true)}
+        sizes="(max-width: 768px) 100vw, 50vw"
+      />
+    </div>
+  );
 }
+
 
 export default function ClientTestimonials() {
     const [index, setIndex] = useState(0);

@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 
 interface ServiceItem {
   title: string;
@@ -76,7 +77,14 @@ export default function Services({ items, aboutContent }: ServicesProps) {
               <div className="absolute inset-0 bg-primary/55 group-hover:bg-primary/45 transition-colors duration-300" />
               <div className="relative p-6 flex flex-col h-full justify-between">
                 <div className="flex items-center mb-2">
-                  <img src={`/icons/${item.icon}.svg`} alt={item.title} className="w-8 h-8 filter brightness-0 invert" />
+                  {/* <img src={`/icons/${item.icon}.svg`} alt={item.title} className="w-8 h-8 filter brightness-0 invert" /> */}
+                          <Image
+          src={`/icons/${item.icon}.svg`}
+          alt={item.title}
+          width={32}
+          height={32}
+          className="filter brightness-0 invert"
+        />
                 </div>
 
                 <h3 className="text-2xl font-bold text-primary-foreground mb-1">{item.title}</h3>
