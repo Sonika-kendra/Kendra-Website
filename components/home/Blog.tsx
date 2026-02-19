@@ -1,190 +1,194 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
-import { ChevronUp, ChevronDown } from "lucide-react";
+import { motion } from "framer-motion";
 import { blogPosts } from "@/content/blog";
 
+const AUTO_DURATION = 4000;
+const ITEM_HEIGHT = 110;
+
 export default function Blog() {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [sidebarIndex, setSidebarIndex] = useState(0);
-  const [isHovered, setIsHovered] = useState(false);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const [progress, setProgress] = useState(0);
+
+  const listRef = useRef<HTMLDivElement | null>(null);
+  const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   const total = blogPosts.length;
+  if (!total) return null;
 
-  /* ---------------- Featured Auto Slide ---------------- */
+  const activePost = blogPosts[activeIndex];
+
+  /* ---------------- Auto Rotate ---------------- */
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev === total - 1 ? 0 : prev + 1));
-    }, 8000);
+    if (isPaused) return;
 
-    return () => clearInterval(interval);
-  }, [total]);
+    setProgress(0);
+    const start = Date.now();
 
-  /* ---------------- Sidebar Auto Slide (Pause on Hover) ---------------- */
+    const timer = setInterval(() => {
+      const elapsed = Date.now() - start;
+      const pct = Math.min((elapsed / AUTO_DURATION) * 100, 100);
+      setProgress(pct);
+
+      if (pct === 100) {
+        const next = (activeIndex + 1) % total;
+        setActiveIndex(next);
+
+        listRef.current?.scrollTo({
+          top: next * ITEM_HEIGHT,
+          behavior: "smooth",
+        });
+      }
+    }, 50);
+
+    return () => clearInterval(timer);
+  }, [activeIndex, isPaused, total]);
+
+  /* ---------------- Sync on Scroll ---------------- */
   useEffect(() => {
-    if (isHovered) return;
+    if (!listRef.current) return;
 
-    const interval = setInterval(() => {
-      setSidebarIndex((prev) => (prev === total - 1 ? 0 : prev + 1));
-    }, 7000);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const index = Number(entry.target.getAttribute("data-index"));
+            if (!Number.isNaN(index)) {
+              setActiveIndex(index);
+            }
+          }
+        });
+      },
+      {
+        root: listRef.current,
+        threshold: 0.6,
+      }
+    );
 
-    return () => clearInterval(interval);
-  }, [total, isHovered]);
+    itemRefs.current.forEach((el) => el && observer.observe(el));
 
-  const featured = blogPosts[currentIndex];
-
-  const sidebarPosts = [
-    blogPosts[sidebarIndex],
-    blogPosts[(sidebarIndex + 1) % total],
-    blogPosts[(sidebarIndex + 2) % total],
-  ];
-
-  const handleNext = () =>
-    setSidebarIndex((prev) => (prev === total - 1 ? 0 : prev + 1));
-
-  const handlePrev = () =>
-    setSidebarIndex((prev) => (prev === 0 ? total - 1 : prev - 1));
-
-  const handleSelect = (index: number) => {
-    setCurrentIndex(index);
-  };
+    return () => observer.disconnect();
+  }, []);
 
   return (
-    <section className="w-full bg-white py-2">
-      <div className="max-w-7xl mx-auto px-2">
-        <div className="mb-16 border-b border-gray-200 pb-6">
-          <h2 className="text-5xl font-bold tracking-tight text-gray-900">
+    <section className="w-full bg-white py-16">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="mb-14 border-b border-gray-200 pb-6">
+          <h2 className="text-4xl font-bold tracking-tight text-gray-900">
             Blogs
           </h2>
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-16">
-          {/* ---------------- Featured Article ---------------- */}
-          <div className="lg:col-span-2 relative overflow-hidden">
-            <AnimatePresence mode="wait">
-              <motion.article
-                key={featured.id}
-                initial={{ opacity: 0, y: 40 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -40 }}
-                transition={{ duration: 0.6 }}
-              >
-                <div className="relative w-full h-[420px] mb-8">
-                  <Image
-                    src={featured.image}
-                    alt={featured.title}
-                    fill
-                    priority
-                    className="object-cover"
-                  />
-                </div>
-
-                <div className="text-sm text-gray-400 mb-3">
-                  {featured.date} • {featured.author}
-                </div>
-
-                <h3 className="text-3xl font-semibold text-gray-900 mb-4 leading-snug">
-                  {featured.title}
-                </h3>
-
-                <p className="text-gray-600 text-base leading-relaxed mb-6 max-w-3xl">
-                  {featured.excerpt}
-                </p>
-
-                <Link
-                  href={`/blog/${featured.slug}`}
-                  className="inline-block text-sm font-medium text-black border-b border-black pb-1"
-                >
-                  Continue Reading
-                </Link>
-              </motion.article>
-            </AnimatePresence>
-          </div>
-
-          {/* ---------------- Sidebar ---------------- */}
-          <div
-            className="relative h-[650px] overflow-hidden"
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
+        <div className="grid lg:grid-cols-3 gap-16 items-start">
+          {/* ---------------- Left: Featured ---------------- */}
+          <motion.article
+            key={activePost.id}
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="lg:col-span-2"
           >
-            {/* Controls */}
-            <div className="absolute right-0 top-0 flex flex-col gap-2 z-10">
-              <button
-                onClick={handlePrev}
-                className="p-2 bg-white border rounded hover:bg-gray-100"
-              >
-                <ChevronUp size={18} />
-              </button>
-              <button
-                onClick={handleNext}
-                className="p-2 bg-white border rounded hover:bg-gray-100"
-              >
-                <ChevronDown size={18} />
-              </button>
+            <div className="relative w-full h-[420px] mb-8">
+              <Image
+                src={activePost.image}
+                alt={activePost.title}
+                fill
+                priority
+                className="object-cover"
+              />
             </div>
 
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={sidebarIndex}
-                initial={{ opacity: 0, y: 40 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -40 }}
-                transition={{ duration: 0.5 }}
-                className="space-y-10 pr-12"
-              >
-                {sidebarPosts.map((post) => {
-                  const isActive = post.id === featured.id;
+            <div className="text-sm text-gray-400 mb-3">
+              {activePost.date} • {activePost.author}
+            </div>
 
-                  return (
-                    <article
-                      key={post.id}
-                      onClick={() =>
-                        handleSelect(
-                          blogPosts.findIndex((p) => p.id === post.id)
-                        )
-                      }
-                      className={`flex gap-6 group cursor-pointer transition-all duration-300 ${
-                        isActive
-                          ? "opacity-100 scale-105"
-                          : "opacity-60 hover:opacity-100"
-                      }`}
-                    >
-                      <div className="relative w-28 h-28 flex-shrink-0">
-                        <Image
-                          src={post.image}
-                          alt={post.title}
-                          fill
-                          className="object-cover"
-                        />
-                      </div>
+            <h3 className="text-3xl font-semibold text-gray-900 mb-4">
+              {activePost.title}
+            </h3>
 
-                      <div>
-                        <div className="text-xs text-gray-400 mb-1">
-                          {post.date}
-                        </div>
+            <p className="text-gray-600 mb-6 max-w-2xl">
+              {activePost.excerpt}
+            </p>
 
-                        <h4
-                          className={`text-lg font-medium ${
-                            isActive
-                              ? "text-black"
-                              : "text-gray-900 group-hover:underline"
-                          }`}
-                        >
-                          {post.title}
-                        </h4>
+            <Link
+              href={`/blog/${activePost.slug}`}
+              className="inline-block text-sm font-medium text-black border-b border-black pb-1"
+            >
+              Continue Reading
+            </Link>
+          </motion.article>
 
-                        <p className="text-sm text-gray-500 mt-2 line-clamp-2">
-                          {post.excerpt}
-                        </p>
-                      </div>
-                    </article>
-                  );
-                })}
-              </motion.div>
-            </AnimatePresence>
+          {/* ---------------- Right: Vertical Carousel ---------------- */}
+          <div
+            ref={listRef}
+            className="relative overflow-y-auto pr-6"
+            style={{ height: ITEM_HEIGHT * 4 }}
+            onMouseEnter={() => setIsPaused(true)}
+            onMouseLeave={() => setIsPaused(false)}
+          >
+            <div className="space-y-6 relative">
+              {blogPosts.map((post, index) => (
+                <div
+                  key={post.id}
+                  // ref={(el) => (itemRefs.current[index] = el)}
+                  data-index={index}
+                  onClick={() => setActiveIndex(index)}
+                  className={`flex gap-4 cursor-pointer transition-all duration-300 ${
+                    index === activeIndex
+                      ? "opacity-100 scale-[1.02]"
+                      : "opacity-60 hover:opacity-100"
+                  }`}
+                  style={{ height: ITEM_HEIGHT }}
+                >
+                  <div className="relative w-20 h-20 flex-shrink-0">
+                    <Image
+                      src={post.image}
+                      alt={post.title}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+
+                  <div>
+                    <p className="text-xs text-gray-400 mb-1">
+                      {post.date}
+                    </p>
+
+                    <h4 className="text-base font-medium text-gray-900">
+                      {post.title}
+                    </h4>
+
+                    <p className="text-sm text-gray-500 line-clamp-2 mt-1">
+                      {post.excerpt}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Progress Indicator */}
+            <div className="absolute right-0 top-0 bottom-0 flex flex-col gap-2 w-[2px]">
+              {blogPosts.map((_, i) => (
+                <div key={i} className="w-full bg-gray-200 flex-1">
+                  <motion.div
+                    className="w-full bg-black"
+                    animate={{
+                      height:
+                        i === activeIndex
+                          ? `${progress}%`
+                          : i < activeIndex
+                          ? "100%"
+                          : "0%",
+                    }}
+                    transition={{ ease: "linear" }}
+                  />
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
