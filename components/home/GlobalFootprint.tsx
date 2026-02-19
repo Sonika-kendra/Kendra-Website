@@ -3,7 +3,7 @@
 import { Send } from "lucide-react";
 import { ComposableMap, Geographies, Geography, Marker } from "react-simple-maps";
 
-const geoUrl = "/world-110m.json"; // TopoJSON world map in public folder
+// const geoUrl = "/world-110m.json"; // TopoJSON world map in public folder
 
 // Define location type with exact tuple coordinates
 interface Location {

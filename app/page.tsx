@@ -8,9 +8,10 @@ import {
   Services,
   ClientStories,
   GlobalFootprint,
-  BusinessHealthCheck
+  BusinessHealthCheck,
+  Blog
 } from "@features/home";
-import { CTA } from "@features/footer";
+// import { CTA } from "@features/footer";
 
 export default function HomePage() {
   const { openLeadPopUp } = useModal();
@@ -36,6 +37,7 @@ export default function HomePage() {
       <GlobalFootprint />
       {/* <CTA /> */}
       <BusinessHealthCheck />
+      <Blog />
     </main>
   );
 }

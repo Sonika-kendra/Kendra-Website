@@ -4,3 +4,4 @@ export { default as Services } from "../../home/Services";
 export { default as ClientStories } from "../../home/ClientStories";
 export { default as GlobalFootprint } from "../../home/GlobalFootprint";
 export { default as BusinessHealthCheck } from "../../home/BusinessHealthCheck";
+export { default as Blog } from "../../home/Blog";
