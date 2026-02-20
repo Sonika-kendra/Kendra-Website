@@ -20,13 +20,13 @@ export default function Blog() {
   const itemRefs = useRef<(HTMLLIElement | null)[]>([]);
 
   const total = blogPosts.length;
-  if (!total) return null;
+  // if (!total) return null;
 
   const activePost = blogPosts[activeIndex];
 
   /* ---------------- AUTO ROTATE ---------------- */
-  useEffect(() => {
-    if (isPaused) return;
+useEffect(() => {
+    if (!total || isPaused) return;
 
     let frame: number;
     const start = Date.now();
@@ -41,7 +41,7 @@ export default function Blog() {
           const next = (prev + 1) % total;
 
           listRef.current?.scrollTo({
-            top: next * ITEM_HEIGHT,
+            top: next * (ITEM_HEIGHT + ITEM_GAP),
             behavior: "smooth",
           });
 
@@ -61,7 +61,7 @@ export default function Blog() {
 
   /* ---------------- SCROLL SYNC ---------------- */
   useEffect(() => {
-    if (!listRef.current) return;
+   if (!listRef.current || !total) return;
 
     const observer = new IntersectionObserver(
       (entries) => {
@@ -86,6 +86,8 @@ export default function Blog() {
 
     return () => observer.disconnect();
   }, [total]);
+
+  if (!total) return null;
 
   return (
     <section className="w-full bg-background py-8 border-border">
