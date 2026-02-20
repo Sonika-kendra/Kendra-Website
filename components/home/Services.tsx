@@ -74,7 +74,7 @@ export default function Services({ items, aboutContent }: ServicesProps) {
                 className="absolute inset-0 bg-cover bg-center"
                 style={{ backgroundImage: `url(${item.image})` }}
               />
-              <div className="absolute inset-0 bg-primary/55 group-hover:bg-primary/45 transition-colors duration-300" />
+              <div className="absolute inset-0 bg-slate-900/55 group-hover:bg-slate-900/45 transition-colors duration-300" />
               <div className="relative p-6 flex flex-col h-full justify-between">
                 <div className="flex items-center mb-2">
                   {/* <img src={`/icons/${item.icon}.svg`} alt={item.title} className="w-8 h-8 filter brightness-0 invert" /> */}
@@ -87,10 +87,10 @@ export default function Services({ items, aboutContent }: ServicesProps) {
                   />
                 </div>
 
-                <h3 className="text-2xl font-bold text-primary-foreground mb-1">{item.title}</h3>
-                <p className="text-base text-primary-foreground/90 flex-1">{item.description}</p>
+                <h3 className="text-2xl font-bold text-slate-50 mb-1">{item.title}</h3>
+                <p className="text-base text-slate-100/90 flex-1">{item.description}</p>
 
-                <span className="mt-4 relative inline-flex items-center text-base font-medium text-primary-foreground group-hover:text-accent-foreground transition-colors duration-300">
+                <span className="mt-4 relative inline-flex items-center text-base font-medium text-slate-50 group-hover:text-white transition-colors duration-300">
                   <span className="relative">
                     Discover
                     <span className="absolute left-0 -bottom-1 h-[2px] w-0 bg-current transition-all duration-300 ease-out group-hover:w-full" />
