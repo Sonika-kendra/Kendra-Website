@@ -6,8 +6,10 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { blogPosts } from "@/content/blog";
 
+const ITEM_GAP = 12; 
 const AUTO_DURATION = 4000;
-const ITEM_HEIGHT = 110;
+const ITEM_HEIGHT = 80;
+const VISIBLE_ITEMS = 6;
 
 export default function Blog() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -15,40 +17,49 @@ export default function Blog() {
   const [progress, setProgress] = useState(0);
 
   const listRef = useRef<HTMLDivElement | null>(null);
-  const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const itemRefs = useRef<(HTMLLIElement | null)[]>([]);
 
   const total = blogPosts.length;
   if (!total) return null;
 
   const activePost = blogPosts[activeIndex];
 
-  /* ---------------- Auto Rotate ---------------- */
+  /* ---------------- AUTO ROTATE ---------------- */
   useEffect(() => {
     if (isPaused) return;
 
-    setProgress(0);
+    let frame: number;
     const start = Date.now();
 
-    const timer = setInterval(() => {
+    const animate = () => {
       const elapsed = Date.now() - start;
       const pct = Math.min((elapsed / AUTO_DURATION) * 100, 100);
       setProgress(pct);
 
-      if (pct === 100) {
-        const next = (activeIndex + 1) % total;
-        setActiveIndex(next);
+      if (pct >= 100) {
+        setActiveIndex((prev) => {
+          const next = (prev + 1) % total;
 
-        listRef.current?.scrollTo({
-          top: next * ITEM_HEIGHT,
-          behavior: "smooth",
+          listRef.current?.scrollTo({
+            top: next * ITEM_HEIGHT,
+            behavior: "smooth",
+          });
+
+          return next;
         });
-      }
-    }, 50);
 
-    return () => clearInterval(timer);
+        return;
+      }
+
+      frame = requestAnimationFrame(animate);
+    };
+
+    frame = requestAnimationFrame(animate);
+
+    return () => cancelAnimationFrame(frame);
   }, [activeIndex, isPaused, total]);
 
-  /* ---------------- Sync on Scroll ---------------- */
+  /* ---------------- SCROLL SYNC ---------------- */
   useEffect(() => {
     if (!listRef.current) return;
 
@@ -69,30 +80,32 @@ export default function Blog() {
       }
     );
 
-    itemRefs.current.forEach((el) => el && observer.observe(el));
+    itemRefs.current.forEach((el) => {
+      if (el) observer.observe(el);
+    });
 
     return () => observer.disconnect();
-  }, []);
+  }, [total]);
 
   return (
-    <section className="w-full bg-white py-16">
+    <section className="w-full bg-background py-8 border-border">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="mb-14 border-b border-gray-200 pb-6">
-          <h2 className="text-4xl font-bold tracking-tight text-gray-900">
+        <div className="mb-10 border-b border-border pb-6">
+          <h2 className="text-4xl font-bold tracking-tight text-foreground">
             Blogs
           </h2>
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-16 items-start">
-          {/* ---------------- Left: Featured ---------------- */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-stretch">
+          {/* LEFT: FEATURED */}
           <motion.article
             key={activePost.id}
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="lg:col-span-2"
+            className="surface-card p-4 h-full flex flex-col"
           >
-            <div className="relative w-full h-[420px] mb-8">
+            <div className="relative w-full h-[300px] mb-8 rounded-lg overflow-hidden">
               <Image
                 src={activePost.image}
                 alt={activePost.title}
@@ -102,80 +115,100 @@ export default function Blog() {
               />
             </div>
 
-            <div className="text-sm text-gray-400 mb-3">
-              {activePost.date} • {activePost.author}
+            <div className="text-sm text-muted-foreground mb-3">
+              {new Date(activePost.date).toLocaleDateString("en-GB", {
+                day: "2-digit",
+                month: "long",
+                year: "numeric",
+              })}{" "}
+              • {activePost.author}
             </div>
 
-            <h3 className="text-3xl font-semibold text-gray-900 mb-4">
+            <h3 className="text-3xl font-serif text-foreground mb-4">
               {activePost.title}
             </h3>
 
-            <p className="text-gray-600 mb-6 max-w-2xl">
+            <p className="text-muted-foreground mb-6">
               {activePost.excerpt}
             </p>
 
             <Link
               href={`/blog/${activePost.slug}`}
-              className="inline-block text-sm font-medium text-black border-b border-black pb-1"
+              className="mt-auto inline-block text-sm font-medium text-accent border-b border-accent pb-1"
             >
               Continue Reading
             </Link>
           </motion.article>
 
-          {/* ---------------- Right: Vertical Carousel ---------------- */}
+          {/* RIGHT: LIST */}
           <div
             ref={listRef}
-            className="relative overflow-y-auto pr-6"
-            style={{ height: ITEM_HEIGHT * 4 }}
             onMouseEnter={() => setIsPaused(true)}
             onMouseLeave={() => setIsPaused(false)}
+            className="relative overflow-y-auto"
+            style={{
+              height: VISIBLE_ITEMS * ITEM_HEIGHT + (VISIBLE_ITEMS - 1) * ITEM_GAP,
+              scrollbarWidth: "none", // Firefox
+              msOverflowStyle: "none", // IE/Edge
+            }}
           >
-            <div className="space-y-6 relative">
+            {/* Hide Webkit Scrollbar */}
+            <style jsx>{`
+              div::-webkit-scrollbar {
+                display: none;
+              }
+            `}</style>
+
+            <ul
+              className="flex flex-col"
+              style={{ gap: ITEM_GAP }}
+            >
               {blogPosts.map((post, index) => (
-                <div
+                <li
                   key={post.id}
-                  // ref={(el) => (itemRefs.current[index] = el)}
+                  ref={(el) => {
+                    itemRefs.current[index] = el;
+                  }}
                   data-index={index}
-                  onClick={() => setActiveIndex(index)}
-                  className={`flex gap-4 cursor-pointer transition-all duration-300 ${
+                  onClick={() => {
+                    setActiveIndex(index);
+                    listRef.current?.scrollTo({
+                      top: index * (ITEM_HEIGHT + ITEM_GAP),
+                      behavior: "smooth",
+                    });
+                  }}
+                  className={`px-3 mb-3 rounded-md transition-all cursor-pointer flex flex-col justify-between ${
                     index === activeIndex
-                      ? "opacity-100 scale-[1.02]"
-                      : "opacity-60 hover:opacity-100"
+                      ? "bg-card font-semibold border-l-4 border-accent"
+                      : "bg-background font-light"
                   }`}
                   style={{ height: ITEM_HEIGHT }}
                 >
-                  <div className="relative w-20 h-20 flex-shrink-0">
-                    <Image
-                      src={post.image}
-                      alt={post.title}
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
+                  <p className="text-xs text-muted-foreground mb-2">
+                    {new Date(post.date).toLocaleDateString("en-GB", {
+                      day: "2-digit",
+                      month: "long",
+                      year: "numeric",
+                    })}
+                  </p>
 
-                  <div>
-                    <p className="text-xs text-gray-400 mb-1">
-                      {post.date}
-                    </p>
+                  <h4 className="text-foreground hover:text-accent">
+                    {post.title}
+                  </h4>
 
-                    <h4 className="text-base font-medium text-gray-900">
-                      {post.title}
-                    </h4>
-
-                    <p className="text-sm text-gray-500 line-clamp-2 mt-1">
-                      {post.excerpt}
-                    </p>
-                  </div>
-                </div>
+                  <p className="text-sm text-muted-foreground mt-1 line-clamp-2">
+                    {post.excerpt}
+                  </p>
+                </li>
               ))}
-            </div>
+            </ul>
 
-            {/* Progress Indicator */}
+            {/* PROGRESS INDICATOR */}
             <div className="absolute right-0 top-0 bottom-0 flex flex-col gap-2 w-[2px]">
               {blogPosts.map((_, i) => (
-                <div key={i} className="w-full bg-gray-200 flex-1">
+                <div key={i} className="w-full bg-muted flex-1">
                   <motion.div
-                    className="w-full bg-black"
+                    className="w-full bg-accent"
                     animate={{
                       height:
                         i === activeIndex
