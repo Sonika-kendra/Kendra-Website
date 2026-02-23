@@ -19,7 +19,7 @@ export const testimonials = [
     quote: "Since adopting this solution, our workflow has become seamless. Tasks that used to take hours now take minutes. Highly recommend it!",
     name: "Michael Lee",
     role: "Software Engineer",
-    image: "/testimonial/user-circle-svgrepo-com.svg",
+    image: "/testimonial/user-box-svgrepo-com.svg",
     type: "svg",
   },
   {
