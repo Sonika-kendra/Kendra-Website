@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { CheckCircle2, TrendingUp } from "lucide-react";
 
 export default function BusinessHealthCheck() {
@@ -20,15 +20,6 @@ export default function BusinessHealthCheck() {
   });
   const inputClassName =
     "w-full rounded-lg border border-slate-300 bg-white px-4 py-3 text-sm text-slate-900 outline-none transition-colors placeholder:text-slate-400 focus:border-slate-500 focus:ring-1 focus:ring-slate-300 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100 dark:placeholder:text-slate-500 dark:focus:border-slate-500 dark:focus:ring-slate-700";
-
-  // Auto-open modal on page load
-  useEffect(() => {
-    const hasVisited = sessionStorage.getItem("healthCheckModalShown");
-    if (!hasVisited) {
-      setShowModal(true);
-      sessionStorage.setItem("healthCheckModalShown", "true");
-    }
-  }, []);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     setFormData({
