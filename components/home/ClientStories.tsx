@@ -21,8 +21,7 @@ function Media({ testimonial }: { testimonial: Testimonial }) {
     return null;
   }
 
-  const commonClasses =
-    "rounded-2xl border border-slate-200 object-cover dark:border-slate-700/70";
+  const commonClasses = "rounded-2xl border border-slate-200 object-cover";
 
   if (testimonial.type === "video") {
     return (
@@ -44,7 +43,7 @@ function Media({ testimonial }: { testimonial: Testimonial }) {
           src={testimonial.image}
           alt={testimonial.name}
           fill
-          className="rounded-2xl border border-slate-200 object-contain p-4 dark:border-slate-700/70"
+          className="rounded-2xl border border-slate-200 object-contain p-4"
           onError={() => setError(true)}
           sizes="208px"
         />
@@ -128,7 +127,7 @@ export default function ClientTestimonials() {
                     </div>
                   </div>
 
-                  <div className="relative flex h-56 flex-1 items-center justify-center bg-slate-200 p-4 dark:bg-slate-800/70 md:h-auto md:p-6">
+                  <div className="relative flex h-56 flex-1 items-center justify-center bg-slate-200 p-4 md:h-auto md:p-6">
                     <Media testimonial={testimonial} />
                   </div>
                 </div>
