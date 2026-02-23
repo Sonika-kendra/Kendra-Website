@@ -1,7 +1,7 @@
-export { default as Hero } from "../../home/Hero";
-export { default as WhyKendra } from "../../home/WhyKendra";
-export { default as Services } from "../../home/Services";
-export { default as ClientStories } from "../../home/ClientStories";
-export { default as GlobalFootprint } from "../../home/GlobalFootprint";
-export { default as BusinessHealthCheck } from "../../home/BusinessHealthCheck";
-export { default as Blog } from "../../home/Blog";
+export { default as Hero } from "./Hero";
+export { default as WhyKendra } from "./WhyKendra";
+export { default as Services } from "./Services";
+export { default as ClientStories } from "./ClientStories";
+export { default as GlobalFootprint } from "./GlobalFootprint";
+export { default as BusinessHealthCheck } from "./BusinessHealthCheck";
+export { default as Blog } from "./Blog";
