@@ -18,6 +18,8 @@ export default function BusinessHealthCheck() {
     phone: "",
     company: "",
   });
+  const inputClassName =
+    "w-full rounded-lg border border-slate-300 bg-white px-4 py-3 text-sm text-slate-900 outline-none transition-colors placeholder:text-slate-400 focus:border-slate-500 focus:ring-1 focus:ring-slate-300 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100 dark:placeholder:text-slate-500 dark:focus:border-slate-500 dark:focus:ring-slate-700";
 
   // Auto-open modal on page load
   useEffect(() => {
@@ -91,51 +93,48 @@ export default function BusinessHealthCheck() {
   return (
     <>
       <section className="py-16 md:py-20">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="relative rounded-2xl overflow-hidden">
-            {/* Background gradient */}
-            <div className="absolute inset-0 bg-gradient-to-br from-navy via-navy to-navy/80 opacity-95" />
-            
-            {/* Decorative elements */}
-            <div className="absolute top-0 right-0 w-96 h-96 bg-steel/5 rounded-full blur-3xl" />
-            <div className="absolute bottom-0 left-1/2 w-96 h-96 bg-steel/5 rounded-full blur-3xl" />
-            
-            {/* Content */}
-            <div className="relative p-8 md:p-16 text-center text-white">
+        <div className="mx-auto max-w-6xl px-6 lg:px-8">
+          <div className="relative overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-2xl dark:border-slate-700/70 dark:bg-slate-900/90 dark:shadow-[0_30px_90px_-35px_rgba(2,6,23,1)]">
+            <div className="pointer-events-none absolute inset-0 hidden dark:block dark:bg-[radial-gradient(circle_at_top,_rgba(59,130,246,0.22),_transparent_55%)]" />
+            <div className="pointer-events-none absolute inset-0 hidden dark:block dark:bg-[radial-gradient(circle_at_85%_10%,_rgba(16,185,129,0.14),_transparent_40%)]" />
+
+            <div className="relative p-8 text-center md:p-16">
               <div className="flex justify-center mb-6">
-                <div className="p-3 bg-steel/20 rounded-full">
-                  <TrendingUp className="h-8 w-8 text-white" strokeWidth={1.5} />
+                <div className="rounded-full bg-slate-100 p-3 dark:bg-slate-800/70">
+                  <TrendingUp className="h-8 w-8 text-slate-700 dark:text-slate-200" strokeWidth={1.5} />
                 </div>
               </div>
-              
-              <h2 className="text-3xl sm:text-4xl font-display font-bold text-white">Business Health Check Analyzer</h2>
-              <p className="mt-4 text-white/80 max-w-2xl mx-auto leading-relaxed text-lg">
-                Get instant insights into your business performance. Our AI-powered analyzer evaluates revenue growth, 
+
+              <h2 className="text-3xl font-display font-bold text-slate-900 dark:text-white sm:text-4xl">
+                Business Health Check Analyzer
+              </h2>
+              <p className="mx-auto mt-4 max-w-2xl text-lg leading-relaxed text-slate-600 dark:text-slate-300">
+                Get instant insights into your business performance. Our AI-powered analyzer evaluates revenue growth,
                 margin health, and operational efficiency in seconds.
               </p>
-              
+
               <div className="mt-12 grid gap-6 md:grid-cols-3">
-                <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
-                  <CheckCircle2 className="h-6 w-6 text-white mx-auto mb-3" />
-                  <h3 className="font-semibold mb-2 text-white">Revenue Analysis</h3>
-                  <p className="text-sm text-white">Track growth trends and identify opportunities</p>
+                <div className="rounded-xl border border-slate-200 bg-slate-50 p-6 backdrop-blur-sm dark:border-slate-700 dark:bg-slate-800/70">
+                  <CheckCircle2 className="mx-auto mb-3 h-6 w-6 text-slate-700 dark:text-slate-200" />
+                  <h3 className="mb-2 font-semibold text-slate-900 dark:text-white">Revenue Analysis</h3>
+                  <p className="text-sm text-slate-600 dark:text-slate-300">Track growth trends and identify opportunities</p>
                 </div>
-                <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
-                  <CheckCircle2 className="h-6 w-6 text-white mx-auto mb-3" />
-                  <h3 className="font-semibold mb-2 text-white">Margin Health</h3>
-                  <p className="text-sm text-white">Understand profitability metrics</p>
+                <div className="rounded-xl border border-slate-200 bg-slate-50 p-6 backdrop-blur-sm dark:border-slate-700 dark:bg-slate-800/70">
+                  <CheckCircle2 className="mx-auto mb-3 h-6 w-6 text-slate-700 dark:text-slate-200" />
+                  <h3 className="mb-2 font-semibold text-slate-900 dark:text-white">Margin Health</h3>
+                  <p className="text-sm text-slate-600 dark:text-slate-300">Understand profitability metrics</p>
                 </div>
-                <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
-                  <CheckCircle2 className="h-6 w-6 text-white mx-auto mb-3" />
-                  <h3 className="font-semibold mb-2 text-white">Quick Snapshot</h3>
-                  <p className="text-sm text-white">Actionable insights in moments</p>
+                <div className="rounded-xl border border-slate-200 bg-slate-50 p-6 backdrop-blur-sm dark:border-slate-700 dark:bg-slate-800/70">
+                  <CheckCircle2 className="mx-auto mb-3 h-6 w-6 text-slate-700 dark:text-slate-200" />
+                  <h3 className="mb-2 font-semibold text-slate-900 dark:text-white">Quick Snapshot</h3>
+                  <p className="text-sm text-slate-600 dark:text-slate-300">Actionable insights in moments</p>
                 </div>
               </div>
 
               <div className="mt-12">
                 <button
                   onClick={() => setShowModal(true)}
-                  className="inline-flex items-center justify-center rounded-lg bg-steel text-white px-10 py-3.5 text-sm font-semibold transition-all hover:bg-steel/90 hover:shadow-lg hover:shadow-steel/30"
+                  className="inline-flex items-center justify-center rounded-lg bg-slate-900 px-10 py-3.5 text-sm font-semibold text-white transition-all hover:bg-slate-800 hover:shadow-lg dark:bg-white dark:text-slate-900 dark:hover:bg-slate-200"
                 >
                   Start Your Analysis
                 </button>
@@ -148,11 +147,11 @@ export default function BusinessHealthCheck() {
       {/* Modal */}
       {showModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4 py-8">
-          <div className="relative w-full max-w-md rounded-2xl bg-white shadow-2xl overflow-hidden">
+          <div className="relative w-full max-w-md overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl dark:border-slate-700 dark:bg-slate-900">
             {/* Close button */}
             <button
               onClick={() => setShowModal(false)}
-              className="absolute right-4 top-4 p-1 text-slate-text/40 hover:text-slate-text transition-colors z-10"
+              className="absolute right-4 top-4 z-10 p-1 text-slate-400 transition-colors hover:text-slate-700 dark:text-slate-500 dark:hover:text-slate-200"
               aria-label="Close modal"
             >
               <svg className="h-6 w-6" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -162,19 +161,21 @@ export default function BusinessHealthCheck() {
 
             {submitted ? (
               <div className="p-8 text-center">
-                <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-50 mb-4">
+                <div className="mb-4 inline-flex h-16 w-16 items-center justify-center rounded-full bg-green-50 dark:bg-green-900/20">
                   <CheckCircle2 className="h-8 w-8 text-green-600" />
                 </div>
-                <h3 className="text-xl font-display font-bold text-white">Analysis Submitted!</h3>
-                <p className="mt-2 text-slate-text/70">We&apos;ll generate your personalized report and send it to your email shortly.</p>
+                <h3 className="text-xl font-display font-bold text-slate-900 dark:text-white">Analysis Submitted!</h3>
+                <p className="mt-2 text-slate-600 dark:text-slate-300">
+                  We&apos;ll generate your personalized report and send it to your email shortly.
+                </p>
               </div>
             ) : (
               <div className="p-8">
-                <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-navy/10 mb-4">
-                  <TrendingUp className="h-6 w-6 text-white" />
+                <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800">
+                  <TrendingUp className="h-6 w-6 text-slate-700 dark:text-slate-200" />
                 </div>
-                <h3 className="text-xl font-display font-bold text-white">Quick Analysis</h3>
-                <p className="mt-2 text-sm text-slate-text/70">Share your details and get instant insights</p>
+                <h3 className="text-xl font-display font-bold text-slate-900 dark:text-white">Quick Analysis</h3>
+                <p className="mt-2 text-sm text-slate-600 dark:text-slate-300">Share your details and get instant insights</p>
 
                 <form onSubmit={handleSubmit} className="mt-6 space-y-4">
                   {error && (
@@ -191,7 +192,7 @@ export default function BusinessHealthCheck() {
                       value={formData.firstName}
                       onChange={handleInputChange}
                       required
-                      className="rounded-lg border border-border px-4 py-3 text-sm outline-none focus:border-navy focus:ring-1 focus:ring-navy/20 transition-colors"
+                      className={inputClassName}
                     />
                     <input
                       type="text"
@@ -200,7 +201,7 @@ export default function BusinessHealthCheck() {
                       value={formData.lastName}
                       onChange={handleInputChange}
                       required
-                      className="rounded-lg border border-border px-4 py-3 text-sm outline-none focus:border-navy focus:ring-1 focus:ring-navy/20 transition-colors"
+                      className={inputClassName}
                     />
                   </div>
 
@@ -211,7 +212,7 @@ export default function BusinessHealthCheck() {
                     value={formData.email}
                     onChange={handleInputChange}
                     required
-                    className="w-full rounded-lg border border-border px-4 py-3 text-sm outline-none focus:border-navy focus:ring-1 focus:ring-navy/20 transition-colors"
+                    className={inputClassName}
                   />
 
                   <input
@@ -220,7 +221,7 @@ export default function BusinessHealthCheck() {
                     placeholder="Phone (optional)"
                     value={formData.phone}
                     onChange={handleInputChange}
-                    className="w-full rounded-lg border border-border px-4 py-3 text-sm outline-none focus:border-navy focus:ring-1 focus:ring-navy/20 transition-colors"
+                    className={inputClassName}
                   />
 
                   <input
@@ -229,7 +230,7 @@ export default function BusinessHealthCheck() {
                     placeholder="Company (optional)"
                     value={formData.company}
                     onChange={handleInputChange}
-                    className="w-full rounded-lg border border-border px-4 py-3 text-sm outline-none focus:border-navy focus:ring-1 focus:ring-navy/20 transition-colors"
+                    className={inputClassName}
                   />
 
                   <input
@@ -238,7 +239,7 @@ export default function BusinessHealthCheck() {
                     placeholder="Annual Revenue (optional)"
                     value={formData.revenue}
                     onChange={handleInputChange}
-                    className="w-full rounded-lg border border-border px-4 py-3 text-sm outline-none focus:border-navy focus:ring-1 focus:ring-navy/20 transition-colors"
+                    className={inputClassName}
                   />
 
                   <input
@@ -247,14 +248,14 @@ export default function BusinessHealthCheck() {
                     placeholder="Number of Employees (optional)"
                     value={formData.employees}
                     onChange={handleInputChange}
-                    className="w-full rounded-lg border border-border px-4 py-3 text-sm outline-none focus:border-navy focus:ring-1 focus:ring-navy/20 transition-colors"
+                    className={inputClassName}
                   />
 
                   <select
                     name="industry"
                     value={formData.industry}
                     onChange={handleInputChange}
-                    className="w-full rounded-lg border border-border px-4 py-3 text-sm outline-none focus:border-navy focus:ring-1 focus:ring-navy/20 transition-colors"
+                    className={inputClassName}
                   >
                     <option value="">Select Industry (optional)</option>
                     <option value="Technology">Technology</option>
@@ -266,18 +267,23 @@ export default function BusinessHealthCheck() {
                     <option value="Other">Other</option>
                   </select>
 
-                  <label className="flex items-start gap-2 text-xs text-slate-text/70 pt-2">
+                  <label className="flex items-start gap-2 pt-2 text-xs text-slate-600 dark:text-slate-300">
                     <input type="checkbox" required className="mt-1" />
                     <span>
                       I agree to receive insights and analysis. See our{" "}
-                      <a href="/privacy" className="underline text-white hover:text-white/80">Privacy Policy</a>
+                      <a
+                        href="/privacy"
+                        className="underline text-slate-900 transition-colors hover:text-slate-700 dark:text-white dark:hover:text-slate-200"
+                      >
+                        Privacy Policy
+                      </a>
                     </span>
                   </label>
 
                   <button
                     disabled={loading}
                     type="submit"
-                    className="w-full rounded-lg bg-navy py-3 text-sm font-semibold text-white hover:bg-navy/90 transition-colors disabled:opacity-60 disabled:cursor-not-allowed mt-6"
+                    className="mt-6 w-full rounded-lg bg-slate-900 py-3 text-sm font-semibold text-white transition-colors hover:bg-slate-800 disabled:cursor-not-allowed disabled:opacity-60 dark:bg-white dark:text-slate-900 dark:hover:bg-slate-200"
                   >
                     {loading ? "Processing..." : "Get My Report"}
                   </button>
