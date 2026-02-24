@@ -4,14 +4,14 @@ import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { blogPosts } from "@/content/blog";
 
-const ITEM_GAP = 12; 
+const ITEM_GAP = 12;
 const AUTO_DURATION = 4000;
 const ITEM_HEIGHT = 80;
 const VISIBLE_ITEMS = 6;
 
 export default function Blog() {
+  const [blogPosts, setBlogPosts] = useState<any[]>([]);
   const [activeIndex, setActiveIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const [progress, setProgress] = useState(0);
@@ -20,12 +20,25 @@ export default function Blog() {
   const itemRefs = useRef<(HTMLLIElement | null)[]>([]);
 
   const total = blogPosts.length;
-  // if (!total) return null;
-
   const activePost = blogPosts[activeIndex];
 
+  /* ---------------- FETCH POSTS ---------------- */
+  useEffect(() => {
+    async function fetchPosts() {
+      try {
+        const res = await fetch("/api/posts");
+        const data = await res.json();
+        setBlogPosts(data);
+      } catch (error) {
+        console.error("Failed to load posts");
+      }
+    }
+
+    fetchPosts();
+  }, []);
+
   /* ---------------- AUTO ROTATE ---------------- */
-useEffect(() => {
+  useEffect(() => {
     if (!total || isPaused) return;
 
     let frame: number;
@@ -57,17 +70,19 @@ useEffect(() => {
     frame = requestAnimationFrame(animate);
 
     return () => cancelAnimationFrame(frame);
-  }, [activeIndex, isPaused, total]);
+  }, [isPaused, total]);
 
   /* ---------------- SCROLL SYNC ---------------- */
   useEffect(() => {
-   if (!listRef.current || !total) return;
+    if (!listRef.current || !total) return;
 
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            const index = Number(entry.target.getAttribute("data-index"));
+            const index = Number(
+              entry.target.getAttribute("data-index")
+            );
             if (!Number.isNaN(index)) {
               setActiveIndex(index);
             }
@@ -99,7 +114,7 @@ useEffect(() => {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-stretch">
-          {/* LEFT: FEATURED */}
+          {/* LEFT FEATURED */}
           <motion.article
             key={activePost.id}
             initial={{ opacity: 0, y: 40 }}
@@ -126,9 +141,12 @@ useEffect(() => {
               • {activePost.author}
             </div>
 
-            <h3 className="text-3xl font-serif text-foreground mb-4">
-              {activePost.title}
-            </h3>
+            <h3
+              className="text-3xl font-serif text-foreground mb-4"
+              dangerouslySetInnerHTML={{
+                __html: activePost.title,
+              }}
+            />
 
             <p className="text-muted-foreground mb-6">
               {activePost.excerpt}
@@ -142,29 +160,27 @@ useEffect(() => {
             </Link>
           </motion.article>
 
-          {/* RIGHT: LIST */}
+          {/* RIGHT LIST */}
           <div
             ref={listRef}
             onMouseEnter={() => setIsPaused(true)}
             onMouseLeave={() => setIsPaused(false)}
             className="relative overflow-y-auto"
             style={{
-              height: VISIBLE_ITEMS * ITEM_HEIGHT + (VISIBLE_ITEMS - 1) * ITEM_GAP,
-              scrollbarWidth: "none", // Firefox
-              msOverflowStyle: "none", // IE/Edge
+              height:
+                VISIBLE_ITEMS * ITEM_HEIGHT +
+                (VISIBLE_ITEMS - 1) * ITEM_GAP,
+              scrollbarWidth: "none",
+              msOverflowStyle: "none",
             }}
           >
-            {/* Hide Webkit Scrollbar */}
             <style jsx>{`
               div::-webkit-scrollbar {
                 display: none;
               }
             `}</style>
 
-            <ul
-              className="flex flex-col"
-              style={{ gap: ITEM_GAP }}
-            >
+            <ul className="flex flex-col" style={{ gap: ITEM_GAP }}>
               {blogPosts.map((post, index) => (
                 <li
                   key={post.id}
@@ -179,7 +195,7 @@ useEffect(() => {
                       behavior: "smooth",
                     });
                   }}
-                  className={`px-3 mb-3 rounded-md transition-all cursor-pointer flex flex-col justify-between ${
+                  className={`px-3 rounded-md transition-all cursor-pointer flex flex-col justify-between ${
                     index === activeIndex
                       ? "bg-card font-semibold border-l-4 border-accent"
                       : "bg-background font-light"
@@ -194,9 +210,12 @@ useEffect(() => {
                     })}
                   </p>
 
-                  <h4 className="text-foreground hover:text-accent">
-                    {post.title}
-                  </h4>
+                  <h4
+                    className="text-foreground hover:text-accent"
+                    dangerouslySetInnerHTML={{
+                      __html: post.title,
+                    }}
+                  />
 
                   <p className="text-sm text-muted-foreground mt-1 line-clamp-2">
                     {post.excerpt}
@@ -204,26 +223,6 @@ useEffect(() => {
                 </li>
               ))}
             </ul>
-
-            {/* PROGRESS INDICATOR */}
-            <div className="absolute right-0 top-0 bottom-0 flex flex-col gap-2 w-[2px]">
-              {blogPosts.map((_, i) => (
-                <div key={i} className="w-full bg-muted flex-1">
-                  <motion.div
-                    className="w-full bg-accent"
-                    animate={{
-                      height:
-                        i === activeIndex
-                          ? `${progress}%`
-                          : i < activeIndex
-                          ? "100%"
-                          : "0%",
-                    }}
-                    transition={{ ease: "linear" }}
-                  />
-                </div>
-              ))}
-            </div>
           </div>
         </div>
       </div>
