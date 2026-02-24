@@ -40,11 +40,13 @@ export default function Blog() {
     VISIBLE_ITEMS * ITEM_HEIGHT +
     (VISIBLE_ITEMS - 1) * ITEM_GAP;
 
-  /* ---------------- FETCH POSTS ---------------- */
-  const fetchPosts = useCallback(async (pageNumber: number) => {
-    if (isFetching || !hasMore) return;
-
-    setIsFetching(true);
+  /* ---------------- STABLE FETCH ---------------- */
+  const fetchPostsPage = useCallback(async (pageNumber: number) => {
+    // prevent double fetch
+    setIsFetching((prev) => {
+      if (prev) return prev;
+      return true;
+    });
 
     try {
       const res = await fetch(`/api/posts?page=${pageNumber}`);
@@ -62,21 +64,21 @@ export default function Blog() {
     } finally {
       setIsFetching(false);
     }
-  }, [isFetching, hasMore]);
+  }, []); // empty dependency → stable
 
-  /* Initial load */
+  /* ---------------- INITIAL LOAD ---------------- */
   useEffect(() => {
-    fetchPosts(1);
-  }, [fetchPosts]);
+    fetchPostsPage(1);
+  }, [fetchPostsPage]);
 
-  /* ---------------- INFINITE SCROLL OBSERVER ---------------- */
+  /* ---------------- INFINITE SCROLL ---------------- */
   useEffect(() => {
     if (!loadMoreRef.current || !hasMore) return;
 
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries[0].isIntersecting && !isFetching) {
-          fetchPosts(page + 1);
+          fetchPostsPage(page + 1);
         }
       },
       {
@@ -86,9 +88,8 @@ export default function Blog() {
     );
 
     observer.observe(loadMoreRef.current);
-
     return () => observer.disconnect();
-  }, [page, isFetching, hasMore, fetchPosts]);
+  }, [page, isFetching, hasMore, fetchPostsPage]);
 
   /* ---------------- AUTO ROTATE ---------------- */
   useEffect(() => {
@@ -112,7 +113,6 @@ export default function Blog() {
 
           return next;
         });
-
         return;
       }
 
@@ -131,25 +131,17 @@ export default function Blog() {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            const index = Number(
-              entry.target.getAttribute("data-index")
-            );
+            const index = Number(entry.target.getAttribute("data-index"));
             if (!Number.isNaN(index)) {
               setActiveIndex(index);
             }
           }
         });
       },
-      {
-        root: listRef.current,
-        threshold: 0.6,
-      }
+      { root: listRef.current, threshold: 0.6 }
     );
 
-    itemRefs.current.forEach((el) => {
-      if (el) observer.observe(el);
-    });
-
+    itemRefs.current.forEach((el) => el && observer.observe(el));
     return () => observer.disconnect();
   }, [total]);
 
@@ -215,11 +207,7 @@ export default function Blog() {
             onMouseEnter={() => setIsPaused(true)}
             onMouseLeave={() => setIsPaused(false)}
             className="relative overflow-y-auto"
-            style={{
-              height: RIGHT_HEIGHT,
-              scrollbarWidth: "none",
-              msOverflowStyle: "none",
-            }}
+            style={{ height: RIGHT_HEIGHT, scrollbarWidth: "none", msOverflowStyle: "none" }}
           >
             <style jsx>{`
               div::-webkit-scrollbar {
@@ -231,9 +219,7 @@ export default function Blog() {
               {blogPosts.map((post, index) => (
                 <li
                   key={`${post.id}-${index}`}
-                  ref={(el) => {
-                    itemRefs.current[index] = el;
-                  }}
+                  ref={(el) => { itemRefs.current[index] = el; }} // TS-safe
                   data-index={index}
                   onClick={() => {
                     setActiveIndex(index);
