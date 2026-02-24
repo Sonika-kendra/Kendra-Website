@@ -1,41 +1,84 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 
 const ITEM_GAP = 12;
 const AUTO_DURATION = 4000;
-const ITEM_HEIGHT = 80;
-const VISIBLE_ITEMS = 6;
+const ITEM_HEIGHT = 100;
+const VISIBLE_ITEMS = 5;
 
 export default function Blog() {
   const [blogPosts, setBlogPosts] = useState<any[]>([]);
   const [activeIndex, setActiveIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
-  const [progress, setProgress] = useState(0);
+
+  const [page, setPage] = useState(1);
+  const [hasMore, setHasMore] = useState(true);
+  const [isFetching, setIsFetching] = useState(false);
 
   const listRef = useRef<HTMLDivElement | null>(null);
   const itemRefs = useRef<(HTMLLIElement | null)[]>([]);
+  const loadMoreRef = useRef<HTMLDivElement | null>(null);
 
   const total = blogPosts.length;
   const activePost = blogPosts[activeIndex];
 
-  /* ---------------- FETCH POSTS ---------------- */
-  useEffect(() => {
-    async function fetchPosts() {
-      try {
-        const res = await fetch("/api/posts");
-        const data = await res.json();
-        setBlogPosts(data);
-      } catch (error) {
-        console.error("Failed to load posts");
-      }
-    }
+  const RIGHT_HEIGHT =
+    VISIBLE_ITEMS * ITEM_HEIGHT +
+    (VISIBLE_ITEMS - 1) * ITEM_GAP;
 
-    fetchPosts();
+  /* ---------------- FETCH POSTS ---------------- */
+  const fetchPosts = useCallback(async (pageNumber: number) => {
+    if (isFetching || !hasMore) return;
+
+    setIsFetching(true);
+
+    try {
+      const res = await fetch(`/api/posts?page=${pageNumber}`);
+      const data = await res.json();
+
+      if (!data.length) {
+        setHasMore(false);
+        return;
+      }
+
+      setBlogPosts((prev) => [...prev, ...data]);
+      setPage(pageNumber);
+    } catch (error) {
+      console.error("Failed to load posts");
+    } finally {
+      setIsFetching(false);
+    }
+  }, [isFetching, hasMore]);
+
+  /* Initial load */
+  useEffect(() => {
+    fetchPosts(1);
   }, []);
+
+  /* ---------------- INFINITE SCROLL OBSERVER ---------------- */
+  useEffect(() => {
+    if (!loadMoreRef.current || !hasMore) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting && !isFetching) {
+          fetchPosts(page + 1);
+        }
+      },
+      {
+        root: listRef.current,
+        threshold: 0.1,
+      }
+    );
+
+    observer.observe(loadMoreRef.current);
+
+    return () => observer.disconnect();
+  }, [page, isFetching, hasMore, fetchPosts]);
 
   /* ---------------- AUTO ROTATE ---------------- */
   useEffect(() => {
@@ -47,7 +90,6 @@ export default function Blog() {
     const animate = () => {
       const elapsed = Date.now() - start;
       const pct = Math.min((elapsed / AUTO_DURATION) * 100, 100);
-      setProgress(pct);
 
       if (pct >= 100) {
         setActiveIndex((prev) => {
@@ -68,7 +110,6 @@ export default function Blog() {
     };
 
     frame = requestAnimationFrame(animate);
-
     return () => cancelAnimationFrame(frame);
   }, [isPaused, total]);
 
@@ -113,16 +154,20 @@ export default function Blog() {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-stretch">
+        <div
+          className="grid grid-cols-1 lg:grid-cols-2 gap-10"
+          style={{ minHeight: RIGHT_HEIGHT }}
+        >
           {/* LEFT FEATURED */}
           <motion.article
             key={activePost.id}
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="surface-card p-4 h-full flex flex-col"
+            className="surface-card p-4 flex flex-col h-full"
+            style={{ height: RIGHT_HEIGHT }}
           >
-            <div className="relative w-full h-[300px] mb-8 rounded-lg overflow-hidden">
+            <div className="relative w-full h-[45%] rounded-lg overflow-hidden mb-6">
               <Image
                 src={activePost.image}
                 alt={activePost.title}
@@ -133,22 +178,16 @@ export default function Blog() {
             </div>
 
             <div className="text-sm text-muted-foreground mb-3">
-              {new Date(activePost.date).toLocaleDateString("en-GB", {
-                day: "2-digit",
-                month: "long",
-                year: "numeric",
-              })}{" "}
-              • {activePost.author}
+              {new Date(activePost.date).toLocaleDateString("en-GB")} •{" "}
+              {activePost.author}
             </div>
 
             <h3
-              className="text-3xl font-serif text-foreground mb-4"
-              dangerouslySetInnerHTML={{
-                __html: activePost.title,
-              }}
+              className="text-2xl font-serif text-foreground mb-4"
+              dangerouslySetInnerHTML={{ __html: activePost.title }}
             />
 
-            <p className="text-muted-foreground mb-6">
+            <p className="text-muted-foreground mb-6 line-clamp-3">
               {activePost.excerpt}
             </p>
 
@@ -167,9 +206,7 @@ export default function Blog() {
             onMouseLeave={() => setIsPaused(false)}
             className="relative overflow-y-auto"
             style={{
-              height:
-                VISIBLE_ITEMS * ITEM_HEIGHT +
-                (VISIBLE_ITEMS - 1) * ITEM_GAP,
+              height: RIGHT_HEIGHT,
               scrollbarWidth: "none",
               msOverflowStyle: "none",
             }}
@@ -183,7 +220,7 @@ export default function Blog() {
             <ul className="flex flex-col" style={{ gap: ITEM_GAP }}>
               {blogPosts.map((post, index) => (
                 <li
-                  key={post.id}
+                  key={`${post.id}-${index}`}
                   ref={(el) => {
                     itemRefs.current[index] = el;
                   }}
@@ -203,18 +240,12 @@ export default function Blog() {
                   style={{ height: ITEM_HEIGHT }}
                 >
                   <p className="text-xs text-muted-foreground mb-2">
-                    {new Date(post.date).toLocaleDateString("en-GB", {
-                      day: "2-digit",
-                      month: "long",
-                      year: "numeric",
-                    })}
+                    {new Date(post.date).toLocaleDateString("en-GB")}
                   </p>
 
                   <h4
                     className="text-foreground hover:text-accent"
-                    dangerouslySetInnerHTML={{
-                      __html: post.title,
-                    }}
+                    dangerouslySetInnerHTML={{ __html: post.title }}
                   />
 
                   <p className="text-sm text-muted-foreground mt-1 line-clamp-2">
@@ -222,6 +253,16 @@ export default function Blog() {
                   </p>
                 </li>
               ))}
+
+              {/* Sentinel */}
+              {hasMore && (
+                <div
+                  ref={loadMoreRef}
+                  className="h-10 flex items-center justify-center text-sm text-muted-foreground"
+                >
+                  {isFetching ? "Loading..." : ""}
+                </div>
+              )}
             </ul>
           </div>
         </div>
