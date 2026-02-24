@@ -1,18 +1,5 @@
 import { getSidebarData } from "@/lib";
-
-interface SidebarPost {
-  id: number;
-  title: { rendered: string };
-  slug: string;
-  date: string;
-}
-
-interface Category {
-  id: number;
-  name: string;
-  slug: string;
-  count: number;
-}
+import type { BlogCategory, SidebarPost } from "@/interface/blog";
 
 export async function Sidebar() {
   const { latestPosts, categories } = await getSidebarData();
@@ -52,7 +39,7 @@ export async function Sidebar() {
       <div>
         <h3 className="text-xl font-semibold mb-4">Categories</h3>
         <ul className="space-y-2">
-          {categories.map((cat: Category) => (
+          {categories.map((cat: BlogCategory) => (
             <li key={cat.id}>
               <a
                 href={`/category/${cat.slug}`}

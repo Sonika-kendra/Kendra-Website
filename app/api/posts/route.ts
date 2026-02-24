@@ -1,14 +1,4 @@
-interface WPPost {
-  id: number;
-  title: { rendered: string };
-  excerpt: { rendered: string };
-  slug: string;
-  date: string;
-  _embedded?: {
-    author?: { name: string }[];
-    "wp:featuredmedia"?: { source_url: string }[];
-  };
-}
+import type { WPPost } from "@/interface/api";
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);

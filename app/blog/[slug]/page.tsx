@@ -1,29 +1,7 @@
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import { Sidebar } from "@/components/features/blog/Sidebar";
-
-interface PageProps {
-  params: {
-    slug: string;
-  };
-}
-
-interface Post {
-  id: number;
-  title: { rendered: string };
-  excerpt: { rendered: string };
-  content: { rendered: string };
-  slug: string;
-  date: string;
-  _embedded?: {
-    "wp:featuredmedia"?: {
-      source_url: string;
-      media_details?: {
-        sizes?: { large?: { source_url: string } };
-      };
-    }[];
-  };
-}
+import type { BlogPageProps, BlogPostDetail } from "@/interface/blog";
 
 /* -------------------- FETCH SINGLE POST -------------------- */
 async function getPostBySlug(slug: string) {
@@ -48,13 +26,13 @@ export async function generateStaticParams() {
 
   const posts = await res.json();
 
-  return posts.map((post: Post) => ({
+  return posts.map((post: BlogPostDetail) => ({
     slug: post.slug,
   }));
 }
 
 /* -------------------- SEO METADATA -------------------- */
-export async function generateMetadata({ params }: PageProps) {
+export async function generateMetadata({ params }: BlogPageProps) {
   const post = await getPostBySlug(params.slug);
 
   if (!post) {
@@ -72,7 +50,7 @@ export async function generateMetadata({ params }: PageProps) {
 }
 
 /* -------------------- BLOG PAGE -------------------- */
-export default async function BlogDetails({ params }: PageProps) {
+export default async function BlogDetails({ params }: BlogPageProps) {
   const post = await getPostBySlug(params.slug);
 
   if (!post) return notFound();

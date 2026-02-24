@@ -2,11 +2,7 @@
 
 import { useState } from "react";
 import { CheckCircle2, TrendingUp } from "lucide-react";
-
-interface LeadPopUpProps {
-  open: boolean;
-  onClose: () => void;
-}
+import type { LeadPopUpProps } from "@/interface/common";
 
 export default function LeadPopUp({ open, onClose }: LeadPopUpProps) {
   const [submitted, setSubmitted] = useState(false);

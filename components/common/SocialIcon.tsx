@@ -1,16 +1,10 @@
 "use client";
 
-import { ReactNode } from "react";
 import clsx from "clsx";
 import { ui } from "@/config/theme";
+import type { SocialIconProps } from "@/interface/common";
 
-interface Props {
-  href: string;
-  label: string;
-  children: ReactNode;
-}
-
-export default function SocialIcon({ href, label, children }: Props) {
+export default function SocialIcon({ href, label, children }: SocialIconProps) {
   return (
     <a
       href={href}

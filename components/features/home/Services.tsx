@@ -2,19 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-
-interface ServiceItem {
-  title: string;
-  slug: string;
-  description: string;
-  icon: string;
-  image: string;
-}
-
-interface ServicesProps {
-  items: ServiceItem[];
-  aboutContent: { heading: string; description: string };
-}
+import type { ServicesProps } from "@/interface/home";
 
 export default function Services({ items, aboutContent }: ServicesProps) {
   return (

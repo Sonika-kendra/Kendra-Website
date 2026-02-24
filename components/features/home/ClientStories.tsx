@@ -5,14 +5,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { testimonials } from "@/content/testimonial";
 import Image from "next/image";
-
-interface Testimonial {
-  quote: string;
-  name: string;
-  role: string;
-  image?: string;
-  type?: "image" | "video" | "svg" | string;
-}
+import type { Testimonial } from "@/interface/home";
 
 function Media({ testimonial }: { testimonial: Testimonial }) {
   const [error, setError] = useState(false);

@@ -1,14 +1,7 @@
 "use client";
 
 import { User, Zap, Target } from "lucide-react";
-
-interface WhyKendraProps {
-  heading: string;
-  reasons: {
-    title: string;
-    points: string[];
-  }[];
-}
+import type { WhyKendraProps } from "@/interface/home";
 
 const highlights = [
   {

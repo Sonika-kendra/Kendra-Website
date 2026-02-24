@@ -4,16 +4,7 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-
-interface BlogPost {
-  id: number;
-  title: string;
-  excerpt: string;
-  slug: string;
-  date: string;
-  author: string;
-  image: string;
-}
+import type { HomeBlogPost } from "@/interface/blog";
 
 const ITEM_GAP = 12;
 const AUTO_DURATION = 4000;
@@ -21,7 +12,7 @@ const ITEM_HEIGHT = 100;
 const VISIBLE_ITEMS = 5;
 
 export default function Blog() {
-  const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
+  const [blogPosts, setBlogPosts] = useState<HomeBlogPost[]>([]);
   const [activeIndex, setActiveIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
 
