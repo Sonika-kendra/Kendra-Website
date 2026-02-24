@@ -1,3 +1,15 @@
+interface WPPost {
+  id: number;
+  title: { rendered: string };
+  excerpt: { rendered: string };
+  slug: string;
+  date: string;
+  _embedded?: {
+    author?: { name: string }[];
+    "wp:featuredmedia"?: { source_url: string }[];
+  };
+}
+
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const page = searchParams.get("page") || "1";
@@ -12,22 +24,20 @@ export async function GET(request: Request) {
       return Response.json({ error: "Failed to fetch" }, { status: 500 });
     }
 
-    const posts = await res.json();
+    const posts: WPPost[] = await res.json();
 
-    const formatted = posts.map((post: any) => ({
+    const formatted = posts.map((post) => ({
       id: post.id,
       title: post.title.rendered,
       excerpt: post.excerpt.rendered.replace(/<[^>]+>/g, ""),
       slug: post.slug,
       date: post.date,
       author: post._embedded?.author?.[0]?.name || "Admin",
-      image:
-        post._embedded?.["wp:featuredmedia"]?.[0]?.source_url ||
-        "/placeholder.jpg",
+      image: post._embedded?.["wp:featuredmedia"]?.[0]?.source_url || "/placeholder.jpg",
     }));
 
     return Response.json(formatted);
-  } catch (error) {
+  } catch {
     return Response.json({ error: "Server error" }, { status: 500 });
   }
 }

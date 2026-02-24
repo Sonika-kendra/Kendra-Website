@@ -5,13 +5,23 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 
+interface BlogPost {
+  id: number;
+  title: string;
+  excerpt: string;
+  slug: string;
+  date: string;
+  author: string;
+  image: string;
+}
+
 const ITEM_GAP = 12;
 const AUTO_DURATION = 4000;
 const ITEM_HEIGHT = 100;
 const VISIBLE_ITEMS = 5;
 
 export default function Blog() {
-  const [blogPosts, setBlogPosts] = useState<any[]>([]);
+  const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
   const [activeIndex, setActiveIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
 
@@ -48,7 +58,7 @@ export default function Blog() {
       setBlogPosts((prev) => [...prev, ...data]);
       setPage(pageNumber);
     } catch (error) {
-      console.error("Failed to load posts");
+      console.error("Failed to load posts", error);
     } finally {
       setIsFetching(false);
     }
@@ -57,7 +67,7 @@ export default function Blog() {
   /* Initial load */
   useEffect(() => {
     fetchPosts(1);
-  }, []);
+  }, [fetchPosts]);
 
   /* ---------------- INFINITE SCROLL OBSERVER ---------------- */
   useEffect(() => {

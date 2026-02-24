@@ -1,4 +1,18 @@
-import { getSidebarData } from "@/app/blog/[slug]/page";
+import { getSidebarData } from "@/lib";
+
+interface SidebarPost {
+  id: number;
+  title: { rendered: string };
+  slug: string;
+  date: string;
+}
+
+interface Category {
+  id: number;
+  name: string;
+  slug: string;
+  count: number;
+}
 
 export async function Sidebar() {
   const { latestPosts, categories } = await getSidebarData();
@@ -19,7 +33,7 @@ export async function Sidebar() {
       <div>
         <h3 className="text-xl font-semibold mb-4">Latest Posts</h3>
         <ul className="space-y-4">
-          {latestPosts.map((item: any) => (
+          {latestPosts.map((item: SidebarPost) => (
             <li key={item.id}>
               <a
                 href={`/blog/${item.slug}`}
@@ -38,7 +52,7 @@ export async function Sidebar() {
       <div>
         <h3 className="text-xl font-semibold mb-4">Categories</h3>
         <ul className="space-y-2">
-          {categories.map((cat: any) => (
+          {categories.map((cat: Category) => (
             <li key={cat.id}>
               <a
                 href={`/category/${cat.slug}`}

@@ -8,6 +8,23 @@ interface PageProps {
   };
 }
 
+interface Post {
+  id: number;
+  title: { rendered: string };
+  excerpt: { rendered: string };
+  content: { rendered: string };
+  slug: string;
+  date: string;
+  _embedded?: {
+    "wp:featuredmedia"?: {
+      source_url: string;
+      media_details?: {
+        sizes?: { large?: { source_url: string } };
+      };
+    }[];
+  };
+}
+
 /* -------------------- FETCH SINGLE POST -------------------- */
 async function getPostBySlug(slug: string) {
   const res = await fetch(
@@ -31,7 +48,7 @@ export async function generateStaticParams() {
 
   const posts = await res.json();
 
-  return posts.map((post: any) => ({
+  return posts.map((post: Post) => ({
     slug: post.slug,
   }));
 }
@@ -52,23 +69,6 @@ export async function generateMetadata({ params }: PageProps) {
     title: post.title.rendered,
     description: cleanExcerpt,
   };
-}
-
-/* -------------------- FETCH SIDEBAR DATA -------------------- */
-export async function getSidebarData() {
-  const [postsRes, categoriesRes] = await Promise.all([
-    fetch(`${process.env.WORDPRESS_URL}/posts?per_page=5`, {
-      next: { revalidate: 60 },
-    }),
-    fetch(`${process.env.WORDPRESS_URL}/categories`, {
-      next: { revalidate: 60 },
-    }),
-  ]);
-
-  const latestPosts = await postsRes.json();
-  const categories = await categoriesRes.json();
-
-  return { latestPosts, categories };
 }
 
 /* -------------------- BLOG PAGE -------------------- */
