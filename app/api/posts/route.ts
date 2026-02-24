@@ -1,8 +1,11 @@
-export async function GET() {
+export async function GET(request: Request) {
+  const { searchParams } = new URL(request.url);
+  const page = searchParams.get("page") || "1";
+
   try {
     const res = await fetch(
-      "https://kendra-intl.com/wp-json/wp/v2/posts?_embed&per_page=10",
-      { next: { revalidate: 300 } } // ISR
+      `${process.env.WORDPRESS_URL}/posts?_embed&per_page=10&page=${page}`,
+      { next: { revalidate: 300 } }
     );
 
     if (!res.ok) {
