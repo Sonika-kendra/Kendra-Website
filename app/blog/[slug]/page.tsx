@@ -77,7 +77,7 @@ export default async function BlogDetails({ params }: PageProps) {
 
   if (!post) return notFound();
 
-  console.log(post.content);
+  // console.log(post.content);
 
 const content = post.content.rendered
   .replace(/<noscript>[\s\S]*?<\/noscript>/g, "")
