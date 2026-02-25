@@ -55,15 +55,13 @@ export default async function BlogDetails({ params }: BlogPageProps) {
 
   if (!post) return notFound();
 
-  // console.log(post.content);
-
-const content = post.content.rendered
-  .replace(/<noscript>[\s\S]*?<\/noscript>/g, "")
-  .replace(/src="data:image[^"]*"/g, "")
-  .replace(/data-src=/g, "src=")
-  .replace(/class="lazyload"/g, "")
-  .replace(/src="\/wp-content/g, `src="https://kendra-intl.com/wp-content`)
-  .replace(/http:\/\/kendra-intl\.com/g, "https://kendra-intl.com");
+  const content = post.content.rendered
+    .replace(/<noscript>[\s\S]*?<\/noscript>/g, "")
+    .replace(/src="data:image[^"]*"/g, "")
+    .replace(/data-src=/g, "src=")
+    .replace(/class="lazyload"/g, "")
+    .replace(/src="\/wp-content/g, `src="https://kendra-intl.com/wp-content`)
+    .replace(/http:\/\/kendra-intl\.com/g, "https://kendra-intl.com");
 
   /* ✅ Safer featured image */
   const featuredImage =

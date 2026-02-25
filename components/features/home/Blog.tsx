@@ -175,10 +175,13 @@ export default function Blog() {
               {activePost.author}
             </div>
 
-            <h3
-              className="text-2xl font-serif text-foreground mb-4"
-              dangerouslySetInnerHTML={{ __html: activePost.title }}
-            />
+            {/* Make title clickable */}
+            <Link href={`/blog/${activePost.slug}`} className="mb-4">
+              <h3
+                className="text-2xl font-serif text-foreground hover:text-accent"
+                dangerouslySetInnerHTML={{ __html: activePost.title }}
+              />
+            </Link>
 
             <p className="text-muted-foreground mb-6 line-clamp-3">
               {activePost.excerpt}
