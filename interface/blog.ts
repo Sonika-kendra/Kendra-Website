@@ -26,6 +26,11 @@ export interface SidebarPost {
   title: { rendered: string };
   slug: string;
   date: string;
+  _embedded?: {
+  "wp:featuredmedia"?: {
+    source_url: string;
+  }[];
+};
 }
 
 export interface BlogCategory {
