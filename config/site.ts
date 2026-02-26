@@ -48,6 +48,10 @@ export const navLinks: NavItem[] = [
     ],
   },
   {
+    href: "/blog",
+    label: "Blog",
+  },
+  {
     href: "/contact",
     label: "Contact",
   },
