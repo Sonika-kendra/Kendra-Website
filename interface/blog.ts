@@ -11,6 +11,7 @@ export interface BlogPostDetail {
   content: { rendered: string };
   slug: string;
   date: string;
+  categories?: number[];
   _embedded?: {
     "wp:featuredmedia"?: {
       source_url: string;
@@ -18,7 +19,15 @@ export interface BlogPostDetail {
         sizes?: { large?: { source_url: string } };
       };
     }[];
+    "wp:term"?: BlogTerm[][];
   };
+}
+
+export interface BlogTerm {
+  id: number;
+  name: string;
+  slug: string;
+  taxonomy: string;
 }
 
 export interface SidebarPost {

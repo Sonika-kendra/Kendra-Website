@@ -1,12 +1,12 @@
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import { Sidebar } from "@/components/features/blog/Sidebar";
-import type { BlogPageProps, BlogPostDetail } from "@/interface/blog";
+import type { BlogPageProps, BlogPostDetail, BlogTerm } from "@/interface/blog";
 
 /* -------------------- FETCH SINGLE POST -------------------- */
 async function getPostBySlug(slug: string) {
   const res = await fetch(
-    `${process.env.WORDPRESS_URL}/posts?slug=${slug}&_embed=wp:featuredmedia`,
+    `${process.env.WORDPRESS_URL}/posts?slug=${slug}&_embed=wp:featuredmedia,wp:term`,
     {
       next: { revalidate: 60 },
     }
@@ -14,7 +14,7 @@ async function getPostBySlug(slug: string) {
 
   if (!res.ok) return null;
 
-  const data = await res.json();
+  const data = (await res.json()) as BlogPostDetail[];
   return data?.[0] || null;
 }
 
@@ -55,6 +55,11 @@ export default async function BlogDetails({ params }: BlogPageProps) {
 
   if (!post) return notFound();
 
+  const categories: BlogTerm[] =
+    post._embedded?.["wp:term"]
+      ?.flat()
+      .filter((term: BlogTerm) => term.taxonomy === "category") || [];
+
   const content = post.content.rendered
     .replace(/<noscript>[\s\S]*?<\/noscript>/g, "")
     .replace(/src="data:image[^"]*"/g, "")
@@ -81,6 +86,20 @@ return (
           className="text-4xl md:text-5xl font-bold mb-6 leading-tight"
           dangerouslySetInnerHTML={{ __html: post.title.rendered }}
         />
+
+        {/* Categories */}
+        {categories.length > 0 && (
+          <div className="mb-6 flex flex-wrap gap-2">
+            {categories.map((category: BlogTerm) => (
+              <span
+                key={category.id}
+                className="rounded-full bg-blue-50 px-3 py-1 text-sm font-medium text-blue-700"
+              >
+                {category.name}
+              </span>
+            ))}
+          </div>
+        )}
 
         {/* Featured Image */}
         {featuredImage && (
