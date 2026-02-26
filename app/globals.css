@@ -244,3 +244,70 @@
 
 
 }
+
+/* ================= BLOG CONTENT STYLES ================= */
+
+.blog-content {
+  line-height: 1.8;
+}
+
+.blog-content p {
+  margin: 0.25rem 0;
+}
+
+.blog-content strong {
+  font-weight: 700;
+  color: rgb(var(--foreground));
+}
+
+.blog-content img {
+  margin: 1rem 0;
+  border-radius: 0.75rem;
+  height: auto;
+}
+
+.blog-content ul {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.blog-content ol {
+  list-style-type: decimal;
+  padding-left: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.blog-content li {
+  margin: 0.5rem 0;
+}
+
+/* .blog-content h2,
+.blog-content h3,
+.blog-content h4 {
+  margin-top: 2rem; */
+  /* margin-bottom: 1rem; */
+  /* font-weight: 700;
+} */
+
+.blog-content h2,
+.blog-content h3,
+.blog-content h4 {
+  /* margin-top: 0.5rem; */
+  font-weight: 600;
+  position: relative;
+  padding-left: 1.25rem;
+}
+
+.blog-content h2::before,
+.blog-content h3::before,
+.blog-content h4::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.6em;
+  width: 8px;
+  height: 8px;
+  border-radius: 9999px;
+  background-color: rgb(var(--primary));
+}

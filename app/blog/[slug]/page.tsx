@@ -71,7 +71,7 @@ export default async function BlogDetails({ params }: BlogPageProps) {
     null;
 
 return (
-  <div className="max-w-7xl mx-auto px-6 py-12">
+  <div className="max-w-8xl mx-auto px-24 py-12">
     <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
       
       {/* ================= LEFT CONTENT ================= */}
@@ -98,7 +98,7 @@ return (
 
         {/* Content */}
         <div
-          className="prose prose-lg max-w-none"
+          className="blog-content text-justify"
           dangerouslySetInnerHTML={{ __html: content }}
         />
       </article>
