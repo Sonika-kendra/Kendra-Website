@@ -7,6 +7,7 @@ import { useState, useRef, useEffect } from "react";
 import Logo from "./Logo";
 import { ChevronDown, Menu, X } from "lucide-react";
 import { navLinks } from "@/config/site";
+import { WebsiteUrlConfig } from "@/config/routing";
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -42,8 +43,8 @@ export default function Navbar() {
         <nav className="hidden lg:flex items-center gap-10 ml-auto">
           {navLinks.map((link) => {
             const isActive =
-              link.href === "/"
-                ? pathname === "/"
+              link.href === WebsiteUrlConfig.Home
+                ? pathname === WebsiteUrlConfig.Home
                 : pathname.startsWith(link.href);
 
             const hasChildren = !!link.children;

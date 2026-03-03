@@ -1,3 +1,5 @@
+import { WebsiteUrlConfig } from "@/config/routing";
+
 export interface HeroSlide {
   title: string;
   subtitle: string;
@@ -12,7 +14,7 @@ export const heroSlidContent = [
     subtitle:
       "Expert-led M&A, transformation, and financial advisory for growth-focused SMEs. Measurable results delivered in days, not months.",
     cta: "Start Your Transformation",
-    ctaLink: "/",
+    ctaLink: WebsiteUrlConfig.Home,
     image: "/hero/slide-1.png",
   },
   {
@@ -50,28 +52,28 @@ export const homeAboutUsContent = {
 export const homeServiceContent = [
   {
     title: "Fueling Growth",
-    slug: "/services/fueling-growth",
+    slug: WebsiteUrlConfig.Fueling_Growth,
     description: "Identify new revenue streams, optimize sales cycles, and expand market reach.",
     icon: "growth",
     image: "/services/service-1.jpg",
   },
   {
     title: "Optimizing Operations",
-    slug: "/services/optimizing-operations",
+    slug: WebsiteUrlConfig.Optimizing_Operations,
     description: "Reduce costs and enhance efficiency through strategic outsourcing, automation, and digital transformation.",
     icon: "operations",
     image: "/services/service-2.jpg",
   },
   {
     title: "M&A & Exit Strategy Planning",
-    slug: "/services/ma-exit-strategy",
+    slug: WebsiteUrlConfig.MandM_Exit,
     description: "Navigate mergers, acquisitions, and business transitions seamlessly, maximizing value and ensuring smooth transitions.",
     icon: "strategy",
     image: "/services/service-4.jpg",
   },
   {
     title: "Strengthening Liquidity",
-    slug: "/services/strengthening-liquidity",
+    slug: WebsiteUrlConfig.Strengthening_Liquidity,
     description: "Improve cash flow, manage capital effectively, and build financial resilience for long-term success.",
     icon: "liquidity",
     image: "/services/service-3.jpg",
@@ -100,28 +102,28 @@ export const homeContent = {
   // services: [
   //   {
   //     title: "Fueling Growth",
-  //     slug: "/services/fueling-growth",
+  //     slug: WebsiteUrlConfig.Fueling_Growth,
   //     description: "Identify new revenue streams, optimize sales cycles, and expand market reach.",
   //     icon: "growth",
   //     image: "/images/services/growth.jpg",
   //   },
   //   {
   //     title: "Optimizing Operations",
-  //     slug: "/services/optimizing-operations",
+  //     slug: "WebsiteUrlConfig.Optimizing_Operations",
   //     description: "Reduce costs and enhance efficiency through strategic outsourcing, automation, and digital transformation.",
   //     icon: "operations",
   //     image: "/images/services/operations.jpg",
   //   },
   //   {
   //     title: "Strengthening Liquidity",
-  //     slug: "/services/strengthening-liquidity",
+  //     slug: WebsiteUrlConfig.Strengthening_Liquidity,
   //     description: "Improve cash flow, manage capital effectively, and build financial resilience for long-term success.",
   //     icon: "liquidity",
   //     image: "/images/services/liquidity.jpg",
   //   },
   //   {
   //     title: "M&A & Exit Strategy Planning",
-  //     slug: "/services/ma-exit-strategy",
+  //     slug: WebsiteUrlConfig.MandM_Exit,
   //     description: "Navigate mergers, acquisitions, and business transitions seamlessly, maximizing value and ensuring smooth transitions.",
   //     icon: "strategy",
   //     image: "/images/services/mergers.jpg",

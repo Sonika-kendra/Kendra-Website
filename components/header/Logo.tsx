@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import clsx from "clsx";
+import { WebsiteUrlConfig } from "@/config/routing";
 
 type LogoProps = {
   href?: string;
@@ -14,7 +15,7 @@ type LogoProps = {
 };
 
 export default function Logo({
-  href = "/",
+  href = WebsiteUrlConfig.Home,
   width = 180,
   height = 60,
   className,

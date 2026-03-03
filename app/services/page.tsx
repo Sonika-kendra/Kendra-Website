@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { pageMeta } from "@config/site";
 import { servicesOverview } from "@content/services";
+import { WebsiteUrlConfig } from "@/config/routing";
 
 export const metadata: Metadata = pageMeta.services as Metadata;
 
@@ -118,7 +119,7 @@ export default function ServicesPage() {
               Schedule a Consultation
             </Link>
             <Link
-              href="/"
+              href={WebsiteUrlConfig.Home}
               className="inline-flex items-center justify-center rounded-lg border border-navy text-navy px-8 py-3.5 text-sm font-semibold transition-all hover:bg-navy hover:text-white"
             >
               Back to Home

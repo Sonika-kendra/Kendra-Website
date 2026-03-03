@@ -1,4 +1,5 @@
 import { homeContent } from "@/content/home";
+import { WebsiteUrlConfig } from "./routing";
 
 export const siteMeta = {
   title: {
@@ -31,7 +32,7 @@ export type NavItem = {
 
 export const navLinks: NavItem[] = [
   {
-    href: "/",
+    href: WebsiteUrlConfig.Home,
     label: "Home",
   },
   {
@@ -44,6 +45,7 @@ export const navLinks: NavItem[] = [
     children: [
       { href: "/services/consulting", label: "FaaS" },
       { href: "/services/cost", label: "Turnover & Transformation" },
+      { href: "/services/ma", label: "Buy & Build" },
       { href: "/services/ma", label: "Buy & Build" },
     ],
   },
@@ -60,7 +62,7 @@ export const navLinks: NavItem[] = [
 
 export const footer = {
   quickLinks: [
-    { href: "/", label: "Home" },
+    { href: WebsiteUrlConfig.Home, label: "Home" },
     { href: "/about", label: "About" },
     { href: "/services", label: "Services" },
     { href: "/contact", label: "Contact" },

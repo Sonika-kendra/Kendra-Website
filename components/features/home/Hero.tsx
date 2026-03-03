@@ -87,55 +87,55 @@ export default function Hero() {
         </svg>
       </div> */}
 
-{/* Two Full Circular White Waves - Right Side */}
-<motion.div className="absolute inset-0 flex items-center justify-end pr-12 pointer-events-none">
-  <svg viewBox="0 0 400 400" className="w-[60%] h-[60%] max-w-[500px]">
-    
-    {/* Static Center Dot */}
-    <circle
-      cx="200"
-      cy="200"
-      r="6"
-      fill="white"
-    />
+      {/* Two Full Circular White Waves - Right Side */}
+      <motion.div className="absolute inset-0 flex items-center justify-end pr-12 pointer-events-none">
+        <svg viewBox="0 0 400 400" className="w-[60%] h-[60%] max-w-[500px]">
 
-    {/* Wave 1 */}
-    <motion.circle
-      cx="200"
-      cy="200"
-      r="0"
-      fill="none"
-      stroke="white"
-      strokeWidth="2"
-      initial={{ r: 0, opacity: 0.25 }}
-      animate={{ r: 180, opacity: 0 }}
-      transition={{
-        duration: 8,
-        repeat: Infinity,
-        ease: "easeOut",
-      }}
-    />
+          {/* Static Center Dot */}
+          <circle
+            cx="200"
+            cy="200"
+            r="6"
+            fill="white"
+          />
 
-    {/* Wave 2 */}
-    <motion.circle
-      cx="200"
-      cy="200"
-      r="0"
-      fill="none"
-      stroke="white"
-      strokeWidth="1.8"
-      initial={{ r: 0, opacity: 0.2 }}
-      animate={{ r: 180, opacity: 0 }}
-      transition={{
-        duration: 8,
-        repeat: Infinity,
-        ease: "easeOut",
-        delay: 4,
-      }}
-    />
-    
-  </svg>
-</motion.div>
+          {/* Wave 1 */}
+          <motion.circle
+            cx="200"
+            cy="200"
+            r="0"
+            fill="none"
+            stroke="white"
+            strokeWidth="2"
+            initial={{ r: 0, opacity: 0.25 }}
+            animate={{ r: 180, opacity: 0 }}
+            transition={{
+              duration: 8,
+              repeat: Infinity,
+              ease: "easeOut",
+            }}
+          />
+
+          {/* Wave 2 */}
+          <motion.circle
+            cx="200"
+            cy="200"
+            r="0"
+            fill="none"
+            stroke="white"
+            strokeWidth="1.8"
+            initial={{ r: 0, opacity: 0.2 }}
+            animate={{ r: 180, opacity: 0 }}
+            transition={{
+              duration: 8,
+              repeat: Infinity,
+              ease: "easeOut",
+              delay: 4,
+            }}
+          />
+
+        </svg>
+      </motion.div>
 
 
       {/* Navigation Arrows */}
@@ -217,13 +217,13 @@ export default function Hero() {
 
             {/* Updated Buttons */}
             <div className="mt-8 flex flex-wrap gap-4">
-<button
-  type="button"
-  onClick={openLeadPopUp}
-  className="inline-flex items-center justify-center rounded-md border-2 border-white px-6 py-3 text-sm font-semibold text-white transition-all duration-200 hover:bg-white hover:text-black"
->
-  Get Business Report
-</button>
+              <button
+                type="button"
+                onClick={openLeadPopUp}
+                className="inline-flex items-center justify-center rounded-md border-2 border-white px-6 py-3 text-sm font-semibold text-white transition-all duration-200 hover:bg-white hover:text-black"
+              >
+                Get Business Report
+              </button>
 
 
               <Link
