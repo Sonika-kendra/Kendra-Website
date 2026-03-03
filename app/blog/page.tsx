@@ -30,12 +30,12 @@ export default async function BlogPage() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
         <section className="lg:col-span-2">
           <h1 className="text-4xl md:text-5xl font-bold mb-3">Blog</h1>
-          <p className="text-gray-600 mb-10">
+          <p className="text-gray-600 dark:text-slate-300 mb-10">
             Explore all blog posts and browse by category.
           </p>
 
           {posts.length === 0 ? (
-            <p className="text-gray-500">No blog posts found.</p>
+            <p className="text-gray-500 dark:text-slate-400">No blog posts found.</p>
           ) : (
             <ul className="space-y-8">
               {posts.map((post: BlogPostDetail) => {
@@ -46,7 +46,7 @@ export default async function BlogPage() {
                 return (
                   <li
                     key={post.id}
-                    className="border border-gray-200 rounded-xl overflow-hidden bg-white"
+                    className="border border-gray-200 dark:border-slate-700 rounded-xl overflow-hidden bg-white dark:bg-slate-900"
                   >
                     <article
                       className={
@@ -71,18 +71,18 @@ export default async function BlogPage() {
                       )}
 
                       <div className="p-6">
-                        <p className="text-sm text-gray-500 mb-3">
+                        <p className="text-sm text-gray-500 dark:text-slate-400 mb-3">
                           {new Date(post.date).toLocaleDateString()}
                         </p>
 
                         <Link href={`/blog/${post.slug}`}>
                           <h2
-                            className="text-2xl font-semibold leading-tight hover:text-blue-700 transition-colors"
+                            className="text-2xl font-semibold leading-tight hover:text-blue-700 dark:hover:text-sky-300 transition-colors"
                             dangerouslySetInnerHTML={{ __html: post.title.rendered }}
                           />
                         </Link>
 
-                        <p className="text-gray-700 mt-4 line-clamp-3">
+                        <p className="text-gray-700 dark:text-slate-300 mt-4 line-clamp-3">
                           {stripHtml(post.excerpt.rendered)}
                         </p>
 
@@ -92,7 +92,7 @@ export default async function BlogPage() {
                               <Link
                                 key={category.id}
                                 href={`/category/${category.slug}`}
-                                className="rounded-full bg-blue-50 px-3 py-1 text-sm font-medium text-blue-700 hover:bg-blue-700 hover:text-white transition"
+                                className="rounded-full bg-blue-50 px-3 py-1 text-sm font-medium text-blue-700 hover:bg-blue-700 hover:text-white transition dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700 dark:hover:text-white"
                               >
                                 {category.name}
                               </Link>

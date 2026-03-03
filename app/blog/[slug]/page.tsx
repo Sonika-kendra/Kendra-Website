@@ -20,10 +20,7 @@ async function getPostBySlug(slug: string) {
 
 /* -------------------- GENERATE STATIC PATHS -------------------- */
 export async function generateStaticParams() {
-  const res = await fetch(
-    `${process.env.WORDPRESS_URL}/posts`
-  );
-
+  const res = await fetch(`${process.env.WORDPRESS_URL}/posts`);
   const posts = await res.json();
 
   return posts.map((post: BlogPostDetail) => ({
@@ -75,56 +72,55 @@ export default async function BlogDetails({ params }: BlogPageProps) {
     post._embedded?.["wp:featuredmedia"]?.[0]?.source_url ||
     null;
 
-return (
-  <div className="max-w-8xl mx-auto px-24 py-12">
-    <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-      
-      {/* ================= LEFT CONTENT ================= */}
-      <article className="lg:col-span-2">
-        {/* Title */}
-        <h1
-          className="text-4xl md:text-5xl font-bold mb-6 leading-tight"
-          dangerouslySetInnerHTML={{ __html: post.title.rendered }}
-        />
+  return (
+    <div className="max-w-8xl mx-auto px-24 py-12">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+        {/* ================= LEFT CONTENT ================= */}
+        <article className="lg:col-span-2">
+          {/* Title */}
+          <h1
+            className="text-4xl md:text-5xl font-bold mb-6 leading-tight"
+            dangerouslySetInnerHTML={{ __html: post.title.rendered }}
+          />
 
-        {/* Categories */}
-        {categories.length > 0 && (
-          <div className="mb-6 flex flex-wrap gap-2">
-            {categories.map((category: BlogTerm) => (
-              <span
-                key={category.id}
-                className="rounded-full bg-blue-50 px-3 py-1 text-sm font-medium text-blue-700"
-              >
-                {category.name}
-              </span>
-            ))}
-          </div>
-        )}
+          {/* Categories */}
+          {categories.length > 0 && (
+            <div className="mb-6 flex flex-wrap gap-2">
+              {categories.map((category: BlogTerm) => (
+                <span
+                  key={category.id}
+                  className="rounded-full bg-blue-50 px-3 py-1 text-sm font-medium text-blue-700 dark:bg-slate-800 dark:text-slate-200"
+                >
+                  {category.name}
+                </span>
+              ))}
+            </div>
+          )}
 
-        {/* Featured Image */}
-        {featuredImage && (
-          <div className="relative w-full h-[400px] mb-8 rounded-xl overflow-hidden">
-            <Image
-              src={featuredImage}
-              alt={post.title.rendered}
-              fill
-              sizes="(max-width: 768px) 100vw, 1024px"
-              className="object-cover"
-              priority
-            />
-          </div>
-        )}
+          {/* Featured Image */}
+          {featuredImage && (
+            <div className="relative w-full h-[400px] mb-8 rounded-xl overflow-hidden">
+              <Image
+                src={featuredImage}
+                alt={post.title.rendered}
+                fill
+                sizes="(max-width: 768px) 100vw, 1024px"
+                className="object-cover"
+                priority
+              />
+            </div>
+          )}
 
-        {/* Content */}
-        <div
-          className="blog-content text-justify"
-          dangerouslySetInnerHTML={{ __html: content }}
-        />
-      </article>
+          {/* Content */}
+          <div
+            className="blog-content text-justify text-gray-800 dark:text-slate-200"
+            dangerouslySetInnerHTML={{ __html: content }}
+          />
+        </article>
 
-      {/* ================= RIGHT SIDEBAR ================= */}
-      <Sidebar />
+        {/* ================= RIGHT SIDEBAR ================= */}
+        <Sidebar />
+      </div>
     </div>
-  </div>
-);
+  );
 }

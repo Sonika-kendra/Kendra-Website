@@ -67,19 +67,21 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
           <div className="mb-8">
             <Link
               href="/blog"
-              className="text-sm text-blue-700 hover:underline inline-block mb-4"
+              className="text-sm text-blue-700 hover:underline inline-block mb-4 dark:text-sky-300"
             >
               Back to all blogs
             </Link>
             <h1 className="text-4xl md:text-5xl font-bold">{category.name}</h1>
-            <p className="text-gray-600 mt-3">
+            <p className="text-gray-600 dark:text-slate-300 mt-3">
               Showing {posts.length} post{posts.length === 1 ? "" : "s"} in this
               category.
             </p>
           </div>
 
           {posts.length === 0 ? (
-            <p className="text-gray-500">No posts found in this category.</p>
+            <p className="text-gray-500 dark:text-slate-400">
+              No posts found in this category.
+            </p>
           ) : (
             <ul className="space-y-8">
               {posts.map((post: BlogPostDetail) => {
@@ -90,7 +92,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
                 return (
                   <li
                     key={post.id}
-                    className="border border-gray-200 rounded-xl overflow-hidden bg-white"
+                    className="border border-gray-200 dark:border-slate-700 rounded-xl overflow-hidden bg-white dark:bg-slate-900"
                   >
                     <article
                       className={
@@ -115,18 +117,18 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
                       )}
 
                       <div className="p-6">
-                        <p className="text-sm text-gray-500 mb-3">
+                        <p className="text-sm text-gray-500 dark:text-slate-400 mb-3">
                           {new Date(post.date).toLocaleDateString()}
                         </p>
 
                         <Link href={`/blog/${post.slug}`}>
                           <h2
-                            className="text-2xl font-semibold leading-tight hover:text-blue-700 transition-colors"
+                            className="text-2xl font-semibold leading-tight hover:text-blue-700 dark:hover:text-sky-300 transition-colors"
                             dangerouslySetInnerHTML={{ __html: post.title.rendered }}
                           />
                         </Link>
 
-                        <p className="text-gray-700 mt-4 line-clamp-3">
+                        <p className="text-gray-700 dark:text-slate-300 mt-4 line-clamp-3">
                           {stripHtml(post.excerpt.rendered)}
                         </p>
 
@@ -136,7 +138,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
                               <Link
                                 key={item.id}
                                 href={`/category/${item.slug}`}
-                                className="rounded-full bg-blue-50 px-3 py-1 text-sm font-medium text-blue-700 hover:bg-blue-700 hover:text-white transition"
+                                className="rounded-full bg-blue-50 px-3 py-1 text-sm font-medium text-blue-700 hover:bg-blue-700 hover:text-white transition dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700 dark:hover:text-white"
                               >
                                 {item.name}
                               </Link>
