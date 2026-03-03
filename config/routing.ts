@@ -6,7 +6,7 @@ export const WebsiteUrlConfig = {
     Optimizing_Operations: '/services/optimizing-operations',
     MandM_Exit: '/services/ma-exit-strategy',
     Strengthening_Liquidity: '/services/strengthening-liquidity',
-    Blogs: '/blogs',
+    Blogs: '/blog',
     Contact: '/contact',
     Privacy: '/privacy',
     Terms: '/terms',

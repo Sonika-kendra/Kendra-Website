@@ -12,14 +12,17 @@ import { WebsiteUrlConfig } from "@/config/routing";
 export default function Navbar() {
   const pathname = usePathname();
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const [openMobileDropdown, setOpenMobileDropdown] = useState<string | null>(
+    null
+  );
   const [mobileOpen, setMobileOpen] = useState(false);
-  const dropdownRef = useRef<HTMLDivElement>(null);
+  const desktopNavRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
       if (
-        dropdownRef.current &&
-        !dropdownRef.current.contains(event.target as Node)
+        desktopNavRef.current &&
+        !desktopNavRef.current.contains(event.target as Node)
       ) {
         setOpenDropdown(null);
       }
@@ -31,8 +34,14 @@ export default function Navbar() {
     };
   }, []);
 
+  useEffect(() => {
+    setOpenDropdown(null);
+    setOpenMobileDropdown(null);
+    setMobileOpen(false);
+  }, [pathname]);
+
   return (
-    <header className="top-0 z-50 border-b border-border bg-background/80 backdrop-blur-md">
+    <header className="relative top-0 z-[100] border-b border-border bg-background/80 backdrop-blur-md">
       {/* CHANGE HERE */}
       <div className="container flex h-16 items-center justify-between">
 
@@ -40,7 +49,7 @@ export default function Navbar() {
         <Logo width={130} height={36} priority />
 
         {/* Desktop Navigation - Right Side */}
-        <nav className="hidden lg:flex items-center gap-10 ml-auto">
+        <nav ref={desktopNavRef} className="relative hidden lg:flex items-center gap-10 ml-auto">
           {navLinks.map((link) => {
             const isActive =
               link.href === WebsiteUrlConfig.Home
@@ -51,14 +60,17 @@ export default function Navbar() {
 
             if (hasChildren) {
               return (
-                <div key={link.href} className="relative" ref={dropdownRef}>
+                <div key={link.href} className="relative">
                   <button
+                    type="button"
                     onClick={() =>
                       setOpenDropdown(
                         openDropdown === link.href ? null : link.href
                       )
                     }
                     className="group relative text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+                    aria-expanded={openDropdown === link.href}
+                    aria-haspopup="menu"
                   >
                     <span className="flex items-center gap-1">
                       {link.label}
@@ -79,20 +91,25 @@ export default function Navbar() {
                     />
                   </button>
 
-                  {openDropdown === link.href && (
-                    <div className="absolute right-0 mt-4 w-56 rounded-xl border border-border bg-card p-2 shadow-xl animate-fade-in">
-                      {link.children?.map((child) => (
-                        <Link
-                          key={child.href}
-                          href={child.href}
-                          onClick={() => setOpenDropdown(null)}
-                          className="block rounded-md px-3 py-2 text-sm text-muted-foreground hover:bg-muted hover:text-foreground transition-colors"
-                        >
-                          {child.label}
-                        </Link>
-                      ))}
-                    </div>
-                  )}
+                  <div
+                    className={clsx(
+                      "absolute right-0 top-full z-[120] mt-2 w-56 rounded-xl border border-border bg-card p-2 shadow-xl transition-all duration-200",
+                      openDropdown === link.href
+                        ? "opacity-100 visible pointer-events-auto translate-y-0 animate-fade-in"
+                        : "opacity-0 invisible pointer-events-none -translate-y-1"
+                    )}
+                  >
+                    {link.children?.map((child) => (
+                      <Link
+                        key={child.href}
+                        href={child.href}
+                        onClick={() => setOpenDropdown(null)}
+                        className="block rounded-md px-3 py-2 text-sm text-muted-foreground hover:bg-muted hover:text-foreground transition-colors"
+                      >
+                        {child.label}
+                      </Link>
+                    ))}
+                  </div>
                 </div>
               );
             }
@@ -137,32 +154,75 @@ export default function Navbar() {
       {mobileOpen && (
         <div className="lg:hidden border-t border-border bg-background animate-fade-in">
           <div className="container py-4 space-y-2">
-            {navLinks.map((link) => (
-              <div key={link.href}>
-                <Link
-                  href={link.href}
-                  onClick={() => setMobileOpen(false)}
-                  className="block rounded-md px-3 py-2 text-sm font-medium text-muted-foreground hover:bg-muted hover:text-foreground"
-                >
-                  {link.label}
-                </Link>
+            {navLinks.map((link) => {
+              if (link.children?.length) {
+                const isOpen = openMobileDropdown === link.href;
 
-                {link.children && (
-                  <div className="ml-4 mt-1 space-y-1">
-                    {link.children.map((child) => (
-                      <Link
-                        key={child.href}
-                        href={child.href}
-                        onClick={() => setMobileOpen(false)}
-                        className="block rounded-md px-3 py-2 text-sm text-muted-foreground hover:bg-muted hover:text-foreground"
+                return (
+                  <div key={link.href}>
+                    <button
+                      onClick={() =>
+                        setOpenMobileDropdown(isOpen ? null : link.href)
+                      }
+                      className="flex w-full items-center justify-between rounded-md px-3 py-2 text-sm font-medium text-muted-foreground hover:bg-muted hover:text-foreground"
+                      aria-expanded={isOpen}
+                      aria-controls={`mobile-submenu-${link.href}`}
+                    >
+                      {link.label}
+                      <ChevronDown
+                        className={clsx(
+                          "h-4 w-4 transition-transform",
+                          isOpen && "rotate-180"
+                        )}
+                      />
+                    </button>
+
+                    {isOpen && (
+                      <div
+                        id={`mobile-submenu-${link.href}`}
+                        className="ml-4 mt-1 space-y-1"
                       >
-                        {child.label}
-                      </Link>
-                    ))}
+                        <Link
+                          href={link.href}
+                          onClick={() => {
+                            setMobileOpen(false);
+                            setOpenMobileDropdown(null);
+                          }}
+                          className="block rounded-md px-3 py-2 text-sm font-medium text-muted-foreground hover:bg-muted hover:text-foreground"
+                        >
+                          All {link.label}
+                        </Link>
+                        {link.children.map((child) => (
+                          <Link
+                            key={child.href}
+                            href={child.href}
+                            onClick={() => {
+                              setMobileOpen(false);
+                              setOpenMobileDropdown(null);
+                            }}
+                            className="block rounded-md px-3 py-2 text-sm text-muted-foreground hover:bg-muted hover:text-foreground"
+                          >
+                            {child.label}
+                          </Link>
+                        ))}
+                      </div>
+                    )}
                   </div>
-                )}
-              </div>
-            ))}
+                );
+              }
+
+              return (
+                <div key={link.href}>
+                  <Link
+                    href={link.href}
+                    onClick={() => setMobileOpen(false)}
+                    className="block rounded-md px-3 py-2 text-sm font-medium text-muted-foreground hover:bg-muted hover:text-foreground"
+                  >
+                    {link.label}
+                  </Link>
+                </div>
+              );
+            })}
           </div>
         </div>
       )}
