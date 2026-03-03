@@ -21,7 +21,7 @@ export const siteMeta = {
 export const announcement = {
   message: "New users get a FREE Business Health Check — Limited time!",
   ctaLabel: "FREE Business Health Check",
-  ctaHref: "/contact",
+  ctaHref: WebsiteUrlConfig.Contact,
 };
 
 export type NavItem = {
@@ -36,25 +36,25 @@ export const navLinks: NavItem[] = [
     label: "Home",
   },
   {
-    href: "/about",
+    href: WebsiteUrlConfig.About,
     label: "About",
   },
   {
-    href: "/services",
+    href: WebsiteUrlConfig.Service,
     label: "Services",
     children: [
-      { href: "/services/consulting", label: "FaaS" },
-      { href: "/services/cost", label: "Turnover & Transformation" },
-      { href: "/services/ma", label: "Buy & Build" },
-      { href: "/services/ma", label: "Buy & Build" },
+      { href: WebsiteUrlConfig.Fueling_Growth, label: "FaaS" },
+      { href: WebsiteUrlConfig.Optimizing_Operations, label: "Turnover & Transformation" },
+      { href: WebsiteUrlConfig.MandM_Exit, label: "M&A & Exit Strategy Planning" },
+      { href: WebsiteUrlConfig.Strengthening_Liquidity, label: "Strengthening Liquidity" },
     ],
   },
   {
-    href: "/blog",
+    href: WebsiteUrlConfig.Blogs,
     label: "Blog",
   },
   {
-    href: "/contact",
+    href: WebsiteUrlConfig.Contact,
     label: "Contact",
   },
 ];
@@ -63,24 +63,25 @@ export const navLinks: NavItem[] = [
 export const footer = {
   quickLinks: [
     { href: WebsiteUrlConfig.Home, label: "Home" },
-    { href: "/about", label: "About" },
-    { href: "/services", label: "Services" },
-    { href: "/contact", label: "Contact" },
+    { href: WebsiteUrlConfig.About, label: "About" },
+    { href: WebsiteUrlConfig.Service, label: "Services" },
+    { href: WebsiteUrlConfig.Contact, label: "Contact" },
   ],
   services: [
-    { href: "/services/consulting", label: "FaaS" },
-    { href: "/services/cost", label: "Turnover & Transformation" },
-    { href: "/services/ma", label: "Buy & Build" },
+    { href: WebsiteUrlConfig.Fueling_Growth, label: "FaaS" },
+    { href: WebsiteUrlConfig.Optimizing_Operations, label: "Turnover & Transformation" },
+    { href: WebsiteUrlConfig.MandM_Exit, label: "Buy & Build" },
+    { href: WebsiteUrlConfig.Strengthening_Liquidity, label: "Strengthening Liquidity" },
   ],
   legal: [
-    { href: "/privacy", label: "Privacy Policy" },
-    { href: "/terms", label: "Terms & Conditions" },
+    { href: WebsiteUrlConfig.Privacy, label: "Privacy Policy" },
+    { href: WebsiteUrlConfig.Terms, label: "Terms & Conditions" },
   ],
   social: [
-    { href: "https://linkedin.com", label: "LinkedIn" },
-    { href: "https://wa.me/447000000000", label: "WhatsApp" },
-    { href: "tel:+447000000000", label: "Phone" },
-    { href: "mailto:info@kendrainternational.com", label: "Email" },
+    { href: WebsiteUrlConfig.LinkedIn, label: "LinkedIn" },
+    { href: WebsiteUrlConfig.WhatsApp, label: "WhatsApp" },
+    { href: WebsiteUrlConfig.Phone, label: "Phone" },
+    { href: WebsiteUrlConfig.Email, label: "Email" },
   ],
 };
 

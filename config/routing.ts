@@ -7,5 +7,11 @@ export const WebsiteUrlConfig = {
     MandM_Exit: '/services/ma-exit-strategy',
     Strengthening_Liquidity: '/services/strengthening-liquidity',
     Blogs: '/blogs',
-    Contact: '/contact'
+    Contact: '/contact',
+    Privacy: '/privacy',
+    Terms: '/terms',
+    LinkedIn: 'https://linkedin.com',
+    Email: 'mailto:info@kendrainternational.com',
+    WhatsApp: 'https://wa.me/447000000000',
+    Phone: 'tel:+447000000000'
 };
