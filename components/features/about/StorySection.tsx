@@ -1,6 +1,6 @@
 export default function StorySection() {
   return (
-    <section className="w-full mt-5">
+    <section className="mt-5 w-full bg-background">
 
       {/* Row 1 */}
       <div className="grid grid-cols-1 md:grid-cols-[50%_50%] w-full">
@@ -15,12 +15,12 @@ export default function StorySection() {
         </div>
 
         {/* Text */}
-        <div className="flex items-center bg-white border border-border">
+        <div className="flex items-center border border-border bg-card">
           <div className="p-8 lg:p-10">
-            <h2 className="font-display text-2xl md:text-3xl font-bold text-navy ml-10">
+            <h2 className="ml-10 font-display text-2xl font-bold text-foreground md:text-3xl">
               About Kendra International
             </h2>
-            <p className="mt-4 ml-10 leading-relaxed text-slate-text/80 max-w-xl text-base md:text-lg">
+            <p className="mt-4 ml-10 max-w-xl text-base leading-relaxed text-muted-foreground md:text-lg">
               Kendra International is a strategic advisory firm focused on
               helping SMEs and scale-ups solve challenges and unlock growth.
               We work closely with founders and leadership teams to strengthen
@@ -36,12 +36,12 @@ export default function StorySection() {
       <div className="grid grid-cols-1 md:grid-cols-[50%_50%] w-full">
 
         {/* Text */}
-        <div className="flex items-center bg-off-white border border-border">
+        <div className="flex items-center border border-border bg-card">
           <div className="p-8 lg:p-10">
-            <h2 className="font-display text-2xl md:text-3xl font-bold text-navy ml-10">
+            <h2 className="ml-10 font-display text-2xl font-bold text-foreground md:text-3xl">
               Our Mission
             </h2>
-            <p className="mt-4 ml-10 leading-relaxed text-slate-text/80 max-w-xl text-base md:text-lg">
+            <p className="mt-4 ml-10 max-w-xl text-base leading-relaxed text-muted-foreground md:text-lg">
               Our mission is to make high-impact strategy and execution support
               practical and accessible for growing businesses. We offer a
               flexible consulting model that combines deep expertise with a

@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import {
-  AboutCtaSection,
   AboutDifferentiatorsSection,
-  AboutFounderSection,
   AboutHeroSection,
   AboutStorySection,
   AboutValuesSection,
@@ -13,7 +11,7 @@ export const metadata: Metadata = aboutMeta;
 
 export default function AboutPage() {
   return (
-    <main>
+    <main className="bg-background text-foreground">
       <AboutHeroSection />
       <AboutStorySection />
       {/* <AboutFounderSection /> */}

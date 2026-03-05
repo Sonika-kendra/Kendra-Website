@@ -51,55 +51,54 @@ const differentiators = [
 
 export default function DifferentiatorsSection() {
   return (
-    <section className="w-full mb-5">
+    <section className="mb-5 w-full bg-background">
       {/* Heading */}
       <div className="text-center py-12">
-        <h2 className="font-display text-4xl font-bold text-navy">
+        <h2 className="font-display text-4xl font-bold text-foreground">
           Why We Do
         </h2>
       </div>
 
       {/* Cards */}
-{/* Cards */}
-<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 w-full gap-4">
-  {differentiators.map((item) => (
-    <div
-      key={item.title}
-      className="flex flex-col h-[650px] bg-white shadow-md rounded-xl overflow-hidden"
-    >
-      {/* Image */}
-      <div className="h-[65%] w-full overflow-hidden relative">
-        <img
-          src={item.image}
-          alt={item.title}
-          className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-      </div>
+      <div className="grid w-full grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5">
+        {differentiators.map((item) => (
+          <div
+            key={item.title}
+            className="flex h-[650px] flex-col overflow-hidden rounded-xl border border-border bg-card text-card-foreground shadow-md"
+          >
+            {/* Image */}
+            <div className="relative h-[65%] w-full overflow-hidden">
+              <img
+                src={item.image}
+                alt={item.title}
+                className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+            </div>
 
-      {/* Bottom Panel */}
-      <div className="h-[35%] px-6 py-5 flex flex-col items-center text-center">
-        <div className="flex items-center justify-center gap-2 mb-3">
-          <div className="flex h-10 w-10 items-center justify-center rounded-md bg-navy/10">
-            <item.icon className="h-6 w-6 text-navy" strokeWidth={2} />
+            {/* Bottom Panel */}
+            <div className="flex h-[35%] flex-col items-center px-6 py-5 text-center">
+              <div className="mb-3 flex items-center justify-center gap-2">
+                <div className="flex h-10 w-10 items-center justify-center rounded-md bg-primary/10">
+                  <item.icon className="h-6 w-6 text-primary" strokeWidth={2} />
+                </div>
+
+                <span className="text-sm font-medium uppercase tracking-wide text-muted-foreground">
+                  {item.iconText}
+                </span>
+              </div>
+
+              <h3 className="mb-2 font-display text-lg font-semibold text-foreground">
+                {item.title}
+              </h3>
+
+              <p className="text-sm leading-relaxed text-muted-foreground">
+                {item.description}
+              </p>
+            </div>
           </div>
-
-          <span className="text-sm font-medium uppercase tracking-wide text-gray-700">
-            {item.iconText}
-          </span>
-        </div>
-
-        <h3 className="font-display text-lg font-semibold text-navy mb-2">
-          {item.title}
-        </h3>
-
-        <p className="text-sm text-gray-700 leading-relaxed">
-          {item.description}
-        </p>
+        ))}
       </div>
-    </div>
-  ))}
-</div>
     </section>
   );
 }
