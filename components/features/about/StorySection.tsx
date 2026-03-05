@@ -3,23 +3,24 @@ export default function StorySection() {
     <section className="w-full">
 
       {/* Row 1 */}
-      <div className="grid grid-cols-1 md:grid-cols-2 w-full">
+      <div className="grid grid-cols-1 md:grid-cols-[50%_50%] w-full">
+
         {/* Image */}
-        <article className="border border-border overflow-hidden">
+        <div className="h-[320px] md:h-[380px]">
           <img
-            src="/about/about-us-information-service-sharing-join-concept_53876-124056.avif"
+            src="/about/jeremy-perkins-UgNjyPkphtU-unsplash.jpg"
             alt="About Kendra International"
-            className="h-80 w-full object-cover"
+            className="w-full h-full object-cover"
           />
-        </article>
+        </div>
 
         {/* Text */}
-        <article className="border border-border bg-white flex items-center">
-          <div className="p-12">
-            <h2 className="font-display text-3xl font-bold text-navy">
+        <div className="flex items-center bg-white border border-border">
+          <div className="p-8 lg:p-10">
+            <h2 className="font-display text-2xl md:text-3xl font-bold text-navy ml-10">
               About Kendra International
             </h2>
-            <p className="mt-4 leading-relaxed text-slate-text/80 max-w-5xl">
+            <p className="mt-4 ml-10 leading-relaxed text-slate-text/80 max-w-xl text-base md:text-lg">
               Kendra International is a strategic advisory firm focused on
               helping SMEs and scale-ups solve challenges and unlock growth.
               We work closely with founders and leadership teams to strengthen
@@ -27,18 +28,20 @@ export default function StorySection() {
               operations.
             </p>
           </div>
-        </article>
+        </div>
+
       </div>
 
       {/* Row 2 */}
-      <div className="grid grid-cols-1 md:grid-cols-2 w-full">
+      <div className="grid grid-cols-1 md:grid-cols-[50%_50%] w-full">
+
         {/* Text */}
-        <article className="border border-border bg-off-white flex items-center">
-          <div className="p-12">
-            <h2 className="font-display text-3xl font-bold text-navy">
+        <div className="flex items-center bg-off-white border border-border">
+          <div className="p-8 lg:p-10">
+            <h2 className="font-display text-2xl md:text-3xl font-bold text-navy ml-10">
               Our Mission
             </h2>
-            <p className="mt-4 leading-relaxed text-slate-text/80 max-w-5xl">
+            <p className="mt-4 ml-10 leading-relaxed text-slate-text/80 max-w-xl text-base md:text-lg">
               Our mission is to make high-impact strategy and execution support
               practical and accessible for growing businesses. We offer a
               flexible consulting model that combines deep expertise with a
@@ -46,16 +49,17 @@ export default function StorySection() {
               performance, and sustain long-term value creation.
             </p>
           </div>
-        </article>
+        </div>
 
         {/* Image */}
-        <article className="border border-border overflow-hidden">
+        <div className="h-[320px] md:h-[380px]">
           <img
             src="/about/sean-stratton-ObpCE_X3j6U-unsplash.jpg"
             alt="Our Mission"
-            className="h-80 w-full object-cover"
+            className="w-full h-full object-cover"
           />
-        </article>
+        </div>
+
       </div>
 
     </section>
