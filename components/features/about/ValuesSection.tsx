@@ -1,90 +1,77 @@
+"use client";
+
 import { CheckCircle2, Target, Users, Zap } from "lucide-react";
 
 export default function ValuesSection() {
   return (
-    <section className="bg-off-white py-16 md:py-20 w-full">
+    <section
+      className="relative w-full py-24 bg-cover bg-center"
+      style={{
+        backgroundImage: "url('/about/consulting-business-team-meeting.jpg')",
+      }}
+    >
+      {/* overlay */}
+      <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/65 to-black/75"></div>
 
-      {/* Heading */}
-      <div className="text-center px-6 mb-12">
-        <h2 className="font-display text-3xl font-bold text-navy">
-          Why Choose Kendra International?
-        </h2>
-        <p className="mt-3 text-slate-text/70">
-          Success is built on more than ideas. It needs execution, accountability, and expert guidance. Here is how we support your growth.
-        </p>
-      </div>
+      <div className="relative z-10 max-w-7xl mx-auto px-6">
 
-      {/* Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-4 w-full">
+        {/* heading */}
+        <div className="text-center mb-16">
+          <h2 className="font-display text-4xl font-bold text-white">
+            Why Choose Kendra International?
+          </h2>
 
-        {/* Card 1 */}
-        <div className="flex items-center gap-4 px-8 py-10 border border-border bg-white">
-          <div className="inline-flex items-center justify-center rounded-lg bg-muted p-3">
-            <Target className="h-6 w-6 text-primary" strokeWidth={1.5} />
-          </div>
+          <p className="mt-4 text-white/80 max-w-2xl mx-auto">
+            Success requires execution, accountability, and the right expertise guiding decisions.
+          </p>
+        </div>
 
-          <div>
-            <h3 className="font-display font-semibold text-navy">
+        {/* cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+          {/* Card */}
+          <div className="group p-6 rounded-xl border border-white/20 bg-white/10 backdrop-blur-md text-white transition duration-300 hover:-translate-y-2 hover:bg-white/20 hover:shadow-xl">
+            <Target className="h-6 w-6 text-primary mb-4 transition group-hover:scale-110" strokeWidth={1.5} />
+            <h3 className="font-display font-semibold">
               Tailored Strategy
             </h3>
-            <p className="mt-2 text-sm text-slate-text/70">
-              We customize every engagement to your business stage,
-              market, and goals.
+            <p className="mt-2 text-sm text-white/80">
+              Every engagement is customized to your business stage,
+              market dynamics, and strategic objectives.
             </p>
           </div>
-        </div>
 
-        {/* Card 2 */}
-        <div className="flex items-center gap-4 px-8 py-10 border border-border bg-white">
-          <div className="inline-flex items-center justify-center rounded-lg bg-muted p-3">
-            <Zap className="h-6 w-6 text-primary" strokeWidth={1.5} />
-          </div>
-
-          <div>
-            <h3 className="font-display font-semibold text-navy">
+          <div className="group p-6 rounded-xl border border-white/20 bg-white/10 backdrop-blur-md text-white transition duration-300 hover:-translate-y-2 hover:bg-white/20 hover:shadow-xl">
+            <Zap className="h-6 w-6 text-primary mb-4 transition group-hover:scale-110" strokeWidth={1.5} />
+            <h3 className="font-display font-semibold">
               Cross-Functional Expertise
             </h3>
-            <p className="mt-2 text-sm text-slate-text/70">
-              Our team brings finance, strategy, operations, and M&A
-              experience under one roof.
+            <p className="mt-2 text-sm text-white/80">
+              Finance, strategy, operations, and M&A expertise integrated into one advisory team.
             </p>
           </div>
-        </div>
 
-        {/* Card 3 */}
-        <div className="flex items-center gap-4 px-8 py-10 border border-border bg-white">
-          <div className="inline-flex items-center justify-center rounded-lg bg-muted p-3">
-            <Users className="h-6 w-6 text-primary" strokeWidth={1.5} />
-          </div>
-
-          <div>
-            <h3 className="font-display font-semibold text-navy">
+          <div className="group p-6 rounded-xl border border-white/20 bg-white/10 backdrop-blur-md text-white transition duration-300 hover:-translate-y-2 hover:bg-white/20 hover:shadow-xl">
+            <Users className="h-6 w-6 text-primary mb-4 transition group-hover:scale-110" strokeWidth={1.5} />
+            <h3 className="font-display font-semibold">
               Action-Oriented Delivery
             </h3>
-            <p className="mt-2 text-sm text-sm text-slate-text/70">
-              We do not stop at recommendations. We help implement and
-              embed the right changes.
+            <p className="mt-2 text-sm text-white/80">
+              Recommendations are translated into operational improvements and measurable outcomes.
             </p>
           </div>
-        </div>
 
-        {/* Card 4 */}
-        <div className="flex items-center gap-4 px-8 py-10 border border-border bg-white">
-          <div className="inline-flex items-center justify-center rounded-lg bg-muted p-3">
-            <CheckCircle2 className="h-6 w-6 text-primary" strokeWidth={1.5} />
-          </div>
-
-          <div>
-            <h3 className="font-display font-semibold text-navy">
+          <div className="group p-6 rounded-xl border border-white/20 bg-white/10 backdrop-blur-md text-white transition duration-300 hover:-translate-y-2 hover:bg-white/20 hover:shadow-xl">
+            <CheckCircle2 className="h-6 w-6 text-primary mb-4 transition group-hover:scale-110" strokeWidth={1.5} />
+            <h3 className="font-display font-semibold">
               Trusted Partner Mindset
             </h3>
-            <p className="mt-2 text-sm text-slate-text/70">
-              We work as an extension of your leadership team with
-              transparency and clear accountability.
+            <p className="mt-2 text-sm text-white/80">
+              We operate as an extension of your leadership team with transparency and accountability.
             </p>
           </div>
-        </div>
 
+        </div>
       </div>
     </section>
   );
