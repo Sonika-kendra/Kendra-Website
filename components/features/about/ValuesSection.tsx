@@ -10,7 +10,7 @@ export default function ValuesSection() {
       <div
         className="absolute inset-0 bg-cover bg-center"
         style={{
-          backgroundImage: "url('/about/pexels-pixabay-247676.jpg')",
+          backgroundImage: "url('/about/gryffyn-m-nsN6rWjZSD8-unsplash.jpg')",
         }}
       />
 
