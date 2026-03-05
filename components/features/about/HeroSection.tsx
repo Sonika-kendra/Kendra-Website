@@ -8,11 +8,12 @@ export default function HeroSection() {
 
       <div className="relative mx-auto max-w-7xl px-6 py-20 lg:px-8 md:py-28">
         <h1 className="font-display text-3xl font-bold text-white sm:text-4xl lg:text-5xl">
-          About Kendra International
+          About Us
         </h1>
         <p className="mt-3 max-w-2xl text-lg text-white/90">
-          Partnering with growth-focused SMEs to deliver strategic advisory,
-          operational transformation, and M&A support.
+          Kendra International helps small and medium-sized enterprises scale,
+          streamline, and succeed with tailored strategy, finance, and
+          operational advisory.
         </p>
       </div>
 

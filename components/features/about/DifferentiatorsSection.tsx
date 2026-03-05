@@ -1,20 +1,46 @@
-import { CheckCircle2 } from "lucide-react";
+import {
+  BarChart3,
+  BriefcaseBusiness,
+  Gauge,
+  Handshake,
+  Milestone,
+} from "lucide-react";
 
 const differentiators = [
   {
-    title: "Deep Industry Expertise",
+    icon: BarChart3,
+    iconText: "Structure",
+    title: "To help founders turn ambition into structure",
     description:
-      "Our team has worked with 50+ high-growth companies across sectors, giving us insights that drive faster, smarter decisions.",
+      "We help leadership teams create the systems, financial clarity, and decision rhythm needed to grow with control.",
   },
   {
-    title: "Rapid Execution",
+    icon: BriefcaseBusiness,
+    iconText: "Senior Support",
+    title: "To bring experienced support without adding full-time overhead",
     description:
-      "We deliver results in days or weeks, not months. Our streamlined processes ensure initiatives move at startup speed.",
+      "Businesses gain senior-level capability where and when it is needed without long hiring cycles.",
   },
   {
-    title: "Hands-On Support",
+    icon: Gauge,
+    iconText: "Execution",
+    title: "To close the gap between strategy and execution",
     description:
-      "We do not just advise. We help you execute changes, train teams, and embed new processes.",
+      "Clear plans only matter when they are implemented. We help teams execute with measurable outcomes.",
+  },
+  {
+    icon: Milestone,
+    iconText: "Milestones",
+    title: "To prepare businesses for scale, investment, or exit",
+    description:
+      "From operational readiness to financial storytelling, we help companies build toward major milestones.",
+  },
+  {
+    icon: Handshake,
+    iconText: "Long-Term Value",
+    title: "To create lasting value for customers, teams, and stakeholders",
+    description:
+      "Our focus is long-term business health, not short-term fixes.",
   },
 ];
 
@@ -23,15 +49,20 @@ export default function DifferentiatorsSection() {
     <section className="py-16 md:py-20">
       <div className="mx-auto max-w-4xl px-6 lg:px-8">
         <div className="mb-12 text-center">
-          <h2 className="font-display text-3xl font-bold text-navy">What Sets Us Apart</h2>
+          <h2 className="font-display text-3xl font-bold text-navy">Why We Do</h2>
         </div>
 
         <div className="space-y-6">
           {differentiators.map((item) => (
             <div key={item.title} className="flex gap-4">
               <div className="flex-shrink-0">
-                <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-white/20">
-                  <CheckCircle2 className="h-6 w-6 text-white" strokeWidth={2} />
+                <div className="flex flex-col items-center gap-2">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-muted">
+                    <item.icon className="h-6 w-6 text-primary" strokeWidth={2} />
+                  </div>
+                  <span className="text-xs font-medium uppercase tracking-wide text-slate-text/70">
+                    {item.iconText}
+                  </span>
                 </div>
               </div>
 

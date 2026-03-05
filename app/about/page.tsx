@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import {
   AboutCtaSection,
   AboutDifferentiatorsSection,
+  AboutFounderSection,
   AboutHeroSection,
   AboutStorySection,
   AboutValuesSection,
@@ -15,9 +16,10 @@ export default function AboutPage() {
     <main>
       <AboutHeroSection />
       <AboutStorySection />
+      {/* <AboutFounderSection /> */}
       <AboutValuesSection />
       <AboutDifferentiatorsSection />
-      <AboutCtaSection />
+      {/* <AboutCtaSection /> */}
     </main>
   );
 }

@@ -1,6 +1,6 @@
 export const aboutMeta = {
   title: "About | Kendra International",
   description:
-    "Learn about Kendra International - strategic advisory firm specializing in M&A, transformation, and finance services for scaling businesses.",
+    "Learn about Kendra International, our mission, our founder, and why growing businesses choose us for strategy, finance, and operations advisory.",
 };
 
