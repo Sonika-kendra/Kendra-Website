@@ -8,7 +8,7 @@ export default function StorySection() {
         {/* Image */}
         <div className="h-[320px] md:h-[380px] overflow-hidden group">
           <img
-            src="/about/jeremy-perkins-UgNjyPkphtU-unsplash.jpg"
+            src="/about/about.png"
             alt="About Kendra International"
             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
           />
