@@ -1,67 +1,45 @@
+import Image from "next/image";
+import { aboutStoryRows } from "@content/about";
+
 export default function StorySection() {
   return (
     <section className="mt-5 w-full bg-background">
-
-      {/* Row 1 */}
-      <div className="grid grid-cols-1 md:grid-cols-[50%_50%] w-full">
-
-        {/* Image */}
-        <div className="h-[320px] md:h-[380px] overflow-hidden group">
-          <img
-            src="/about/about.png"
-            alt="About Kendra International"
-            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-          />
-        </div>
-
-        {/* Text */}
-        <div className="flex items-center border border-border bg-card">
-          <div className="p-8 lg:p-10">
-            <h2 className="ml-10 font-display text-2xl font-bold text-foreground md:text-3xl">
-              About Kendra International
-            </h2>
-            <p className="mt-4 ml-10 max-w-xl text-base leading-relaxed text-muted-foreground md:text-lg">
-              Kendra International is a strategic advisory firm focused on
-              helping SMEs and scale-ups solve challenges and unlock growth.
-              We work closely with founders and leadership teams to strengthen
-              business models, improve financial control, and build scalable
-              operations.
-            </p>
+      {aboutStoryRows.map((row, index) => {
+        const isTextFirst = index % 2 !== 0;
+        const textBlock = (
+          <div className="flex items-center border border-border bg-card">
+            <div className="p-8 lg:p-10">
+              <h2 className="ml-10 font-display text-2xl font-bold text-foreground md:text-3xl">
+                {row.title}
+              </h2>
+              <p className="mt-4 ml-10 max-w-xl text-base leading-relaxed text-muted-foreground md:text-lg">
+                {row.description}
+              </p>
+            </div>
           </div>
-        </div>
-
-      </div>
-
-      {/* Row 2 */}
-      <div className="grid grid-cols-1 md:grid-cols-[50%_50%] w-full">
-
-        {/* Text */}
-        <div className="flex items-center border border-border bg-card">
-          <div className="p-8 lg:p-10">
-            <h2 className="ml-10 font-display text-2xl font-bold text-foreground md:text-3xl">
-              Our Mission
-            </h2>
-            <p className="mt-4 ml-10 max-w-xl text-base leading-relaxed text-muted-foreground md:text-lg">
-              Our mission is to make high-impact strategy and execution support
-              practical and accessible for growing businesses. We offer a
-              flexible consulting model that combines deep expertise with a
-              hands-on approach so your team can move quickly, improve
-              performance, and sustain long-term value creation.
-            </p>
+        );
+        const imageBlock = (
+          <div className="group relative h-[320px] overflow-hidden md:h-[380px]">
+            <Image
+              src={row.image.src}
+              alt={row.image.alt}
+              fill
+              sizes="(min-width: 768px) 50vw, 100vw"
+              className="object-cover transition-transform duration-500 group-hover:scale-110"
+            />
           </div>
-        </div>
+        );
 
-        {/* Image */}
-        <div className="h-[320px] md:h-[380px] overflow-hidden group">
-          <img
-            src="/about/pexels-pixabay-209728.jpg"
-            alt="Our Mission"
-            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-          />
-        </div>
-
-      </div>
-
+        return (
+          <div
+            key={row.title}
+            className="grid w-full grid-cols-1 md:grid-cols-[50%_50%]"
+          >
+            {isTextFirst ? textBlock : imageBlock}
+            {isTextFirst ? imageBlock : textBlock}
+          </div>
+        );
+      })}
     </section>
   );
 }
