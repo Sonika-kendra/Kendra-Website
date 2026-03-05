@@ -9,95 +9,97 @@ import {
 const differentiators = [
   {
     icon: BarChart3,
-    iconText: "Structure",
-    title: "To help founders turn ambition into structure",
+    iconText: "Planning",
+    title: "Structured Growth for Startups",
     description:
-      "We help leadership teams create the systems, financial clarity, and decision rhythm needed to grow with control.",
+      "We help startups create repeatable systems and processes that turn ideas into actionable growth plans.",
     image: "/differentiators/card1.jpg",
   },
   {
     icon: BriefcaseBusiness,
-    iconText: "Senior Support",
-    title: "To bring experienced support without adding full-time overhead",
+    iconText: "Expertise",
+    title: "Senior-Level Guidance",
     description:
-      "Businesses gain senior-level capability where and when it is needed without long hiring cycles.",
+      "Access seasoned business leaders to guide your decisions without committing to full-time hires.",
     image: "/differentiators/card2.jpg",
   },
   {
     icon: Gauge,
-    iconText: "Execution",
-    title: "To close the gap between strategy and execution",
+    iconText: "Performance",
+    title: "Executing Strategies Effectively",
     description:
-      "Clear plans only matter when they are implemented. We help teams execute with measurable outcomes.",
+      "Bridge the gap between strategy and results with clear action plans and measurable outcomes.",
     image: "/differentiators/card3.jpg",
   },
   {
     icon: Milestone,
-    iconText: "Milestones",
-    title: "To prepare businesses for scale, investment, or exit",
+    iconText: "Scaling",
+    title: "Prepare for Major Milestones",
     description:
-      "From operational readiness to financial storytelling, we help companies build toward major milestones.",
+      "From fundraising readiness to operational expansion, we help your business reach key growth targets.",
     image: "/differentiators/card4.jpg",
   },
   {
     icon: Handshake,
-    iconText: "Long-Term Value",
-    title: "To create lasting value for customers, teams, and stakeholders",
+    iconText: "Value",
+    title: "Creating Long-Term Impact",
     description:
-      "Our focus is long-term business health, not short-term fixes.",
+      "We focus on lasting value for customers, employees, and stakeholders rather than short-term fixes.",
     image: "/differentiators/card5.jpg",
   },
 ];
 
 export default function DifferentiatorsSection() {
   return (
-    <section className="w-full">
+    <section className="w-full mb-5">
       {/* Heading */}
       <div className="text-center py-12">
-        <h2 className="font-display text-3xl font-bold text-navy">
+        <h2 className="font-display text-4xl font-bold text-navy">
           Why We Do
         </h2>
       </div>
 
       {/* Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 w-full">
-        {differentiators.map((item) => (
-          <div
-            key={item.title}
-            className="flex flex-col h-[500px] bg-white shadow-sm"
-          >
-            {/* Image */}
-            <div className="h-[70%] w-full overflow-hidden">
-              <img
-                src={item.image}
-                alt={item.title}
-                className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
-              />
-            </div>
-
-            {/* Bottom Panel */}
-            <div className="h-[30%] px-6 py-5 flex flex-col items-center text-center">
-              <div className="flex items-center justify-center gap-2 mb-2">
-                <div className="flex h-9 w-9 items-center justify-center rounded-md bg-navy/10">
-                  <item.icon className="h-5 w-5 text-navy" strokeWidth={2} />
-                </div>
-
-                <span className="text-xs font-medium uppercase tracking-wide text-gray-500">
-                  {item.iconText}
-                </span>
-              </div>
-
-              <h3 className="font-display text-sm font-semibold text-navy mb-2">
-                {item.title}
-              </h3>
-
-              <p className="text-xs text-gray-600 leading-relaxed">
-                {item.description}
-              </p>
-            </div>
-          </div>
-        ))}
+{/* Cards */}
+<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 w-full gap-4">
+  {differentiators.map((item) => (
+    <div
+      key={item.title}
+      className="flex flex-col h-[650px] bg-white shadow-md rounded-xl overflow-hidden"
+    >
+      {/* Image */}
+      <div className="h-[65%] w-full overflow-hidden relative">
+        <img
+          src={item.image}
+          alt={item.title}
+          className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
       </div>
+
+      {/* Bottom Panel */}
+      <div className="h-[35%] px-6 py-5 flex flex-col items-center text-center">
+        <div className="flex items-center justify-center gap-2 mb-3">
+          <div className="flex h-10 w-10 items-center justify-center rounded-md bg-navy/10">
+            <item.icon className="h-6 w-6 text-navy" strokeWidth={2} />
+          </div>
+
+          <span className="text-sm font-medium uppercase tracking-wide text-gray-700">
+            {item.iconText}
+          </span>
+        </div>
+
+        <h3 className="font-display text-lg font-semibold text-navy mb-2">
+          {item.title}
+        </h3>
+
+        <p className="text-sm text-gray-700 leading-relaxed">
+          {item.description}
+        </p>
+      </div>
+    </div>
+  ))}
+</div>
     </section>
   );
 }

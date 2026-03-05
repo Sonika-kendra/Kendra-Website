@@ -1,6 +1,6 @@
 export default function StorySection() {
   return (
-    <section className="w-full">
+    <section className="w-full mt-5">
 
       {/* Row 1 */}
       <div className="grid grid-cols-1 md:grid-cols-[50%_50%] w-full">
