@@ -54,7 +54,7 @@ export default function StorySection() {
         {/* Image */}
         <div className="h-[320px] md:h-[380px] overflow-hidden group">
           <img
-            src="/about/sean-stratton-ObpCE_X3j6U-unsplash.jpg"
+            src="/about/pexels-pixabay-209728.jpg"
             alt="Our Mission"
             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
           />

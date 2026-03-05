@@ -13,6 +13,7 @@ const differentiators = [
     title: "To help founders turn ambition into structure",
     description:
       "We help leadership teams create the systems, financial clarity, and decision rhythm needed to grow with control.",
+    image: "/differentiators/card1.jpg",
   },
   {
     icon: BriefcaseBusiness,
@@ -20,6 +21,7 @@ const differentiators = [
     title: "To bring experienced support without adding full-time overhead",
     description:
       "Businesses gain senior-level capability where and when it is needed without long hiring cycles.",
+    image: "/differentiators/card2.jpg",
   },
   {
     icon: Gauge,
@@ -27,6 +29,7 @@ const differentiators = [
     title: "To close the gap between strategy and execution",
     description:
       "Clear plans only matter when they are implemented. We help teams execute with measurable outcomes.",
+    image: "/differentiators/card3.jpg",
   },
   {
     icon: Milestone,
@@ -34,6 +37,7 @@ const differentiators = [
     title: "To prepare businesses for scale, investment, or exit",
     description:
       "From operational readiness to financial storytelling, we help companies build toward major milestones.",
+    image: "/differentiators/card4.jpg",
   },
   {
     icon: Handshake,
@@ -41,38 +45,58 @@ const differentiators = [
     title: "To create lasting value for customers, teams, and stakeholders",
     description:
       "Our focus is long-term business health, not short-term fixes.",
+    image: "/differentiators/card5.jpg",
   },
 ];
 
 export default function DifferentiatorsSection() {
   return (
-    <section className="py-16 md:py-20">
-      <div className="mx-auto max-w-4xl px-6 lg:px-8">
-        <div className="mb-12 text-center">
-          <h2 className="font-display text-3xl font-bold text-navy">Why We Do</h2>
-        </div>
+    <section className="w-full">
+      {/* Heading */}
+      <div className="text-center py-12">
+        <h2 className="font-display text-3xl font-bold text-navy">
+          Why We Do
+        </h2>
+      </div>
 
-        <div className="space-y-6">
-          {differentiators.map((item) => (
-            <div key={item.title} className="flex gap-4">
-              <div className="flex-shrink-0">
-                <div className="flex flex-col items-center gap-2">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-muted">
-                    <item.icon className="h-6 w-6 text-primary" strokeWidth={2} />
-                  </div>
-                  <span className="text-xs font-medium uppercase tracking-wide text-slate-text/70">
-                    {item.iconText}
-                  </span>
-                </div>
-              </div>
-
-              <div>
-                <h3 className="font-display text-lg font-semibold text-navy">{item.title}</h3>
-                <p className="mt-1 text-slate-text/70">{item.description}</p>
-              </div>
+      {/* Cards */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 w-full">
+        {differentiators.map((item) => (
+          <div
+            key={item.title}
+            className="flex flex-col h-[500px] bg-white shadow-sm"
+          >
+            {/* Image */}
+            <div className="h-[70%] w-full overflow-hidden">
+              <img
+                src={item.image}
+                alt={item.title}
+                className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+              />
             </div>
-          ))}
-        </div>
+
+            {/* Bottom Panel */}
+            <div className="h-[30%] px-6 py-5 flex flex-col items-center text-center">
+              <div className="flex items-center justify-center gap-2 mb-2">
+                <div className="flex h-9 w-9 items-center justify-center rounded-md bg-navy/10">
+                  <item.icon className="h-5 w-5 text-navy" strokeWidth={2} />
+                </div>
+
+                <span className="text-xs font-medium uppercase tracking-wide text-gray-500">
+                  {item.iconText}
+                </span>
+              </div>
+
+              <h3 className="font-display text-sm font-semibold text-navy mb-2">
+                {item.title}
+              </h3>
+
+              <p className="text-xs text-gray-600 leading-relaxed">
+                {item.description}
+              </p>
+            </div>
+          </div>
+        ))}
       </div>
     </section>
   );
