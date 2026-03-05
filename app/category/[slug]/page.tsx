@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import clsx from "clsx";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { Sidebar } from "@/components/features/blog/Sidebar";
@@ -9,6 +10,7 @@ import {
   getBlogPostsByCategoryId,
 } from "@/lib/services/blog/posts";
 import type { BlogPostDetail, BlogTerm } from "@/interface/blog";
+import { ui } from "@/config/theme";
 
 interface CategoryPageProps {
   params: {
@@ -67,7 +69,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
           <div className="mb-8">
             <Link
               href="/blog"
-              className="text-sm text-blue-700 hover:underline inline-block mb-4 dark:text-sky-300"
+              className={ui.blog.backLink}
             >
               Back to all blogs
             </Link>
@@ -123,7 +125,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
 
                         <Link href={`/blog/${post.slug}`}>
                           <h2
-                            className="text-2xl font-semibold leading-tight hover:text-blue-700 dark:hover:text-sky-300 transition-colors"
+                            className={ui.blog.postTitle}
                             dangerouslySetInnerHTML={{ __html: post.title.rendered }}
                           />
                         </Link>
@@ -137,8 +139,16 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
                             {categories.map((item: BlogTerm) => (
                               <Link
                                 key={item.id}
-                                href={`/category/${item.slug}`}
-                                className="rounded-full bg-blue-50 px-3 py-1 text-sm font-medium text-blue-700 hover:bg-blue-700 hover:text-white transition dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700 dark:hover:text-white"
+                                href={
+                                  item.slug === category.slug
+                                    ? "/blog"
+                                    : `/category/${item.slug}`
+                                }
+                                className={clsx(
+                                  ui.blog.categoryLink,
+                                  item.slug === category.slug &&
+                                    "bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground"
+                                )}
                               >
                                 {item.name}
                               </Link>
@@ -154,7 +164,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
           )}
         </section>
 
-        <Sidebar />
+        <Sidebar activeCategorySlug={category.slug} />
       </div>
     </div>
   );

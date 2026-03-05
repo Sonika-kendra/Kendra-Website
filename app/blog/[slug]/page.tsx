@@ -1,7 +1,9 @@
 import { notFound } from "next/navigation";
 import Image from "next/image";
+import Link from "next/link";
 import { Sidebar } from "@/components/features/blog/Sidebar";
 import type { BlogPageProps, BlogPostDetail, BlogTerm } from "@/interface/blog";
+import { ui } from "@/config/theme";
 
 /* -------------------- FETCH SINGLE POST -------------------- */
 async function getPostBySlug(slug: string) {
@@ -87,12 +89,13 @@ export default async function BlogDetails({ params }: BlogPageProps) {
           {categories.length > 0 && (
             <div className="mb-6 flex flex-wrap gap-2">
               {categories.map((category: BlogTerm) => (
-                <span
+                <Link
                   key={category.id}
-                  className="rounded-full bg-blue-50 px-3 py-1 text-sm font-medium text-blue-700 dark:bg-slate-800 dark:text-slate-200"
+                  href={`/category/${category.slug}`}
+                  className={ui.blog.categoryLink}
                 >
                   {category.name}
-                </span>
+                </Link>
               ))}
             </div>
           )}

@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import { Sidebar } from "@/components/features/blog/Sidebar";
 import { getAllBlogPosts } from "@/lib/services/blog/posts";
 import type { BlogPostDetail, BlogTerm } from "@/interface/blog";
+import { ui } from "@/config/theme";
 
 export const metadata: Metadata = {
   title: "Blog",
@@ -77,7 +78,7 @@ export default async function BlogPage() {
 
                         <Link href={`/blog/${post.slug}`}>
                           <h2
-                            className="text-2xl font-semibold leading-tight hover:text-blue-700 dark:hover:text-sky-300 transition-colors"
+                            className={ui.blog.postTitle}
                             dangerouslySetInnerHTML={{ __html: post.title.rendered }}
                           />
                         </Link>
@@ -92,7 +93,7 @@ export default async function BlogPage() {
                               <Link
                                 key={category.id}
                                 href={`/category/${category.slug}`}
-                                className="rounded-full bg-blue-50 px-3 py-1 text-sm font-medium text-blue-700 hover:bg-blue-700 hover:text-white transition dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700 dark:hover:text-white"
+                                className={ui.blog.categoryLink}
                               >
                                 {category.name}
                               </Link>

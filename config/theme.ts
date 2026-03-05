@@ -56,6 +56,16 @@ export const ui = {
     divider:
       "mt-10 flex flex-col items-center justify-between gap-4 border-t border-border pt-6 text-sm text-foreground/60 md:flex-row",
   },
+  blog: {
+    backLink:
+      "inline-block text-sm text-muted-foreground transition-colors hover:text-accent hover:underline",
+    postTitle:
+      "text-2xl font-semibold leading-tight transition-colors hover:text-accent",
+    categoryLink:
+      "rounded-full bg-muted px-3 py-1 text-sm font-medium text-foreground transition-colors hover:bg-primary hover:text-primary-foreground",
+    sidebarPostTitle:
+      "text-sm font-semibold text-foreground leading-snug transition-colors group-hover:text-accent",
+  },
   themeSwitcher: {
     shell:
       "inline-flex w-fit items-center gap-1 rounded-full border border-border bg-card/80 p-1 shadow-sm backdrop-blur",

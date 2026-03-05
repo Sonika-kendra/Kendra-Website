@@ -1,9 +1,15 @@
 import Image from "next/image";
 import Link from "next/link";
+import clsx from "clsx";
 import { getSidebarData } from "@/lib";
 import type { BlogCategory, SidebarPost } from "@/interface/blog";
+import { ui } from "@/config/theme";
 
-export async function Sidebar() {
+interface SidebarProps {
+  activeCategorySlug?: string;
+}
+
+export async function Sidebar({ activeCategorySlug }: SidebarProps) {
   const { latestPosts, categories } = await getSidebarData();
 
   return (
@@ -13,10 +19,18 @@ export async function Sidebar() {
         <h3 className="text-xl font-semibold mb-4">Categories</h3>
         <ul className="flex flex-wrap gap-3">
           {categories.map((cat: BlogCategory) => (
-            <li key={cat.id}>
+            <li key={cat.id} className="list-none">
               <Link
-                href={`/category/${cat.slug}`}
-                className="px-3 py-1 text-sm bg-gray-100 rounded-full hover:bg-blue-600 hover:text-white transition dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700 dark:hover:text-white"
+                href={
+                  activeCategorySlug === cat.slug
+                    ? "/blog"
+                    : `/category/${cat.slug}`
+                }
+                className={clsx(
+                  ui.blog.categoryLink,
+                  activeCategorySlug === cat.slug &&
+                    "bg-primary p-auto text-primary-foreground hover:bg-primary hover:text-primary-foreground"
+                )}
               >
                 {cat.name} ({cat.count})
               </Link>
@@ -50,7 +64,7 @@ export async function Sidebar() {
 
                   <div className="mt-3">
                     <h4
-                      className="text-sm font-semibold text-gray-800 dark:text-slate-100 group-hover:text-blue-600 dark:group-hover:text-sky-300 leading-snug"
+                      className={ui.blog.sidebarPostTitle}
                       dangerouslySetInnerHTML={{
                         __html: item.title.rendered,
                       }}
