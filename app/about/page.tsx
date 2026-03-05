@@ -1,6 +1,7 @@
 import {
   AboutDifferentiatorsSection,
   AboutHeroSection,
+  AboutTeamSection,
   AboutStorySection,
   AboutValuesSection,
 } from "@features/about";
@@ -10,7 +11,7 @@ export default function AboutPage() {
     <main className="bg-background text-foreground">
       <AboutHeroSection />
       <AboutStorySection />
-      {/* <AboutFounderSection /> */}
+      <AboutTeamSection />
       <AboutValuesSection />
       <AboutDifferentiatorsSection />
       {/* <AboutCtaSection /> */}

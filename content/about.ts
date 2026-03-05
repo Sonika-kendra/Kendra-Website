@@ -57,6 +57,59 @@ export const aboutValues = {
   ],
 } as const;
 
+export const aboutTeam = {
+  title: "Meet our Team",
+  description:
+    "Our philosophy is simple: hire great people and give them the resources and support to do their best work.",
+  members: [
+    {
+      name: "Camilla Wilson",
+      role: "Payment Gateway Support",
+      photo: "/team/user-1.jpg",
+    },
+    {
+      name: "Olive Nacelle",
+      role: "VP of Customer Success",
+      photo: "/team/user-2.jpg",
+    },
+    {
+      name: "Sophie Chamberlain",
+      role: "Specialized Support",
+      photo: "/team/user-box-svgrepo-com.svg",
+    },
+    {
+      name: "Jessica Dobrev",
+      role: "Payments Support",
+      photo: "/team/user-4.jpg",
+    },
+    {
+      name: "Orlando Diggs",
+      role: "Customer Success Lead",
+      photo: "/team/user-5.jpg",
+    },
+    {
+      name: "Sasha Kim",
+      role: "Customer Success",
+      photo: "/team/user-6.jpg",
+    },
+    {
+      name: "Amélie Laurent",
+      role: "CTO",
+      photo: "/team/user-3.jpg",
+    },
+    {
+      name: "Liam Rodriguez",
+      role: "Product Manager",
+      photo: "/team/user-2.jpg",
+    },
+    {
+      name: "Nina Patel",
+      role: "UX Designer",
+      photo: "/team/user-box-svgrepo-com.svg",
+    },
+  ],
+};
+
 export const aboutDifferentiators = {
   title: "Why We Do",
   cards: [
@@ -112,4 +165,3 @@ export const aboutDifferentiators = {
     },
   ],
 } as const;
-
