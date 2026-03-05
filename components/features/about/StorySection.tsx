@@ -6,11 +6,11 @@ export default function StorySection() {
       <div className="grid grid-cols-1 md:grid-cols-[50%_50%] w-full">
 
         {/* Image */}
-        <div className="h-[320px] md:h-[380px]">
+        <div className="h-[320px] md:h-[380px] overflow-hidden group">
           <img
             src="/about/jeremy-perkins-UgNjyPkphtU-unsplash.jpg"
             alt="About Kendra International"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
           />
         </div>
 
@@ -52,11 +52,11 @@ export default function StorySection() {
         </div>
 
         {/* Image */}
-        <div className="h-[320px] md:h-[380px]">
+        <div className="h-[320px] md:h-[380px] overflow-hidden group">
           <img
             src="/about/sean-stratton-ObpCE_X3j6U-unsplash.jpg"
             alt="Our Mission"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
           />
         </div>
 
