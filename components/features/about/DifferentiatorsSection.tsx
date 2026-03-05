@@ -22,13 +22,13 @@ export default function DifferentiatorsSection() {
       {/* Heading */}
       <div className="text-center py-12">
         <h2 className="font-display text-4xl font-bold text-foreground">
-          Why We Do
+          {aboutDifferentiators.title}
         </h2>
       </div>
 
       {/* Cards */}
       <div className="grid w-full grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5">
-        {aboutDifferentiators.map((item) => {
+        {aboutDifferentiators.cards.map((item) => {
           const Icon = iconMap[item.icon];
 
           return (
@@ -39,8 +39,8 @@ export default function DifferentiatorsSection() {
               {/* Image */}
               <div className="relative h-[65%] w-full overflow-hidden">
                 <Image
-                  src={item.image}
-                  alt={item.title}
+                  src={item.image.src}
+                  alt={item.image.alt}
                   fill
                   sizes="(min-width: 1024px) 20vw, (min-width: 640px) 50vw, 100vw"
                   className="object-cover transition-transform duration-500 hover:scale-105"
