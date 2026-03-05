@@ -1,4 +1,4 @@
-export default function HeroSection() {
+export default function AboutHeroSection() {
   return (
     <section
       className="relative overflow-hidden"
@@ -15,20 +15,6 @@ export default function HeroSection() {
           streamline, and succeed with tailored strategy, finance, and
           operational advisory.
         </p>
-      </div>
-
-      <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none">
-        <svg
-          viewBox="0 0 1440 60"
-          className="h-8 w-full sm:h-12"
-          preserveAspectRatio="none"
-          aria-hidden="true"
-        >
-          <path
-            d="M0,60 L0,20 Q360,0 720,20 Q1080,40 1440,20 L1440,60 Z"
-            fill="white"
-          />
-        </svg>
       </div>
     </section>
   );
