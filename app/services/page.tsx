@@ -19,7 +19,7 @@ export default function ServicesPage() {
             focused, and outcome-driven."
         imageUrl={aboutHero.image.src}
         imageAlt={aboutHero.image.alt}
-        withWave={true}
+        withWave={false}
       />
 
       <section className="py-16 md:py-20">

@@ -15,7 +15,7 @@ export default function ContactPage() {
             today."
         imageUrl={aboutHero.image.src}
         imageAlt={aboutHero.image.alt}
-        withWave={true}
+        withWave={false}
       />
 
       {/* Contact Content */}

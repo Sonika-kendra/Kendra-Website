@@ -18,7 +18,7 @@ export default function MAExitPlanningPage() {
               value and reduce execution risk."
         imageUrl={aboutHero.image.src}
         imageAlt={aboutHero.image.alt}
-        withWave={true}
+        withWave={false}
       >
         <div className="flex flex-wrap gap-4">
           <Link href="/contact" className="btn-hero">

@@ -21,7 +21,7 @@ export default function LiquidityImprovementPage() {
               pressure or transition."
         imageUrl={aboutHero.image.src}
         imageAlt={aboutHero.image.alt}
-        withWave={true}
+        withWave={false}
       >
         <div className="flex flex-wrap gap-4">
           <Link href="/contact" className="btn-hero">
