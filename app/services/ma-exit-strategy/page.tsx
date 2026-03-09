@@ -21,10 +21,10 @@ export default function MAExitPlanningPage() {
         withWave={true}
       >
         <div className="flex flex-wrap gap-4">
-          <Link href="/contact" className="btn-primary">
+          <Link href="/contact" className="btn-hero">
             Discuss Transaction Priorities
           </Link>
-          <Link href="/services" className="btn-secondary">
+          <Link href="/services" className="btn-hero">
             All Services
           </Link>
         </div>

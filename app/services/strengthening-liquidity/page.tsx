@@ -24,10 +24,10 @@ export default function LiquidityImprovementPage() {
         withWave={true}
       >
         <div className="flex flex-wrap gap-4">
-          <Link href="/contact" className="btn-primary">
+          <Link href="/contact" className="btn-hero">
             Strengthen Liquidity
           </Link>
-          <Link href="/services" className="btn-secondary">
+          <Link href="/services" className="btn-hero">
             All Services
           </Link>
         </div>

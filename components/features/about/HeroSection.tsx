@@ -3,7 +3,7 @@ import { aboutHero } from "@content/about";
 
 export default function AboutHeroSection() {
   return (
-    <section className="relative overflow-hidden">
+    <section className="relative overflow-hidden h-[260px] md:h-[320px] lg:h-[380px]">
 
       {/* Background Image */}
       <Image

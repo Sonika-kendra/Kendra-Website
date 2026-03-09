@@ -146,6 +146,10 @@
     @apply inline-flex items-center justify-center rounded-md px-4 py-2 text-sm font-medium text-foreground transition-all duration-200 hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background;
   }
 
+  .btn-hero {
+    @apply inline-flex items-center justify-center rounded-md border-2 border-white px-6 py-3 text-sm font-semibold text-white transition-all duration-200 hover:bg-white hover:text-black;
+  }
+
   .card-hover {
     @apply rounded-xl border border-border bg-card text-card-foreground transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl;
   }

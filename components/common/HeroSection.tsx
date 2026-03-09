@@ -12,7 +12,7 @@ interface HeroSectionProps {
 
 export default function HeroSection({ title, description, imageUrl, imageAlt, withWave = false, children }: HeroSectionProps) {
   return (
-    <section className="relative overflow-hidden">
+    <section className="relative overflow-hidden h-[260px] md:h-[320px] lg:h-[380px]">
 
       {/* Background Image */}
       <Image
@@ -25,7 +25,7 @@ export default function HeroSection({ title, description, imageUrl, imageAlt, wi
       />
 
       {/* Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent" />
+      <div className="absolute inset-0 bg-black/30" />
 
       {/* Content */}
       <div className="relative mx-auto max-w-7xl px-6 py-20 lg:px-8 md:py-28">

@@ -9,7 +9,7 @@ export const metadata: Metadata = pageMeta.businessHealth as Metadata;
 export default function BusinessHealthAnalyzerPage() {
   return (
     <main>
-      <div className="relative">
+      <div className="relative h-[260px] md:h-[320px] lg:h-[380px]">
         <Image
           src={aboutHero.image.src}
           alt={aboutHero.image.alt}
