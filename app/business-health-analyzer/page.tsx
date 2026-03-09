@@ -20,11 +20,11 @@ export default function BusinessHealthAnalyzerPage() {
           className="object-cover object-right"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent" />
-        <div className="relative">
-          <BusinessHealthCheck transparent={true} />
-        </div>
       </div>
         <DownloadButton pdfRef={pdfRef} fileName="business-health-analyzer.pdf" />
+        <div className="relative">
+          <BusinessHealthCheck />
+        </div>
     </main>
   );
 }

@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { CheckCircle2, TrendingUp } from "lucide-react";
 
-export default function BusinessHealthCheck({ transparent = false }: { transparent?: boolean }) {
+export default function BusinessHealthCheck() {
   const [showModal, setShowModal] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -84,48 +84,48 @@ export default function BusinessHealthCheck({ transparent = false }: { transpare
   return (
     <>
       <section className="py-16 md:py-20">
-        <div className="max-w-6xl px-6 lg:px-8">
-          <div className={`relative overflow-hidden rounded-3xl ${transparent ? '' : 'border border-slate-200 bg-white shadow-2xl dark:border-slate-700/70 dark:bg-slate-900/90 dark:shadow-[0_30px_90px_-35px_rgba(2,6,23,1)]'}`}>
-            {!transparent && <div className="pointer-events-none absolute inset-0 hidden dark:block dark:bg-[radial-gradient(circle_at_top,_rgba(59,130,246,0.22),_transparent_55%)]" />}
-            {!transparent && <div className="pointer-events-none absolute inset-0 hidden dark:block dark:bg-[radial-gradient(circle_at_85%_10%,_rgba(16,185,129,0.14),_transparent_40%)]" />}
+        <div className="mx-auto max-w-6xl px-6 lg:px-8">
+          <div className="relative overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-2xl dark:border-slate-700/70 dark:bg-slate-900/90 dark:shadow-[0_30px_90px_-35px_rgba(2,6,23,1)]">
+            <div className="pointer-events-none absolute inset-0 hidden dark:block dark:bg-[radial-gradient(circle_at_top,_rgba(59,130,246,0.22),_transparent_55%)]" />
+            <div className="pointer-events-none absolute inset-0 hidden dark:block dark:bg-[radial-gradient(circle_at_85%_10%,_rgba(16,185,129,0.14),_transparent_40%)]" />
 
-            <div className="relative p-8 text-left md:p-16">
-              <div className="flex justify-start mb-6">
-                <div className={`rounded-full p-3 ${transparent ? 'bg-white/10' : 'bg-slate-100 dark:bg-slate-800/70'}`}>
-                  <TrendingUp className={`h-8 w-8 ${transparent ? 'text-white' : 'text-slate-700 dark:text-slate-200'}`} strokeWidth={1.5} />
+            <div className="relative p-8 text-center md:p-16">
+              <div className="flex justify-center mb-6">
+                <div className="rounded-full bg-slate-100 p-3 dark:bg-slate-800/70">
+                  <TrendingUp className="h-8 w-8 text-slate-700 dark:text-slate-200" strokeWidth={1.5} />
                 </div>
               </div>
 
-              <h2 className={`text-3xl font-display font-bold sm:text-4xl ${transparent ? 'text-white' : 'text-slate-900 dark:text-white'}`}>
+              <h2 className="text-3xl font-display font-bold text-slate-900 dark:text-white sm:text-4xl">
                 Business Health Check Analyzer
               </h2>
-              <p className={`mt-4 max-w-2xl text-lg leading-relaxed ${transparent ? 'text-white/90' : 'text-slate-600 dark:text-slate-300'}`}>
+              <p className="mx-auto mt-4 max-w-2xl text-lg leading-relaxed text-slate-600 dark:text-slate-300">
                 Get instant insights into your business performance. Our AI-powered analyzer evaluates revenue growth,
                 margin health, and operational efficiency in seconds.
               </p>
 
               <div className="mt-12 grid gap-6 md:grid-cols-3">
-                <div className={`rounded-xl p-6 backdrop-blur-sm ${transparent ? 'border border-white/20 bg-white/10' : 'border border-slate-200 bg-slate-50 dark:border-slate-700 dark:bg-slate-800/70'}`}>
-                  <CheckCircle2 className={`mb-3 h-6 w-6 ${transparent ? 'text-white' : 'text-slate-700 dark:text-slate-200'}`} />
-                  <h3 className={`mb-2 font-semibold ${transparent ? 'text-white' : 'text-slate-900 dark:text-white'}`}>Revenue Analysis</h3>
-                  <p className={`text-sm ${transparent ? 'text-white/90' : 'text-slate-600 dark:text-slate-300'}`}>Track growth trends and identify opportunities</p>
+                <div className="rounded-xl border border-slate-200 bg-slate-50 p-6 backdrop-blur-sm dark:border-slate-700 dark:bg-slate-800/70">
+                  <CheckCircle2 className="mx-auto mb-3 h-6 w-6 text-slate-700 dark:text-slate-200" />
+                  <h3 className="mb-2 font-semibold text-slate-900 dark:text-white">Revenue Analysis</h3>
+                  <p className="text-sm text-slate-600 dark:text-slate-300">Track growth trends and identify opportunities</p>
                 </div>
-                <div className={`rounded-xl p-6 backdrop-blur-sm ${transparent ? 'border border-white/20 bg-white/10' : 'border border-slate-200 bg-slate-50 dark:border-slate-700 dark:bg-slate-800/70'}`}>
-                  <CheckCircle2 className={`mb-3 h-6 w-6 ${transparent ? 'text-white' : 'text-slate-700 dark:text-slate-200'}`} />
-                  <h3 className={`mb-2 font-semibold ${transparent ? 'text-white' : 'text-slate-900 dark:text-white'}`}>Margin Health</h3>
-                  <p className={`text-sm ${transparent ? 'text-white/90' : 'text-slate-600 dark:text-slate-300'}`}>Understand profitability metrics</p>
+                <div className="rounded-xl border border-slate-200 bg-slate-50 p-6 backdrop-blur-sm dark:border-slate-700 dark:bg-slate-800/70">
+                  <CheckCircle2 className="mx-auto mb-3 h-6 w-6 text-slate-700 dark:text-slate-200" />
+                  <h3 className="mb-2 font-semibold text-slate-900 dark:text-white">Margin Health</h3>
+                  <p className="text-sm text-slate-600 dark:text-slate-300">Understand profitability metrics</p>
                 </div>
-                <div className={`rounded-xl p-6 backdrop-blur-sm ${transparent ? 'border border-white/20 bg-white/10' : 'border border-slate-200 bg-slate-50 dark:border-slate-700 dark:bg-slate-800/70'}`}>
-                  <CheckCircle2 className={`mb-3 h-6 w-6 ${transparent ? 'text-white' : 'text-slate-700 dark:text-slate-200'}`} />
-                  <h3 className={`mb-2 font-semibold ${transparent ? 'text-white' : 'text-slate-900 dark:text-white'}`}>Quick Snapshot</h3>
-                  <p className={`text-sm ${transparent ? 'text-white/90' : 'text-slate-600 dark:text-slate-300'}`}>Actionable insights in moments</p>
+                <div className="rounded-xl border border-slate-200 bg-slate-50 p-6 backdrop-blur-sm dark:border-slate-700 dark:bg-slate-800/70">
+                  <CheckCircle2 className="mx-auto mb-3 h-6 w-6 text-slate-700 dark:text-slate-200" />
+                  <h3 className="mb-2 font-semibold text-slate-900 dark:text-white">Quick Snapshot</h3>
+                  <p className="text-sm text-slate-600 dark:text-slate-300">Actionable insights in moments</p>
                 </div>
               </div>
 
               <div className="mt-12">
                 <button
                   onClick={() => setShowModal(true)}
-                  className={transparent ? 'btn-primary' : 'inline-flex items-center justify-center rounded-lg bg-slate-900 px-10 py-3.5 text-sm font-semibold text-white transition-all hover:bg-slate-800 hover:shadow-lg dark:bg-white dark:text-slate-900 dark:hover:bg-slate-200'}
+                  className="inline-flex items-center justify-center rounded-lg bg-slate-900 px-10 py-3.5 text-sm font-semibold text-white transition-all hover:bg-slate-800 hover:shadow-lg dark:bg-white dark:text-slate-900 dark:hover:bg-slate-200"
                 >
                   Start Your Analysis
                 </button>
