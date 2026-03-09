@@ -144,7 +144,7 @@ export default function TeamSection() {
   };
 
   return (
-    <section className="flex min-h-screen items-center bg-background py-16">
+    <section className="flex items-center bg-background py-10 md:py-12">
       <div className="w-full px-6 lg:px-10">
         <div className="mx-auto max-w-3xl text-center">
           <h2 className="text-4xl font-bold">{aboutTeam.title}</h2>
