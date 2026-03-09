@@ -3,15 +3,15 @@ import { WebsiteUrlConfig } from "./routing";
 
 export const siteMeta = {
   title: {
-    default: "Kendra International | M&A & Business Consulting",
+    default: "Kendra International | Strategic Advisory Services",
     template: "%s | Kendra International",
   },
   description:
-    "Strategic M&A advisory, business consulting, and cost optimization services for scaling businesses smarter.",
+    "Top-line growth, cost rationalisation, liquidity improvement, and M&A and exit planning services for growth-focused businesses.",
   icons: { icon: "/favicon.png" },
   openGraph: {
     title: "Kendra International",
-    description: "Strategic M&A and business consulting firm.",
+    description: "Strategic advisory services for growth-focused businesses.",
     url: "https://kendra-intl.com",
     siteName: "Kendra International",
     type: "website",
@@ -19,7 +19,7 @@ export const siteMeta = {
 };
 
 export const announcement = {
-  message: "New users get a FREE Business Health Check — Limited time!",
+  message: "New users get a FREE Business Health Check - Limited time!",
   ctaLabel: "FREE Business Health Check",
   ctaHref: WebsiteUrlConfig.Contact,
 };
@@ -43,11 +43,21 @@ export const navLinks: NavItem[] = [
     href: WebsiteUrlConfig.Service,
     label: "Services",
     children: [
-      { href: WebsiteUrlConfig.Fueling_Growth, label: "FaaS" },
-      { href: WebsiteUrlConfig.Optimizing_Operations, label: "Turnover & Transformation" },
-      { href: WebsiteUrlConfig.MandM_Exit, label: "M&A & Exit Strategy Planning" },
-      { href: WebsiteUrlConfig.Strengthening_Liquidity, label: "Strengthening Liquidity" },
+      { href: WebsiteUrlConfig.Fueling_Growth, label: "Top-Line Growth" },
+      {
+        href: WebsiteUrlConfig.Optimizing_Operations,
+        label: "Cost Rationalisation",
+      },
+      {
+        href: WebsiteUrlConfig.Strengthening_Liquidity,
+        label: "Liquidity Improvement",
+      },
+      { href: WebsiteUrlConfig.MandM_Exit, label: "M&A and Exit Planning" },
     ],
+  },
+  {
+    href: WebsiteUrlConfig.Business_Health_Analyzer,
+    label: "Business Health Analyzer",
   },
   {
     href: WebsiteUrlConfig.Blogs,
@@ -59,7 +69,6 @@ export const navLinks: NavItem[] = [
   },
 ];
 
-
 export const footer = {
   quickLinks: [
     { href: WebsiteUrlConfig.Home, label: "Home" },
@@ -68,10 +77,16 @@ export const footer = {
     { href: WebsiteUrlConfig.Contact, label: "Contact" },
   ],
   services: [
-    { href: WebsiteUrlConfig.Fueling_Growth, label: "FaaS" },
-    { href: WebsiteUrlConfig.Optimizing_Operations, label: "Turnover & Transformation" },
-    { href: WebsiteUrlConfig.MandM_Exit, label: "Buy & Build" },
-    { href: WebsiteUrlConfig.Strengthening_Liquidity, label: "Strengthening Liquidity" },
+    { href: WebsiteUrlConfig.Fueling_Growth, label: "Top-Line Growth" },
+    {
+      href: WebsiteUrlConfig.Optimizing_Operations,
+      label: "Cost Rationalisation",
+    },
+    {
+      href: WebsiteUrlConfig.Strengthening_Liquidity,
+      label: "Liquidity Improvement",
+    },
+    { href: WebsiteUrlConfig.MandM_Exit, label: "M&A and Exit Planning" },
   ],
   legal: [
     { href: WebsiteUrlConfig.Privacy, label: "Privacy Policy" },
@@ -96,26 +111,42 @@ export default {
 export const pageMeta = {
   contact: {
     title: "Contact | Kendra International",
-    description: "Get in touch with Kendra International for strategic advisory services.",
+    description:
+      "Get in touch with Kendra International for strategic advisory services.",
   },
   privacy: {
     title: "Privacy Policy | Kendra International",
-    description: "Privacy policy outlining how Kendra International collects, uses, and protects personal information.",
+    description:
+      "Privacy policy outlining how Kendra International collects, uses, and protects personal information.",
   },
   services: {
     title: "Services | Kendra International",
-    description: "Explore Kendra International's services: FaaS, Turnover & Transformation, and Buy & Build.",
+    description:
+      "Explore Kendra International services: Top-Line Growth, Cost Rationalisation, Liquidity Improvement, and M&A and Exit Planning.",
+  },
+  businessHealth: {
+    title: "Business Health Analyzer | Kendra International",
+    description:
+      "Run a quick business health analysis and get actionable insights for growth, margins, and operations.",
   },
   consulting: {
-    title: "FaaS - Finance Function as a Service | Kendra International",
-    description: "Outsource, automate, and upgrade your finance function with Kendra International's FaaS service.",
+    title: "Top-Line Growth | Kendra International",
+    description:
+      "Design and execute practical growth strategies to strengthen sales performance, customer economics, and channel expansion.",
+  },
+  liquidity: {
+    title: "Liquidity Improvement | Kendra International",
+    description:
+      "Improve cash generation, optimize working capital, and build resilience during periods of pressure or transition.",
   },
   ma: {
-    title: "Buy & Build | Kendra International",
-    description: "Accelerating growth through acquisition with Kendra International's Buy & Build strategy.",
+    title: "M&A and Exit Planning | Kendra International",
+    description:
+      "Advisory support for acquisitions, exits, and capital events to maximize value and reduce execution risk.",
   },
   cost: {
-    title: "Turnover & Transformation | Kendra International",
-    description: "Fix and future-proof your finance with Kendra International's Turnover & Transformation service.",
+    title: "Cost Rationalisation | Kendra International",
+    description:
+      "Identify inefficiencies and redesign cost structures to improve margins while protecting critical capabilities.",
   },
 };

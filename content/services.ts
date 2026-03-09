@@ -1,133 +1,183 @@
-import { Wallet, Zap, Building2, BarChart3, Target, Briefcase, DollarSign, TrendingUp } from "lucide-react";
+import {
+  Wallet,
+  Zap,
+  Building2,
+  BarChart3,
+  Target,
+  Briefcase,
+  DollarSign,
+  TrendingUp,
+} from "lucide-react";
+import { WebsiteUrlConfig } from "@/config/routing";
 
 export const servicesOverview = [
   {
-    title: "Finance as a Service",
-    subtitle: "FaaS",
+    title: "Top-Line Growth",
+    subtitle: "Growth Strategy",
     description:
-      "Outsource your entire finance function or specific operations. Get CFO-level expertise, automated processes, and upgraded reporting—all at predictable cost.",
-    benefits: ["Cost reduction", "Process automation", "Better reporting"],
-    icon: Wallet,
-    href: "/services/consulting",
-  },
-  {
-    title: "Operational Transformation",
-    subtitle: "Fix & Future-Proof",
-    description:
-      "Identify operational bottlenecks and implement strategic changes. Improve efficiency, reduce costs, and strengthen your financial performance.",
-    benefits: ["Process optimization", "Cost cuts", "Efficiency gains"],
-    icon: Zap,
-    href: "/services/cost",
-  },
-  {
-    title: "Buy & Build Strategy",
-    subtitle: "M&A Advisory",
-    description:
-      "Navigate the complete M&A journey. From acquisition targeting and due diligence to post-merger integration, we ensure strategic fit and value creation.",
-    benefits: ["Deal sourcing", "Due diligence", "Integration support"],
-    icon: Building2,
-    href: "/services/ma",
-  },
-];
-
-export const consultingWhatWeDo = [
-  {
-    title: "Outsource",
-    description:
-      "Your finance function to reduce costs and free up internal resources for strategic initiatives",
-    icon: Zap,
-  },
-  {
-    title: "Automate",
-    description:
-      "Processes using modern technology and proven frameworks for faster, error-free operations",
-    icon: BarChart3,
-  },
-  {
-    title: "Upgrade",
-    description:
-      "Reporting and analytics to give you real-time visibility into financial performance",
+      "Whether your goal is to strengthen sales performance, improve customer economics, or unlock new channels, we help design and execute growth strategies grounded in data and market realities.",
+    benefits: ["Sales performance", "Customer economics", "New channels"],
     icon: TrendingUp,
+    href: WebsiteUrlConfig.Fueling_Growth,
+  },
+  {
+    title: "Cost Rationalisation",
+    subtitle: "Margin Improvement",
+    description:
+      "We identify inefficiencies across your operating model and help you redesign cost structures to improve margins while protecting critical capabilities.",
+    benefits: [
+      "Inefficiency diagnosis",
+      "Cost structure redesign",
+      "Margin improvement",
+    ],
+    icon: Zap,
+    href: WebsiteUrlConfig.Optimizing_Operations,
+  },
+  {
+    title: "Liquidity Improvement",
+    subtitle: "Cash Resilience",
+    description:
+      "We support businesses in improving cash generation, managing working capital, and building financial resilience in periods of pressure or transition.",
+    benefits: ["Cash generation", "Working capital control", "Resilience"],
+    icon: Wallet,
+    href: WebsiteUrlConfig.Strengthening_Liquidity,
+  },
+  {
+    title: "M&A and Exit Planning",
+    subtitle: "Transaction Advisory",
+    description:
+      "From assessing strategic options to preparing for transactions, we advise on acquisitions, exits, and capital events to maximize value and reduce execution risk.",
+    benefits: ["Strategic options", "Transaction readiness", "Execution risk"],
+    icon: Building2,
+    href: WebsiteUrlConfig.MandM_Exit,
   },
 ];
 
-export const consultingBenefits = [
-  "30-50% reduction in finance function costs",
-  "Real-time financial reporting and insights",
-  "Improved compliance and audit readiness",
-  "Scalable infrastructure that grows with you",
-  "Access to CFO-level expertise",
-  "Technology implementation included",
-];
-
-export const costProcess = [
+export const topLineGrowthProcess = [
   {
-    title: "Diagnose",
+    title: "Assess",
     description:
-      "Identify cost drivers and inefficiencies across your organization through detailed analysis.",
+      "Assess sales performance, customer economics, and channel potential to identify high-impact growth opportunities.",
     icon: Target,
   },
   {
-    title: "Optimize",
+    title: "Design",
     description:
-      "Implement targeted cost reduction initiatives without compromising quality or growth.",
-    icon: Zap,
+      "Design growth initiatives grounded in market data and aligned with your commercial priorities.",
+    icon: TrendingUp,
   },
   {
-    title: "Monitor",
+    title: "Execute",
     description:
-      "Track savings with KPIs and dashboards to ensure sustained cost management.",
+      "Support execution with clear KPIs and tracking so initiatives translate into sustainable top-line momentum.",
     icon: BarChart3,
   },
 ];
 
-export const costBenefits = [
-  "15-35% cost reduction in targeted areas",
-  "Improved operational efficiency",
-  "Better resource allocation",
-  "Sustainable cost controls",
-  "Enhanced profitability margins",
-  "Faster path to positive unit economics",
+export const topLineGrowthBenefits = [
+  "Sharper sales performance across core channels",
+  "Improved customer economics and retention",
+  "Actionable channel expansion roadmap",
+  "Stronger pricing and commercial discipline",
+  "Data-backed growth decision making",
+  "Sustainable top-line momentum",
+];
+
+export const costRationalisationProcess = [
+  {
+    title: "Diagnose",
+    description:
+      "Identify cost drivers and inefficiencies across your operating model through focused analysis.",
+    icon: Target,
+  },
+  {
+    title: "Redesign",
+    description:
+      "Redesign cost structures to improve margins while preserving critical capabilities.",
+    icon: Zap,
+  },
+  {
+    title: "Embed",
+    description:
+      "Embed controls, governance, and performance tracking to sustain improvements over time.",
+    icon: BarChart3,
+  },
+];
+
+export const costRationalisationBenefits = [
+  "Improved margins across targeted areas",
+  "Lean, capability-protective operating model",
+  "Better visibility into structural cost drivers",
+  "Improved budget discipline and accountability",
+  "Sustainable cost controls, not one-time cuts",
+  "Stronger financial performance under pressure",
+];
+
+export const liquidityImprovementProcess = [
+  {
+    title: "Measure",
+    description:
+      "Assess cash conversion, working capital cycles, and liquidity risks across the business.",
+    icon: Target,
+  },
+  {
+    title: "Improve",
+    description:
+      "Implement practical actions to improve cash generation and optimize working capital.",
+    icon: DollarSign,
+  },
+  {
+    title: "Stabilize",
+    description:
+      "Build liquidity controls and forecasting discipline to strengthen resilience during pressure or transition.",
+    icon: BarChart3,
+  },
+];
+
+export const liquidityImprovementBenefits = [
+  "Improved operating cash generation",
+  "Healthier working capital position",
+  "Better short-term and medium-term liquidity visibility",
+  "Reduced cash volatility during transitions",
+  "Stronger resilience under market or operational pressure",
+  "Practical cash governance embedded in operations",
 ];
 
 export const maCapabilities = [
   {
-    title: "Target Identification",
+    title: "Strategic Option Assessment",
     description:
-      "Strategic sourcing, fit analysis, and early-stage diligence to identify the right targets",
+      "Evaluate acquisitions, exits, and capital event pathways against your strategic and financial objectives.",
     icon: Target,
   },
   {
-    title: "Due Diligence",
+    title: "Transaction Readiness",
     description:
-      "Financial, legal, and operational due diligence to uncover risks and opportunities",
+      "Prepare leadership, financials, and operating narratives for cleaner diligence and smoother execution.",
     icon: Briefcase,
   },
   {
-    title: "Deal Structuring",
+    title: "Deal Execution Support",
     description:
-      "Optimal purchase price allocation, payment terms, and earnout structures",
+      "Support valuation, structuring, and negotiations to maximize value and reduce execution risk.",
     icon: DollarSign,
   },
 ];
 
 export const maBenefits = [
-  "Access to proprietary deal sourcing network",
-  "Reduced acquisition risk through rigorous diligence",
-  "Better deal economics through smart structuring",
-  "Smoother integration and faster value realization",
-  "Post-acquisition value creation strategies",
-  "Experienced M&A advisors at every stage",
+  "Clear, objective view of strategic transaction options",
+  "Improved preparedness for buyers, investors, and counterparties",
+  "Stronger deal economics and execution confidence",
+  "Reduced transaction risk through disciplined planning",
+  "Better alignment between strategy, timing, and valuation",
+  "Practical advisory support from planning through completion",
 ];
 
 export const maIndustries = [
-  "SaaS & Technology",
-  "Financial Services",
-  "Manufacturing & Industrial",
-  "Professional Services",
-  "Healthcare & Wellness",
-  "Consumer & Retail",
-  "Platform Acquisitions",
-  "Bolt-on Acquisitions",
+  "Acquisitions",
+  "Exits",
+  "Capital Events",
+  "Owner-Managed Businesses",
+  "Growth-Stage Companies",
+  "Operational Turnaround Situations",
 ];
-

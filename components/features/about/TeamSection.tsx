@@ -58,7 +58,7 @@ export default function TeamSection() {
     setCanScrollRight(closest < cards.length - 1);
   }, []);
 
-  const scrollToIndex = useCallback((index: number) => {
+  const scrollToIndex = useCallback((index: number, behavior: ScrollBehavior = "smooth") => {
     const carousel = carouselRef.current;
     const cards = cardRefs.current;
 
@@ -69,10 +69,14 @@ export default function TeamSection() {
 
     if (!targetCard) return;
 
-    targetCard.scrollIntoView({
-      behavior: "smooth",
-      block: "nearest",
-      inline: "center",
+    const centeredLeft =
+      targetCard.offsetLeft - (carousel.clientWidth - targetCard.offsetWidth) / 2;
+    const maxScrollLeft = Math.max(0, carousel.scrollWidth - carousel.clientWidth);
+    const boundedLeft = Math.max(0, Math.min(centeredLeft, maxScrollLeft));
+
+    carousel.scrollTo({
+      left: boundedLeft,
+      behavior,
     });
   }, []);
 
@@ -132,7 +136,7 @@ export default function TeamSection() {
 
   useEffect(() => {
     if (!members.length) return;
-    scrollToIndex(0);
+    scrollToIndex(0, "auto");
   }, [members.length, scrollToIndex]);
 
   const onKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {

@@ -2,73 +2,85 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { CheckCircle2 } from "lucide-react";
 import { pageMeta } from "@config/site";
-import { costProcess, costBenefits } from "@content/services";
+import {
+  topLineGrowthProcess,
+  topLineGrowthBenefits,
+} from "@content/services";
 
-export const metadata: Metadata = pageMeta.cost as Metadata;
+export const metadata: Metadata = pageMeta.consulting as Metadata;
 
-export default function CostOptimizationPage() {
+export default function TopLineGrowthPage() {
   return (
     <main>
-      {/* Hero */}
       <section
         className="relative overflow-hidden"
         style={{ background: "var(--hero-gradient)" }}
       >
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-white/5 rounded-full blur-3xl" />
-        <div className="absolute -bottom-20 -left-20 w-64 h-64 bg-white/5 rounded-full blur-3xl" />
+        <div className="absolute -top-40 -right-40 h-80 w-80 rounded-full bg-white/5 blur-3xl" />
+        <div className="absolute -bottom-20 -left-20 h-64 w-64 rounded-full bg-white/5 blur-3xl" />
 
-        <div className="relative mx-auto max-w-7xl px-6 lg:px-8 py-20 md:py-28">
-          <div className="max-w-2xl">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white font-display">
-              Cost Optimization & Transformation
+        <div className="relative mx-auto max-w-7xl px-6 py-20 lg:px-8 md:py-28">
+          <div className="max-w-3xl">
+            <h1 className="font-display text-4xl font-bold text-white sm:text-5xl lg:text-6xl">
+              Top-Line Growth
             </h1>
-            <p className="mt-4 text-lg sm:text-xl text-white/90">
-              Right-size your costs while maintaining growth. We identify inefficiencies, eliminate waste, and build sustainable cost structures.
+            <p className="mt-4 text-lg text-white/90 sm:text-xl">
+              Whether your goal is to strengthen sales performance, improve
+              customer economics, or unlock new channels, we help design and
+              execute growth strategies grounded in data and market realities.
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
               <Link href="/contact" className="btn-primary">
-                Start Your Transformation
+                Accelerate Revenue Growth
               </Link>
-              <Link href="/about" className="btn-secondary">
-                Our Approach
+              <Link href="/services" className="btn-secondary">
+                All Services
               </Link>
             </div>
           </div>
         </div>
 
         <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none">
-          <svg viewBox="0 0 1440 60" className="w-full h-8 sm:h-12" preserveAspectRatio="none" aria-hidden="true">
-            <path d="M0,60 L0,20 Q360,0 720,20 Q1080,40 1440,20 L1440,60 Z" fill="white" />
+          <svg
+            viewBox="0 0 1440 60"
+            className="h-8 w-full sm:h-12"
+            preserveAspectRatio="none"
+            aria-hidden="true"
+          >
+            <path
+              d="M0,60 L0,20 Q360,0 720,20 Q1080,40 1440,20 L1440,60 Z"
+              fill="white"
+            />
           </svg>
         </div>
       </section>
 
-      {/* Our Approach */}
       <section className="py-16 md:py-20">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-bold text-navy font-display">
-              Our 3-Phase Approach
+          <div className="mb-12 text-center">
+            <h2 className="font-display text-3xl font-bold text-navy sm:text-4xl">
+              How We Drive Top-Line Growth
             </h2>
-            <p className="mt-3 text-slate-text/70 max-w-2xl mx-auto">
-              From diagnosis to sustained savings
+            <p className="mx-auto mt-3 max-w-2xl text-slate-text/70">
+              Data-led strategy, practical execution, and measurable commercial
+              outcomes.
             </p>
           </div>
           <div className="grid gap-8 sm:grid-cols-3">
-            {costProcess.map((item) => {
+            {topLineGrowthProcess.map((item) => {
               const Icon = item.icon;
               return (
                 <div
                   key={item.title}
-                  className="rounded-xl border border-border bg-white p-8 card-hover"
+                  className="card-hover rounded-xl border border-border bg-white p-8"
                 >
-                  <div className="inline-flex items-center justify-center h-12 w-12 rounded-lg bg-white/20 mb-4">
+                  <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-white/20">
                     <Icon className="h-6 w-6 text-white" strokeWidth={1.5} />
                   </div>
-                  <h3 className="text-xl font-bold font-display text-navy">
+                  <h3 className="font-display text-xl font-bold text-navy">
                     {item.title}
                   </h3>
-                  <p className="mt-3 text-slate-text/70 leading-relaxed">
+                  <p className="mt-3 leading-relaxed text-slate-text/70">
                     {item.description}
                   </p>
                 </div>
@@ -78,22 +90,21 @@ export default function CostOptimizationPage() {
         </div>
       </section>
 
-      {/* Benefits */}
-      <section className="py-16 md:py-20 bg-off-white">
+      <section className="bg-off-white py-16 md:py-20">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <h2 className="text-3xl sm:text-4xl font-bold text-navy font-display text-center mb-12">
-            What You&apos;ll Achieve
+          <h2 className="mb-12 text-center font-display text-3xl font-bold text-navy sm:text-4xl">
+            Outcomes You Can Expect
           </h2>
-          <div className="grid gap-6 md:grid-cols-2 max-w-4xl mx-auto">
-            {costBenefits.map((benefit) => (
+          <div className="mx-auto grid max-w-4xl gap-6 md:grid-cols-2">
+            {topLineGrowthBenefits.map((benefit) => (
               <div key={benefit} className="flex items-start gap-4">
                 <div className="flex-shrink-0">
-                  <div className="flex items-center justify-center h-10 w-10 rounded-lg bg-white/20">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-white/20">
                     <CheckCircle2 className="h-6 w-6 text-white" strokeWidth={2} />
                   </div>
                 </div>
                 <div>
-                  <p className="text-slate-text font-medium">{benefit}</p>
+                  <p className="font-medium text-slate-text">{benefit}</p>
                 </div>
               </div>
             ))}
@@ -101,51 +112,62 @@ export default function CostOptimizationPage() {
         </div>
       </section>
 
-      {/* Key Areas We Optimize */}
       <section className="py-16 md:py-20">
         <div className="mx-auto max-w-4xl px-6 lg:px-8">
-          <h2 className="text-3xl sm:text-4xl font-bold text-navy font-display text-center mb-12">
-            Cost Reduction Areas
+          <h2 className="mb-12 text-center font-display text-3xl font-bold text-navy sm:text-4xl">
+            Growth Levers We Activate
           </h2>
           <div className="grid gap-8 md:grid-cols-2">
             <div className="border-l-4 border-white pl-6">
-              <h3 className="text-lg font-semibold text-navy font-display">Operations</h3>
+              <h3 className="font-display text-lg font-semibold text-navy">
+                Sales Performance
+              </h3>
               <p className="mt-2 text-slate-text/70">
-                Streamline workflows, eliminate redundancies, and optimize resource allocation across your operations.
+                Improve conversion quality, pipeline health, and commercial focus
+                in the sales engine.
               </p>
             </div>
             <div className="border-l-4 border-white pl-6">
-              <h3 className="text-lg font-semibold text-navy font-display">Technology & Systems</h3>
+              <h3 className="font-display text-lg font-semibold text-navy">
+                Customer Economics
+              </h3>
               <p className="mt-2 text-slate-text/70">
-                Rationalize tech stack, consolidate subscriptions, and implement automation for better ROI.
+                Strengthen pricing, retention, and unit economics to improve
+                growth quality.
               </p>
             </div>
             <div className="border-l-4 border-white pl-6">
-              <h3 className="text-lg font-semibold text-navy font-display">Procurement & Vendor Management</h3>
+              <h3 className="font-display text-lg font-semibold text-navy">
+                Channel Expansion
+              </h3>
               <p className="mt-2 text-slate-text/70">
-                Renegotiate contracts, consolidate suppliers, and establish better procurement processes.
+                Prioritize and launch channels with the best strategic fit,
+                revenue potential, and execution feasibility.
               </p>
             </div>
             <div className="border-l-4 border-white pl-6">
-              <h3 className="text-lg font-semibold text-navy font-display">Org Structure & Staffing</h3>
+              <h3 className="font-display text-lg font-semibold text-navy">
+                Commercial Rhythm
+              </h3>
               <p className="mt-2 text-slate-text/70">
-                Right-size your team, improve productivity, and eliminate organizational redundancies.
+                Set practical targets, performance reviews, and ownership models
+                that sustain momentum.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-16 md:py-20 text-center bg-off-white">
+      <section className="bg-off-white py-16 text-center md:py-20">
         <div className="mx-auto max-w-3xl px-6">
-          <h2 className="text-3xl sm:text-4xl font-bold text-navy font-display">
-            Ready to Improve Your Bottom Line?
+          <h2 className="font-display text-3xl font-bold text-navy sm:text-4xl">
+            Ready to Grow Your Top Line?
           </h2>
-          <p className="mt-4 text-slate-text/70 text-lg">
-            Let&apos;s explore cost optimization opportunities specific to your business.
+          <p className="mt-4 text-lg text-slate-text/70">
+            Let us prioritize the initiatives that can drive revenue performance
+            in your current operating reality.
           </p>
-          <div className="mt-8 flex flex-wrap gap-4 justify-center">
+          <div className="mt-8 flex flex-wrap justify-center gap-4">
             <Link href="/contact" className="btn-primary">
               Schedule Consultation
             </Link>

@@ -9,118 +9,139 @@ export const metadata: Metadata = pageMeta.services as Metadata;
 export default function ServicesPage() {
   return (
     <main>
-      {/* Hero */}
       <section
         className="relative overflow-hidden"
         style={{ background: "var(--hero-gradient)" }}
       >
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-white/5 rounded-full blur-3xl" />
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-white/5 rounded-full blur-3xl" />
-        
-        <div className="relative mx-auto max-w-7xl px-6 lg:px-8 py-20 md:py-28">
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white font-display">
-            Strategic Services for Growth
+        <div className="absolute -top-40 -right-40 h-80 w-80 rounded-full bg-white/5 blur-3xl" />
+        <div className="absolute -bottom-40 -left-40 h-80 w-80 rounded-full bg-white/5 blur-3xl" />
+
+        <div className="relative mx-auto max-w-7xl px-6 py-20 lg:px-8 md:py-28">
+          <h1 className="font-display text-3xl font-bold text-white sm:text-4xl lg:text-5xl">
+            Service Lines at Kendra
           </h1>
-          <p className="mt-3 text-lg text-white/90 max-w-2xl">
-            Tailored solutions to scale your business smarter, faster, and more profitably.
+          <p className="mt-3 max-w-3xl text-lg text-white/90">
+            In every engagement, our objective is to improve financial
+            performance and strategic clarity while remaining practical,
+            focused, and outcome-driven.
           </p>
         </div>
+
         <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none">
-          <svg viewBox="0 0 1440 60" className="w-full h-8 sm:h-12" preserveAspectRatio="none" aria-hidden="true">
-            <path d="M0,60 L0,20 Q360,0 720,20 Q1080,40 1440,20 L1440,60 Z" fill="white" />
+          <svg
+            viewBox="0 0 1440 60"
+            className="h-8 w-full sm:h-12"
+            preserveAspectRatio="none"
+            aria-hidden="true"
+          >
+            <path
+              d="M0,60 L0,20 Q360,0 720,20 Q1080,40 1440,20 L1440,60 Z"
+              fill="white"
+            />
           </svg>
         </div>
       </section>
 
-      {/* Services Grid */}
       <section className="py-16 md:py-20">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="grid gap-8 md:grid-cols-3">
-          {servicesOverview.map((service) => {
-            const Icon = service.icon;
-            return (
-              <Link
-                key={service.title}
-                href={service.href}
-                className="card-hover group flex flex-col p-8"
-              >
-                <div className="flex items-start justify-between mb-4">
-                  <div>
-                    <p className="text-xs font-semibold text-slate-text/60 uppercase tracking-wider">{service.subtitle}</p>
-                    <h2 className="text-2xl font-bold font-display text-navy group-hover:text-white transition-colors mt-1">
-                      {service.title}
-                    </h2>
+          <div className="grid gap-8 md:grid-cols-2">
+            {servicesOverview.map((service) => {
+              const Icon = service.icon;
+              return (
+                <Link
+                  key={service.title}
+                  href={service.href}
+                  className="card-hover group flex flex-col p-8"
+                >
+                  <div className="mb-4 flex items-start justify-between">
+                    <div>
+                      <p className="text-xs font-semibold uppercase tracking-wider text-slate-text/60">
+                        {service.subtitle}
+                      </p>
+                      <h2 className="mt-1 font-display text-2xl font-bold text-navy transition-colors group-hover:text-white">
+                        {service.title}
+                      </h2>
+                    </div>
+                    <div className="rounded-lg bg-white/20 p-3 transition-colors group-hover:bg-white/30">
+                      <Icon className="h-6 w-6 text-white" strokeWidth={1.5} />
+                    </div>
                   </div>
-                  <div className="p-3 bg-white/20 rounded-lg group-hover:bg-white/30 transition-colors">
-                    <Icon className="h-6 w-6 text-white" strokeWidth={1.5} />
+
+                  <p className="mt-4 flex-1 text-sm leading-relaxed text-slate-text/70">
+                    {service.description}
+                  </p>
+
+                  <div className="mt-6 space-y-2">
+                    {service.benefits.map((benefit) => (
+                      <p
+                        key={benefit}
+                        className="flex items-center gap-2 text-xs text-slate-text/60"
+                      >
+                        <span className="h-1 w-1 rounded-full bg-white" />
+                        {benefit}
+                      </p>
+                    ))}
                   </div>
-                </div>
-                
-                <p className="mt-4 text-sm text-slate-text/70 leading-relaxed flex-1">
-                  {service.description}
-                </p>
-                
-                <div className="mt-6 space-y-2">
-                  {service.benefits.map((benefit) => (
-                    <p key={benefit} className="text-xs text-slate-text/60 flex items-center gap-2">
-                      <span className="h-1 w-1 rounded-full bg-white" />
-                      {benefit}
-                    </p>
-                  ))}
-                </div>
-                
-                <span className="mt-6 inline-flex text-sm font-medium text-navy group-hover:text-white transition-colors">
-                  Learn More &rarr;
-                </span>
-              </Link>
-            );
-          })}
+
+                  <span className="mt-6 inline-flex text-sm font-medium text-navy transition-colors group-hover:text-white">
+                    Learn More &rarr;
+                  </span>
+                </Link>
+              );
+            })}
           </div>
         </div>
       </section>
 
-      {/* Why Choose Section */}
-      <section className="py-16 md:py-20 bg-off-white">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8 text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold text-navy">Why Our Services Work</h2>
-          <p className="mt-3 text-slate-text/70 max-w-2xl mx-auto">We combine deep expertise, rapid execution, and measurable results</p>
-          
-          <div className="mt-12 grid gap-6 md:grid-cols-3">
-            <div className="bg-white rounded-xl p-6 border border-border">
-              <h3 className="font-display font-semibold text-navy">Expert Team</h3>
-              <p className="mt-2 text-sm text-slate-text/70">20+ years of combined experience across finance, operations, and M&A</p>
-            </div>
-            <div className="bg-white rounded-xl p-6 border border-border">
-              <h3 className="font-display font-semibold text-navy">Rapid Execution</h3>
-              <p className="mt-2 text-sm text-slate-text/70">Results in days or weeks, not months—proven methodologies for speed</p>
-            </div>
-            <div className="bg-white rounded-xl p-6 border border-border">
-              <h3 className="font-display font-semibold text-navy">Measurable Impact</h3>
-              <p className="mt-2 text-sm text-slate-text/70">Clear KPIs and accountability—we&apos;re invested in your success</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="py-16 md:py-20 text-center">
-        <div className="mx-auto max-w-3xl px-6">
-          <h2 className="text-3xl sm:text-4xl font-bold text-navy">
-            Ready to Transform Your Business?
-          </h2>
-          <p className="mt-4 text-slate-text/70 max-w-2xl mx-auto">
-            Let&apos;s discuss how our services can drive growth and unlock hidden value
+      <section className="bg-off-white py-16 md:py-20">
+        <div className="mx-auto max-w-7xl px-6 text-center lg:px-8">
+          <h2 className="text-3xl font-bold text-navy sm:text-4xl">How We Work</h2>
+          <p className="mx-auto mt-3 max-w-2xl text-slate-text/70">
+            Practical advisory support focused on measurable outcomes.
           </p>
-          <div className="mt-8 flex gap-4 justify-center flex-wrap">
-            <Link
-              href="/contact"
-              className="btn-primary"
-            >
+
+          <div className="mt-12 grid gap-6 md:grid-cols-3">
+            <div className="rounded-xl border border-border bg-white p-6">
+              <h3 className="font-display font-semibold text-navy">Outcome-Driven</h3>
+              <p className="mt-2 text-sm text-slate-text/70">
+                Every engagement is designed to improve financial performance and
+                strategic clarity.
+              </p>
+            </div>
+            <div className="rounded-xl border border-border bg-white p-6">
+              <h3 className="font-display font-semibold text-navy">Practical by Design</h3>
+              <p className="mt-2 text-sm text-slate-text/70">
+                We focus on actions your team can execute quickly in live operating
+                conditions.
+              </p>
+            </div>
+            <div className="rounded-xl border border-border bg-white p-6">
+              <h3 className="font-display font-semibold text-navy">Senior-Led Delivery</h3>
+              <p className="mt-2 text-sm text-slate-text/70">
+                Direct involvement from experienced advisors through planning,
+                execution, and follow-through.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16 text-center md:py-20">
+        <div className="mx-auto max-w-3xl px-6">
+          <h2 className="text-3xl font-bold text-navy sm:text-4xl">
+            Ready to Discuss Your Priorities?
+          </h2>
+          <p className="mx-auto mt-4 max-w-2xl text-slate-text/70">
+            Let us identify the right service line for your growth, margin, cash,
+            or transaction agenda.
+          </p>
+          <div className="mt-8 flex flex-wrap justify-center gap-4">
+            <Link href="/contact" className="btn-primary">
               Schedule a Consultation
             </Link>
             <Link
               href={WebsiteUrlConfig.Home}
-              className="inline-flex items-center justify-center rounded-lg border border-navy text-navy px-8 py-3.5 text-sm font-semibold transition-all hover:bg-navy hover:text-white"
+              className="inline-flex items-center justify-center rounded-lg border border-navy px-8 py-3.5 text-sm font-semibold text-navy transition-all hover:bg-navy hover:text-white"
             >
               Back to Home
             </Link>

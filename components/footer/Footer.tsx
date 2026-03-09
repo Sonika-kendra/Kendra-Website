@@ -23,7 +23,7 @@ export default function Footer() {
           <div className="lg:col-span-1">
             <Logo width={160} height={48} priority />
             <p className={clsx("mt-4", ui.footer.bodyText)}>
-              Scaling businesses smarter through finance, transformation, and M&A support.
+              Improving financial performance and strategic clarity through practical advisory support.
             </p>
           </div>
 
