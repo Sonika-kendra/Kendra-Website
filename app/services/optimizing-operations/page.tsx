@@ -2,11 +2,11 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { CheckCircle2 } from "lucide-react";
 import { pageMeta } from "@config/site";
-import { consultingWhatWeDo, consultingBenefits } from "@content/services";
+import { costProcess, costBenefits } from "@content/services";
 
-export const metadata: Metadata = pageMeta.consulting as Metadata;
+export const metadata: Metadata = pageMeta.cost as Metadata;
 
-export default function FaaSPage() {
+export default function CostOptimizationPage() {
   return (
     <main>
       {/* Hero */}
@@ -20,17 +20,17 @@ export default function FaaSPage() {
         <div className="relative mx-auto max-w-7xl px-6 lg:px-8 py-20 md:py-28">
           <div className="max-w-2xl">
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white font-display">
-              Finance as a Service (FaaS)
+              Cost Optimization & Transformation
             </h1>
             <p className="mt-4 text-lg sm:text-xl text-white/90">
-              Outsource your finance function to experienced CFOs and finance leaders. Reduce costs, improve controls, and get real-time insights.
+              Right-size your costs while maintaining growth. We identify inefficiencies, eliminate waste, and build sustainable cost structures.
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
               <Link href="/contact" className="btn-primary">
-                Get Started
+                Start Your Transformation
               </Link>
               <Link href="/about" className="btn-secondary">
-                Learn More
+                Our Approach
               </Link>
             </div>
           </div>
@@ -43,19 +43,19 @@ export default function FaaSPage() {
         </div>
       </section>
 
-      {/* What We Do */}
+      {/* Our Approach */}
       <section className="py-16 md:py-20">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl sm:text-4xl font-bold text-navy font-display">
-              What We Deliver
+              Our 3-Phase Approach
             </h2>
             <p className="mt-3 text-slate-text/70 max-w-2xl mx-auto">
-              Comprehensive financial management services designed for growing businesses
+              From diagnosis to sustained savings
             </p>
           </div>
-          <div className="mt-10 grid gap-8 sm:grid-cols-3">
-            {consultingWhatWeDo.map((item) => {
+          <div className="grid gap-8 sm:grid-cols-3">
+            {costProcess.map((item) => {
               const Icon = item.icon;
               return (
                 <div
@@ -82,10 +82,10 @@ export default function FaaSPage() {
       <section className="py-16 md:py-20 bg-off-white">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <h2 className="text-3xl sm:text-4xl font-bold text-navy font-display text-center mb-12">
-            Why Choose Our FaaS Solution?
+            What You&apos;ll Achieve
           </h2>
-          <div className="grid gap-6 md:grid-cols-2">
-            {consultingBenefits.map((benefit) => (
+          <div className="grid gap-6 md:grid-cols-2 max-w-4xl mx-auto">
+            {costBenefits.map((benefit) => (
               <div key={benefit} className="flex items-start gap-4">
                 <div className="flex-shrink-0">
                   <div className="flex items-center justify-center h-10 w-10 rounded-lg bg-white/20">
@@ -101,51 +101,36 @@ export default function FaaSPage() {
         </div>
       </section>
 
-      {/* How It Works */}
+      {/* Key Areas We Optimize */}
       <section className="py-16 md:py-20">
         <div className="mx-auto max-w-4xl px-6 lg:px-8">
           <h2 className="text-3xl sm:text-4xl font-bold text-navy font-display text-center mb-12">
-            How It Works
+            Cost Reduction Areas
           </h2>
-          <div className="space-y-8">
-            <div className="flex gap-6">
-              <div className="flex-shrink-0">
-                <div className="flex items-center justify-center h-12 w-12 rounded-full bg-white text-navy font-bold font-display">
-                  1
-                </div>
-              </div>
-              <div>
-                <h3 className="text-xl font-semibold text-navy font-display">Assessment</h3>
-                <p className="mt-2 text-slate-text/70">
-                  We analyze your current finance function, identify inefficiencies, and quantify potential savings.
-                </p>
-              </div>
+          <div className="grid gap-8 md:grid-cols-2">
+            <div className="border-l-4 border-white pl-6">
+              <h3 className="text-lg font-semibold text-navy font-display">Operations</h3>
+              <p className="mt-2 text-slate-text/70">
+                Streamline workflows, eliminate redundancies, and optimize resource allocation across your operations.
+              </p>
             </div>
-            <div className="flex gap-6">
-              <div className="flex-shrink-0">
-                <div className="flex items-center justify-center h-12 w-12 rounded-full bg-white text-navy font-bold font-display">
-                  2
-                </div>
-              </div>
-              <div>
-                <h3 className="text-xl font-semibold text-navy font-display">Optimization</h3>
-                <p className="mt-2 text-slate-text/70">
-                  We implement automation, improve processes, and set up modern tools for better financial management.
-                </p>
-              </div>
+            <div className="border-l-4 border-white pl-6">
+              <h3 className="text-lg font-semibold text-navy font-display">Technology & Systems</h3>
+              <p className="mt-2 text-slate-text/70">
+                Rationalize tech stack, consolidate subscriptions, and implement automation for better ROI.
+              </p>
             </div>
-            <div className="flex gap-6">
-              <div className="flex-shrink-0">
-                <div className="flex items-center justify-center h-12 w-12 rounded-full bg-white text-navy font-bold font-display">
-                  3
-                </div>
-              </div>
-              <div>
-                <h3 className="text-xl font-semibold text-navy font-display">Execution &amp; Support</h3>
-                <p className="mt-2 text-slate-text/70">
-                  Our team takes over day-to-day finance operations, reporting, and compliance while training your staff.
-                </p>
-              </div>
+            <div className="border-l-4 border-white pl-6">
+              <h3 className="text-lg font-semibold text-navy font-display">Procurement & Vendor Management</h3>
+              <p className="mt-2 text-slate-text/70">
+                Renegotiate contracts, consolidate suppliers, and establish better procurement processes.
+              </p>
+            </div>
+            <div className="border-l-4 border-white pl-6">
+              <h3 className="text-lg font-semibold text-navy font-display">Org Structure & Staffing</h3>
+              <p className="mt-2 text-slate-text/70">
+                Right-size your team, improve productivity, and eliminate organizational redundancies.
+              </p>
             </div>
           </div>
         </div>
@@ -155,10 +140,10 @@ export default function FaaSPage() {
       <section className="py-16 md:py-20 text-center bg-off-white">
         <div className="mx-auto max-w-3xl px-6">
           <h2 className="text-3xl sm:text-4xl font-bold text-navy font-display">
-            Ready to Transform Your Finance Function?
+            Ready to Improve Your Bottom Line?
           </h2>
           <p className="mt-4 text-slate-text/70 text-lg">
-            Let&apos;s discuss how FaaS can reduce costs and improve financial visibility for your business.
+            Let&apos;s explore cost optimization opportunities specific to your business.
           </p>
           <div className="mt-8 flex flex-wrap gap-4 justify-center">
             <Link href="/contact" className="btn-primary">
