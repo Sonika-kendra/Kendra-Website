@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { aboutTeam } from "@content/about";
+import { aboutTeam } from "@/content/about";
 
 export default function TeamSection() {
   const carouselRef = useRef<HTMLDivElement>(null);
@@ -115,6 +115,10 @@ export default function TeamSection() {
       window.removeEventListener("resize", updateCarouselState);
     };
   }, [updateCarouselState]);
+
+  useEffect(() => {
+    updateCarouselState();
+  }, [edgePadding, updateCarouselState]);
 
   useEffect(() => {
     if (isPaused || members.length < 2) return;

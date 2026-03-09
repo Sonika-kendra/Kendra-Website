@@ -26,37 +26,6 @@ export const aboutStoryRows = [
   },
 ] as const;
 
-export const aboutValues = {
-  title: "Why Choose Kendra International?",
-  description: "Success requires execution, accountability, and the right expertise guiding decisions.",
-  image: {
-    src: "/about/brand-values.jpg",
-    alt: "Business strategy discussion",
-  },
-  cards: [
-    {
-      icon: "Target",
-      title: "Tailored Strategy",
-      description: "Every engagement is customized to your business stage, market dynamics, and strategic objectives.",
-    },
-    {
-      icon: "Zap",
-      title: "Cross-Functional Expertise",
-      description: "Finance, strategy, operations, and M&A expertise integrated into one advisory team.",
-    },
-    {
-      icon: "Users",
-      title: "Action-Oriented Delivery",
-      description: "Recommendations are translated into operational improvements and measurable outcomes.",
-    },
-    {
-      icon: "CheckCircle2",
-      title: "Trusted Partner Mindset",
-      description: "We operate as an extension of your leadership team with transparency and accountability.",
-    },
-  ],
-} as const;
-
 export const aboutTeam = {
   title: "Meet our Team",
   description:
@@ -108,7 +77,38 @@ export const aboutTeam = {
       photo: "/team/user-box-svgrepo-com.svg",
     },
   ],
-};
+} as const;
+
+export const aboutValues = {
+  title: "Why Choose Kendra International?",
+  description: "Success requires execution, accountability, and the right expertise guiding decisions.",
+  image: {
+    src: "/about/brand-values.jpg",
+    alt: "Business strategy discussion",
+  },
+  cards: [
+    {
+      icon: "Target",
+      title: "Tailored Strategy",
+      description: "Every engagement is customized to your business stage, market dynamics, and strategic objectives.",
+    },
+    {
+      icon: "Zap",
+      title: "Cross-Functional Expertise",
+      description: "Finance, strategy, operations, and M&A expertise integrated into one advisory team.",
+    },
+    {
+      icon: "Users",
+      title: "Action-Oriented Delivery",
+      description: "Recommendations are translated into operational improvements and measurable outcomes.",
+    },
+    {
+      icon: "CheckCircle2",
+      title: "Trusted Partner Mindset",
+      description: "We operate as an extension of your leadership team with transparency and accountability.",
+    },
+  ],
+} as const;
 
 export const aboutDifferentiators = {
   title: "Why We Do",
