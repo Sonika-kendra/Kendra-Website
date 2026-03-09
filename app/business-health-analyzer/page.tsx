@@ -1,15 +1,16 @@
-import type { Metadata } from "next";
+"use client"
 import { BusinessHealthCheck } from "@features/home";
-import { pageMeta } from "@config/site";
 import Image from "next/image";
 import { aboutHero } from "@content/about";
-
-export const metadata: Metadata = pageMeta.businessHealth as Metadata;
+import { useRef } from "react";
+import DownloadButton from "@components/common/DownloadButton";
 
 export default function BusinessHealthAnalyzerPage() {
+    const pdfRef = useRef<HTMLDivElement>(null);
+
   return (
     <main>
-      <div className="relative h-[260px] md:h-[320px] lg:h-[380px]">
+      <div className="relative h-[260px] md:h-[320px] lg:h-[380px]" ref={pdfRef}>
         <Image
           src={aboutHero.image.src}
           alt={aboutHero.image.alt}
@@ -23,6 +24,7 @@ export default function BusinessHealthAnalyzerPage() {
           <BusinessHealthCheck transparent={true} />
         </div>
       </div>
+        <DownloadButton pdfRef={pdfRef} fileName="business-health-analyzer.pdf" />
     </main>
   );
 }
