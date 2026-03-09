@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { CheckCircle2, TrendingUp } from "lucide-react";
 import { pageMeta } from "@config/site";
+import HeroSection from "@components/common/HeroSection";
+import { aboutHero } from "@content/about";
 import { maCapabilities, maBenefits, maIndustries } from "@content/services";
 
 export const metadata: Metadata = pageMeta.ma as Metadata;
@@ -9,48 +11,24 @@ export const metadata: Metadata = pageMeta.ma as Metadata;
 export default function MAExitPlanningPage() {
   return (
     <main>
-      <section
-        className="relative overflow-hidden"
-        style={{ background: "var(--hero-gradient)" }}
-      >
-        <div className="absolute -top-40 -right-40 h-80 w-80 rounded-full bg-white/5 blur-3xl" />
-        <div className="absolute -bottom-20 -left-20 h-64 w-64 rounded-full bg-white/5 blur-3xl" />
-
-        <div className="relative mx-auto max-w-7xl px-6 py-20 lg:px-8 md:py-28">
-          <div className="max-w-3xl">
-            <h1 className="font-display text-4xl font-bold text-white sm:text-5xl lg:text-6xl">
-              M&A and Exit Planning
-            </h1>
-            <p className="mt-4 text-lg text-white/90 sm:text-xl">
-              From assessing strategic options to preparing for transactions, we
+      <HeroSection
+        title="M&A and Exit Planning"
+        description="From assessing strategic options to preparing for transactions, we
               advise on acquisitions, exits, and capital events to maximize
-              value and reduce execution risk.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-4">
-              <Link href="/contact" className="btn-primary">
-                Discuss Transaction Priorities
-              </Link>
-              <Link href="/services" className="btn-secondary">
-                All Services
-              </Link>
-            </div>
-          </div>
+              value and reduce execution risk."
+        imageUrl={aboutHero.image.src}
+        imageAlt={aboutHero.image.alt}
+        withWave={true}
+      >
+        <div className="flex flex-wrap gap-4">
+          <Link href="/contact" className="btn-primary">
+            Discuss Transaction Priorities
+          </Link>
+          <Link href="/services" className="btn-secondary">
+            All Services
+          </Link>
         </div>
-
-        <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none">
-          <svg
-            viewBox="0 0 1440 60"
-            className="h-8 w-full sm:h-12"
-            preserveAspectRatio="none"
-            aria-hidden="true"
-          >
-            <path
-              d="M0,60 L0,20 Q360,0 720,20 Q1080,40 1440,20 L1440,60 Z"
-              fill="white"
-            />
-          </svg>
-        </div>
-      </section>
+      </HeroSection>
 
       <section className="py-16 md:py-20">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">

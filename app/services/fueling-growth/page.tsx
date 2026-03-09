@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { CheckCircle2 } from "lucide-react";
 import { pageMeta } from "@config/site";
+import HeroSection from "@components/common/HeroSection";
+import { aboutHero } from "@content/about";
 import {
   topLineGrowthProcess,
   topLineGrowthBenefits,
@@ -12,48 +14,24 @@ export const metadata: Metadata = pageMeta.consulting as Metadata;
 export default function TopLineGrowthPage() {
   return (
     <main>
-      <section
-        className="relative overflow-hidden"
-        style={{ background: "var(--hero-gradient)" }}
-      >
-        <div className="absolute -top-40 -right-40 h-80 w-80 rounded-full bg-white/5 blur-3xl" />
-        <div className="absolute -bottom-20 -left-20 h-64 w-64 rounded-full bg-white/5 blur-3xl" />
-
-        <div className="relative mx-auto max-w-7xl px-6 py-20 lg:px-8 md:py-28">
-          <div className="max-w-3xl">
-            <h1 className="font-display text-4xl font-bold text-white sm:text-5xl lg:text-6xl">
-              Top-Line Growth
-            </h1>
-            <p className="mt-4 text-lg text-white/90 sm:text-xl">
-              Whether your goal is to strengthen sales performance, improve
+      <HeroSection
+        title="Top-Line Growth"
+        description="Whether your goal is to strengthen sales performance, improve
               customer economics, or unlock new channels, we help design and
-              execute growth strategies grounded in data and market realities.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-4">
-              <Link href="/contact" className="btn-primary">
-                Accelerate Revenue Growth
-              </Link>
-              <Link href="/services" className="btn-secondary">
-                All Services
-              </Link>
-            </div>
-          </div>
+              execute growth strategies grounded in data and market realities."
+        imageUrl={aboutHero.image.src}
+        imageAlt={aboutHero.image.alt}
+        withWave={true}
+      >
+        <div className="flex flex-wrap gap-4">
+          <Link href="/contact" className="btn-primary">
+            Accelerate Revenue Growth
+          </Link>
+          <Link href="/services" className="btn-secondary">
+            All Services
+          </Link>
         </div>
-
-        <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none">
-          <svg
-            viewBox="0 0 1440 60"
-            className="h-8 w-full sm:h-12"
-            preserveAspectRatio="none"
-            aria-hidden="true"
-          >
-            <path
-              d="M0,60 L0,20 Q360,0 720,20 Q1080,40 1440,20 L1440,60 Z"
-              fill="white"
-            />
-          </svg>
-        </div>
-      </section>
+      </HeroSection>
 
       <section className="py-16 md:py-20">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">

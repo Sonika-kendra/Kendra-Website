@@ -4,43 +4,23 @@ import { pageMeta } from "@config/site";
 import { servicesOverview } from "@content/services";
 import { WebsiteUrlConfig } from "@/config/routing";
 
+import HeroSection from "@components/common/HeroSection";
+import { aboutHero } from "@content/about";
+
 export const metadata: Metadata = pageMeta.services as Metadata;
 
 export default function ServicesPage() {
   return (
     <main>
-      <section
-        className="relative overflow-hidden"
-        style={{ background: "var(--hero-gradient)" }}
-      >
-        <div className="absolute -top-40 -right-40 h-80 w-80 rounded-full bg-white/5 blur-3xl" />
-        <div className="absolute -bottom-40 -left-40 h-80 w-80 rounded-full bg-white/5 blur-3xl" />
-
-        <div className="relative mx-auto max-w-7xl px-6 py-20 lg:px-8 md:py-28">
-          <h1 className="font-display text-3xl font-bold text-white sm:text-4xl lg:text-5xl">
-            Service Lines at Kendra
-          </h1>
-          <p className="mt-3 max-w-3xl text-lg text-white/90">
-            In every engagement, our objective is to improve financial
+      <HeroSection
+        title="Service Lines at Kendra"
+        description="In every engagement, our objective is to improve financial
             performance and strategic clarity while remaining practical,
-            focused, and outcome-driven.
-          </p>
-        </div>
-
-        <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none">
-          <svg
-            viewBox="0 0 1440 60"
-            className="h-8 w-full sm:h-12"
-            preserveAspectRatio="none"
-            aria-hidden="true"
-          >
-            <path
-              d="M0,60 L0,20 Q360,0 720,20 Q1080,40 1440,20 L1440,60 Z"
-              fill="white"
-            />
-          </svg>
-        </div>
-      </section>
+            focused, and outcome-driven."
+        imageUrl={aboutHero.image.src}
+        imageAlt={aboutHero.image.alt}
+        withWave={true}
+      />
 
       <section className="py-16 md:py-20">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
