@@ -60,7 +60,22 @@ export default function Navbar() {
 
             if (hasChildren) {
               return (
-                <div key={link.href} className="relative">
+                <div key={link.href} className="relative flex items-center gap-1">
+                  <Link
+                    href={link.href}
+                    onClick={() => setOpenDropdown(null)}
+                    className="group relative text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+                  >
+                    {link.label}
+
+                    {/* Animated Underline */}
+                    <span
+                      className={clsx(
+                        "absolute -bottom-1 left-0 h-[2px] w-full bg-primary origin-left scale-x-0 transition-transform duration-300",
+                        isActive && "scale-x-100"
+                      )}
+                    />
+                  </Link>
                   <button
                     type="button"
                     onClick={() =>
@@ -68,25 +83,15 @@ export default function Navbar() {
                         openDropdown === link.href ? null : link.href
                       )
                     }
-                    className="group relative text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+                    className="rounded-sm p-1 text-muted-foreground hover:text-foreground transition-colors"
+                    aria-label={`Toggle ${link.label} submenu`}
                     aria-expanded={openDropdown === link.href}
                     aria-haspopup="menu"
                   >
-                    <span className="flex items-center gap-1">
-                      {link.label}
-                      <ChevronDown
-                        className={clsx(
-                          "h-3 w-3 transition-transform",
-                          openDropdown === link.href && "rotate-180"
-                        )}
-                      />
-                    </span>
-
-                    {/* Animated Underline */}
-                    <span
+                    <ChevronDown
                       className={clsx(
-                        "absolute -bottom-1 left-0 h-[2px] w-full bg-primary origin-left scale-x-0 transition-transform duration-300",
-                        isActive && "scale-x-100"
+                        "h-3 w-3 transition-transform",
+                        openDropdown === link.href && "rotate-180"
                       )}
                     />
                   </button>
@@ -160,38 +165,40 @@ export default function Navbar() {
 
                 return (
                   <div key={link.href}>
-                    <button
-                      onClick={() =>
-                        setOpenMobileDropdown(isOpen ? null : link.href)
-                      }
-                      className="flex w-full items-center justify-between rounded-md px-3 py-2 text-sm font-medium text-muted-foreground hover:bg-muted hover:text-foreground"
-                      aria-expanded={isOpen}
-                      aria-controls={`mobile-submenu-${link.href}`}
-                    >
-                      {link.label}
-                      <ChevronDown
-                        className={clsx(
-                          "h-4 w-4 transition-transform",
-                          isOpen && "rotate-180"
-                        )}
-                      />
-                    </button>
+                    <div className="flex items-center gap-1">
+                      <Link
+                        href={link.href}
+                        onClick={() => {
+                          setMobileOpen(false);
+                          setOpenMobileDropdown(null);
+                        }}
+                        className="flex-1 rounded-md px-3 py-2 text-sm font-medium text-muted-foreground hover:bg-muted hover:text-foreground"
+                      >
+                        {link.label}
+                      </Link>
+                      <button
+                        onClick={() =>
+                          setOpenMobileDropdown(isOpen ? null : link.href)
+                        }
+                        className="rounded-md p-2 text-muted-foreground hover:bg-muted hover:text-foreground"
+                        aria-label={`Toggle ${link.label} submenu`}
+                        aria-expanded={isOpen}
+                        aria-controls={`mobile-submenu-${link.href}`}
+                      >
+                        <ChevronDown
+                          className={clsx(
+                            "h-4 w-4 transition-transform",
+                            isOpen && "rotate-180"
+                          )}
+                        />
+                      </button>
+                    </div>
 
                     {isOpen && (
                       <div
                         id={`mobile-submenu-${link.href}`}
                         className="ml-4 mt-1 space-y-1"
                       >
-                        <Link
-                          href={link.href}
-                          onClick={() => {
-                            setMobileOpen(false);
-                            setOpenMobileDropdown(null);
-                          }}
-                          className="block rounded-md px-3 py-2 text-sm font-medium text-muted-foreground hover:bg-muted hover:text-foreground"
-                        >
-                          All {link.label}
-                        </Link>
                         {link.children.map((child) => (
                           <Link
                             key={child.href}

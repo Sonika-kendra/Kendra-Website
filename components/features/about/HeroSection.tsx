@@ -12,7 +12,7 @@ export default function AboutHeroSection() {
         fill
         priority
         sizes="100vw"
-        className="object-cover object-[100%_center] md:object-[120%_center] lg:object-[130%_center]"
+        className="object-cover object-right"
       />
 
       {/* Overlay */}
