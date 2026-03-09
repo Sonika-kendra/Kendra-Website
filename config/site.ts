@@ -36,10 +36,6 @@ export const navLinks: NavItem[] = [
     label: "Home",
   },
   {
-    href: WebsiteUrlConfig.About,
-    label: "About",
-  },
-  {
     href: WebsiteUrlConfig.Service,
     label: "Services",
     children: [
@@ -58,6 +54,10 @@ export const navLinks: NavItem[] = [
   {
     href: WebsiteUrlConfig.Business_Health_Analyzer,
     label: "Business Health Analyzer",
+  },
+  {
+    href: WebsiteUrlConfig.About,
+    label: "About",
   },
   {
     href: WebsiteUrlConfig.Blogs,
