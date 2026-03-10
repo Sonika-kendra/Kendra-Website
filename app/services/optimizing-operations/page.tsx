@@ -34,7 +34,7 @@ export default function CostRationalisationPage() {
       </HeroSection>
 
       <section className="py-10 md:py-14">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        <div className="w-full px-6 lg:px-8">
           <div className="mb-12 text-center">
             <h2 className="font-display text-3xl font-bold text-navy sm:text-4xl">
               Our 3-Phase Approach
@@ -68,11 +68,11 @@ export default function CostRationalisationPage() {
       </section>
 
       <section className="bg-off-white py-10 md:py-14">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        <div className="w-full px-6 lg:px-8">
           <h2 className="mb-12 text-center font-display text-3xl font-bold text-navy sm:text-4xl">
             What You Can Improve
           </h2>
-          <div className="mx-auto grid max-w-4xl gap-6 md:grid-cols-2">
+          <div className="grid w-full gap-6 md:grid-cols-2">
             {costRationalisationBenefits.map((benefit) => (
               <div
                 key={benefit}
@@ -93,7 +93,7 @@ export default function CostRationalisationPage() {
       </section>
 
       <section className="py-10 md:py-14">
-        <div className="mx-auto max-w-4xl px-6 lg:px-8">
+        <div className="w-full px-6 lg:px-8">
           <h2 className="mb-12 text-center font-display text-3xl font-bold text-navy sm:text-4xl">
             Common Cost Focus Areas
           </h2>
@@ -143,7 +143,7 @@ export default function CostRationalisationPage() {
       </section>
 
       <section className="bg-off-white py-10 text-center md:py-14">
-        <div className="mx-auto max-w-3xl px-6">
+        <div className="w-full px-6">
           <h2 className="font-display text-3xl font-bold text-navy sm:text-4xl">
             Ready to Strengthen Margins?
           </h2>

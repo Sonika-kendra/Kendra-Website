@@ -31,7 +31,7 @@ export default function MAExitPlanningPage() {
       </HeroSection>
 
       <section className="py-10 md:py-14">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        <div className="w-full px-6 lg:px-8">
           <div className="mb-12 text-center">
             <h2 className="font-display text-3xl font-bold text-navy sm:text-4xl">
               Our M&A and Exit Capabilities
@@ -66,11 +66,11 @@ export default function MAExitPlanningPage() {
       </section>
 
       <section className="bg-off-white py-10 md:py-14">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        <div className="w-full px-6 lg:px-8">
           <h2 className="mb-12 text-center font-display text-3xl font-bold text-navy sm:text-4xl">
             Why Teams Partner With Us
           </h2>
-          <div className="mx-auto grid max-w-4xl gap-6 md:grid-cols-2">
+          <div className="grid w-full gap-6 md:grid-cols-2">
             {maBenefits.map((benefit) => (
               <div
                 key={benefit}
@@ -91,7 +91,7 @@ export default function MAExitPlanningPage() {
       </section>
 
       <section className="py-10 md:py-14">
-        <div className="mx-auto max-w-4xl px-6 lg:px-8">
+        <div className="w-full px-6 lg:px-8">
           <h2 className="mb-12 text-center font-display text-3xl font-bold text-navy sm:text-4xl">
             Typical Engagement Flow
           </h2>
@@ -165,7 +165,7 @@ export default function MAExitPlanningPage() {
       </section>
 
       <section className="bg-off-white py-10 md:py-14">
-        <div className="mx-auto max-w-4xl px-6 lg:px-8">
+        <div className="w-full px-6 lg:px-8">
           <h2 className="mb-12 text-center font-display text-3xl font-bold text-navy sm:text-4xl">
             Typical Transaction Contexts
           </h2>
@@ -186,7 +186,7 @@ export default function MAExitPlanningPage() {
       </section>
 
       <section className="py-10 text-center md:py-14">
-        <div className="mx-auto max-w-3xl px-6">
+        <div className="w-full px-6">
           <h2 className="font-display text-3xl font-bold text-navy sm:text-4xl">
             Considering a Transaction or Exit?
           </h2>
