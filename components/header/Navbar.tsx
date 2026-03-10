@@ -78,11 +78,12 @@ export default function Navbar() {
                   </Link>
                   <button
                     type="button"
-                    onClick={() =>
+                    onClick={(e) => {
+                      e.preventDefault();
                       setOpenDropdown(
                         openDropdown === link.href ? null : link.href
-                      )
-                    }
+                      );
+                    }}
                     className="rounded-sm p-1 text-muted-foreground hover:text-foreground transition-colors"
                     aria-label={`Toggle ${link.label} submenu`}
                     aria-expanded={openDropdown === link.href}
@@ -100,8 +101,8 @@ export default function Navbar() {
                     className={clsx(
                       "absolute right-0 top-full z-[120] mt-2 w-56 rounded-xl border border-border bg-card p-2 shadow-xl transition-all duration-200",
                       openDropdown === link.href
-                        ? "opacity-100 visible pointer-events-auto translate-y-0 animate-fade-in"
-                        : "opacity-0 invisible pointer-events-none -translate-y-1"
+                        ? "opacity-100 pointer-events-auto translate-y-0"
+                        : "opacity-0 pointer-events-none -translate-y-1"
                     )}
                   >
                     {link.children?.map((child) => (
@@ -123,6 +124,7 @@ export default function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
+                onClick={() => setOpenDropdown(null)}
                 className="group relative text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
               >
                 {link.label}
@@ -177,9 +179,10 @@ export default function Navbar() {
                         {link.label}
                       </Link>
                       <button
-                        onClick={() =>
-                          setOpenMobileDropdown(isOpen ? null : link.href)
-                        }
+                        onClick={(e) => {
+                          e.preventDefault();
+                          setOpenMobileDropdown(isOpen ? null : link.href);
+                        }}
                         className="rounded-md p-2 text-muted-foreground hover:bg-muted hover:text-foreground"
                         aria-label={`Toggle ${link.label} submenu`}
                         aria-expanded={isOpen}
