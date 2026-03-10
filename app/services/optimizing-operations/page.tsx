@@ -49,10 +49,10 @@ export default function CostRationalisationPage() {
               return (
                 <div
                   key={item.title}
-                  className="card-hover rounded-xl border border-border bg-white p-8"
+                  className="card-hover rounded-xl border border-border bg-card p-8"
                 >
-                  <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-white/20">
-                    <Icon className="h-6 w-6 text-white" strokeWidth={1.5} />
+                  <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
+                    <Icon className="h-6 w-6 text-primary" strokeWidth={1.5} />
                   </div>
                   <h3 className="font-display text-xl font-bold text-navy">
                     {item.title}
@@ -67,7 +67,7 @@ export default function CostRationalisationPage() {
         </div>
       </section>
 
-      <section className="bg-off-white py-10 md:py-14">
+      <section className="bg-muted py-10 md:py-14">
         <div className="w-full px-6 lg:px-8">
           <h2 className="mb-12 text-center font-display text-3xl font-bold text-navy sm:text-4xl">
             What You Can Improve
@@ -76,10 +76,10 @@ export default function CostRationalisationPage() {
             {costRationalisationBenefits.map((benefit) => (
               <div
                 key={benefit}
-                className="group flex items-start gap-4 rounded-xl bg-white p-6 shadow-sm ring-1 ring-border transition-all hover:-translate-y-1 hover:shadow-md"
+                className="group flex items-start gap-4 rounded-xl bg-card p-6 shadow-sm ring-1 ring-border transition-all hover:-translate-y-1 hover:shadow-md"
               >
                 <div className="flex-shrink-0">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-navy/5 text-navy transition-colors group-hover:bg-navy group-hover:text-white">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
                     <CheckCircle2 className="h-6 w-6" strokeWidth={2} />
                   </div>
                 </div>
@@ -98,7 +98,7 @@ export default function CostRationalisationPage() {
             Common Cost Focus Areas
           </h2>
           <div className="grid gap-8 md:grid-cols-2">
-            <div className="group relative overflow-hidden rounded-2xl bg-white p-8 shadow-sm ring-1 ring-border transition-all hover:-translate-y-1 hover:shadow-xl">
+            <div className="group relative overflow-hidden rounded-2xl bg-card p-8 shadow-sm ring-1 ring-border transition-all hover:-translate-y-1 hover:shadow-xl">
               <div className="absolute left-0 top-0 h-1 w-full bg-navy/10 transition-colors group-hover:bg-accent" />
               <h3 className="font-display text-xl font-bold text-navy">
                 Operating Model
@@ -108,7 +108,7 @@ export default function CostRationalisationPage() {
                 with value delivery.
               </p>
             </div>
-            <div className="group relative overflow-hidden rounded-2xl bg-white p-8 shadow-sm ring-1 ring-border transition-all hover:-translate-y-1 hover:shadow-xl">
+            <div className="group relative overflow-hidden rounded-2xl bg-card p-8 shadow-sm ring-1 ring-border transition-all hover:-translate-y-1 hover:shadow-xl">
               <div className="absolute left-0 top-0 h-1 w-full bg-navy/10 transition-colors group-hover:bg-accent" />
               <h3 className="font-display text-xl font-bold text-navy">
                 Spend and Procurement
@@ -118,7 +118,7 @@ export default function CostRationalisationPage() {
                 discipline.
               </p>
             </div>
-            <div className="group relative overflow-hidden rounded-2xl bg-white p-8 shadow-sm ring-1 ring-border transition-all hover:-translate-y-1 hover:shadow-xl">
+            <div className="group relative overflow-hidden rounded-2xl bg-card p-8 shadow-sm ring-1 ring-border transition-all hover:-translate-y-1 hover:shadow-xl">
               <div className="absolute left-0 top-0 h-1 w-full bg-navy/10 transition-colors group-hover:bg-accent" />
               <h3 className="font-display text-xl font-bold text-navy">
                 Process and Systems
@@ -128,7 +128,7 @@ export default function CostRationalisationPage() {
                 systems redesign.
               </p>
             </div>
-            <div className="group relative overflow-hidden rounded-2xl bg-white p-8 shadow-sm ring-1 ring-border transition-all hover:-translate-y-1 hover:shadow-xl">
+            <div className="group relative overflow-hidden rounded-2xl bg-card p-8 shadow-sm ring-1 ring-border transition-all hover:-translate-y-1 hover:shadow-xl">
               <div className="absolute left-0 top-0 h-1 w-full bg-navy/10 transition-colors group-hover:bg-accent" />
               <h3 className="font-display text-xl font-bold text-navy">
                 Governance and Controls
@@ -142,7 +142,7 @@ export default function CostRationalisationPage() {
         </div>
       </section>
 
-      <section className="bg-off-white py-10 text-center md:py-14">
+      <section className="bg-muted py-10 text-center md:py-14">
         <div className="w-full px-6">
           <h2 className="font-display text-3xl font-bold text-navy sm:text-4xl">
             Ready to Strengthen Margins?

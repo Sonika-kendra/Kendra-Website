@@ -73,7 +73,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <section className="bg-off-white py-10 md:py-14">
+      <section className="bg-muted py-10 md:py-14">
         <div className="w-full px-6 text-center lg:px-8">
           <h2 className="text-3xl font-bold text-navy sm:text-4xl">How We Work</h2>
           <p className="mx-auto mt-3 max-w-2xl text-slate-text/70">
@@ -81,21 +81,21 @@ export default function ServicesPage() {
           </p>
 
           <div className="mt-12 grid gap-6 md:grid-cols-3">
-            <div className="rounded-xl border border-border bg-white p-6">
+            <div className="rounded-xl border border-border bg-card p-6">
               <h3 className="font-display font-semibold text-navy">Outcome-Driven</h3>
               <p className="mt-2 text-sm text-slate-text/70">
                 Every engagement is designed to improve financial performance and
                 strategic clarity.
               </p>
             </div>
-            <div className="rounded-xl border border-border bg-white p-6">
+            <div className="rounded-xl border border-border bg-card p-6">
               <h3 className="font-display font-semibold text-navy">Practical by Design</h3>
               <p className="mt-2 text-sm text-slate-text/70">
                 We focus on actions your team can execute quickly in live operating
                 conditions.
               </p>
             </div>
-            <div className="rounded-xl border border-border bg-white p-6">
+            <div className="rounded-xl border border-border bg-card p-6">
               <h3 className="font-display font-semibold text-navy">Senior-Led Delivery</h3>
               <p className="mt-2 text-sm text-slate-text/70">
                 Direct involvement from experienced advisors through planning,
@@ -121,7 +121,7 @@ export default function ServicesPage() {
             </Link>
             <Link
               href={WebsiteUrlConfig.Home}
-              className="inline-flex items-center justify-center rounded-lg border border-navy px-8 py-3.5 text-sm font-semibold text-navy transition-all hover:bg-navy hover:text-white"
+              className="inline-flex items-center justify-center rounded-lg border border-navy px-8 py-3.5 text-sm font-semibold text-navy transition-all hover:bg-primary hover:text-primary-foreground"
             >
               Back to Home
             </Link>

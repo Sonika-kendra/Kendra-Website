@@ -47,10 +47,10 @@ export default function MAExitPlanningPage() {
               return (
                 <div
                   key={item.title}
-                  className="card-hover rounded-xl border border-border bg-white p-8"
+                  className="card-hover rounded-xl border border-border bg-card p-8"
                 >
-                  <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-white/20">
-                    <Icon className="h-6 w-6 text-white" strokeWidth={1.5} />
+                  <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
+                    <Icon className="h-6 w-6 text-primary" strokeWidth={1.5} />
                   </div>
                   <h3 className="font-display text-xl font-bold text-navy">
                     {item.title}
@@ -65,7 +65,7 @@ export default function MAExitPlanningPage() {
         </div>
       </section>
 
-      <section className="bg-off-white py-10 md:py-14">
+      <section className="bg-muted py-10 md:py-14">
         <div className="w-full px-6 lg:px-8">
           <h2 className="mb-12 text-center font-display text-3xl font-bold text-navy sm:text-4xl">
             Why Teams Partner With Us
@@ -74,10 +74,10 @@ export default function MAExitPlanningPage() {
             {maBenefits.map((benefit) => (
               <div
                 key={benefit}
-                className="group flex items-start gap-4 rounded-xl bg-white p-6 shadow-sm ring-1 ring-border transition-all hover:-translate-y-1 hover:shadow-md"
+                className="group flex items-start gap-4 rounded-xl bg-card p-6 shadow-sm ring-1 ring-border transition-all hover:-translate-y-1 hover:shadow-md"
               >
                 <div className="flex-shrink-0">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-navy/5 text-navy transition-colors group-hover:bg-navy group-hover:text-white">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
                     <CheckCircle2 className="h-6 w-6" strokeWidth={2} />
                   </div>
                 </div>
@@ -96,9 +96,9 @@ export default function MAExitPlanningPage() {
             Typical Engagement Flow
           </h2>
           <div className="space-y-6">
-            <div className="group flex gap-6 rounded-2xl bg-white p-6 shadow-sm ring-1 ring-border transition-all hover:-translate-y-1 hover:shadow-md">
+            <div className="group flex gap-6 rounded-2xl bg-card p-6 shadow-sm ring-1 ring-border transition-all hover:-translate-y-1 hover:shadow-md">
               <div className="flex-shrink-0">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-navy/5 font-display font-bold text-navy transition-colors group-hover:bg-navy group-hover:text-white">
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 font-display font-bold text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
                   1
                 </div>
               </div>
@@ -112,9 +112,9 @@ export default function MAExitPlanningPage() {
                 </p>
               </div>
             </div>
-            <div className="group flex gap-6 rounded-2xl bg-white p-6 shadow-sm ring-1 ring-border transition-all hover:-translate-y-1 hover:shadow-md">
+            <div className="group flex gap-6 rounded-2xl bg-card p-6 shadow-sm ring-1 ring-border transition-all hover:-translate-y-1 hover:shadow-md">
               <div className="flex-shrink-0">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-navy/5 font-display font-bold text-navy transition-colors group-hover:bg-navy group-hover:text-white">
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 font-display font-bold text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
                   2
                 </div>
               </div>
@@ -128,9 +128,9 @@ export default function MAExitPlanningPage() {
                 </p>
               </div>
             </div>
-            <div className="group flex gap-6 rounded-2xl bg-white p-6 shadow-sm ring-1 ring-border transition-all hover:-translate-y-1 hover:shadow-md">
+            <div className="group flex gap-6 rounded-2xl bg-card p-6 shadow-sm ring-1 ring-border transition-all hover:-translate-y-1 hover:shadow-md">
               <div className="flex-shrink-0">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-navy/5 font-display font-bold text-navy transition-colors group-hover:bg-navy group-hover:text-white">
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 font-display font-bold text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
                   3
                 </div>
               </div>
@@ -144,9 +144,9 @@ export default function MAExitPlanningPage() {
                 </p>
               </div>
             </div>
-            <div className="group flex gap-6 rounded-2xl bg-white p-6 shadow-sm ring-1 ring-border transition-all hover:-translate-y-1 hover:shadow-md">
+            <div className="group flex gap-6 rounded-2xl bg-card p-6 shadow-sm ring-1 ring-border transition-all hover:-translate-y-1 hover:shadow-md">
               <div className="flex-shrink-0">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-navy/5 font-display font-bold text-navy transition-colors group-hover:bg-navy group-hover:text-white">
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 font-display font-bold text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
                   4
                 </div>
               </div>
@@ -164,7 +164,7 @@ export default function MAExitPlanningPage() {
         </div>
       </section>
 
-      <section className="bg-off-white py-10 md:py-14">
+      <section className="bg-muted py-10 md:py-14">
         <div className="w-full px-6 lg:px-8">
           <h2 className="mb-12 text-center font-display text-3xl font-bold text-navy sm:text-4xl">
             Typical Transaction Contexts
@@ -173,9 +173,9 @@ export default function MAExitPlanningPage() {
             {maIndustries.map((item) => (
               <div
                 key={item}
-                className="group flex items-center gap-3 rounded-full bg-white px-6 py-4 shadow-sm ring-1 ring-border transition-all hover:-translate-y-1 hover:shadow-md"
+                className="group flex items-center gap-3 rounded-full bg-card px-6 py-4 shadow-sm ring-1 ring-border transition-all hover:-translate-y-1 hover:shadow-md"
               >
-                <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-navy/5 text-navy transition-colors group-hover:bg-navy group-hover:text-white">
+                <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
                   <TrendingUp className="h-4 w-4" strokeWidth={2} />
                 </div>
                 <span className="font-medium text-slate-text">{item}</span>
