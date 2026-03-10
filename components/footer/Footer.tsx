@@ -18,11 +18,11 @@ export default function Footer() {
   return (
     <footer className={ui.footer.root}>
       <div className={ui.footer.container}>
-        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-5">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-6">
           {/* Brand */}
-          <div className="lg:col-span-1">
+          <div className="lg:col-span-2 pr-6">
             <Logo width={160} height={48} priority />
-            <p className={clsx("mt-4", ui.footer.bodyText)}>
+            <p className={clsx("mt-3", ui.footer.bodyText)}>
               Improving financial performance and strategic clarity through practical advisory support.
             </p>
           </div>

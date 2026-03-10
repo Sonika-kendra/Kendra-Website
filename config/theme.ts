@@ -47,8 +47,8 @@ export const ui = {
       "block py-1.5 text-sm text-muted-foreground transition-colors hover:text-primary",
   },
   footer: {
-  root: "mt-24 border-t border-border bg-muted text-foreground",
-  container: "mx-auto max-w-7xl px-6 py-16 lg:px-8",
+  root: "border-t border-border bg-muted text-foreground",
+  container: "mx-auto max-w-7xl px-4 py-8 md:py-10 lg:px-6",
     heading:
       "mb-3 text-sm font-semibold uppercase tracking-wider text-foreground/70",
     bodyText: "text-sm text-foreground/70",
