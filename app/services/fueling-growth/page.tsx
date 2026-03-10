@@ -75,13 +75,16 @@ export default function TopLineGrowthPage() {
           </h2>
           <div className="mx-auto grid max-w-4xl gap-6 md:grid-cols-2">
             {topLineGrowthBenefits.map((benefit) => (
-              <div key={benefit} className="flex items-start gap-4">
+              <div
+                key={benefit}
+                className="group flex items-start gap-4 rounded-xl bg-white p-6 shadow-sm ring-1 ring-border transition-all hover:-translate-y-1 hover:shadow-md"
+              >
                 <div className="flex-shrink-0">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-white/20">
-                    <CheckCircle2 className="h-6 w-6 text-white" strokeWidth={2} />
+                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-navy/5 text-navy transition-colors group-hover:bg-navy group-hover:text-white">
+                    <CheckCircle2 className="h-6 w-6" strokeWidth={2} />
                   </div>
                 </div>
-                <div>
+                <div className="pt-2">
                   <p className="font-medium text-slate-text">{benefit}</p>
                 </div>
               </div>
@@ -96,38 +99,42 @@ export default function TopLineGrowthPage() {
             Growth Levers We Activate
           </h2>
           <div className="grid gap-8 md:grid-cols-2">
-            <div className="border-l-4 border-white pl-6">
-              <h3 className="font-display text-lg font-semibold text-navy">
+            <div className="group relative overflow-hidden rounded-2xl bg-white p-8 shadow-sm ring-1 ring-border transition-all hover:-translate-y-1 hover:shadow-xl">
+              <div className="absolute left-0 top-0 h-1 w-full bg-navy/10 transition-colors group-hover:bg-accent" />
+              <h3 className="font-display text-xl font-bold text-navy">
                 Sales Performance
               </h3>
-              <p className="mt-2 text-slate-text/70">
+              <p className="mt-3 leading-relaxed text-slate-text/70">
                 Improve conversion quality, pipeline health, and commercial focus
                 in the sales engine.
               </p>
             </div>
-            <div className="border-l-4 border-white pl-6">
-              <h3 className="font-display text-lg font-semibold text-navy">
+            <div className="group relative overflow-hidden rounded-2xl bg-white p-8 shadow-sm ring-1 ring-border transition-all hover:-translate-y-1 hover:shadow-xl">
+              <div className="absolute left-0 top-0 h-1 w-full bg-navy/10 transition-colors group-hover:bg-accent" />
+              <h3 className="font-display text-xl font-bold text-navy">
                 Customer Economics
               </h3>
-              <p className="mt-2 text-slate-text/70">
+              <p className="mt-3 leading-relaxed text-slate-text/70">
                 Strengthen pricing, retention, and unit economics to improve
                 growth quality.
               </p>
             </div>
-            <div className="border-l-4 border-white pl-6">
-              <h3 className="font-display text-lg font-semibold text-navy">
+            <div className="group relative overflow-hidden rounded-2xl bg-white p-8 shadow-sm ring-1 ring-border transition-all hover:-translate-y-1 hover:shadow-xl">
+              <div className="absolute left-0 top-0 h-1 w-full bg-navy/10 transition-colors group-hover:bg-accent" />
+              <h3 className="font-display text-xl font-bold text-navy">
                 Channel Expansion
               </h3>
-              <p className="mt-2 text-slate-text/70">
+              <p className="mt-3 leading-relaxed text-slate-text/70">
                 Prioritize and launch channels with the best strategic fit,
                 revenue potential, and execution feasibility.
               </p>
             </div>
-            <div className="border-l-4 border-white pl-6">
-              <h3 className="font-display text-lg font-semibold text-navy">
+            <div className="group relative overflow-hidden rounded-2xl bg-white p-8 shadow-sm ring-1 ring-border transition-all hover:-translate-y-1 hover:shadow-xl">
+              <div className="absolute left-0 top-0 h-1 w-full bg-navy/10 transition-colors group-hover:bg-accent" />
+              <h3 className="font-display text-xl font-bold text-navy">
                 Commercial Rhythm
               </h3>
-              <p className="mt-2 text-slate-text/70">
+              <p className="mt-3 leading-relaxed text-slate-text/70">
                 Set practical targets, performance reviews, and ownership models
                 that sustain momentum.
               </p>

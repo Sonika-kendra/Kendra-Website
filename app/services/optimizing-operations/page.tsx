@@ -74,13 +74,16 @@ export default function CostRationalisationPage() {
           </h2>
           <div className="mx-auto grid max-w-4xl gap-6 md:grid-cols-2">
             {costRationalisationBenefits.map((benefit) => (
-              <div key={benefit} className="flex items-start gap-4">
+              <div
+                key={benefit}
+                className="group flex items-start gap-4 rounded-xl bg-white p-6 shadow-sm ring-1 ring-border transition-all hover:-translate-y-1 hover:shadow-md"
+              >
                 <div className="flex-shrink-0">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-white/20">
-                    <CheckCircle2 className="h-6 w-6 text-white" strokeWidth={2} />
+                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-navy/5 text-navy transition-colors group-hover:bg-navy group-hover:text-white">
+                    <CheckCircle2 className="h-6 w-6" strokeWidth={2} />
                   </div>
                 </div>
-                <div>
+                <div className="pt-2">
                   <p className="font-medium text-slate-text">{benefit}</p>
                 </div>
               </div>
@@ -95,38 +98,42 @@ export default function CostRationalisationPage() {
             Common Cost Focus Areas
           </h2>
           <div className="grid gap-8 md:grid-cols-2">
-            <div className="border-l-4 border-white pl-6">
-              <h3 className="font-display text-lg font-semibold text-navy">
+            <div className="group relative overflow-hidden rounded-2xl bg-white p-8 shadow-sm ring-1 ring-border transition-all hover:-translate-y-1 hover:shadow-xl">
+              <div className="absolute left-0 top-0 h-1 w-full bg-navy/10 transition-colors group-hover:bg-accent" />
+              <h3 className="font-display text-xl font-bold text-navy">
                 Operating Model
               </h3>
-              <p className="mt-2 text-slate-text/70">
+              <p className="mt-3 leading-relaxed text-slate-text/70">
                 Remove duplication, simplify structures, and align accountability
                 with value delivery.
               </p>
             </div>
-            <div className="border-l-4 border-white pl-6">
-              <h3 className="font-display text-lg font-semibold text-navy">
+            <div className="group relative overflow-hidden rounded-2xl bg-white p-8 shadow-sm ring-1 ring-border transition-all hover:-translate-y-1 hover:shadow-xl">
+              <div className="absolute left-0 top-0 h-1 w-full bg-navy/10 transition-colors group-hover:bg-accent" />
+              <h3 className="font-display text-xl font-bold text-navy">
                 Spend and Procurement
               </h3>
-              <p className="mt-2 text-slate-text/70">
+              <p className="mt-3 leading-relaxed text-slate-text/70">
                 Improve supplier economics, category control, and purchasing
                 discipline.
               </p>
             </div>
-            <div className="border-l-4 border-white pl-6">
-              <h3 className="font-display text-lg font-semibold text-navy">
+            <div className="group relative overflow-hidden rounded-2xl bg-white p-8 shadow-sm ring-1 ring-border transition-all hover:-translate-y-1 hover:shadow-xl">
+              <div className="absolute left-0 top-0 h-1 w-full bg-navy/10 transition-colors group-hover:bg-accent" />
+              <h3 className="font-display text-xl font-bold text-navy">
                 Process and Systems
               </h3>
-              <p className="mt-2 text-slate-text/70">
+              <p className="mt-3 leading-relaxed text-slate-text/70">
                 Simplify workflows and reduce waste through practical process and
                 systems redesign.
               </p>
             </div>
-            <div className="border-l-4 border-white pl-6">
-              <h3 className="font-display text-lg font-semibold text-navy">
+            <div className="group relative overflow-hidden rounded-2xl bg-white p-8 shadow-sm ring-1 ring-border transition-all hover:-translate-y-1 hover:shadow-xl">
+              <div className="absolute left-0 top-0 h-1 w-full bg-navy/10 transition-colors group-hover:bg-accent" />
+              <h3 className="font-display text-xl font-bold text-navy">
                 Governance and Controls
               </h3>
-              <p className="mt-2 text-slate-text/70">
+              <p className="mt-3 leading-relaxed text-slate-text/70">
                 Build consistent decision rules and cost ownership to sustain
                 gains over time.
               </p>
