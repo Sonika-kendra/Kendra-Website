@@ -1,6 +1,9 @@
 import { Mail, Phone, MapPin } from "lucide-react";
+import { footer } from "@/config/site";
 
 export function ContactInfo() {
+  const emailLink = footer.social.find((s) => s.label === "Email")?.href || "mailto:hello@kendra.global";
+  const phoneLink = footer.social.find((s) => s.label === "Phone")?.href || "tel:+44...";
   return (
     <div className="lg:col-span-1 space-y-8">
       <div className="bg-off-white rounded-xl p-6">
@@ -13,10 +16,10 @@ export function ContactInfo() {
           <div>
             <h3 className="font-display font-semibold text-navy">Email</h3>
             <a
-              href="mailto:hello@kendra.global"
+              href={emailLink}
               className="mt-2 text-slate-text/80 hover:text-white transition"
             >
-              hello@kendra.global
+              {emailLink.replace("mailto:", "")}
             </a>
           </div>
         </div>
@@ -32,10 +35,10 @@ export function ContactInfo() {
           <div>
             <h3 className="font-display font-semibold text-navy">Phone</h3>
             <a
-              href="tel:+44..."
+              href={phoneLink}
               className="mt-2 text-slate-text/80 hover:text-white transition"
             >
-              Available on request
+              {phoneLink.replace("tel:", "")}
             </a>
           </div>
         </div>
