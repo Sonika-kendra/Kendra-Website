@@ -33,7 +33,7 @@ export default function CostRationalisationPage() {
         </div>
       </HeroSection>
 
-      <section className="py-16 md:py-20">
+      <section className="py-10 md:py-14">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mb-12 text-center">
             <h2 className="font-display text-3xl font-bold text-navy sm:text-4xl">
@@ -67,7 +67,7 @@ export default function CostRationalisationPage() {
         </div>
       </section>
 
-      <section className="bg-off-white py-16 md:py-20">
+      <section className="bg-off-white py-10 md:py-14">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <h2 className="mb-12 text-center font-display text-3xl font-bold text-navy sm:text-4xl">
             What You Can Improve
@@ -89,7 +89,7 @@ export default function CostRationalisationPage() {
         </div>
       </section>
 
-      <section className="py-16 md:py-20">
+      <section className="py-10 md:py-14">
         <div className="mx-auto max-w-4xl px-6 lg:px-8">
           <h2 className="mb-12 text-center font-display text-3xl font-bold text-navy sm:text-4xl">
             Common Cost Focus Areas
@@ -135,7 +135,7 @@ export default function CostRationalisationPage() {
         </div>
       </section>
 
-      <section className="bg-off-white py-16 text-center md:py-20">
+      <section className="bg-off-white py-10 text-center md:py-14">
         <div className="mx-auto max-w-3xl px-6">
           <h2 className="font-display text-3xl font-bold text-navy sm:text-4xl">
             Ready to Strengthen Margins?

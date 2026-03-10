@@ -22,7 +22,7 @@ export default function ServicesPage() {
         withWave={false}
       />
 
-      <section className="py-16 md:py-20">
+      <section className="py-10 md:py-14">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="grid gap-8 md:grid-cols-2">
             {servicesOverview.map((service) => {
@@ -73,7 +73,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <section className="bg-off-white py-16 md:py-20">
+      <section className="bg-off-white py-10 md:py-14">
         <div className="mx-auto max-w-7xl px-6 text-center lg:px-8">
           <h2 className="text-3xl font-bold text-navy sm:text-4xl">How We Work</h2>
           <p className="mx-auto mt-3 max-w-2xl text-slate-text/70">
@@ -106,7 +106,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <section className="py-16 text-center md:py-20">
+      <section className="py-10 text-center md:py-14">
         <div className="mx-auto max-w-3xl px-6">
           <h2 className="text-3xl font-bold text-navy sm:text-4xl">
             Ready to Discuss Your Priorities?
