@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { CheckCircle2, TrendingUp } from "lucide-react";
 import type { LeadPopUpProps } from "@/interface/common";
+import { leadPopupContent } from "@/config/common";
 
 export default function LeadPopUp({ open, onClose }: LeadPopUpProps) {
   const [submitted, setSubmitted] = useState(false);
@@ -26,7 +27,7 @@ export default function LeadPopUp({ open, onClose }: LeadPopUpProps) {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.firstName || !formData.lastName || !formData.email) {
-      setError("Please fill in all required fields (*)");
+      setError(leadPopupContent.requiredFieldsError);
       return;
     }
 
@@ -39,7 +40,7 @@ export default function LeadPopUp({ open, onClose }: LeadPopUpProps) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
-      if (!res.ok) throw new Error("Submission failed");
+      if (!res.ok) throw new Error(leadPopupContent.submissionFailedError);
 
       setSubmitted(true);
 
@@ -50,7 +51,7 @@ export default function LeadPopUp({ open, onClose }: LeadPopUpProps) {
         onClose();
       }, 2000);
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Something went wrong");
+      setError(err instanceof Error ? err.message : leadPopupContent.fallbackError);
     } finally {
       setLoading(false);
     }
@@ -69,7 +70,7 @@ export default function LeadPopUp({ open, onClose }: LeadPopUpProps) {
         <button
           onClick={onClose}
           className="absolute right-4 top-4 p-1 text-slate-text/40 hover:text-slate-text transition-colors z-10"
-          aria-label="Close modal"
+          aria-label={leadPopupContent.closeModalAriaLabel}
         >
           <svg className="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
             <path
@@ -85,9 +86,9 @@ export default function LeadPopUp({ open, onClose }: LeadPopUpProps) {
             <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-50 mb-4">
               <CheckCircle2 className="h-8 w-8 text-green-600" />
             </div>
-            <h3 className="text-xl font-bold text-navy">Report Submitted!</h3>
+            <h3 className="text-xl font-bold text-navy">{leadPopupContent.success.title}</h3>
             <p className="mt-2 text-slate-text/70">
-              You&apos;ll receive your personalized report shortly.
+              {leadPopupContent.success.description}
             </p>
           </div>
         ) : (
@@ -96,9 +97,9 @@ export default function LeadPopUp({ open, onClose }: LeadPopUpProps) {
               <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-navy/10">
                 <TrendingUp className="h-6 w-6 text-navy" />
               </div>
-              <h3 className="text-xl font-bold text-navy">Get Your Analysis</h3>
+              <h3 className="text-xl font-bold text-navy">{leadPopupContent.modal.title}</h3>
               <p className="text-sm text-slate-text/70 text-center">
-                Enter your details to receive a complimentary market report.
+                {leadPopupContent.modal.description}
               </p>
             </div>
 
@@ -113,7 +114,7 @@ export default function LeadPopUp({ open, onClose }: LeadPopUpProps) {
                 <input
                   type="text"
                   name="firstName"
-                  placeholder="First Name *"
+                  placeholder={leadPopupContent.fields.firstName}
                   value={formData.firstName}
                   onChange={handleInputChange}
                   required
@@ -122,7 +123,7 @@ export default function LeadPopUp({ open, onClose }: LeadPopUpProps) {
                 <input
                   type="text"
                   name="lastName"
-                  placeholder="Last Name *"
+                  placeholder={leadPopupContent.fields.lastName}
                   value={formData.lastName}
                   onChange={handleInputChange}
                   required
@@ -133,7 +134,7 @@ export default function LeadPopUp({ open, onClose }: LeadPopUpProps) {
               <input
                 type="email"
                 name="email"
-                placeholder="Work Email *"
+                placeholder={leadPopupContent.fields.email}
                 value={formData.email}
                 onChange={handleInputChange}
                 required
@@ -143,7 +144,7 @@ export default function LeadPopUp({ open, onClose }: LeadPopUpProps) {
               <input
                 type="text"
                 name="company"
-                placeholder="Company (optional)"
+                placeholder={leadPopupContent.fields.company}
                 value={formData.company}
                 onChange={handleInputChange}
                 className="w-full rounded-lg border border-slate-200 px-4 py-3 focus:border-navy focus:ring-1 focus:ring-navy/20 outline-none text-sm"
@@ -152,7 +153,7 @@ export default function LeadPopUp({ open, onClose }: LeadPopUpProps) {
               <input
                 type="tel"
                 name="phone"
-                placeholder="Phone (optional)"
+                placeholder={leadPopupContent.fields.phone}
                 value={formData.phone}
                 onChange={handleInputChange}
                 className="w-full rounded-lg border border-slate-200 px-4 py-3 focus:border-navy focus:ring-1 focus:ring-navy/20 outline-none text-sm"
@@ -161,9 +162,12 @@ export default function LeadPopUp({ open, onClose }: LeadPopUpProps) {
               <label className="flex items-start gap-2 text-xs text-slate-text/70 pt-2">
                 <input type="checkbox" required className="mt-1" />
                 <span>
-                  I agree to receive insights and analysis. See our{" "}
-                  <a href="/privacy" className="underline text-navy hover:text-navy/80">
-                    Privacy Policy
+                  {leadPopupContent.consentPrefix}{" "}
+                  <a
+                    href={leadPopupContent.privacyPolicyHref}
+                    className="underline text-navy hover:text-navy/80"
+                  >
+                    {leadPopupContent.privacyPolicyLabel}
                   </a>
                 </span>
               </label>
@@ -173,7 +177,9 @@ export default function LeadPopUp({ open, onClose }: LeadPopUpProps) {
                 disabled={loading}
                 className="w-full rounded-lg bg-navy py-3 text-sm font-semibold text-white hover:bg-navy/90 transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
               >
-                {loading ? "Processing..." : "Get My Report"}
+                {loading
+                  ? leadPopupContent.submittingLabel
+                  : leadPopupContent.submitLabel}
               </button>
             </form>
           </div>

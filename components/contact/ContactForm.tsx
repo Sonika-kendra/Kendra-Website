@@ -2,6 +2,20 @@
 
 import { useState } from "react";
 import { Send, Loader2 } from "lucide-react";
+import { contactFormContent } from "@/config/contact";
+
+type ContactFormResponse = {
+  success?: boolean;
+  error?: string;
+};
+
+type ContactFormPayload = {
+  firstName: string;
+  lastName: string;
+  email: string;
+  company: string;
+  message: string;
+};
 
 export function ContactForm() {
   const [isLoading, setIsLoading] = useState(false);
@@ -15,14 +29,22 @@ export function ContactForm() {
     setErrorMessage("");
 
     const formData = new FormData(e.currentTarget);
-    const data = {
-      firstName: formData.get("firstName"),
-      lastName: formData.get("lastName"),
-      email: formData.get("email"),
-      company: formData.get("company"),
-      message: formData.get("message"),
+    const data: ContactFormPayload = {
+      firstName: String(formData.get("firstName") ?? "").trim(),
+      lastName: String(formData.get("lastName") ?? "").trim(),
+      email: String(formData.get("email") ?? "").trim(),
+      company: String(formData.get("company") ?? "").trim(),
+      message: String(formData.get("message") ?? "").trim(),
     };
 
+    console.log("[contact-form] submit", data);
+
+    if (!data.firstName || !data.lastName || !data.email || !data.message) {
+      setStatus("error");
+      setErrorMessage(contactFormContent.requiredFieldsError);
+      setIsLoading(false);
+      return;
+    }
     try {
       const response = await fetch("/api/zoho/email", {
         method: "POST",
@@ -32,18 +54,29 @@ export function ContactForm() {
         body: JSON.stringify(data),
       });
 
-      const result = await response.json();
+      const rawResponse = await response.text();
+      let result: ContactFormResponse = {};
+
+      try {
+        result = rawResponse ? (JSON.parse(rawResponse) as ContactFormResponse) : {};
+      } catch {
+        result = {};
+      }
 
       if (response.ok && result.success) {
         setStatus("success");
       } else {
+        const fallbackError = rawResponse
+          ? `Request failed (${response.status}): ${rawResponse}`
+          : `Request failed (${response.status})`;
+
         setStatus("error");
-        setErrorMessage(result.error || "Failed to send message. Please try again.");
+        setErrorMessage(result.error || fallbackError);
       }
     } catch (error) {
       console.error(error);
       setStatus("error");
-      setErrorMessage("An unexpected error occurred. Please try again later.");
+      setErrorMessage(contactFormContent.unexpectedError);
     } finally {
       setIsLoading(false);
     }
@@ -56,9 +89,11 @@ export function ContactForm() {
           <div className="h-16 w-16 bg-primary/20 text-primary rounded-full flex items-center justify-center mb-4">
             <Send className="h-8 w-8 ml-1" />
           </div>
-          <h3 className="text-2xl font-bold bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">Thank You!</h3>
+          <h3 className="text-2xl font-bold bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
+            {contactFormContent.success.title}
+          </h3>
           <p className="text-muted-foreground text-lg max-w-sm">
-            We&apos;ve received your enquiry. Our team will contact you shortly.
+            {contactFormContent.success.description}
           </p>
         </div>
       </div>
@@ -66,7 +101,7 @@ export function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="lg:col-span-2 space-y-6">
+    <form onSubmit={handleSubmit} noValidate className="lg:col-span-2 space-y-6">
       <div className="bg-card text-card-foreground border border-border rounded-xl p-8">
         <div className="space-y-6">
           {status === "error" && (
@@ -80,7 +115,7 @@ export function ContactForm() {
                 htmlFor="firstName"
                 className="block text-sm font-semibold text-foreground"
               >
-                First Name
+                {contactFormContent.fields.firstName.label}
               </label>
               <input
                 type="text"
@@ -89,7 +124,7 @@ export function ContactForm() {
                 required
                 disabled={isLoading}
                 className="mt-2 block w-full rounded-lg border border-border bg-background px-4 py-3 text-foreground transition duration-200 placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary disabled:opacity-50"
-                placeholder="Your first name"
+                placeholder={contactFormContent.fields.firstName.placeholder}
               />
             </div>
             <div>
@@ -97,7 +132,7 @@ export function ContactForm() {
                 htmlFor="lastName"
                 className="block text-sm font-semibold text-foreground"
               >
-                Last Name
+                {contactFormContent.fields.lastName.label}
               </label>
               <input
                 type="text"
@@ -106,7 +141,7 @@ export function ContactForm() {
                 required
                 disabled={isLoading}
                 className="mt-2 block w-full rounded-lg border border-border bg-background px-4 py-3 text-foreground transition duration-200 placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary disabled:opacity-50"
-                placeholder="Your last name"
+                placeholder={contactFormContent.fields.lastName.placeholder}
               />
             </div>
           </div>
@@ -116,7 +151,7 @@ export function ContactForm() {
               htmlFor="email"
               className="block text-sm font-semibold text-foreground"
             >
-              Email Address
+              {contactFormContent.fields.email.label}
             </label>
             <input
               type="email"
@@ -125,7 +160,7 @@ export function ContactForm() {
               required
               disabled={isLoading}
               className="mt-2 block w-full rounded-lg border border-border bg-background px-4 py-3 text-foreground transition duration-200 placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary disabled:opacity-50"
-              placeholder="you@company.com"
+              placeholder={contactFormContent.fields.email.placeholder}
             />
           </div>
 
@@ -134,7 +169,7 @@ export function ContactForm() {
               htmlFor="company"
               className="block text-sm font-semibold text-foreground"
             >
-              Company
+              {contactFormContent.fields.company.label}
             </label>
             <input
               type="text"
@@ -142,7 +177,7 @@ export function ContactForm() {
               name="company"
               disabled={isLoading}
               className="mt-2 block w-full rounded-lg border border-border bg-background px-4 py-3 text-foreground transition duration-200 placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary disabled:opacity-50"
-              placeholder="Your company"
+              placeholder={contactFormContent.fields.company.placeholder}
             />
           </div>
 
@@ -151,7 +186,7 @@ export function ContactForm() {
               htmlFor="message"
               className="block text-sm font-semibold text-foreground"
             >
-              Message
+              {contactFormContent.fields.message.label}
             </label>
             <textarea
               id="message"
@@ -160,7 +195,7 @@ export function ContactForm() {
               required
               disabled={isLoading}
               className="mt-2 block w-full rounded-lg border border-border bg-background px-4 py-3 text-foreground transition duration-200 placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary resize-none disabled:opacity-50"
-              placeholder="Tell us about your project or challenge..."
+              placeholder={contactFormContent.fields.message.placeholder}
             />
           </div>
 
@@ -172,11 +207,11 @@ export function ContactForm() {
             {isLoading ? (
               <>
                 <Loader2 className="h-4 w-4 animate-spin" strokeWidth={2} />
-                Sending...
+                {contactFormContent.submittingLabel}
               </>
             ) : (
               <>
-                Send Message
+                {contactFormContent.submitLabel}
                 <Send
                   className="h-4 w-4 group-hover:translate-x-1 transition-transform"
                   strokeWidth={2}
@@ -186,8 +221,7 @@ export function ContactForm() {
           </button>
 
           <p className="text-xs text-muted-foreground text-center">
-            We respect your privacy. Your information will only be used to
-            contact you about your inquiry.
+            {contactFormContent.privacyNote}
           </p>
         </div>
       </div>

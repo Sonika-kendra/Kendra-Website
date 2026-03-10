@@ -8,6 +8,7 @@ import Logo from "./Logo";
 import { ChevronDown, Menu, X } from "lucide-react";
 import { navLinks } from "@/config/site";
 import { WebsiteUrlConfig } from "@/config/routing";
+import { navbarContent } from "@/config/header";
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -85,7 +86,7 @@ export default function Navbar() {
                       );
                     }}
                     className="rounded-sm p-1 text-muted-foreground hover:text-foreground transition-colors"
-                    aria-label={`Toggle ${link.label} submenu`}
+                    aria-label={`${navbarContent.submenuToggleAriaPrefix} ${link.label} ${navbarContent.submenuToggleAriaSuffix}`}
                     aria-expanded={openDropdown === link.href}
                     aria-haspopup="menu"
                   >
@@ -146,7 +147,7 @@ export default function Navbar() {
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
             className="inline-flex items-center justify-center rounded-md p-2 text-foreground hover:bg-muted"
-            aria-label="Toggle menu"
+            aria-label={navbarContent.mobileMenuToggleAriaLabel}
           >
             {mobileOpen ? (
               <X className="h-5 w-5" />
@@ -184,7 +185,7 @@ export default function Navbar() {
                           setOpenMobileDropdown(isOpen ? null : link.href);
                         }}
                         className="rounded-md p-2 text-muted-foreground hover:bg-muted hover:text-foreground"
-                        aria-label={`Toggle ${link.label} submenu`}
+                        aria-label={`${navbarContent.submenuToggleAriaPrefix} ${link.label} ${navbarContent.submenuToggleAriaSuffix}`}
                         aria-expanded={isOpen}
                         aria-controls={`mobile-submenu-${link.href}`}
                       >

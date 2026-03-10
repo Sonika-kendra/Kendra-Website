@@ -1,6 +1,7 @@
 "use client"
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
+import { downloadButtonContent } from "@/config/common";
 
 interface DownloadButtonProps {
     pdfRef: React.RefObject<HTMLDivElement>;
@@ -33,7 +34,7 @@ export default function DownloadButton({ pdfRef, fileName }: DownloadButtonProps
                 onClick={handleDownload}
                 className='inline-flex items-center justify-center rounded-lg bg-slate-900 px-10 py-3.5 text-sm font-semibold text-white transition-all hover:bg-slate-800 hover:shadow-lg dark:bg-white dark:text-slate-900 dark:hover:bg-slate-200'
             >
-                Download PDF
+                {downloadButtonContent.label}
             </button>
         </div>
     );

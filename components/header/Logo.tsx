@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import clsx from "clsx";
 import { WebsiteUrlConfig } from "@/config/routing";
+import { logoContent } from "@/config/common";
 
 type LogoProps = {
   href?: string;
@@ -25,7 +26,7 @@ export default function Logo({
   const image = (
     <Image
       src="/kendra-logo.png"
-      alt="Kendra International"
+      alt={logoContent.altText}
       width={width}
       height={height}
       priority={priority}
@@ -36,7 +37,7 @@ export default function Logo({
   if (!withLink) return image;
 
   return (
-    <Link href={href} aria-label="Kendra International">
+    <Link href={href} aria-label={logoContent.linkAriaLabel}>
       {image}
     </Link>
   );

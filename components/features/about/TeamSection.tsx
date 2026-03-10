@@ -4,6 +4,7 @@ import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { aboutTeam } from "@/content/about";
+import { teamSectionContent } from "@/config/about";
 
 export default function TeamSection() {
   const carouselRef = useRef<HTMLDivElement>(null);
@@ -163,7 +164,7 @@ export default function TeamSection() {
           <button
             onClick={() => scrollCarousel("left")}
             disabled={!canScrollLeft}
-            aria-label="View previous team member"
+            aria-label={teamSectionContent.previousMemberAriaLabel}
             className="z-20 hidden h-11 w-11 shrink-0 items-center justify-center rounded-full border border-border bg-background text-foreground shadow-md transition hover:bg-muted disabled:opacity-45 md:flex"
           >
             <ChevronLeft />
@@ -182,7 +183,7 @@ export default function TeamSection() {
             <div
               ref={carouselRef}
               role="region"
-              aria-label="Our team carousel"
+              aria-label={teamSectionContent.carouselRegionAriaLabel}
               tabIndex={0}
               onKeyDown={onKeyDown}
               className="flex gap-4 overflow-x-auto pb-4 pt-2 scroll-smooth snap-x snap-mandatory [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
@@ -235,7 +236,7 @@ export default function TeamSection() {
                   <button
                     key={`${member.name}-dot`}
                     onClick={() => scrollToIndex(index)}
-                    aria-label={`Go to ${member.name}`}
+                    aria-label={`${teamSectionContent.goToMemberAriaPrefix} ${member.name}`}
                     aria-current={isActive}
                     className={`h-2.5 rounded-full transition-all ${
                       isActive
@@ -251,7 +252,7 @@ export default function TeamSection() {
           <button
             onClick={() => scrollCarousel("right")}
             disabled={!canScrollRight}
-            aria-label="View next team member"
+            aria-label={teamSectionContent.nextMemberAriaLabel}
             className="z-20 hidden h-11 w-11 shrink-0 items-center justify-center rounded-full border border-border bg-background text-foreground shadow-md transition hover:bg-muted disabled:opacity-45 md:flex"
           >
             <ChevronRight />
@@ -262,7 +263,7 @@ export default function TeamSection() {
           <button
             onClick={() => scrollCarousel("left")}
             disabled={!canScrollLeft}
-            aria-label="View previous team member"
+            aria-label={teamSectionContent.previousMemberAriaLabel}
             className="flex h-10 w-10 items-center justify-center rounded-full border border-border bg-background text-foreground shadow-sm transition hover:bg-muted disabled:opacity-45"
           >
             <ChevronLeft className="h-4 w-4" />
@@ -271,7 +272,7 @@ export default function TeamSection() {
           <button
             onClick={() => scrollCarousel("right")}
             disabled={!canScrollRight}
-            aria-label="View next team member"
+            aria-label={teamSectionContent.nextMemberAriaLabel}
             className="flex h-10 w-10 items-center justify-center rounded-full border border-border bg-background text-foreground shadow-sm transition hover:bg-muted disabled:opacity-45"
           >
             <ChevronRight className="h-4 w-4" />

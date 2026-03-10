@@ -23,14 +23,14 @@ export default function Footer() {
           <div className="lg:col-span-2 pr-6">
             <Logo width={160} height={48} priority />
             <p className={clsx("mt-3", ui.footer.bodyText)}>
-              Improving financial performance and strategic clarity through practical advisory support.
+              {FOOTER.brandDescription}
             </p>
           </div>
 
           {/* Quick Links */}
           <div>
             <h5 className={ui.footer.heading}>
-              Quick Links
+              {FOOTER.sectionTitles.quickLinks}
             </h5>
             <ul className="flex flex-col gap-2 text-sm">
               {FOOTER.quickLinks.map((l) => (
@@ -49,7 +49,7 @@ export default function Footer() {
           {/* Services */}
           <div>
             <h5 className={ui.footer.heading}>
-              Services
+              {FOOTER.sectionTitles.services}
             </h5>
             <ul className="flex flex-col gap-2 text-sm">
               {FOOTER.services.map((s) => (
@@ -68,7 +68,7 @@ export default function Footer() {
           {/* Legal */}
           <div>
             <h5 className={ui.footer.heading}>
-              Legal
+              {FOOTER.sectionTitles.legal}
             </h5>
             <ul className="flex flex-col gap-2 text-sm">
               {FOOTER.legal.map((l) => (
@@ -87,7 +87,7 @@ export default function Footer() {
           {/* Contact */}
           <div>
             <h5 className={ui.footer.heading}>
-              Connect
+              {FOOTER.sectionTitles.connect}
             </h5>
             
             <div className="flex gap-3">
@@ -108,7 +108,7 @@ export default function Footer() {
 
         <div className={ui.footer.divider}>
           <p>
-            &copy; {year} Kendra International. All rights reserved.
+            &copy; {year} {FOOTER.companyName}. {FOOTER.copyrightSuffix}
           </p>
           <DarkModeToggle />
         </div>

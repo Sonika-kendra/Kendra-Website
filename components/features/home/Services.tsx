@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import type { ServicesProps } from "@/interface/home";
+import { homeServicesSectionContent } from "@/config/home";
 
 export default function Services({ items, aboutContent }: ServicesProps) {
   return (
@@ -28,11 +29,11 @@ export default function Services({ items, aboutContent }: ServicesProps) {
             </p>
 
             <Link
-              href="/about"
+              href={homeServicesSectionContent.aboutHref}
               className="mt-4 relative inline-flex items-center text-base font-medium text-foreground dark:text-foreground-dark hover:text-accent dark:hover:text-accent-dark transition-colors duration-300 group"
             >
               <span className="relative">
-                Discover
+                {homeServicesSectionContent.discoverLabel}
                 <span className="absolute left-0 -bottom-1 h-[2px] w-0 bg-current transition-all duration-300 ease-out group-hover:w-full" />
               </span>
 
@@ -80,7 +81,7 @@ export default function Services({ items, aboutContent }: ServicesProps) {
 
                 <span className="mt-4 relative inline-flex items-center text-base font-medium text-slate-50 group-hover:text-white transition-colors duration-300">
                   <span className="relative">
-                    Discover
+                    {homeServicesSectionContent.discoverLabel}
                     <span className="absolute left-0 -bottom-1 h-[2px] w-0 bg-current transition-all duration-300 ease-out group-hover:w-full" />
                   </span>
 

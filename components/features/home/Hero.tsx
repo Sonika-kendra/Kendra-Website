@@ -7,6 +7,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { heroSlidContent as slides } from "@content/home";
 import { useModal } from "@/context/ModalContext";
+import { homeHeroContent } from "@/config/home";
 
 const variants = {
   enter: (direction: number) => ({
@@ -142,7 +143,7 @@ export default function Hero() {
       <button
         onClick={() => paginate(-1)}
         className="absolute left-4 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center w-10 h-10 rounded-full bg-white/20 text-white backdrop-blur-sm hover:bg-white/40 transition"
-        aria-label="Previous slide"
+        aria-label={homeHeroContent.previousSlideAriaLabel}
       >
         <ChevronLeft className="w-5 h-5" />
       </button>
@@ -150,7 +151,7 @@ export default function Hero() {
       <button
         onClick={() => paginate(1)}
         className="absolute right-4 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center w-10 h-10 rounded-full bg-white/20 text-white backdrop-blur-sm hover:bg-white/40 transition"
-        aria-label="Next slide"
+        aria-label={homeHeroContent.nextSlideAriaLabel}
       >
         <ChevronRight className="w-5 h-5" />
       </button>
@@ -222,22 +223,22 @@ export default function Hero() {
                 onClick={openLeadPopUp}
                 className="inline-flex items-center justify-center rounded-md border-2 border-white px-6 py-3 text-sm font-semibold text-white transition-all duration-200 hover:bg-white hover:text-black"
               >
-                Get Business Report
+                {homeHeroContent.primaryCtaLabel}
               </button>
 
 
               <Link
-                href="/services"
+                href={homeHeroContent.servicesCtaHref}
                 className="inline-flex items-center justify-center rounded-md border-2 border-white px-6 py-3 text-sm font-semibold text-white transition-all duration-200 hover:bg-white hover:text-black"
               >
-                Services
+                {homeHeroContent.servicesCtaLabel}
               </Link>
 
               <Link
-                href="/contact"
+                href={homeHeroContent.contactCtaHref}
                 className="inline-flex items-center justify-center rounded-md border-2 border-white px-6 py-3 text-sm font-semibold text-white transition-all duration-200 hover:bg-white hover:text-black"
               >
-                Contact Us
+                {homeHeroContent.contactCtaLabel}
               </Link>
             </div>
           </motion.div>
@@ -251,7 +252,7 @@ export default function Hero() {
           <button
             key={i}
             onClick={() => goTo(i)}
-            aria-label={`Go to slide ${i + 1}`}
+            aria-label={`${homeHeroContent.goToSlideAriaPrefix} ${i + 1}`}
             className={`w-2.5 h-2.5 rounded-full transition-all ${i === current ? "bg-white scale-110" : "bg-white/40 hover:bg-white/60"
               }`}
           />

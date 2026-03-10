@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { testimonials } from "@/content/testimonial";
 import Image from "next/image";
 import type { Testimonial } from "@/interface/home";
+import { clientStoriesContent } from "@/config/home";
 
 function Media({ testimonial }: { testimonial: Testimonial }) {
   const [error, setError] = useState(false);
@@ -156,7 +157,7 @@ export default function ClientTestimonials() {
         <button
           onClick={prev}
           className="pointer-events-auto rounded-full border border-slate-200 bg-white p-3 text-slate-700 shadow-lg backdrop-blur transition-colors hover:border-slate-300 hover:bg-slate-100 hover:text-slate-900 dark:border-slate-600 dark:bg-slate-900/80 dark:text-slate-200 dark:hover:border-slate-300 dark:hover:bg-slate-800 dark:hover:text-white"
-          aria-label="Previous testimonial"
+          aria-label={clientStoriesContent.previousTestimonialAriaLabel}
         >
           <ChevronLeft className="h-7 w-7" />
         </button>
@@ -164,7 +165,7 @@ export default function ClientTestimonials() {
         <button
           onClick={next}
           className="pointer-events-auto rounded-full border border-slate-200 bg-white p-3 text-slate-700 shadow-lg backdrop-blur transition-colors hover:border-slate-300 hover:bg-slate-100 hover:text-slate-900 dark:border-slate-600 dark:bg-slate-900/80 dark:text-slate-200 dark:hover:border-slate-300 dark:hover:bg-slate-800 dark:hover:text-white"
-          aria-label="Next testimonial"
+          aria-label={clientStoriesContent.nextTestimonialAriaLabel}
         >
           <ChevronRight className="h-7 w-7" />
         </button>

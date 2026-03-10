@@ -70,6 +70,16 @@ export const navLinks: NavItem[] = [
 ];
 
 export const footer = {
+  brandDescription:
+    "Improving financial performance and strategic clarity through practical advisory support.",
+  sectionTitles: {
+    quickLinks: "Quick Links",
+    services: "Services",
+    legal: "Legal",
+    connect: "Connect",
+  },
+  companyName: "Kendra International",
+  copyrightSuffix: "All rights reserved.",
   quickLinks: [
     { href: WebsiteUrlConfig.Home, label: "Home" },
     { href: WebsiteUrlConfig.About, label: "About" },
@@ -99,6 +109,13 @@ export const footer = {
     { href: WebsiteUrlConfig.Email, label: "Email" },
   ],
 };
+
+export const footerCta = {
+  title: "Ready to Get Started?",
+  description: "Speak with our consultants today.",
+  buttonLabel: "Get Started",
+  buttonHref: WebsiteUrlConfig.Contact,
+} as const;
 
 export default {
   siteMeta,

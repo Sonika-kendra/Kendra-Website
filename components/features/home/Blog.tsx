@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import type { HomeBlogPost } from "@/interface/blog";
+import { homeBlogSectionContent } from "@/config/home";
 
 const ITEM_GAP = 12;
 const AUTO_DURATION = 4000;
@@ -143,7 +144,7 @@ export default function Blog() {
       <div className="max-w-7xl mx-auto px-6">
         <div className="mb-10 border-b border-border pb-6">
           <h2 className="text-4xl font-bold tracking-tight text-foreground">
-            Blogs
+            {homeBlogSectionContent.title}
           </h2>
         </div>
 
@@ -191,7 +192,7 @@ export default function Blog() {
               href={`/blog/${activePost.slug}`}
               className="mt-auto inline-block text-sm font-medium text-accent border-b border-accent pb-1"
             >
-              Continue Reading
+              {homeBlogSectionContent.continueReadingLabel}
             </Link>
           </motion.article>
 
@@ -250,7 +251,7 @@ export default function Blog() {
                   ref={loadMoreRef}
                   className="h-10 flex items-center justify-center text-sm text-muted-foreground"
                 >
-                  {isFetching ? "Loading..." : ""}
+                  {isFetching ? homeBlogSectionContent.loadingLabel : ""}
                 </div>
               )}
             </ul>

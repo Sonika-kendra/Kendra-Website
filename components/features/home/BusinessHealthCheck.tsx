@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { CheckCircle2, TrendingUp } from "lucide-react";
+import { businessHealthCheckContent } from "@/config/home";
 
 export default function BusinessHealthCheck() {
   const [showModal, setShowModal] = useState(false);
@@ -33,7 +34,7 @@ export default function BusinessHealthCheck() {
     e.preventDefault();
     
     if (!formData.email || !formData.firstName || !formData.lastName) {
-      setError("Please fill in all required fields (* marked)");
+      setError(businessHealthCheckContent.requiredFieldsError);
       return;
     }
 
@@ -55,7 +56,7 @@ export default function BusinessHealthCheck() {
       });
 
       if (!response.ok) {
-        throw new Error("Failed to submit form");
+        throw new Error(businessHealthCheckContent.submitError);
       }
 
       setSubmitted(true);
@@ -74,7 +75,9 @@ export default function BusinessHealthCheck() {
         });
       }, 2000);
     } catch (err) {
-      setError(err instanceof Error ? err.message : "An error occurred. Please try again.");
+      setError(
+        err instanceof Error ? err.message : businessHealthCheckContent.unexpectedError
+      );
       console.error("Submission error:", err);
     } finally {
       setLoading(false);
@@ -97,29 +100,27 @@ export default function BusinessHealthCheck() {
               </div>
 
               <h2 className="text-3xl font-display font-bold text-slate-900 dark:text-white sm:text-4xl">
-                Business Health Check Analyzer
+                {businessHealthCheckContent.sectionTitle}
               </h2>
               <p className="mx-auto mt-4 max-w-2xl text-lg leading-relaxed text-slate-600 dark:text-slate-300">
-                Get instant insights into your business performance. Our AI-powered analyzer evaluates revenue growth,
-                margin health, and operational efficiency in seconds.
+                {businessHealthCheckContent.sectionDescription}
               </p>
 
               <div className="mt-12 grid gap-6 md:grid-cols-3">
-                <div className="rounded-xl border border-slate-200 bg-slate-50 p-6 backdrop-blur-sm dark:border-slate-700 dark:bg-slate-800/70">
-                  <CheckCircle2 className="mx-auto mb-3 h-6 w-6 text-slate-700 dark:text-slate-200" />
-                  <h3 className="mb-2 font-semibold text-slate-900 dark:text-white">Revenue Analysis</h3>
-                  <p className="text-sm text-slate-600 dark:text-slate-300">Track growth trends and identify opportunities</p>
-                </div>
-                <div className="rounded-xl border border-slate-200 bg-slate-50 p-6 backdrop-blur-sm dark:border-slate-700 dark:bg-slate-800/70">
-                  <CheckCircle2 className="mx-auto mb-3 h-6 w-6 text-slate-700 dark:text-slate-200" />
-                  <h3 className="mb-2 font-semibold text-slate-900 dark:text-white">Margin Health</h3>
-                  <p className="text-sm text-slate-600 dark:text-slate-300">Understand profitability metrics</p>
-                </div>
-                <div className="rounded-xl border border-slate-200 bg-slate-50 p-6 backdrop-blur-sm dark:border-slate-700 dark:bg-slate-800/70">
-                  <CheckCircle2 className="mx-auto mb-3 h-6 w-6 text-slate-700 dark:text-slate-200" />
-                  <h3 className="mb-2 font-semibold text-slate-900 dark:text-white">Quick Snapshot</h3>
-                  <p className="text-sm text-slate-600 dark:text-slate-300">Actionable insights in moments</p>
-                </div>
+                {businessHealthCheckContent.cards.map((card) => (
+                  <div
+                    key={card.title}
+                    className="rounded-xl border border-slate-200 bg-slate-50 p-6 backdrop-blur-sm dark:border-slate-700 dark:bg-slate-800/70"
+                  >
+                    <CheckCircle2 className="mx-auto mb-3 h-6 w-6 text-slate-700 dark:text-slate-200" />
+                    <h3 className="mb-2 font-semibold text-slate-900 dark:text-white">
+                      {card.title}
+                    </h3>
+                    <p className="text-sm text-slate-600 dark:text-slate-300">
+                      {card.description}
+                    </p>
+                  </div>
+                ))}
               </div>
 
               <div className="mt-12">
@@ -127,7 +128,7 @@ export default function BusinessHealthCheck() {
                   onClick={() => setShowModal(true)}
                   className="inline-flex items-center justify-center rounded-lg bg-slate-900 px-10 py-3.5 text-sm font-semibold text-white transition-all hover:bg-slate-800 hover:shadow-lg dark:bg-white dark:text-slate-900 dark:hover:bg-slate-200"
                 >
-                  Start Your Analysis
+                  {businessHealthCheckContent.launchButtonLabel}
                 </button>
               </div>
             </div>
@@ -143,7 +144,7 @@ export default function BusinessHealthCheck() {
             <button
               onClick={() => setShowModal(false)}
               className="absolute right-4 top-4 z-10 p-1 text-slate-400 transition-colors hover:text-slate-700 dark:text-slate-500 dark:hover:text-slate-200"
-              aria-label="Close modal"
+              aria-label={businessHealthCheckContent.closeModalAriaLabel}
             >
               <svg className="h-6 w-6" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                 <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
@@ -155,9 +156,11 @@ export default function BusinessHealthCheck() {
                 <div className="mb-4 inline-flex h-16 w-16 items-center justify-center rounded-full bg-green-50 dark:bg-green-900/20">
                   <CheckCircle2 className="h-8 w-8 text-green-600" />
                 </div>
-                <h3 className="text-xl font-display font-bold text-slate-900 dark:text-white">Analysis Submitted!</h3>
+                <h3 className="text-xl font-display font-bold text-slate-900 dark:text-white">
+                  {businessHealthCheckContent.success.title}
+                </h3>
                 <p className="mt-2 text-slate-600 dark:text-slate-300">
-                  We&apos;ll generate your personalized report and send it to your email shortly.
+                  {businessHealthCheckContent.success.description}
                 </p>
               </div>
             ) : (
@@ -165,8 +168,12 @@ export default function BusinessHealthCheck() {
                 <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800">
                   <TrendingUp className="h-6 w-6 text-slate-700 dark:text-slate-200" />
                 </div>
-                <h3 className="text-xl font-display font-bold text-slate-900 dark:text-white">Quick Analysis</h3>
-                <p className="mt-2 text-sm text-slate-600 dark:text-slate-300">Share your details and get instant insights</p>
+                <h3 className="text-xl font-display font-bold text-slate-900 dark:text-white">
+                  {businessHealthCheckContent.modal.title}
+                </h3>
+                <p className="mt-2 text-sm text-slate-600 dark:text-slate-300">
+                  {businessHealthCheckContent.modal.description}
+                </p>
 
                 <form onSubmit={handleSubmit} className="mt-6 space-y-4">
                   {error && (
@@ -179,7 +186,7 @@ export default function BusinessHealthCheck() {
                     <input
                       type="text"
                       name="firstName"
-                      placeholder="First Name *"
+                      placeholder={businessHealthCheckContent.fields.firstName}
                       value={formData.firstName}
                       onChange={handleInputChange}
                       required
@@ -188,7 +195,7 @@ export default function BusinessHealthCheck() {
                     <input
                       type="text"
                       name="lastName"
-                      placeholder="Last Name *"
+                      placeholder={businessHealthCheckContent.fields.lastName}
                       value={formData.lastName}
                       onChange={handleInputChange}
                       required
@@ -199,7 +206,7 @@ export default function BusinessHealthCheck() {
                   <input
                     type="email"
                     name="email"
-                    placeholder="Work Email *"
+                    placeholder={businessHealthCheckContent.fields.email}
                     value={formData.email}
                     onChange={handleInputChange}
                     required
@@ -209,7 +216,7 @@ export default function BusinessHealthCheck() {
                   <input
                     type="tel"
                     name="phone"
-                    placeholder="Phone (optional)"
+                    placeholder={businessHealthCheckContent.fields.phone}
                     value={formData.phone}
                     onChange={handleInputChange}
                     className={inputClassName}
@@ -218,7 +225,7 @@ export default function BusinessHealthCheck() {
                   <input
                     type="text"
                     name="company"
-                    placeholder="Company (optional)"
+                    placeholder={businessHealthCheckContent.fields.company}
                     value={formData.company}
                     onChange={handleInputChange}
                     className={inputClassName}
@@ -227,7 +234,7 @@ export default function BusinessHealthCheck() {
                   <input
                     type="text"
                     name="revenue"
-                    placeholder="Annual Revenue (optional)"
+                    placeholder={businessHealthCheckContent.fields.revenue}
                     value={formData.revenue}
                     onChange={handleInputChange}
                     className={inputClassName}
@@ -236,7 +243,7 @@ export default function BusinessHealthCheck() {
                   <input
                     type="number"
                     name="employees"
-                    placeholder="Number of Employees (optional)"
+                    placeholder={businessHealthCheckContent.fields.employees}
                     value={formData.employees}
                     onChange={handleInputChange}
                     className={inputClassName}
@@ -248,25 +255,23 @@ export default function BusinessHealthCheck() {
                     onChange={handleInputChange}
                     className={inputClassName}
                   >
-                    <option value="">Select Industry (optional)</option>
-                    <option value="Technology">Technology</option>
-                    <option value="Finance">Finance</option>
-                    <option value="Manufacturing">Manufacturing</option>
-                    <option value="Retail">Retail</option>
-                    <option value="Healthcare">Healthcare</option>
-                    <option value="SaaS">SaaS</option>
-                    <option value="Other">Other</option>
+                    <option value="">{businessHealthCheckContent.fields.industry}</option>
+                    {businessHealthCheckContent.industryOptions.map((industry) => (
+                      <option key={industry} value={industry}>
+                        {industry}
+                      </option>
+                    ))}
                   </select>
 
                   <label className="flex items-start gap-2 pt-2 text-xs text-slate-600 dark:text-slate-300">
                     <input type="checkbox" required className="mt-1" />
                     <span>
-                      I agree to receive insights and analysis. See our{" "}
+                      {businessHealthCheckContent.consentPrefix}{" "}
                       <a
                         href="/privacy"
                         className="underline text-slate-900 transition-colors hover:text-slate-700 dark:text-white dark:hover:text-slate-200"
                       >
-                        Privacy Policy
+                        {businessHealthCheckContent.privacyPolicyLabel}
                       </a>
                     </span>
                   </label>
@@ -276,7 +281,9 @@ export default function BusinessHealthCheck() {
                     type="submit"
                     className="mt-6 w-full rounded-lg bg-slate-900 py-3 text-sm font-semibold text-white transition-colors hover:bg-slate-800 disabled:cursor-not-allowed disabled:opacity-60 dark:bg-white dark:text-slate-900 dark:hover:bg-slate-200"
                   >
-                    {loading ? "Processing..." : "Get My Report"}
+                    {loading
+                      ? businessHealthCheckContent.submittingLabel
+                      : businessHealthCheckContent.submitLabel}
                   </button>
                 </form>
               </div>

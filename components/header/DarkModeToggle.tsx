@@ -5,6 +5,7 @@ import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import clsx from "clsx";
 import { themeModes, ui } from "@/config/theme";
+import { themeSwitcherContent } from "@/config/header";
 
 type ThemeId = "light" | "dark" | "system";
 
@@ -35,7 +36,7 @@ export default function ThemeSwitcher() {
         return (
           <button
             key={id}
-            aria-label={`Set ${id} theme`}
+            aria-label={`${themeSwitcherContent.setThemeAriaPrefix} ${id} ${themeSwitcherContent.setThemeAriaSuffix}`}
             onClick={() => setTheme(id)}
             className={clsx(
               ui.themeSwitcher.button,

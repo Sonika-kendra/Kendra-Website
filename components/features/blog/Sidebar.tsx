@@ -4,6 +4,7 @@ import clsx from "clsx";
 import { getSidebarData } from "@/lib";
 import type { BlogCategory, SidebarPost } from "@/interface/blog";
 import { ui } from "@/config/theme";
+import { blogSidebarContent } from "@/config/blog";
 
 interface SidebarProps {
   activeCategorySlug?: string;
@@ -16,7 +17,9 @@ export async function Sidebar({ activeCategorySlug }: SidebarProps) {
     <aside className="lg:col-span-1 space-y-10 lg:sticky lg:top-24 h-fit">
       {/* Categories */}
       <div>
-        <h3 className="text-xl font-semibold mb-4">Categories</h3>
+        <h3 className="text-xl font-semibold mb-4">
+          {blogSidebarContent.categoriesTitle}
+        </h3>
         <ul className="flex flex-wrap gap-3">
           {categories.map((cat: BlogCategory) => (
             <li key={cat.id} className="list-none">
@@ -41,7 +44,9 @@ export async function Sidebar({ activeCategorySlug }: SidebarProps) {
 
       {/* Latest Posts */}
       <div>
-        <h3 className="text-xl font-semibold mb-4">Latest Posts</h3>
+        <h3 className="text-xl font-semibold mb-4">
+          {blogSidebarContent.latestPostsTitle}
+        </h3>
 
         <ul className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           {latestPosts.map((item: SidebarPost) => {

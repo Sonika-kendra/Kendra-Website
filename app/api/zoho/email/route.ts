@@ -26,6 +26,7 @@ function escapeHtml(value: string): string {
 export async function POST(req: Request) {
   try {
     const payload = (await req.json()) as ContactEmailPayload;
+    console.info("[zoho-email] Contact form request received.");
 
     const firstName = toText(payload.firstName);
     const lastName = toText(payload.lastName);
@@ -92,6 +93,7 @@ export async function POST(req: Request) {
 
     return NextResponse.json({ success: true }, { status: 200 });
   } catch (error) {
+    console.error("[zoho-email] Failed to process request:", error);
     return NextResponse.json(
       { error: error instanceof Error ? error.message : "Internal Server Error" },
       { status: 500 }

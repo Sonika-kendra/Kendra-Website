@@ -1,9 +1,14 @@
 import { Mail, Phone, MapPin } from "lucide-react";
 import { footer } from "@/config/site";
+import { contactInfoContent } from "@/config/contact";
 
 export function ContactInfo() {
-  const emailLink = footer.social.find((s) => s.label === "Email")?.href || "mailto:hello@kendra.global";
-  const phoneLink = footer.social.find((s) => s.label === "Phone")?.href || "tel:+44...";
+  const emailLink =
+    footer.social.find((s) => s.label === "Email")?.href ||
+    contactInfoContent.defaultEmailHref;
+  const phoneLink =
+    footer.social.find((s) => s.label === "Phone")?.href ||
+    contactInfoContent.defaultPhoneHref;
   return (
     <div className="lg:col-span-1 space-y-8">
       <div className="bg-off-white rounded-xl p-6">
@@ -14,7 +19,9 @@ export function ContactInfo() {
             </div>
           </div>
           <div>
-            <h3 className="font-display font-semibold text-navy">Email</h3>
+            <h3 className="font-display font-semibold text-navy">
+              {contactInfoContent.emailTitle}
+            </h3>
             <a
               href={emailLink}
               className="mt-2 text-slate-text/80 hover:text-white transition"
@@ -33,7 +40,9 @@ export function ContactInfo() {
             </div>
           </div>
           <div>
-            <h3 className="font-display font-semibold text-navy">Phone</h3>
+            <h3 className="font-display font-semibold text-navy">
+              {contactInfoContent.phoneTitle}
+            </h3>
             <a
               href={phoneLink}
               className="mt-2 text-slate-text/80 hover:text-white transition"
@@ -52,20 +61,29 @@ export function ContactInfo() {
             </div>
           </div>
           <div>
-            <h3 className="font-display font-semibold text-navy">Locations</h3>
+            <h3 className="font-display font-semibold text-navy">
+              {contactInfoContent.locationsTitle}
+            </h3>
             <p className="mt-2 text-slate-text/80 text-sm">
-              <span className="block">Europe</span>
-              <span className="block mt-2">Asia Pacific</span>
-              <span className="block mt-2">Americas &amp; Latam</span>
+              {contactInfoContent.locations.map((location, index) => (
+                <span
+                  key={location}
+                  className={`block${index > 0 ? " mt-2" : ""}`}
+                >
+                  {location}
+                </span>
+              ))}
             </p>
           </div>
         </div>
       </div>
 
       <div className="bg-white/10 border border-white/30 rounded-xl p-6">
-        <h3 className="font-display font-semibold text-navy">Response Time</h3>
+        <h3 className="font-display font-semibold text-navy">
+          {contactInfoContent.responseTimeTitle}
+        </h3>
         <p className="mt-2 text-sm text-slate-text/80">
-          We typically respond to inquiries within 24 business hours.
+          {contactInfoContent.responseTimeDescription}
         </p>
       </div>
     </div>
