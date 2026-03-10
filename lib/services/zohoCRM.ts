@@ -4,6 +4,7 @@ export async function createZohoLead(accessToken: string, lead: {
   email?: string;
   phone?: string;
   company?: string;
+  message?: string;
 }) {
   const res = await fetch(
     `${process.env.ZOHO_CRM_BASE_URL}/crm/v2/Leads`,
@@ -21,6 +22,7 @@ export async function createZohoLead(accessToken: string, lead: {
             Email: lead.email || "",
             Phone: lead.phone || "",
             Company: lead.company || "Website Lead",
+            Description: lead.message || "",
             Lead_Source: process.env.ZOHO_LEAD_SOURCE!,
             Campaign_Name: process.env.ZOHO_CAMPAIGN_NAME!,
           },

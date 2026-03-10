@@ -1,9 +1,11 @@
 "use client";
 
 import { useState } from "react";
+import clsx from "clsx";
 import { CheckCircle2, TrendingUp } from "lucide-react";
 import type { LeadPopUpProps } from "@/interface/common";
 import { leadPopupContent } from "@/config/common";
+import { ui } from "@/config/theme";
 
 export default function LeadPopUp({ open, onClose }: LeadPopUpProps) {
   const [submitted, setSubmitted] = useState(false);
@@ -59,17 +61,17 @@ export default function LeadPopUp({ open, onClose }: LeadPopUpProps) {
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4 py-8"
+      className={ui.leadPopup.overlay}
       onClick={onClose} // close on overlay click
     >
       <div
-        className="relative w-full max-w-md rounded-2xl bg-white shadow-2xl overflow-hidden"
+        className={ui.leadPopup.panel}
         onClick={(e) => e.stopPropagation()} // prevent closing when clicking inside
       >
         {/* Close button */}
         <button
           onClick={onClose}
-          className="absolute right-4 top-4 p-1 text-slate-text/40 hover:text-slate-text transition-colors z-10"
+          className={clsx(ui.leadPopup.closeButton, ui.interactive.focusRing)}
           aria-label={leadPopupContent.closeModalAriaLabel}
         >
           <svg className="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
@@ -82,35 +84,35 @@ export default function LeadPopUp({ open, onClose }: LeadPopUpProps) {
         </button>
 
         {submitted ? (
-          <div className="p-8 text-center">
-            <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-50 mb-4">
-              <CheckCircle2 className="h-8 w-8 text-green-600" />
+          <div className={ui.leadPopup.successShell}>
+            <div className={ui.leadPopup.successIconWrap}>
+              <CheckCircle2 className={ui.leadPopup.successIcon} />
             </div>
-            <h3 className="text-xl font-bold text-navy">{leadPopupContent.success.title}</h3>
-            <p className="mt-2 text-slate-text/70">
+            <h3 className={ui.leadPopup.title}>{leadPopupContent.success.title}</h3>
+            <p className={ui.leadPopup.successDescription}>
               {leadPopupContent.success.description}
             </p>
           </div>
         ) : (
-          <div className="p-8 space-y-6">
-            <div className="flex flex-col items-center gap-2 mb-4">
-              <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-navy/10">
-                <TrendingUp className="h-6 w-6 text-navy" />
+          <div className={ui.leadPopup.content}>
+            <div className={ui.leadPopup.header}>
+              <div className={ui.leadPopup.headerIconWrap}>
+                <TrendingUp className={ui.leadPopup.headerIcon} />
               </div>
-              <h3 className="text-xl font-bold text-navy">{leadPopupContent.modal.title}</h3>
-              <p className="text-sm text-slate-text/70 text-center">
+              <h3 className={ui.leadPopup.title}>{leadPopupContent.modal.title}</h3>
+              <p className={ui.leadPopup.description}>
                 {leadPopupContent.modal.description}
               </p>
             </div>
 
             {error && (
-              <div className="p-3 rounded-lg bg-red-50 border border-red-200">
-                <p className="text-sm text-red-700">{error}</p>
+              <div className={ui.leadPopup.errorBox}>
+                <p className={ui.leadPopup.errorText}>{error}</p>
               </div>
             )}
 
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div className="grid grid-cols-2 gap-3">
+            <form onSubmit={handleSubmit} className={ui.leadPopup.form}>
+              <div className={ui.leadPopup.nameGrid}>
                 <input
                   type="text"
                   name="firstName"
@@ -118,7 +120,7 @@ export default function LeadPopUp({ open, onClose }: LeadPopUpProps) {
                   value={formData.firstName}
                   onChange={handleInputChange}
                   required
-                  className="rounded-lg border border-slate-200 px-4 py-3 focus:border-navy focus:ring-1 focus:ring-navy/20 outline-none text-sm"
+                  className={clsx(ui.leadPopup.input, ui.interactive.focusRing)}
                 />
                 <input
                   type="text"
@@ -127,7 +129,7 @@ export default function LeadPopUp({ open, onClose }: LeadPopUpProps) {
                   value={formData.lastName}
                   onChange={handleInputChange}
                   required
-                  className="rounded-lg border border-slate-200 px-4 py-3 focus:border-navy focus:ring-1 focus:ring-navy/20 outline-none text-sm"
+                  className={clsx(ui.leadPopup.input, ui.interactive.focusRing)}
                 />
               </div>
 
@@ -138,7 +140,7 @@ export default function LeadPopUp({ open, onClose }: LeadPopUpProps) {
                 value={formData.email}
                 onChange={handleInputChange}
                 required
-                className="w-full rounded-lg border border-slate-200 px-4 py-3 focus:border-navy focus:ring-1 focus:ring-navy/20 outline-none text-sm"
+                className={clsx(ui.leadPopup.input, ui.interactive.focusRing)}
               />
 
               <input
@@ -147,7 +149,7 @@ export default function LeadPopUp({ open, onClose }: LeadPopUpProps) {
                 placeholder={leadPopupContent.fields.company}
                 value={formData.company}
                 onChange={handleInputChange}
-                className="w-full rounded-lg border border-slate-200 px-4 py-3 focus:border-navy focus:ring-1 focus:ring-navy/20 outline-none text-sm"
+                className={clsx(ui.leadPopup.input, ui.interactive.focusRing)}
               />
 
               <input
@@ -156,16 +158,20 @@ export default function LeadPopUp({ open, onClose }: LeadPopUpProps) {
                 placeholder={leadPopupContent.fields.phone}
                 value={formData.phone}
                 onChange={handleInputChange}
-                className="w-full rounded-lg border border-slate-200 px-4 py-3 focus:border-navy focus:ring-1 focus:ring-navy/20 outline-none text-sm"
+                className={clsx(ui.leadPopup.input, ui.interactive.focusRing)}
               />
 
-              <label className="flex items-start gap-2 text-xs text-slate-text/70 pt-2">
-                <input type="checkbox" required className="mt-1" />
+              <label className={ui.leadPopup.consent}>
+                <input
+                  type="checkbox"
+                  required
+                  className={clsx(ui.leadPopup.checkbox, ui.interactive.focusRing)}
+                />
                 <span>
                   {leadPopupContent.consentPrefix}{" "}
                   <a
                     href={leadPopupContent.privacyPolicyHref}
-                    className="underline text-navy hover:text-navy/80"
+                    className={ui.leadPopup.privacyLink}
                   >
                     {leadPopupContent.privacyPolicyLabel}
                   </a>
@@ -175,7 +181,7 @@ export default function LeadPopUp({ open, onClose }: LeadPopUpProps) {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full rounded-lg bg-navy py-3 text-sm font-semibold text-white hover:bg-navy/90 transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
+                className={clsx(ui.leadPopup.submitButton, ui.interactive.focusRing)}
               >
                 {loading
                   ? leadPopupContent.submittingLabel

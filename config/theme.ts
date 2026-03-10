@@ -75,5 +75,37 @@ export const ui = {
     inactive: "text-muted-foreground hover:text-foreground",
     icon: "h-5 w-5 transition-transform duration-200",
   },
+  leadPopup: {
+    overlay:
+      "fixed inset-0 z-50 flex items-center justify-center bg-black/60 px-4 py-8 backdrop-blur-[2px]",
+    panel:
+      "relative w-full max-w-md overflow-hidden rounded-2xl border border-border bg-card text-card-foreground shadow-2xl",
+    closeButton:
+      "absolute right-4 top-4 z-10 rounded-md p-1 text-muted-foreground transition-colors hover:text-foreground",
+    content: "space-y-6 p-8",
+    header: "mb-4 flex flex-col items-center gap-2",
+    headerIconWrap:
+      "inline-flex h-12 w-12 items-center justify-center rounded-full bg-primary/10",
+    headerIcon: "h-6 w-6 text-primary",
+    title: "text-xl font-bold text-card-foreground",
+    description: "text-center text-sm text-muted-foreground",
+    errorBox: "rounded-lg border border-red-500/25 bg-red-500/10 p-3",
+    errorText: "text-sm text-red-700 dark:text-red-300",
+    form: "space-y-4",
+    nameGrid: "grid grid-cols-1 gap-3",
+    input:
+      "w-full rounded-lg border border-input bg-background px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground outline-none transition-colors",
+    consent: "flex items-start gap-2 pt-2 text-xs text-muted-foreground",
+    checkbox:
+      "mt-1 h-4 w-4 rounded border-input bg-background text-primary accent-primary",
+    privacyLink: "underline text-primary transition-colors hover:text-accent",
+    submitButton:
+      "w-full rounded-lg bg-primary py-3 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60",
+    successShell: "p-8 text-center",
+    successIconWrap:
+      "mb-4 inline-flex h-16 w-16 items-center justify-center rounded-full bg-emerald-500/10",
+    successIcon: "h-8 w-8 text-emerald-600 dark:text-emerald-400",
+    successDescription: "mt-2 text-muted-foreground",
+  },
   socialIcon: "text-foreground/70 transition-colors hover:text-accent",
 } as const;

@@ -1,18 +1,38 @@
 import { NextResponse } from "next/server";
 import { createZohoLead, getZohoAccessToken } from "@/lib";
 
+type ZohoLeadPayload = {
+  firstName?: unknown;
+  lastName?: unknown;
+  email?: unknown;
+  phone?: unknown;
+  company?: unknown;
+  message?: unknown;
+};
+
+function toText(value: unknown): string {
+  return typeof value === "string" ? value.trim() : "";
+}
+
 export async function POST(req: Request) {
   try {
-    const body = await req.json();
-    const { firstName, lastName, email, phone, company } = body;
+    const body = (await req.json()) as ZohoLeadPayload;
+    const firstName = toText(body.firstName);
+    const lastName = toText(body.lastName);
+    const email = toText(body.email);
+    const phone = toText(body.phone);
+    const company = toText(body.company);
+    const message = toText(body.message);
+
     const accessToken = await getZohoAccessToken(process.env.ZOHO_CRM_TOKEN!);
 
     const result = await createZohoLead(accessToken, {
-      firstName: firstName,
-      lastName: lastName,
-      email: email,
-      phone: phone,
-      company: company
+      firstName,
+      lastName,
+      email,
+      phone,
+      company,
+      message,
     });
 
     // if (email) {
@@ -26,7 +46,7 @@ export async function POST(req: Request) {
 
   } catch (error) {
     return NextResponse.json(
-      { error: (error instanceof Error) ? error.message : 'Internal Server Error' },
+      { error: (error instanceof Error) ? error.message : "Internal Server Error" },
       { status: 500 }
     );
   }

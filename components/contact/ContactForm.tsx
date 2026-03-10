@@ -46,7 +46,7 @@ export function ContactForm() {
       return;
     }
     try {
-      const response = await fetch("/api/zoho/email", {
+      const response = await fetch("/api/zoho/lead", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
