@@ -51,10 +51,10 @@ export const navLinks: NavItem[] = [
       { href: WebsiteUrlConfig.MandM_Exit, label: "M&A and Exit Planning" },
     ],
   },
-  {
-    href: WebsiteUrlConfig.Business_Health_Analyzer,
-    label: "Business Health Analyzer",
-  },
+  // {
+  //   href: WebsiteUrlConfig.Business_Health_Analyzer,
+  //   label: "Business Health Analyzer",
+  // },
   {
     href: WebsiteUrlConfig.About,
     label: "About",

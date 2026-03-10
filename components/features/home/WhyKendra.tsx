@@ -38,15 +38,15 @@ export default function WhyKendra({ heading }: WhyKendraProps) {
             const Icon = item.icon;
             return (
               <div key={item.title} className="group card-hover p-8">
-                <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-white/20 mb-4 group-hover:bg-white/30 transition-colors">
-                  <Icon className="h-7 w-7 text-white" strokeWidth={1.5} />
+                <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-navy/5 transition-colors group-hover:bg-navy/10 dark:bg-white/10 dark:group-hover:bg-white/20">
+                  <Icon className="h-7 w-7 text-navy dark:text-white" strokeWidth={1.5} />
                 </div>
-                <h3 className="text-lg font-bold font-display text-navy group-hover:text-white transition-colors">{item.title}</h3>
-                <p className="mt-2 text-sm text-slate-text/70 leading-relaxed">{item.description}</p>
+                <h3 className="font-display text-lg font-bold text-navy transition-colors group-hover:text-accent dark:text-white">{item.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-slate-text/70">{item.description}</p>
                 <ul className="mt-4 space-y-2">
                   {item.features.map((feature) => (
-                    <li key={feature} className="text-xs text-slate-text/60 flex items-center gap-2">
-                      <span className="h-1.5 w-1.5 rounded-full bg-white" />
+                    <li key={feature} className="flex items-center gap-2 text-xs text-slate-text/60">
+                      <span className="h-1.5 w-1.5 rounded-full bg-navy/40 dark:bg-white/40" />
                       {feature}
                     </li>
                   ))}

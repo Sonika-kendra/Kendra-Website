@@ -38,12 +38,12 @@ export default function ServicesPage() {
                       <p className="text-xs font-semibold uppercase tracking-wider text-slate-text/60">
                         {service.subtitle}
                       </p>
-                      <h2 className="mt-1 font-display text-2xl font-bold text-navy transition-colors group-hover:text-white">
+                      <h2 className="mt-1 font-display text-2xl font-bold text-navy transition-colors group-hover:text-accent dark:text-white">
                         {service.title}
                       </h2>
                     </div>
-                    <div className="rounded-lg bg-white/20 p-3 transition-colors group-hover:bg-white/30">
-                      <Icon className="h-6 w-6 text-white" strokeWidth={1.5} />
+                    <div className="rounded-lg bg-navy/5 p-3 transition-colors group-hover:bg-navy/10 dark:bg-white/10 dark:group-hover:bg-white/20">
+                      <Icon className="h-6 w-6 text-navy dark:text-white" strokeWidth={1.5} />
                     </div>
                   </div>
 
@@ -57,13 +57,13 @@ export default function ServicesPage() {
                         key={benefit}
                         className="flex items-center gap-2 text-xs text-slate-text/60"
                       >
-                        <span className="h-1 w-1 rounded-full bg-white" />
+                        <span className="h-1.5 w-1.5 rounded-full bg-navy/40 dark:bg-white/40" />
                         {benefit}
                       </p>
                     ))}
                   </div>
 
-                  <span className="mt-6 inline-flex text-sm font-medium text-navy transition-colors group-hover:text-white">
+                  <span className="mt-6 inline-flex text-sm font-medium text-navy transition-colors group-hover:text-accent dark:text-white">
                     Learn More &rarr;
                   </span>
                 </Link>
