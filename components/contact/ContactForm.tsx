@@ -3,13 +3,13 @@ import { Send } from "lucide-react";
 export function ContactForm() {
   return (
     <form className="lg:col-span-2 space-y-6">
-      <div className="bg-white border border-border rounded-xl p-8">
+      <div className="bg-card text-card-foreground border border-border rounded-xl p-8">
         <div className="space-y-6">
           <div className="grid gap-6 sm:grid-cols-2">
             <div>
               <label
                 htmlFor="firstName"
-                className="block text-sm font-semibold text-navy"
+                className="block text-sm font-semibold text-foreground"
               >
                 First Name
               </label>
@@ -18,14 +18,14 @@ export function ContactForm() {
                 id="firstName"
                 name="firstName"
                 required
-                className="mt-2 block w-full rounded-lg border border-border bg-white px-4 py-3 text-slate-text transition duration-200 placeholder:text-slate-text/40 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-white"
+                className="mt-2 block w-full rounded-lg border border-border bg-background px-4 py-3 text-foreground transition duration-200 placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary"
                 placeholder="Your first name"
               />
             </div>
             <div>
               <label
                 htmlFor="lastName"
-                className="block text-sm font-semibold text-navy"
+                className="block text-sm font-semibold text-foreground"
               >
                 Last Name
               </label>
@@ -34,7 +34,7 @@ export function ContactForm() {
                 id="lastName"
                 name="lastName"
                 required
-                className="mt-2 block w-full rounded-lg border border-border bg-white px-4 py-3 text-slate-text transition duration-200 placeholder:text-slate-text/40 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-white"
+                className="mt-2 block w-full rounded-lg border border-border bg-background px-4 py-3 text-foreground transition duration-200 placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary"
                 placeholder="Your last name"
               />
             </div>
@@ -43,7 +43,7 @@ export function ContactForm() {
           <div>
             <label
               htmlFor="email"
-              className="block text-sm font-semibold text-navy"
+              className="block text-sm font-semibold text-foreground"
             >
               Email Address
             </label>
@@ -52,7 +52,7 @@ export function ContactForm() {
               id="email"
               name="email"
               required
-              className="mt-2 block w-full rounded-lg border border-border bg-white px-4 py-3 text-slate-text transition duration-200 placeholder:text-slate-text/40 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-white"
+              className="mt-2 block w-full rounded-lg border border-border bg-background px-4 py-3 text-foreground transition duration-200 placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary"
               placeholder="you@company.com"
             />
           </div>
@@ -60,7 +60,7 @@ export function ContactForm() {
           <div>
             <label
               htmlFor="company"
-              className="block text-sm font-semibold text-navy"
+              className="block text-sm font-semibold text-foreground"
             >
               Company
             </label>
@@ -68,7 +68,7 @@ export function ContactForm() {
               type="text"
               id="company"
               name="company"
-              className="mt-2 block w-full rounded-lg border border-border bg-white px-4 py-3 text-slate-text transition duration-200 placeholder:text-slate-text/40 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-white"
+              className="mt-2 block w-full rounded-lg border border-border bg-background px-4 py-3 text-foreground transition duration-200 placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary"
               placeholder="Your company"
             />
           </div>
@@ -76,7 +76,7 @@ export function ContactForm() {
           <div>
             <label
               htmlFor="message"
-              className="block text-sm font-semibold text-navy"
+              className="block text-sm font-semibold text-foreground"
             >
               Message
             </label>
@@ -85,14 +85,14 @@ export function ContactForm() {
               name="message"
               rows={5}
               required
-              className="mt-2 block w-full rounded-lg border border-border bg-white px-4 py-3 text-slate-text transition duration-200 placeholder:text-slate-text/40 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-white resize-none"
+              className="mt-2 block w-full rounded-lg border border-border bg-background px-4 py-3 text-foreground transition duration-200 placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary resize-none"
               placeholder="Tell us about your project or challenge..."
             />
           </div>
 
           <button
             type="submit"
-            className="w-full bg-white text-navy font-semibold py-3 px-6 rounded-lg hover:bg-white/90 transition duration-200 flex items-center justify-center gap-2 group"
+            className="w-full bg-primary text-primary-foreground font-semibold py-3 px-6 rounded-lg hover:bg-primary/90 transition duration-200 flex items-center justify-center gap-2 group"
           >
             Send Message
             <Send
@@ -101,7 +101,7 @@ export function ContactForm() {
             />
           </button>
 
-          <p className="text-xs text-slate-text/60 text-center">
+          <p className="text-xs text-muted-foreground text-center">
             We respect your privacy. Your information will only be used to
             contact you about your inquiry.
           </p>
@@ -110,4 +110,3 @@ export function ContactForm() {
     </form>
   );
 }
-
