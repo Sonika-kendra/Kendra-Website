@@ -172,8 +172,7 @@ export default function Blog() {
             </div>
 
             <div className="text-sm text-muted-foreground mb-3">
-              {new Date(activePost.date).toLocaleDateString("en-GB")} •{" "}
-              {activePost.author}
+              {new Date(activePost.date).toLocaleDateString("en-GB")}
             </div>
 
             {/* Make title clickable */}

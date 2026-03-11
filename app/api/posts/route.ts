@@ -23,7 +23,6 @@ export async function GET(request: Request) {
       excerpt: htmlToPlainText(post.excerpt.rendered),
       slug: post.slug,
       date: post.date,
-      author: post._embedded?.author?.[0]?.name || "Admin",
       image: post._embedded?.["wp:featuredmedia"]?.[0]?.source_url || "/placeholder.jpg",
     }));
 

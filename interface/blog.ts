@@ -55,6 +55,5 @@ export interface HomeBlogPost {
   excerpt: string;
   slug: string;
   date: string;
-  author: string;
   image: string;
 }

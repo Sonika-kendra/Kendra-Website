@@ -5,7 +5,6 @@ export interface WPPost {
   slug: string;
   date: string;
   _embedded?: {
-    author?: { name: string }[];
     "wp:featuredmedia"?: { source_url: string }[];
   };
 }

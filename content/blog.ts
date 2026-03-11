@@ -4,7 +4,6 @@ export interface BlogPost {
   excerpt: string;
   image: string;
   date: string;
-  author: string;
   slug: string;
 }
 
@@ -16,7 +15,6 @@ export const blogPosts: BlogPost[] = [
       "Best practices for building scalable and maintainable web platforms using modern stacks.",
     image: "/blog/blog1.jpg",
     date: "Feb 12, 2026",
-    author: "Admin",
     slug: "scaling-modern-web-applications",
   },
   {
@@ -26,7 +24,6 @@ export const blogPosts: BlogPost[] = [
       "How component-driven architecture improves speed, consistency, and maintainability.",
     image: "/blog/blog2.jpg",
     date: "Jan 28, 2026",
-    author: "Admin",
     slug: "design-systems-2026",
   },
   {
@@ -36,7 +33,6 @@ export const blogPosts: BlogPost[] = [
       "Advanced techniques to improve Core Web Vitals and server rendering efficiency.",
     image: "/blog/blog3.jpg",
     date: "Jan 10, 2026",
-    author: "Admin",
     slug: "nextjs-performance-optimization",
   },
   {
@@ -46,7 +42,6 @@ export const blogPosts: BlogPost[] = [
       "Breaking large frontend applications into independent, deployable modules.",
     image: "/blog/blog4.jpg",
     date: "Dec 22, 2025",
-    author: "Admin",
     slug: "micro-frontend-architecture-explained",
   },
   {
@@ -56,7 +51,6 @@ export const blogPosts: BlogPost[] = [
       "Strategies for reducing latency and improving response times using caching layers.",
     image: "/blog/blog5.jpg",
     date: "Dec 10, 2025",
-    author: "Admin",
     slug: "improving-api-performance-with-caching",
   },
   {
@@ -66,7 +60,6 @@ export const blogPosts: BlogPost[] = [
       "Comparing Context API, Redux, Zustand, and modern lightweight alternatives.",
     image: "/blog/blog6.jpg",
     date: "Nov 30, 2025",
-    author: "Admin",
     slug: "state-management-patterns-in-react",
   },
   {
@@ -76,7 +69,6 @@ export const blogPosts: BlogPost[] = [
       "Practical guidelines to meet WCAG standards and improve usability for all users.",
     image: "/blog/blog7.jpg",
     date: "Nov 18, 2025",
-    author: "Admin",
     slug: "building-accessible-web-interfaces",
   },
   {
@@ -86,7 +78,6 @@ export const blogPosts: BlogPost[] = [
       "Advanced typing patterns that improve maintainability and developer experience.",
     image: "/blog/blog8.jpg",
     date: "Nov 05, 2025",
-    author: "Admin",
     slug: "typescript-tips-large-projects",
   },
   {
@@ -96,7 +87,6 @@ export const blogPosts: BlogPost[] = [
       "Automating testing, linting, and deployment workflows for modern web apps.",
     image: "/blog/blog9.jpg",
     date: "Oct 25, 2025",
-    author: "Admin",
     slug: "cicd-pipelines-frontend-teams",
   },
   {
@@ -106,7 +96,6 @@ export const blogPosts: BlogPost[] = [
       "A technical comparison of serverless architecture and monolithic backends.",
     image: "/blog/blog10.jpg",
     date: "Oct 12, 2025",
-    author: "Admin",
     slug: "serverless-vs-traditional-backend",
   },
 ];
