@@ -161,7 +161,7 @@ export default function Blog() {
             className="surface-card p-4 flex flex-col h-full"
             style={{ height: RIGHT_HEIGHT }}
           >
-            <div className="relative w-full h-[45%] rounded-lg overflow-hidden mb-6">
+            <div className="relative w-full h-[55%] rounded-lg overflow-hidden mb-6">
               <Image
                 src={activePost.image}
                 alt={activePost.title}
@@ -169,10 +169,6 @@ export default function Blog() {
                 priority
                 className="object-cover"
               />
-            </div>
-
-            <div className="text-sm text-muted-foreground mb-3">
-              {new Date(activePost.date).toLocaleDateString("en-GB")}
             </div>
 
             {/* Make title clickable */}
@@ -187,12 +183,18 @@ export default function Blog() {
               {activePost.excerpt}
             </p>
 
-            <Link
-              href={`/blog/${activePost.slug}`}
-              className="mt-auto inline-block text-sm font-medium text-accent border-b border-accent pb-1"
-            >
-              {homeBlogSectionContent.continueReadingLabel}
-            </Link>
+            <div className="mt-auto flex items-center justify-between gap-4 border-b border-border pb-2">
+              <span className="text-sm text-muted-foreground">
+                {new Date(activePost.date).toLocaleDateString("en-GB")}
+              </span>
+
+              <Link
+                href={`/blog/${activePost.slug}`}
+                className="inline-block text-sm font-medium text-accent"
+              >
+                {homeBlogSectionContent.continueReadingLabel}
+              </Link>
+            </div>
           </motion.article>
 
           {/* RIGHT LIST */}
