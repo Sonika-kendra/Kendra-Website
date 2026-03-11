@@ -23,7 +23,7 @@ export const leadPopupContent = {
     firstName: "First Name *",
     lastName: "Last Name *",
     email: "Work Email *",
-    company: "Company (optional)",
+    company: "Company Name (optional)",
     phone: "Phone (optional)",
     service: "Select Service",
     message: "How can we help?",

@@ -15,12 +15,16 @@ import {
 
 export default function HomePage() {
   const { openLeadPopUp } = useModal();
-  const hasOpenedRef = useRef(false); // local flag
+  const hasOpenedRef = useRef(false);
 
   useEffect(() => {
     if (!hasOpenedRef.current) {
-      openLeadPopUp();
-      hasOpenedRef.current = true; // mark as opened
+      const timer = setTimeout(() => {
+        openLeadPopUp();
+        hasOpenedRef.current = true;
+      }, 15000);
+
+      return () => clearTimeout(timer);
     }
   }, [openLeadPopUp]);
 

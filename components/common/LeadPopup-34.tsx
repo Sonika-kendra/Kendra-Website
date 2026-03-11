@@ -182,146 +182,150 @@ export default function LeadPopUp({ open, onClose }: LeadPopUpProps) {
               </div>
             )}
 
-            <form onSubmit={handleSubmit} className="space-y-2">
-              <div className="grid grid-cols-1 gap-1">
-                <label className="text-sm font-medium text-foreground">{leadPopupContent.fields.firstName}</label>
-                <input
-                  type="text"
-                  name="firstName"
-                  value={formData.firstName}
-                  onChange={handleInputChange}
-                  required
-                  className={clsx("leadPopup-input", "interactive-focus-ring")}
-                />
-              </div>
-
-              <div className="grid grid-cols-1 gap-1">
-                <label className="text-sm font-medium text-foreground">{leadPopupContent.fields.lastName}</label>
-                <input
-                  type="text"
-                  name="lastName"
-                  value={formData.lastName}
-                  onChange={handleInputChange}
-                  required
-                  className={clsx("leadPopup-input", "interactive-focus-ring")}
-                />
-              </div>
-
-              <div className="grid grid-cols-1 gap-1">
-                <label className="text-sm font-medium text-foreground">{leadPopupContent.fields.email}</label>
-                <input
-                  type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleInputChange}
-                  required
-                  className={clsx("leadPopup-input", "interactive-focus-ring")}
-                />
-              </div>
-
-              <div className="grid grid-cols-1 gap-1 py-0.5">
-                <label className="text-sm font-medium text-foreground">
-                  {leadPopupContent.fields.service}
-                </label>
-                <div ref={serviceDropdownRef} className="relative">
-                  <button
-                    type="button"
-                    onClick={() => setServiceDropdownOpen((prev) => !prev)}
-                    aria-expanded={serviceDropdownOpen}
-                    aria-haspopup="listbox"
-                    className={clsx(
-                      "leadPopup-input",
-                      "interactive-focus-ring",
-                      "flex min-h-[38px] items-start justify-between gap-2 text-left"
-                    )}
-                  >
-                    <span
-                      className={clsx(
-                        "flex-1 whitespace-normal break-words pr-1 leading-snug",
-                        formData.service.length === 0 && "text-muted-foreground"
-                      )}
-                    >
-                      {formData.service.length > 0
-                        ? formData.service.join(", ")
-                        : leadPopupContent.fields.service}
-                    </span>
-                    <ChevronDown
-                      className={clsx(
-                        "mt-0.5 h-4 w-4 shrink-0 text-muted-foreground transition-transform",
-                        serviceDropdownOpen && "rotate-180"
-                      )}
-                    />
-                  </button>
-
-                  {serviceDropdownOpen && (
-                    <div
-                      className="absolute left-0 right-0 z-20 mt-2 max-h-56 overflow-y-auto rounded-lg border border-input bg-card p-2 shadow-lg"
-                      role="listbox"
-                      aria-label={leadPopupContent.fields.service}
-                    >
-                      <label className="mb-1 flex cursor-pointer items-center gap-2 rounded-md border-b border-border px-2 py-1.5 text-sm font-medium text-foreground transition-colors hover:bg-muted">
-                        <input
-                          ref={selectAllRef}
-                          type="checkbox"
-                          checked={allServicesSelected}
-                          onChange={(e) => handleSelectAllServices(e.target.checked)}
-                          className={clsx("leadPopup-checkbox", "interactive-focus-ring")}
-                        />
-                        <span>Select All</span>
-                      </label>
-                      {footer.services.map((s) => (
-                        <label
-                          key={s.label}
-                          className="flex cursor-pointer items-start gap-2 rounded-md px-2 py-1.5 text-sm text-foreground transition-colors hover:bg-muted"
-                        >
-                          <input
-                            type="checkbox"
-                            checked={formData.service.includes(s.label)}
-                            onChange={(e) => handleServiceToggle(s.label, e.target.checked)}
-                            className={clsx("leadPopup-checkbox", "interactive-focus-ring")}
-                          />
-                          <span className="whitespace-normal break-words leading-snug">{s.label}</span>
-                        </label>
-                      ))}
-                    </div>
-                  )}
+            <form onSubmit={handleSubmit} className="space-y-3">
+              <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+                <div className="grid grid-cols-1 gap-1.5">
+                  <label className="text-sm font-medium text-foreground">{leadPopupContent.fields.firstName}</label>
+                  <input
+                    type="text"
+                    name="firstName"
+                    value={formData.firstName}
+                    onChange={handleInputChange}
+                    required
+                    className={clsx("leadPopup-input", "interactive-focus-ring")}
+                  />
+                </div>
+                <div className="grid grid-cols-1 gap-1.5">
+                  <label className="text-sm font-medium text-foreground">{leadPopupContent.fields.lastName}</label>
+                  <input
+                    type="text"
+                    name="lastName"
+                    value={formData.lastName}
+                    onChange={handleInputChange}
+                    required
+                    className={clsx("leadPopup-input", "interactive-focus-ring")}
+                  />
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 gap-1">
-                <label className="text-sm font-medium text-foreground">{leadPopupContent.fields.company}</label>
-                <input
-                  type="text"
-                  name="company"
-                  value={formData.company}
-                  onChange={handleInputChange}
-                  className={clsx("leadPopup-input", "interactive-focus-ring")}
-                />
+              <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+                <div className="grid grid-cols-1 gap-1.5">
+                  <label className="text-sm font-medium text-foreground">{leadPopupContent.fields.email}</label>
+                  <input
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    required
+                    className={clsx("leadPopup-input", "interactive-focus-ring")}
+                  />
+                </div>
+                <div className="grid grid-cols-1 gap-1.5">
+                  <label className="text-sm font-medium text-foreground">{leadPopupContent.fields.phone}</label>
+                  <input
+                    type="tel"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleInputChange}
+                    className={clsx("leadPopup-input", "interactive-focus-ring")}
+                  />
+                </div>
               </div>
 
-              <div className="grid grid-cols-1 gap-1">
-                <label className="text-sm font-medium text-foreground">{leadPopupContent.fields.phone}</label>
-                <input
-                  type="tel"
-                  name="phone"
-                  value={formData.phone}
-                  onChange={handleInputChange}
-                  className={clsx("leadPopup-input", "interactive-focus-ring")}
-                />
+              <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+                <div className="grid grid-cols-1 gap-1.5">
+                  <label className="text-sm font-medium text-foreground">{leadPopupContent.fields.company}</label>
+                  <input
+                    type="text"
+                    name="company"
+                    value={formData.company}
+                    onChange={handleInputChange}
+                    className={clsx("leadPopup-input", "interactive-focus-ring")}
+                  />
+                </div>
+
+                <div className="grid grid-cols-1 gap-1.5">
+                  <label className="text-sm font-medium text-foreground">
+                    {leadPopupContent.fields.service}
+                  </label>
+                  <div ref={serviceDropdownRef} className="relative">
+                    <button
+                      type="button"
+                      onClick={() => setServiceDropdownOpen((prev) => !prev)}
+                      aria-expanded={serviceDropdownOpen}
+                      aria-haspopup="listbox"
+                      className={clsx(
+                        "leadPopup-input",
+                        "interactive-focus-ring",
+                        "flex items-center justify-between gap-2 text-left"
+                      )}
+                    >
+                      <span
+                        className={clsx(
+                          "truncate",
+                          formData.service.length === 0 && "text-muted-foreground"
+                        )}
+                      >
+                        {formData.service.length > 0
+                          ? formData.service.join(", ")
+                          : leadPopupContent.fields.service}
+                      </span>
+                      <ChevronDown
+                        className={clsx(
+                          "h-4 w-4 shrink-0 text-muted-foreground transition-transform",
+                          serviceDropdownOpen && "rotate-180"
+                        )}
+                      />
+                    </button>
+
+                    {serviceDropdownOpen && (
+                      <div
+                        className="absolute left-0 right-0 z-20 mt-2 max-h-56 overflow-y-auto rounded-lg border border-input bg-card p-2 shadow-lg"
+                        role="listbox"
+                        aria-label={leadPopupContent.fields.service}
+                      >
+                        <label className="mb-1 flex cursor-pointer items-center gap-2 rounded-md border-b border-border px-2 py-1.5 text-sm font-medium text-foreground transition-colors hover:bg-muted">
+                          <input
+                            ref={selectAllRef}
+                            type="checkbox"
+                            checked={allServicesSelected}
+                            onChange={(e) => handleSelectAllServices(e.target.checked)}
+                            className={clsx("leadPopup-checkbox", "interactive-focus-ring")}
+                          />
+                          <span>Select All</span>
+                        </label>
+                        {footer.services.map((s) => (
+                          <label
+                            key={s.label}
+                            className="flex cursor-pointer items-center gap-2 rounded-md px-2 py-1.5 text-sm text-foreground transition-colors hover:bg-muted"
+                          >
+                            <input
+                              type="checkbox"
+                              checked={formData.service.includes(s.label)}
+                              onChange={(e) => handleServiceToggle(s.label, e.target.checked)}
+                              className={clsx("leadPopup-checkbox", "interactive-focus-ring")}
+                            />
+                            <span>{s.label}</span>
+                          </label>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                </div>
               </div>
 
-              <div className="grid grid-cols-1 gap-1">
-                <label className="text-sm font-medium text-foreground">{leadPopupContent.fields.message}</label>
+              <div className="grid grid-cols-1 gap-1.5 sm:grid-cols-[120px_1fr] sm:items-start sm:gap-3">
+                <label className="text-sm font-medium text-foreground sm:mt-2 sm:text-right">{leadPopupContent.fields.message}</label>
                 <textarea
                   name="message"
                   value={formData.message}
                   onChange={handleInputChange}
-                  className={clsx("leadPopup-input", "interactive-focus-ring", "min-h-[72px] py-2 resize-y")}
+                  className={clsx("leadPopup-input", "interactive-focus-ring", "min-h-[90px] py-2.5 resize-y")}
                 />
               </div>
 
-              {/* <div className="mt-0.5 grid grid-cols-1 gap-1">
-                <div className="flex items-start gap-2 text-xs text-muted-foreground">
+              <div className="mt-1 grid grid-cols-1 gap-1.5 sm:grid-cols-[120px_1fr] sm:items-center sm:gap-3">
+                <div className="flex items-start gap-2 pt-1 text-xs text-muted-foreground sm:col-start-2">
                   <input
                     type="checkbox"
                     required
@@ -337,10 +341,10 @@ export default function LeadPopUp({ open, onClose }: LeadPopUpProps) {
                     </a>
                   </span>
                 </div>
-              </div> */}
+              </div>
 
-              <div className="mt-4 grid grid-cols-1 gap-1">
-                <div>
+              <div className="mt-3 grid grid-cols-1 gap-1.5 sm:grid-cols-[120px_1fr] sm:items-center sm:gap-3">
+                <div className="sm:col-start-2">
                   <button
                     type="submit"
                     disabled={loading}

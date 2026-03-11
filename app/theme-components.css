@@ -112,31 +112,31 @@
 
   /* Lead Popup */
   .leadPopup-overlay {
-    @apply fixed inset-0 z-[100] flex items-start justify-center overflow-y-auto bg-black/60 px-4 py-4 backdrop-blur-[2px] sm:items-center;
+    @apply fixed inset-0 z-[100] flex items-start justify-center overflow-y-auto bg-black/60 px-4 py-2 backdrop-blur-[2px] sm:items-center;
   }
   .leadPopup-panel {
-    @apply relative w-full max-w-4xl rounded-2xl border border-border bg-card text-card-foreground shadow-2xl;
-    max-height: calc(100vh - 2rem);
-    max-height: calc(100dvh - 2rem);
+    @apply relative w-full max-w-xl rounded-2xl border border-border bg-card text-card-foreground shadow-2xl;
+    max-height: calc(100vh - 1rem);
+    max-height: calc(100dvh - 1rem);
     overflow-y: auto;
   }
   .leadPopup-closeButton {
     @apply absolute right-3 top-3 z-10 rounded-md p-1 text-muted-foreground transition-colors hover:text-foreground sm:right-4 sm:top-4;
   }
   .leadPopup-content {
-    @apply space-y-4 p-4 sm:p-6;
+    @apply space-y-3 p-3 sm:p-4;
   }
   .leadPopup-header {
-    @apply mb-2 flex flex-col items-center gap-1.5;
+    @apply mb-1 flex flex-col items-center gap-1;
   }
   .leadPopup-headerIconWrap {
-    @apply inline-flex h-12 w-12 items-center justify-center rounded-full bg-primary/10;
+    @apply inline-flex h-10 w-10 items-center justify-center rounded-full bg-primary/10;
   }
   .leadPopup-headerIcon {
-    @apply h-6 w-6 text-primary;
+    @apply h-5 w-5 text-primary;
   }
   .leadPopup-title {
-    @apply text-xl font-bold text-card-foreground;
+    @apply text-lg font-bold text-card-foreground;
   }
   .leadPopup-description {
     @apply text-center text-sm text-muted-foreground;
@@ -154,7 +154,7 @@
     @apply grid grid-cols-1 gap-3;
   }
   .leadPopup-input {
-    @apply w-full rounded-lg border border-input bg-background px-3 py-2.5 text-sm text-foreground placeholder:text-muted-foreground outline-none transition-colors;
+    @apply w-full rounded-lg border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground outline-none transition-colors;
   }
   .leadPopup-consent {
     @apply flex items-start gap-2 pt-2 text-xs text-muted-foreground;
@@ -166,7 +166,7 @@
     @apply underline text-primary transition-colors hover:text-accent;
   }
   .leadPopup-submitButton {
-    @apply w-full rounded-lg bg-primary py-2.5 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60;
+    @apply w-full rounded-lg bg-primary py-2 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60;
   }
   .leadPopup-successShell {
     @apply p-6 text-center;
