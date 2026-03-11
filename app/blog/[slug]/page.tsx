@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { Sidebar } from "@/components/features/blog/Sidebar";
+import { htmlToPlainText } from "@/lib/services/blog/text";
 import type { BlogPageProps, BlogPostDetail, BlogTerm } from "@/interface/blog";
 
 /* -------------------- FETCH SINGLE POST -------------------- */
@@ -39,11 +40,9 @@ export async function generateMetadata({ params }: BlogPageProps) {
     };
   }
 
-  const cleanExcerpt = post.excerpt.rendered.replace(/<[^>]+>/g, "");
-
   return {
-    title: post.title.rendered,
-    description: cleanExcerpt,
+    title: htmlToPlainText(post.title.rendered),
+    description: htmlToPlainText(post.excerpt.rendered),
   };
 }
 

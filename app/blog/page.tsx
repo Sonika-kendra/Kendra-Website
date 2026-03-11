@@ -3,16 +3,13 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { Sidebar } from "@/components/features/blog/Sidebar";
 import { getAllBlogPosts } from "@/lib/services/blog/posts";
+import { htmlToPlainText } from "@/lib/services/blog/text";
 import type { BlogPostDetail, BlogTerm } from "@/interface/blog";
 
 export const metadata: Metadata = {
   title: "Blog",
   description: "Read the latest insights and updates from Kendra International.",
 };
-
-function stripHtml(html: string) {
-  return html.replace(/<[^>]+>/g, "").trim();
-}
 
 function getPostCategories(post: BlogPostDetail): BlogTerm[] {
   return (
@@ -83,7 +80,7 @@ export default async function BlogPage() {
                         </Link>
 
                         <p className="text-gray-700 dark:text-slate-300 mt-4 line-clamp-3">
-                          {stripHtml(post.excerpt.rendered)}
+                          {htmlToPlainText(post.excerpt.rendered)}
                         </p>
 
                         {categories.length > 0 && (

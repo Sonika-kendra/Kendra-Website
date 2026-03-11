@@ -1,4 +1,5 @@
 import type { WPPost } from "@/interface/api";
+import { htmlToPlainText } from "@/lib/services/blog/text";
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
@@ -19,7 +20,7 @@ export async function GET(request: Request) {
     const formatted = posts.map((post) => ({
       id: post.id,
       title: post.title.rendered,
-      excerpt: post.excerpt.rendered.replace(/<[^>]+>/g, ""),
+      excerpt: htmlToPlainText(post.excerpt.rendered),
       slug: post.slug,
       date: post.date,
       author: post._embedded?.author?.[0]?.name || "Admin",
