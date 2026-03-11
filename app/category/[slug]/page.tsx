@@ -10,7 +10,6 @@ import {
   getBlogPostsByCategoryId,
 } from "@/lib/services/blog/posts";
 import type { BlogPostDetail, BlogTerm } from "@/interface/blog";
-import { ui } from "@/config/theme";
 
 interface CategoryPageProps {
   params: {
@@ -69,7 +68,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
           <div className="mb-8">
             <Link
               href="/blog"
-              className={ui.blog.backLink}
+              className="blog-backLink"
             >
               Back to all blogs
             </Link>
@@ -125,7 +124,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
 
                         <Link href={`/blog/${post.slug}`}>
                           <h2
-                            className={ui.blog.postTitle}
+                            className="blog-postTitle"
                             dangerouslySetInnerHTML={{ __html: post.title.rendered }}
                           />
                         </Link>
@@ -145,7 +144,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
                                     : `/category/${item.slug}`
                                 }
                                 className={clsx(
-                                  ui.blog.categoryLink,
+                                  "blog-categoryLink",
                                   item.slug === category.slug &&
                                     "bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground"
                                 )}

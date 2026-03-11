@@ -3,7 +3,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { Sidebar } from "@/components/features/blog/Sidebar";
 import type { BlogPageProps, BlogPostDetail, BlogTerm } from "@/interface/blog";
-import { ui } from "@/config/theme";
 
 /* -------------------- FETCH SINGLE POST -------------------- */
 async function getPostBySlug(slug: string) {
@@ -92,7 +91,7 @@ export default async function BlogDetails({ params }: BlogPageProps) {
                 <Link
                   key={category.id}
                   href={`/category/${category.slug}`}
-                  className={ui.blog.categoryLink}
+                  className="blog-categoryLink"
                 >
                   {category.name}
                 </Link>

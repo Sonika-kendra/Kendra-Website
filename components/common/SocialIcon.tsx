@@ -1,7 +1,6 @@
 "use client";
 
 import clsx from "clsx";
-import { ui } from "@/config/theme";
 import type { SocialIconProps } from "@/interface/common";
 
 export default function SocialIcon({ href, label, children }: SocialIconProps) {
@@ -11,7 +10,7 @@ export default function SocialIcon({ href, label, children }: SocialIconProps) {
       aria-label={label}
       target="_blank"
       rel="noopener noreferrer"
-      className={clsx(ui.socialIcon, ui.interactive.focusRing)}
+      className={clsx("socialIcon", "interactive-focus-ring")}
     >
       {children}
     </a>

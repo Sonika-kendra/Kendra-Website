@@ -3,7 +3,6 @@ import Link from "next/link";
 import clsx from "clsx";
 import { getSidebarData } from "@/lib";
 import type { BlogCategory, SidebarPost } from "@/interface/blog";
-import { ui } from "@/config/theme";
 import { blogSidebarContent } from "@/config/blog";
 
 interface SidebarProps {
@@ -30,7 +29,7 @@ export async function Sidebar({ activeCategorySlug }: SidebarProps) {
                     : `/category/${cat.slug}`
                 }
                 className={clsx(
-                  ui.blog.categoryLink,
+                  "blog-categoryLink",
                   activeCategorySlug === cat.slug &&
                     "bg-primary p-auto text-primary-foreground hover:bg-primary hover:text-primary-foreground"
                 )}
@@ -69,7 +68,7 @@ export async function Sidebar({ activeCategorySlug }: SidebarProps) {
 
                   <div className="mt-3">
                     <h4
-                      className={ui.blog.sidebarPostTitle}
+                      className="blog-sidebarPostTitle"
                       dangerouslySetInnerHTML={{
                         __html: item.title.rendered,
                       }}

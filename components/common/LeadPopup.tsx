@@ -5,7 +5,7 @@ import clsx from "clsx";
 import { CheckCircle2, TrendingUp } from "lucide-react";
 import type { LeadPopUpProps } from "@/interface/common";
 import { leadPopupContent } from "@/config/common";
-import { ui } from "@/config/theme";
+import { footer } from "@/config/site";
 
 export default function LeadPopUp({ open, onClose }: LeadPopUpProps) {
   const [submitted, setSubmitted] = useState(false);
@@ -17,11 +17,15 @@ export default function LeadPopUp({ open, onClose }: LeadPopUpProps) {
     email: "",
     phone: "",
     company: "",
+    service: [] as string[],
+    message: "",
   });
 
   if (!open) return null; // hide when closed
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+  ) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
     setError("");
   };
@@ -40,7 +44,10 @@ export default function LeadPopUp({ open, onClose }: LeadPopUpProps) {
       const res = await fetch("/api/zoho/lead", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          ...formData,
+          service: formData.service.join(", "),
+        }),
       });
       if (!res.ok) throw new Error(leadPopupContent.submissionFailedError);
 
@@ -49,7 +56,7 @@ export default function LeadPopUp({ open, onClose }: LeadPopUpProps) {
       // reset form and close modal after 2s
       setTimeout(() => {
         setSubmitted(false);
-        setFormData({ firstName: "", lastName: "", email: "", phone: "", company: "" });
+        setFormData({ firstName: "", lastName: "", email: "", phone: "", company: "", service: [] as string[], message: "" }); // Changed to array
         onClose();
       }, 2000);
     } catch (err) {
@@ -61,17 +68,17 @@ export default function LeadPopUp({ open, onClose }: LeadPopUpProps) {
 
   return (
     <div
-      className={ui.leadPopup.overlay}
+      className="leadPopup-overlay"
       onClick={onClose} // close on overlay click
     >
       <div
-        className={ui.leadPopup.panel}
+        className="leadPopup-panel"
         onClick={(e) => e.stopPropagation()} // prevent closing when clicking inside
       >
         {/* Close button */}
         <button
           onClick={onClose}
-          className={clsx(ui.leadPopup.closeButton, ui.interactive.focusRing)}
+          className={clsx("leadPopup-closeButton", "interactive-focus-ring")}
           aria-label={leadPopupContent.closeModalAriaLabel}
         >
           <svg className="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
@@ -84,109 +91,161 @@ export default function LeadPopUp({ open, onClose }: LeadPopUpProps) {
         </button>
 
         {submitted ? (
-          <div className={ui.leadPopup.successShell}>
-            <div className={ui.leadPopup.successIconWrap}>
-              <CheckCircle2 className={ui.leadPopup.successIcon} />
+          <div className="leadPopup-successShell">
+            <div className="leadPopup-successIconWrap">
+              <CheckCircle2 className="leadPopup-successIcon" />
             </div>
-            <h3 className={ui.leadPopup.title}>{leadPopupContent.success.title}</h3>
-            <p className={ui.leadPopup.successDescription}>
+            <h3 className="leadPopup-title">{leadPopupContent.success.title}</h3>
+            <p className="leadPopup-successDescription">
               {leadPopupContent.success.description}
             </p>
           </div>
         ) : (
-          <div className={ui.leadPopup.content}>
-            <div className={ui.leadPopup.header}>
-              <div className={ui.leadPopup.headerIconWrap}>
-                <TrendingUp className={ui.leadPopup.headerIcon} />
+          <div className="leadPopup-content">
+            <div className="leadPopup-header">
+              <div className="leadPopup-headerIconWrap">
+                <TrendingUp className="leadPopup-headerIcon" />
               </div>
-              <h3 className={ui.leadPopup.title}>{leadPopupContent.modal.title}</h3>
-              <p className={ui.leadPopup.description}>
+              <h3 className="leadPopup-title">{leadPopupContent.modal.title}</h3>
+              <p className="leadPopup-description">
                 {leadPopupContent.modal.description}
               </p>
             </div>
 
             {error && (
-              <div className={ui.leadPopup.errorBox}>
-                <p className={ui.leadPopup.errorText}>{error}</p>
+              <div className="leadPopup-errorBox">
+                <p className="leadPopup-errorText">{error}</p>
               </div>
             )}
 
-            <form onSubmit={handleSubmit} className={ui.leadPopup.form}>
-              <div className={ui.leadPopup.nameGrid}>
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div className="grid grid-cols-[120px_1fr] items-center gap-4">
+                <label className="text-sm font-medium text-foreground text-right">{leadPopupContent.fields.firstName}</label>
                 <input
                   type="text"
                   name="firstName"
-                  placeholder={leadPopupContent.fields.firstName}
                   value={formData.firstName}
                   onChange={handleInputChange}
                   required
-                  className={clsx(ui.leadPopup.input, ui.interactive.focusRing)}
-                />
-                <input
-                  type="text"
-                  name="lastName"
-                  placeholder={leadPopupContent.fields.lastName}
-                  value={formData.lastName}
-                  onChange={handleInputChange}
-                  required
-                  className={clsx(ui.leadPopup.input, ui.interactive.focusRing)}
+                  className={clsx("leadPopup-input", "interactive-focus-ring")}
                 />
               </div>
 
-              <input
-                type="email"
-                name="email"
-                placeholder={leadPopupContent.fields.email}
-                value={formData.email}
-                onChange={handleInputChange}
-                required
-                className={clsx(ui.leadPopup.input, ui.interactive.focusRing)}
-              />
-
-              <input
-                type="text"
-                name="company"
-                placeholder={leadPopupContent.fields.company}
-                value={formData.company}
-                onChange={handleInputChange}
-                className={clsx(ui.leadPopup.input, ui.interactive.focusRing)}
-              />
-
-              <input
-                type="tel"
-                name="phone"
-                placeholder={leadPopupContent.fields.phone}
-                value={formData.phone}
-                onChange={handleInputChange}
-                className={clsx(ui.leadPopup.input, ui.interactive.focusRing)}
-              />
-
-              <label className={ui.leadPopup.consent}>
+              <div className="grid grid-cols-[120px_1fr] items-center gap-4">
+                <label className="text-sm font-medium text-foreground text-right">{leadPopupContent.fields.lastName}</label>
                 <input
-                  type="checkbox"
+                  type="text"
+                  name="lastName"
+                  value={formData.lastName}
+                  onChange={handleInputChange}
                   required
-                  className={clsx(ui.leadPopup.checkbox, ui.interactive.focusRing)}
+                  className={clsx("leadPopup-input", "interactive-focus-ring")}
                 />
-                <span>
-                  {leadPopupContent.consentPrefix}{" "}
-                  <a
-                    href={leadPopupContent.privacyPolicyHref}
-                    className={ui.leadPopup.privacyLink}
-                  >
-                    {leadPopupContent.privacyPolicyLabel}
-                  </a>
-                </span>
-              </label>
+              </div>
 
-              <button
-                type="submit"
-                disabled={loading}
-                className={clsx(ui.leadPopup.submitButton, ui.interactive.focusRing)}
-              >
-                {loading
-                  ? leadPopupContent.submittingLabel
-                  : leadPopupContent.submitLabel}
-              </button>
+              <div className="grid grid-cols-[120px_1fr] items-center gap-4">
+                <label className="text-sm font-medium text-foreground text-right">{leadPopupContent.fields.email}</label>
+                <input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  required
+                  className={clsx("leadPopup-input", "interactive-focus-ring")}
+                />
+              </div>
+
+              <div className="grid grid-cols-[120px_1fr] items-center gap-4">
+                <label className="text-sm font-medium text-foreground text-right">{leadPopupContent.fields.company}</label>
+                <input
+                  type="text"
+                  name="company"
+                  value={formData.company}
+                  onChange={handleInputChange}
+                  className={clsx("leadPopup-input", "interactive-focus-ring")}
+                />
+              </div>
+
+              <div className="grid grid-cols-[120px_1fr] items-center gap-4">
+                <label className="text-sm font-medium text-foreground text-right">{leadPopupContent.fields.phone}</label>
+                <input
+                  type="tel"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleInputChange}
+                  className={clsx("leadPopup-input", "interactive-focus-ring")}
+                />
+              </div>
+
+              <div className="grid grid-cols-[120px_1fr] items-start gap-4 py-2">
+                <label className="text-sm font-medium text-foreground text-right mt-1.5 flex flex-col justify-start h-full">
+                  {leadPopupContent.fields.service}
+                </label>
+                <div className="flex flex-wrap items-center gap-4">
+                  {footer.services.map((s) => (
+                    <label key={s.label} className="flex items-center gap-2 text-sm text-foreground cursor-pointer group">
+                      <input
+                        type="checkbox"
+                        checked={formData.service.includes(s.label)}
+                        onChange={(e) => {
+                          const checked = e.target.checked;
+                          setFormData((prev) => ({
+                            ...prev,
+                            service: checked
+                              ? [...prev.service, s.label]
+                              : prev.service.filter((item) => item !== s.label)
+                          }));
+                        }}
+                        className={clsx("leadPopup-checkbox", "interactive-focus-ring")}
+                      />
+                      <span className="leading-none group-hover:text-primary transition-colors whitespace-nowrap">{s.label}</span>
+                    </label>
+                  ))}
+                </div>
+              </div>
+
+              <div className="grid grid-cols-[120px_1fr] items-start gap-4">
+                <label className="text-sm font-medium text-foreground text-right mt-3 flex flex-col justify-start h-full">{leadPopupContent.fields.message}</label>
+                <textarea
+                  name="message"
+                  value={formData.message}
+                  onChange={handleInputChange}
+                  className={clsx("leadPopup-input", "interactive-focus-ring", "min-h-[100px] py-3 resize-y")}
+                />
+              </div>
+
+              <div className="grid grid-cols-[120px_1fr] items-center gap-4 mt-2">
+                <div className="col-start-2 flex items-start gap-2 pt-2 text-xs text-muted-foreground">
+                  <input
+                    type="checkbox"
+                    required
+                    className={clsx("leadPopup-checkbox", "interactive-focus-ring")}
+                  />
+                  <span>
+                    {leadPopupContent.consentPrefix}{" "}
+                    <a
+                      href={leadPopupContent.privacyPolicyHref}
+                      className="leadPopup-privacyLink"
+                    >
+                      {leadPopupContent.privacyPolicyLabel}
+                    </a>
+                  </span>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-[120px_1fr] items-center gap-4 mt-4">
+                <div className="col-start-2">
+                  <button
+                    type="submit"
+                    disabled={loading}
+                    className={clsx("leadPopup-submitButton", "interactive-focus-ring")}
+                  >
+                    {loading
+                      ? leadPopupContent.submittingLabel
+                      : leadPopupContent.submitLabel}
+                  </button>
+                </div>
+              </div>
             </form>
           </div>
         )}

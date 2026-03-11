@@ -4,6 +4,7 @@ export async function createZohoLead(accessToken: string, lead: {
   email?: string;
   phone?: string;
   company?: string;
+  service?: string;
   message?: string;
 }) {
   const res = await fetch(
@@ -22,7 +23,10 @@ export async function createZohoLead(accessToken: string, lead: {
             Email: lead.email || "",
             Phone: lead.phone || "",
             Company: lead.company || "Website Lead",
-            Description: lead.message || "",
+            Description: [
+              lead.service ? `Service: ${lead.service}` : "",
+              lead.message ? `Message: ${lead.message}` : ""
+            ].filter(Boolean).join("\n\n") || "",
             Lead_Source: process.env.ZOHO_LEAD_SOURCE!,
             Campaign_Name: process.env.ZOHO_CAMPAIGN_NAME!,
           },

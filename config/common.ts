@@ -25,6 +25,8 @@ export const leadPopupContent = {
     email: "Work Email *",
     company: "Company (optional)",
     phone: "Phone (optional)",
+    service: "Select Service",
+    message: "How can we help?",
   },
   consentPrefix: "I agree to receive insights and analysis. See our",
   privacyPolicyLabel: "Privacy Policy",

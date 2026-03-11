@@ -7,6 +7,7 @@ type ZohoLeadPayload = {
   email?: unknown;
   phone?: unknown;
   company?: unknown;
+  service?: unknown;
   message?: unknown;
 };
 
@@ -22,6 +23,7 @@ export async function POST(req: Request) {
     const email = toText(body.email);
     const phone = toText(body.phone);
     const company = toText(body.company);
+    const service = toText(body.service);
     const message = toText(body.message);
 
     const accessToken = await getZohoAccessToken(process.env.ZOHO_CRM_TOKEN!);
@@ -32,6 +34,7 @@ export async function POST(req: Request) {
       email,
       phone,
       company,
+      service,
       message,
     });
 

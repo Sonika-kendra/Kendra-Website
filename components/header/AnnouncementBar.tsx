@@ -3,7 +3,6 @@
 import { useState } from "react";
 import Link from "next/link";
 import { announcement } from "@/config/site";
-import { ui } from "@/config/theme";
 import clsx from "clsx";
 
 export default function AnnouncementBar() {
@@ -12,8 +11,8 @@ export default function AnnouncementBar() {
   if (!visible) return null;
 
   return (
-    <div className={ui.announcement.root}>
-      <div className={ui.announcement.container}>
+    <div className="announcement-root">
+      <div className="announcement-container">
         <p className="text-center font-sans text-foreground">
           {announcement.message
             .split(announcement.ctaLabel)
@@ -23,7 +22,7 @@ export default function AnnouncementBar() {
                 {i < arr.length - 1 && (
                   <Link
                     href={announcement.ctaHref}
-                    className={clsx(ui.announcement.link, ui.interactive.focusRing)}
+                    className={clsx("announcement-link", "interactive-focus-ring")}
                   >
                     {announcement.ctaLabel}
                   </Link>

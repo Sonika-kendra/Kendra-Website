@@ -1,9 +1,10 @@
 import "./globals.css";
+import "./theme-components.css";
 import { AnnouncementBar, Navbar } from "@features/header";
 import { Footer } from "@features/footer";
 import type { Metadata, Viewport } from "next";
 import { siteMeta } from "@config/site";
-import { themeConfig, ui } from "@config/theme";
+import { themeConfig } from "@config/theme";
 import { Providers } from "@features/common";
 
 export const metadata: Metadata = siteMeta as unknown as Metadata;
@@ -19,7 +20,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={ui.layout.body}>
+      <body className="layout-body">
         <Providers>
           <AnnouncementBar />
           <Navbar />

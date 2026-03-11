@@ -4,7 +4,7 @@ import { Monitor, Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import clsx from "clsx";
-import { themeModes, ui } from "@/config/theme";
+import { themeModes } from "@/config/theme";
 import { themeSwitcherContent } from "@/config/header";
 
 type ThemeId = "light" | "dark" | "system";
@@ -29,7 +29,7 @@ export default function ThemeSwitcher() {
     theme && isThemeId(theme) ? theme : themeModes[2];
 
   return (
-    <div className={ui.themeSwitcher.shell}>
+    <div className="themeSwitcher-shell">
       {THEMES.map(({ id, icon: Icon }) => {
         const isActive = selectedTheme === id;
 
@@ -39,13 +39,13 @@ export default function ThemeSwitcher() {
             aria-label={`${themeSwitcherContent.setThemeAriaPrefix} ${id} ${themeSwitcherContent.setThemeAriaSuffix}`}
             onClick={() => setTheme(id)}
             className={clsx(
-              ui.themeSwitcher.button,
-              ui.interactive.focusRing,
-              isActive ? ui.themeSwitcher.active : ui.themeSwitcher.inactive
+              "themeSwitcher-button",
+              "interactive-focus-ring",
+              isActive ? "themeSwitcher-active" : "themeSwitcher-inactive"
             )}
           >
             <Icon
-              className={clsx(ui.themeSwitcher.icon, isActive ? "scale-110" : "scale-95")}
+              className={clsx("themeSwitcher-icon", isActive ? "scale-110" : "scale-95")}
             />
           </button>
         );
