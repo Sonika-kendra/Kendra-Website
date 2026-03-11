@@ -24,7 +24,7 @@ export default function GlobalFootprint() {
             </p>
             <button
               type="submit"
-              className="w-full rounded-lg bg-navy px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-navy/90 hover:shadow-lg disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+              className="btn-hero w-full gap-2 disabled:cursor-not-allowed disabled:opacity-60"
             >
               <Send className="h-4 w-4" />
               {globalFootprintContent.ctaButtonLabel}
