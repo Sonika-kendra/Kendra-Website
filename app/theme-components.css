@@ -63,6 +63,18 @@
   .footer-root {
     @apply border-t border-border bg-muted text-foreground;
   }
+  .subscription-root {
+    @apply border-t border-border bg-background text-foreground;
+  }
+  .subscription-container {
+    @apply mx-auto max-w-7xl px-4 py-8 md:py-10 lg:px-6;
+  }
+  .subscription-shell {
+    @apply flex flex-col gap-4 rounded-xl border border-border bg-muted/40 p-5 lg:flex-row lg:items-center lg:justify-between lg:gap-8 lg:p-6;
+  }
+  .subscription-heading {
+    @apply text-xl font-semibold text-foreground;
+  }
   .footer-container {
     @apply mx-auto max-w-7xl px-4 py-8 md:py-10 lg:px-6;
   }
