@@ -77,6 +77,7 @@ export const footer = {
     services: "Services",
     legal: "Legal",
     connect: "Connect",
+    newsletter: "Newsletter",
   },
   companyName: "Kendra International",
   copyrightSuffix: "All rights reserved.",
@@ -108,6 +109,14 @@ export const footer = {
     { href: WebsiteUrlConfig.Phone, label: "Phone" },
     { href: WebsiteUrlConfig.Email, label: "Email" },
   ],
+  newsletter: {
+    description: "Get practical strategy updates and insights in your inbox.",
+    emailPlaceholder: "Enter your email",
+    buttonLabel: "Subscribe",
+    submittingLabel: "Subscribing...",
+    successMessage: "Thanks for subscribing. We will stay in touch.",
+    errorMessage: "Unable to subscribe right now. Please try again.",
+  },
 };
 
 export const footerCta = {

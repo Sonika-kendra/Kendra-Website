@@ -6,6 +6,7 @@ import type { Metadata, Viewport } from "next";
 import { siteMeta } from "@config/site";
 import { themeConfig } from "@config/theme";
 import { Providers } from "@features/common";
+import { Analytics } from "@vercel/analytics/next";
 
 export const metadata: Metadata = siteMeta as unknown as Metadata;
 
@@ -27,6 +28,7 @@ export default function RootLayout({
           {children}
           <Footer />
         </Providers>
+        <Analytics />
       </body>
     </html>
   );
