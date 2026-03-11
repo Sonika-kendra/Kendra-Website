@@ -11,6 +11,7 @@ export default function LeadPopUp({ open, onClose }: LeadPopUpProps) {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [consentAccepted, setConsentAccepted] = useState(false);
   const [serviceDropdownOpen, setServiceDropdownOpen] = useState(false);
   const serviceDropdownRef = useRef<HTMLDivElement>(null);
   const selectAllRef = useRef<HTMLInputElement>(null);
@@ -63,6 +64,21 @@ export default function LeadPopUp({ open, onClose }: LeadPopUpProps) {
   }, [open]);
 
   useEffect(() => {
+    if (!open) return;
+
+    const previousBodyOverflow = document.body.style.overflow;
+    const previousHtmlOverflow = document.documentElement.style.overflow;
+
+    document.body.style.overflow = "hidden";
+    document.documentElement.style.overflow = "hidden";
+
+    return () => {
+      document.body.style.overflow = previousBodyOverflow;
+      document.documentElement.style.overflow = previousHtmlOverflow;
+    };
+  }, [open]);
+
+  useEffect(() => {
     if (selectAllRef.current) {
       selectAllRef.current.indeterminate = someServicesSelected;
     }
@@ -97,6 +113,10 @@ export default function LeadPopUp({ open, onClose }: LeadPopUpProps) {
       setError(leadPopupContent.requiredFieldsError);
       return;
     }
+    if (!consentAccepted) {
+      setError(leadPopupContent.consentRequiredError);
+      return;
+    }
 
     setLoading(true);
     setError("");
@@ -118,6 +138,7 @@ export default function LeadPopUp({ open, onClose }: LeadPopUpProps) {
       setTimeout(() => {
         setSubmitted(false);
         setServiceDropdownOpen(false);
+        setConsentAccepted(false);
         setFormData({ firstName: "", lastName: "", email: "", phone: "", company: "", service: [] as string[], message: "" }); // Changed to array
         onClose();
       }, 2000);
@@ -320,11 +341,16 @@ export default function LeadPopUp({ open, onClose }: LeadPopUpProps) {
                 />
               </div>
 
-              {/* <div className="mt-0.5 grid grid-cols-1 gap-1">
-                <div className="flex items-start gap-2 text-xs text-muted-foreground">
+              <div className="grid grid-cols-1 gap-1">
+                <label htmlFor="lead-popup-consent" className="leadPopup-consent">
                   <input
+                    id="lead-popup-consent"
                     type="checkbox"
-                    required
+                    checked={consentAccepted}
+                    onChange={(e) => {
+                      setConsentAccepted(e.target.checked);
+                      setError("");
+                    }}
                     className={clsx("leadPopup-checkbox", "interactive-focus-ring")}
                   />
                   <span>
@@ -336,10 +362,10 @@ export default function LeadPopUp({ open, onClose }: LeadPopUpProps) {
                       {leadPopupContent.privacyPolicyLabel}
                     </a>
                   </span>
-                </div>
-              </div> */}
+                </label>
+              </div>
 
-              <div className="mt-4 grid grid-cols-1 gap-1">
+              <div className="grid grid-cols-1 gap-1">
                 <div>
                   <button
                     type="submit"

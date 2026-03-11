@@ -7,6 +7,7 @@ export const logoContent = {
 
 export const leadPopupContent = {
   requiredFieldsError: "Please fill in all required fields (*)",
+  consentRequiredError: "Please accept the privacy policy to continue.",
   submissionFailedError: "Submission failed",
   fallbackError: "Something went wrong",
   closeModalAriaLabel: "Close modal",
