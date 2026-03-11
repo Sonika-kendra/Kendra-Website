@@ -1,296 +1,62 @@
 "use client";
 
-import { useState } from "react";
 import { CheckCircle2, TrendingUp } from "lucide-react";
 import { businessHealthCheckContent } from "@/config/home";
+import { useModal } from "@/context/ModalContext";
 
 export default function BusinessHealthCheck() {
-  const [showModal, setShowModal] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
-  const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    revenue: "",
-    employees: "",
-    industry: "",
-    phone: "",
-    company: "",
-  });
-  const inputClassName =
-    "w-full rounded-lg border border-slate-300 bg-white px-4 py-3 text-sm text-slate-900 outline-none transition-colors placeholder:text-slate-400 focus:border-slate-500 focus:ring-1 focus:ring-slate-300 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100 dark:placeholder:text-slate-500 dark:focus:border-slate-500 dark:focus:ring-slate-700";
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-    setError("");
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    if (!formData.email || !formData.firstName || !formData.lastName) {
-      setError(businessHealthCheckContent.requiredFieldsError);
-      return;
-    }
-
-    setLoading(true);
-    setError("");
-    
-    try {
-      // Submit to Zoho CRM
-      const response = await fetch("/api/zoho/lead", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          firstName: formData.firstName,
-          lastName: formData.lastName,
-          email: formData.email,
-          phone: formData.phone,
-          company: formData.company || formData.industry,
-        }),
-      });
-
-      if (!response.ok) {
-        throw new Error(businessHealthCheckContent.submitError);
-      }
-
-      setSubmitted(true);
-      setTimeout(() => {
-        setShowModal(false);
-        setSubmitted(false);
-        setFormData({
-          firstName: "",
-          lastName: "",
-          email: "",
-          revenue: "",
-          employees: "",
-          industry: "",
-          phone: "",
-          company: "",
-        });
-      }, 2000);
-    } catch (err) {
-      setError(
-        err instanceof Error ? err.message : businessHealthCheckContent.unexpectedError
-      );
-      console.error("Submission error:", err);
-    } finally {
-      setLoading(false);
-    }
-  };
+  const { openLeadPopUp } = useModal();
 
   return (
-    <>
-      <section className="py-16 md:py-20">
-        <div className="mx-auto max-w-6xl px-6 lg:px-8">
-          <div className="relative overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-2xl dark:border-slate-700/70 dark:bg-slate-900/90 dark:shadow-[0_30px_90px_-35px_rgba(2,6,23,1)]">
-            <div className="pointer-events-none absolute inset-0 hidden dark:block dark:bg-[radial-gradient(circle_at_top,_rgba(59,130,246,0.22),_transparent_55%)]" />
-            <div className="pointer-events-none absolute inset-0 hidden dark:block dark:bg-[radial-gradient(circle_at_85%_10%,_rgba(16,185,129,0.14),_transparent_40%)]" />
+    <section className="py-16 md:py-20">
+      <div className="mx-auto max-w-6xl px-6 lg:px-8">
+        <div className="relative overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-2xl dark:border-slate-700/70 dark:bg-slate-900/90 dark:shadow-[0_30px_90px_-35px_rgba(2,6,23,1)]">
+          <div className="pointer-events-none absolute inset-0 hidden dark:block dark:bg-[radial-gradient(circle_at_top,_rgba(59,130,246,0.22),_transparent_55%)]" />
+          <div className="pointer-events-none absolute inset-0 hidden dark:block dark:bg-[radial-gradient(circle_at_85%_10%,_rgba(16,185,129,0.14),_transparent_40%)]" />
 
-            <div className="relative p-8 text-center md:p-16">
-              <div className="flex justify-center mb-6">
-                <div className="rounded-full bg-slate-100 p-3 dark:bg-slate-800/70">
-                  <TrendingUp className="h-8 w-8 text-slate-700 dark:text-slate-200" strokeWidth={1.5} />
-                </div>
+          <div className="relative p-8 text-center md:p-16">
+            <div className="mb-6 flex justify-center">
+              <div className="rounded-full bg-slate-100 p-3 dark:bg-slate-800/70">
+                <TrendingUp className="h-8 w-8 text-slate-700 dark:text-slate-200" strokeWidth={1.5} />
               </div>
+            </div>
 
-              <h2 className="text-3xl font-display font-bold text-slate-900 dark:text-white sm:text-4xl">
-                {businessHealthCheckContent.sectionTitle}
-              </h2>
-              <p className="mx-auto mt-4 max-w-2xl text-lg leading-relaxed text-slate-600 dark:text-slate-300">
-                {businessHealthCheckContent.sectionDescription}
-              </p>
+            <h2 className="text-3xl font-display font-bold text-slate-900 dark:text-white sm:text-4xl">
+              {businessHealthCheckContent.sectionTitle}
+            </h2>
+            <p className="mx-auto mt-4 max-w-2xl text-lg leading-relaxed text-slate-600 dark:text-slate-300">
+              {businessHealthCheckContent.sectionDescription}
+            </p>
 
-              <div className="mt-12 grid gap-6 md:grid-cols-3">
-                {businessHealthCheckContent.cards.map((card) => (
-                  <div
-                    key={card.title}
-                    className="rounded-xl border border-slate-200 bg-slate-50 p-6 backdrop-blur-sm dark:border-slate-700 dark:bg-slate-800/70"
-                  >
-                    <CheckCircle2 className="mx-auto mb-3 h-6 w-6 text-slate-700 dark:text-slate-200" />
-                    <h3 className="mb-2 font-semibold text-slate-900 dark:text-white">
-                      {card.title}
-                    </h3>
-                    <p className="text-sm text-slate-600 dark:text-slate-300">
-                      {card.description}
-                    </p>
-                  </div>
-                ))}
-              </div>
-
-              <div className="mt-12">
-                <button
-                  onClick={() => setShowModal(true)}
-                  className="inline-flex items-center justify-center rounded-lg bg-slate-900 px-10 py-3.5 text-sm font-semibold text-white transition-all hover:bg-slate-800 hover:shadow-lg dark:bg-white dark:text-slate-900 dark:hover:bg-slate-200"
+            <div className="mt-12 grid gap-6 md:grid-cols-3">
+              {businessHealthCheckContent.cards.map((card) => (
+                <div
+                  key={card.title}
+                  className="rounded-xl border border-slate-200 bg-slate-50 p-6 backdrop-blur-sm dark:border-slate-700 dark:bg-slate-800/70"
                 >
-                  {businessHealthCheckContent.launchButtonLabel}
-                </button>
-              </div>
+                  <CheckCircle2 className="mx-auto mb-3 h-6 w-6 text-slate-700 dark:text-slate-200" />
+                  <h3 className="mb-2 font-semibold text-slate-900 dark:text-white">
+                    {card.title}
+                  </h3>
+                  <p className="text-sm text-slate-600 dark:text-slate-300">
+                    {card.description}
+                  </p>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-12">
+              <button
+                type="button"
+                onClick={openLeadPopUp}
+                className="inline-flex items-center justify-center rounded-lg bg-slate-900 px-10 py-3.5 text-sm font-semibold text-white transition-all hover:bg-slate-800 hover:shadow-lg dark:bg-white dark:text-slate-900 dark:hover:bg-slate-200"
+              >
+                {businessHealthCheckContent.launchButtonLabel}
+              </button>
             </div>
           </div>
         </div>
-      </section>
-
-      {/* Modal */}
-      {showModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4 py-8">
-          <div className="relative w-full max-w-md overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl dark:border-slate-700 dark:bg-slate-900">
-            {/* Close button */}
-            <button
-              onClick={() => setShowModal(false)}
-              className="absolute right-4 top-4 z-10 p-1 text-slate-400 transition-colors hover:text-slate-700 dark:text-slate-500 dark:hover:text-slate-200"
-              aria-label={businessHealthCheckContent.closeModalAriaLabel}
-            >
-              <svg className="h-6 w-6" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
-              </svg>
-            </button>
-
-            {submitted ? (
-              <div className="p-8 text-center">
-                <div className="mb-4 inline-flex h-16 w-16 items-center justify-center rounded-full bg-green-50 dark:bg-green-900/20">
-                  <CheckCircle2 className="h-8 w-8 text-green-600" />
-                </div>
-                <h3 className="text-xl font-display font-bold text-slate-900 dark:text-white">
-                  {businessHealthCheckContent.success.title}
-                </h3>
-                <p className="mt-2 text-slate-600 dark:text-slate-300">
-                  {businessHealthCheckContent.success.description}
-                </p>
-              </div>
-            ) : (
-              <div className="p-8">
-                <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800">
-                  <TrendingUp className="h-6 w-6 text-slate-700 dark:text-slate-200" />
-                </div>
-                <h3 className="text-xl font-display font-bold text-slate-900 dark:text-white">
-                  {businessHealthCheckContent.modal.title}
-                </h3>
-                <p className="mt-2 text-sm text-slate-600 dark:text-slate-300">
-                  {businessHealthCheckContent.modal.description}
-                </p>
-
-                <form onSubmit={handleSubmit} className="mt-6 space-y-4">
-                  {error && (
-                    <div className="p-3 rounded-lg bg-red-50 border border-red-200">
-                      <p className="text-sm text-red-700">{error}</p>
-                    </div>
-                  )}
-
-                  <div className="grid grid-cols-2 gap-3">
-                    <input
-                      type="text"
-                      name="firstName"
-                      placeholder={businessHealthCheckContent.fields.firstName}
-                      value={formData.firstName}
-                      onChange={handleInputChange}
-                      required
-                      className={inputClassName}
-                    />
-                    <input
-                      type="text"
-                      name="lastName"
-                      placeholder={businessHealthCheckContent.fields.lastName}
-                      value={formData.lastName}
-                      onChange={handleInputChange}
-                      required
-                      className={inputClassName}
-                    />
-                  </div>
-
-                  <input
-                    type="email"
-                    name="email"
-                    placeholder={businessHealthCheckContent.fields.email}
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    required
-                    className={inputClassName}
-                  />
-
-                  <input
-                    type="tel"
-                    name="phone"
-                    placeholder={businessHealthCheckContent.fields.phone}
-                    value={formData.phone}
-                    onChange={handleInputChange}
-                    className={inputClassName}
-                  />
-
-                  <input
-                    type="text"
-                    name="company"
-                    placeholder={businessHealthCheckContent.fields.company}
-                    value={formData.company}
-                    onChange={handleInputChange}
-                    className={inputClassName}
-                  />
-
-                  <input
-                    type="text"
-                    name="revenue"
-                    placeholder={businessHealthCheckContent.fields.revenue}
-                    value={formData.revenue}
-                    onChange={handleInputChange}
-                    className={inputClassName}
-                  />
-
-                  <input
-                    type="number"
-                    name="employees"
-                    placeholder={businessHealthCheckContent.fields.employees}
-                    value={formData.employees}
-                    onChange={handleInputChange}
-                    className={inputClassName}
-                  />
-
-                  <select
-                    name="industry"
-                    value={formData.industry}
-                    onChange={handleInputChange}
-                    className={inputClassName}
-                  >
-                    <option value="">{businessHealthCheckContent.fields.industry}</option>
-                    {businessHealthCheckContent.industryOptions.map((industry) => (
-                      <option key={industry} value={industry}>
-                        {industry}
-                      </option>
-                    ))}
-                  </select>
-
-                  <label className="flex items-start gap-2 pt-2 text-xs text-slate-600 dark:text-slate-300">
-                    <input type="checkbox" required className="mt-1" />
-                    <span>
-                      {businessHealthCheckContent.consentPrefix}{" "}
-                      <a
-                        href="/privacy"
-                        className="underline text-slate-900 transition-colors hover:text-slate-700 dark:text-white dark:hover:text-slate-200"
-                      >
-                        {businessHealthCheckContent.privacyPolicyLabel}
-                      </a>
-                    </span>
-                  </label>
-
-                  <button
-                    disabled={loading}
-                    type="submit"
-                    className="mt-6 w-full rounded-lg bg-slate-900 py-3 text-sm font-semibold text-white transition-colors hover:bg-slate-800 disabled:cursor-not-allowed disabled:opacity-60 dark:bg-white dark:text-slate-900 dark:hover:bg-slate-200"
-                  >
-                    {loading
-                      ? businessHealthCheckContent.submittingLabel
-                      : businessHealthCheckContent.submitLabel}
-                  </button>
-                </form>
-              </div>
-            )}
-          </div>
-        </div>
-      )}
-    </>
+      </div>
+    </section>
   );
 }
