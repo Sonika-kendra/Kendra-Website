@@ -77,7 +77,7 @@ export const ui = {
   },
   leadPopup: {
     overlay:
-      "fixed inset-0 z-50 flex items-center justify-center bg-black/60 px-4 py-8 backdrop-blur-[2px]",
+      "fixed inset-0 z-[100] flex items-center justify-center bg-black/60 px-4 py-8 backdrop-blur-[2px]",
     panel:
       "relative w-full max-w-md overflow-hidden rounded-2xl border border-border bg-card text-card-foreground shadow-2xl",
     closeButton:
