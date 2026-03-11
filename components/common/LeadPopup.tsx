@@ -118,9 +118,9 @@ export default function LeadPopUp({ open, onClose }: LeadPopUpProps) {
               </div>
             )}
 
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div className="grid grid-cols-[120px_1fr] items-center gap-4">
-                <label className="text-sm font-medium text-foreground text-right">{leadPopupContent.fields.firstName}</label>
+            <form onSubmit={handleSubmit} className="space-y-3">
+              <div className="grid grid-cols-1 gap-1.5 sm:grid-cols-[120px_1fr] sm:items-center sm:gap-3">
+                <label className="text-sm font-medium text-foreground sm:text-right">{leadPopupContent.fields.firstName}</label>
                 <input
                   type="text"
                   name="firstName"
@@ -131,8 +131,8 @@ export default function LeadPopUp({ open, onClose }: LeadPopUpProps) {
                 />
               </div>
 
-              <div className="grid grid-cols-[120px_1fr] items-center gap-4">
-                <label className="text-sm font-medium text-foreground text-right">{leadPopupContent.fields.lastName}</label>
+              <div className="grid grid-cols-1 gap-1.5 sm:grid-cols-[120px_1fr] sm:items-center sm:gap-3">
+                <label className="text-sm font-medium text-foreground sm:text-right">{leadPopupContent.fields.lastName}</label>
                 <input
                   type="text"
                   name="lastName"
@@ -143,8 +143,8 @@ export default function LeadPopUp({ open, onClose }: LeadPopUpProps) {
                 />
               </div>
 
-              <div className="grid grid-cols-[120px_1fr] items-center gap-4">
-                <label className="text-sm font-medium text-foreground text-right">{leadPopupContent.fields.email}</label>
+              <div className="grid grid-cols-1 gap-1.5 sm:grid-cols-[120px_1fr] sm:items-center sm:gap-3">
+                <label className="text-sm font-medium text-foreground sm:text-right">{leadPopupContent.fields.email}</label>
                 <input
                   type="email"
                   name="email"
@@ -155,8 +155,8 @@ export default function LeadPopUp({ open, onClose }: LeadPopUpProps) {
                 />
               </div>
 
-              <div className="grid grid-cols-[120px_1fr] items-center gap-4">
-                <label className="text-sm font-medium text-foreground text-right">{leadPopupContent.fields.company}</label>
+              <div className="grid grid-cols-1 gap-1.5 sm:grid-cols-[120px_1fr] sm:items-center sm:gap-3">
+                <label className="text-sm font-medium text-foreground sm:text-right">{leadPopupContent.fields.company}</label>
                 <input
                   type="text"
                   name="company"
@@ -166,8 +166,8 @@ export default function LeadPopUp({ open, onClose }: LeadPopUpProps) {
                 />
               </div>
 
-              <div className="grid grid-cols-[120px_1fr] items-center gap-4">
-                <label className="text-sm font-medium text-foreground text-right">{leadPopupContent.fields.phone}</label>
+              <div className="grid grid-cols-1 gap-1.5 sm:grid-cols-[120px_1fr] sm:items-center sm:gap-3">
+                <label className="text-sm font-medium text-foreground sm:text-right">{leadPopupContent.fields.phone}</label>
                 <input
                   type="tel"
                   name="phone"
@@ -177,11 +177,11 @@ export default function LeadPopUp({ open, onClose }: LeadPopUpProps) {
                 />
               </div>
 
-              <div className="grid grid-cols-[120px_1fr] items-start gap-4 py-2">
-                <label className="text-sm font-medium text-foreground text-right mt-1.5 flex flex-col justify-start h-full">
+              <div className="grid grid-cols-1 gap-2 py-1 sm:grid-cols-[120px_1fr] sm:items-start sm:gap-3">
+                <label className="text-sm font-medium text-foreground sm:mt-1.5 sm:text-right">
                   {leadPopupContent.fields.service}
                 </label>
-                <div className="flex flex-wrap items-center gap-4">
+                <div className="flex flex-wrap items-center gap-3">
                   {footer.services.map((s) => (
                     <label key={s.label} className="flex items-center gap-2 text-sm text-foreground cursor-pointer group">
                       <input
@@ -204,18 +204,18 @@ export default function LeadPopUp({ open, onClose }: LeadPopUpProps) {
                 </div>
               </div>
 
-              <div className="grid grid-cols-[120px_1fr] items-start gap-4">
-                <label className="text-sm font-medium text-foreground text-right mt-3 flex flex-col justify-start h-full">{leadPopupContent.fields.message}</label>
+              <div className="grid grid-cols-1 gap-1.5 sm:grid-cols-[120px_1fr] sm:items-start sm:gap-3">
+                <label className="text-sm font-medium text-foreground sm:mt-2 sm:text-right">{leadPopupContent.fields.message}</label>
                 <textarea
                   name="message"
                   value={formData.message}
                   onChange={handleInputChange}
-                  className={clsx("leadPopup-input", "interactive-focus-ring", "min-h-[100px] py-3 resize-y")}
+                  className={clsx("leadPopup-input", "interactive-focus-ring", "min-h-[90px] py-2.5 resize-y")}
                 />
               </div>
 
-              <div className="grid grid-cols-[120px_1fr] items-center gap-4 mt-2">
-                <div className="col-start-2 flex items-start gap-2 pt-2 text-xs text-muted-foreground">
+              <div className="mt-1 grid grid-cols-1 gap-1.5 sm:grid-cols-[120px_1fr] sm:items-center sm:gap-3">
+                <div className="flex items-start gap-2 pt-1 text-xs text-muted-foreground sm:col-start-2">
                   <input
                     type="checkbox"
                     required
@@ -233,8 +233,8 @@ export default function LeadPopUp({ open, onClose }: LeadPopUpProps) {
                 </div>
               </div>
 
-              <div className="grid grid-cols-[120px_1fr] items-center gap-4 mt-4">
-                <div className="col-start-2">
+              <div className="mt-3 grid grid-cols-1 gap-1.5 sm:grid-cols-[120px_1fr] sm:items-center sm:gap-3">
+                <div className="sm:col-start-2">
                   <button
                     type="submit"
                     disabled={loading}

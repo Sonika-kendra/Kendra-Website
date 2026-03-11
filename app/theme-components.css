@@ -112,19 +112,22 @@
 
   /* Lead Popup */
   .leadPopup-overlay {
-    @apply fixed inset-0 z-[100] flex items-center justify-center bg-black/60 px-4 py-8 backdrop-blur-[2px];
+    @apply fixed inset-0 z-[100] flex items-start justify-center overflow-y-auto bg-black/60 px-4 py-4 backdrop-blur-[2px] sm:items-center;
   }
   .leadPopup-panel {
-    @apply relative w-full max-w-md overflow-hidden rounded-2xl border border-border bg-card text-card-foreground shadow-2xl;
+    @apply relative w-full max-w-4xl rounded-2xl border border-border bg-card text-card-foreground shadow-2xl;
+    max-height: calc(100vh - 2rem);
+    max-height: calc(100dvh - 2rem);
+    overflow-y: auto;
   }
   .leadPopup-closeButton {
-    @apply absolute right-4 top-4 z-10 rounded-md p-1 text-muted-foreground transition-colors hover:text-foreground;
+    @apply absolute right-3 top-3 z-10 rounded-md p-1 text-muted-foreground transition-colors hover:text-foreground sm:right-4 sm:top-4;
   }
   .leadPopup-content {
-    @apply space-y-6 p-8;
+    @apply space-y-4 p-4 sm:p-6;
   }
   .leadPopup-header {
-    @apply mb-4 flex flex-col items-center gap-2;
+    @apply mb-2 flex flex-col items-center gap-1.5;
   }
   .leadPopup-headerIconWrap {
     @apply inline-flex h-12 w-12 items-center justify-center rounded-full bg-primary/10;
@@ -151,7 +154,7 @@
     @apply grid grid-cols-1 gap-3;
   }
   .leadPopup-input {
-    @apply w-full rounded-lg border border-input bg-background px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground outline-none transition-colors;
+    @apply w-full rounded-lg border border-input bg-background px-3 py-2.5 text-sm text-foreground placeholder:text-muted-foreground outline-none transition-colors;
   }
   .leadPopup-consent {
     @apply flex items-start gap-2 pt-2 text-xs text-muted-foreground;
@@ -163,10 +166,10 @@
     @apply underline text-primary transition-colors hover:text-accent;
   }
   .leadPopup-submitButton {
-    @apply w-full rounded-lg bg-primary py-3 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60;
+    @apply w-full rounded-lg bg-primary py-2.5 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60;
   }
   .leadPopup-successShell {
-    @apply p-8 text-center;
+    @apply p-6 text-center;
   }
   .leadPopup-successIconWrap {
     @apply mb-4 inline-flex h-16 w-16 items-center justify-center rounded-full bg-emerald-500/10;
