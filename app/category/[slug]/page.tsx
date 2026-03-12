@@ -11,6 +11,7 @@ import {
 } from "@/lib/services/blog/posts";
 import { htmlToPlainText } from "@/lib/services/blog/text";
 import type { BlogPostDetail, BlogTerm } from "@/interface/blog";
+import { ReadyToDiscuss } from "@/components/common";
 
 interface CategoryPageProps {
   params: {
@@ -162,6 +163,8 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
 
         <Sidebar activeCategorySlug={category.slug} />
       </div>
+
+      <ReadyToDiscuss />
     </div>
   );
 }

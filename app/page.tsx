@@ -11,6 +11,7 @@ import {
   Blog
 } from "@features/home";
 import { useModal } from "@/components/common/sections/leadPopup/context/ModalContext";
+import { ReadyToDiscuss } from "@/components/common";
 // import { CTA } from "@features/footer";
 
 export default function HomePage() {
@@ -42,6 +43,7 @@ export default function HomePage() {
       {/* <CTA /> */}
       <BusinessHealthCheck />
       <Blog />
+      <ReadyToDiscuss />
     </main>
   );
 }

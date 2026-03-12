@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Sidebar } from "@/components/features/blog/Sidebar";
 import { htmlToPlainText } from "@/lib/services/blog/text";
 import type { BlogPageProps, BlogPostDetail, BlogTerm } from "@/interface/blog";
+import { ReadyToDiscuss } from "@/components/common";
 
 /* -------------------- FETCH SINGLE POST -------------------- */
 async function getPostBySlug(slug: string) {
@@ -122,6 +123,7 @@ export default async function BlogDetails({ params }: BlogPageProps) {
         {/* ================= RIGHT SIDEBAR ================= */}
         <Sidebar />
       </div>
+      <ReadyToDiscuss />
     </div>
   );
 }

@@ -5,6 +5,7 @@ import { Sidebar } from "@/components/features/blog/Sidebar";
 import { getAllBlogPosts } from "@/lib/services/blog/posts";
 import { htmlToPlainText } from "@/lib/services/blog/text";
 import type { BlogPostDetail, BlogTerm } from "@/interface/blog";
+import { ReadyToDiscuss } from "@/components/common";
 
 export const metadata: Metadata = {
   title: "Blog",
@@ -107,6 +108,7 @@ export default async function BlogPage() {
 
         <Sidebar />
       </div>
+      <ReadyToDiscuss />
     </div>
   );
 }

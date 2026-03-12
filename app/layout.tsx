@@ -1,7 +1,7 @@
 import "./globals.css";
 import "./theme-components.css";
 import { AnnouncementBar, Navbar } from "@features/header";
-import { Footer, Subscription } from "@features/footer";
+import { Footer } from "@features/footer";
 import type { Metadata, Viewport } from "next";
 import { siteMeta } from "@config/site";
 import { themeConfig } from "@config/theme";
@@ -26,7 +26,7 @@ export default function RootLayout({
           <AnnouncementBar />
           <Navbar />
           {children}
-          <Subscription />
+          {/* <Subscription /> */}
           <Footer />
         </Providers>
         <Analytics />
