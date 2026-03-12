@@ -3,14 +3,14 @@ import { WebsiteUrlConfig } from "../routing";
 export const contactPageHero = {
   title: "Get in Touch",
   description:
-    "Let's discuss how we can help scale your business. Reach out today.",
+    "At Kendra International, we’re committed to helping businesses grow, streamline operations, and achieve financial resilience. Whether you’re looking for expert guidance, have a specific inquiry, or want to explore how we can collaborate, we’d love to hear from you.",
 } as const;
 
 export const contactInfoContent = {
   emailTitle: "Email",
   phoneTitle: "Phone",
   locationsTitle: "Locations",
-  locations: ["Europe", "Asia Pacific", "Americas & Latam"],
+  locations: ["UK", "Dubai", "India"],
   responseTimeTitle: "Response Time",
   responseTimeDescription:
     "We typically respond to inquiries within 24 business hours.",
