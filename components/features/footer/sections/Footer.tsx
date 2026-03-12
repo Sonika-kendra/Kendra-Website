@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import SocialIcon from "../../../common/sections/SocialIcon";
 import LinkedIn from "../../../icons/svg/Linkedin";
 import WhatsApp from "../../../icons/svg/Whatsapp";
@@ -18,12 +19,28 @@ export default function Footer() {
     <footer className="footer-root">
       <div className="footer-container">
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-6">
+
           {/* Brand */}
           <div className="lg:col-span-2 pr-6">
             <Logo width={160} height={48} priority />
+
             <p className={clsx("mt-3", "footer-bodyText")}>
               {FOOTER.brandDescription}
             </p>
+
+            {/* ICAEW Certification Badge */}
+            <div className="mt-4">
+              <Image
+                src="/partner/ICAEW-logo-300x166.webp"
+                alt="ICAEW Certification"
+                width={180}
+                height={80}
+                className="object-contain"
+              />
+              <p>
+                {FOOTER.partner}
+              </p>
+            </div>
           </div>
 
           {/* Quick Links */}
@@ -103,6 +120,7 @@ export default function Footer() {
               })}
             </div>
           </div>
+
         </div>
 
         <div className="footer-divider">

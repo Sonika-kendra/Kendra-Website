@@ -118,6 +118,7 @@ export const footer = {
     successMessage: "Thanks for subscribing. We will stay in touch.",
     errorMessage: "Unable to subscribe right now. Please try again.",
   },
+  partner: "Kendra International Limited is a member firm of the Institute of Chartered Accountants in England and Wales (ICAEW). Firm registration number: C011008276."
 };
 
 export const footerCta = {
