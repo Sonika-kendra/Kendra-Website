@@ -11,6 +11,7 @@ export const WebsiteUrlConfig = {
     Contact: '/contact',
     Privacy: '/privacy',
     Terms: '/terms',
+    Disclaimer: '/disclaimer',
     LinkedIn: 'https://www.linkedin.com/company/kendra-international/',
     Email: 'mailto:enquiries@kendra-intl.com',
     WhatsApp: 'https://api.whatsapp.com/send/?phone=447356219522&text=Hello%2C+I+am+visiting+your+website+and+would+like+to+learn+more+about+your+services.&type=phone_number&app_absent=0',

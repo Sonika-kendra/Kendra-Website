@@ -101,6 +101,7 @@ export const footer = {
   ],
   legal: [
     { href: WebsiteUrlConfig.Privacy, label: "Privacy Policy" },
+    { href: WebsiteUrlConfig.Disclaimer, label: "Disclaimer" },
     { href: WebsiteUrlConfig.Terms, label: "Terms & Conditions" },
   ],
   social: [
@@ -144,6 +145,11 @@ export const pageMeta = {
     title: "Privacy Policy | Kendra International",
     description:
       "Privacy policy outlining how Kendra International collects, uses, and protects personal information.",
+  },
+  disclaimer: {
+    title: "Disclaimer | Kendra International",
+    description:
+      "Disclaimer outlining the terms and conditions of use for the Kendra International website.",
   },
   services: {
     title: "Services | Kendra International",
