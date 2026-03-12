@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { aboutHero } from "@content/about";
+import { aboutHero } from "@/config/pages/about";
 
 export default function AboutHeroSection() {
   return (

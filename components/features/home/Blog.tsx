@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import type { HomeBlogPost } from "@/interface/blog";
-import { homeBlogSectionContent } from "@/config/home";
+import { homeBlogSectionContent } from "@/config/pages/home";
 
 const ITEM_GAP = 12;
 const AUTO_DURATION = 4000;

@@ -1,14 +1,14 @@
 "use client";
 
 import Link from "next/link";
-import SocialIcon from "../common/SocialIcon";
-import LinkedIn from "../icons/Linkedin";
-import WhatsApp from "../icons/Whatsapp";
-import Phone from "../icons/Phone";
-import Email from "../icons/Email";
-import Logo from "../header/Logo";
+import SocialIcon from "../../../common/sections/SocialIcon";
+import LinkedIn from "../../../icons/svg/Linkedin";
+import WhatsApp from "../../../icons/svg/Whatsapp";
+import Phone from "../../../icons/svg/Phone";
+import Email from "../../../icons/svg/Email";
+import Logo from "../../header/sections/Logo";
 import { footer as FOOTER } from "@/config/site";
-import DarkModeToggle from "../header/DarkModeToggle";
+import DarkModeToggle from "../../header/sections/DarkModeToggle";
 import clsx from "clsx";
 
 export default function Footer() {

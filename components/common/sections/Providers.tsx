@@ -3,7 +3,7 @@
 
 import { ThemeProvider } from "next-themes";
 import { themeConfig } from "@/config/theme";
-import { ModalProvider } from "@/context/ModalContext";
+import { ModalProvider } from "./leadPopup/context/ModalContext";
 
 export function Providers({ children }: { children: React.ReactNode }) {
   return (

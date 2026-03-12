@@ -1,4 +1,4 @@
-import { contactCtaContent } from "@/config/contact";
+import { contactCtaContent } from "@/config/pages/contact";
 
 export function ContactCTA() {
   return (

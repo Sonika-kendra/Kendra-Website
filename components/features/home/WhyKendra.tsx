@@ -5,7 +5,7 @@ import type { WhyKendraProps } from "@/interface/home";
 import {
   whyKendraSectionContent,
   type WhyKendraHighlightIcon,
-} from "@/config/home";
+} from "@/config/pages/home";
 
 const HIGHLIGHT_ICONS: Record<WhyKendraHighlightIcon, typeof User> = {
   User,

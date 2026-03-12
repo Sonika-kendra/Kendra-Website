@@ -3,8 +3,8 @@
 import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { aboutTeam } from "@/content/about";
-import { teamSectionContent } from "@/config/about";
+import { aboutTeam } from "@/config/pages/about";
+import { teamSectionContent } from "@/config/pages/about";
 
 export default function TeamSection() {
   const carouselRef = useRef<HTMLDivElement>(null);

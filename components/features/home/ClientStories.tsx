@@ -3,10 +3,10 @@
 import { useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { testimonials } from "@/content/testimonial";
+import { testimonials } from "@/config/pages/home";
 import Image from "next/image";
 import type { Testimonial } from "@/interface/home";
-import { clientStoriesContent } from "@/config/home";
+import { clientStoriesContent } from "@/config/pages/home";
 
 function Media({ testimonial }: { testimonial: Testimonial }) {
   const [error, setError] = useState(false);

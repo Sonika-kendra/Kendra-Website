@@ -1,8 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { useModal } from "@/context/ModalContext";
-import { homeAboutUsContent, homeServiceContent } from "@content/home";
+import { homeAboutUsContent, homeServiceContent } from "@/config/pages/home";
 import {
   Hero,
   Services,
@@ -11,6 +10,7 @@ import {
   BusinessHealthCheck,
   Blog
 } from "@features/home";
+import { useModal } from "@/components/common/sections/leadPopup/context/ModalContext";
 // import { CTA } from "@features/footer";
 
 export default function HomePage() {

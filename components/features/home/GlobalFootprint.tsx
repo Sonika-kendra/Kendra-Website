@@ -2,7 +2,7 @@
 
 import { Send } from "lucide-react";
 import { ComposableMap, Geographies, Geography, Marker } from "react-simple-maps";
-import { globalFootprintContent } from "@/config/home";
+import { globalFootprintContent } from "@/config/pages/home";
 
 export default function GlobalFootprint() {
   return (

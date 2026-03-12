@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { CheckCircle2, Target, Users, Zap } from "lucide-react";
-import { aboutValues } from "@content/about";
+import { aboutValues } from "@/config/pages/about";
 
 const ICONS = {
   Target,

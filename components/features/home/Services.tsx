@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import type { ServicesProps } from "@/interface/home";
-import { homeServicesSectionContent } from "@/config/home";
+import { homeServicesSectionContent } from "@/config/pages/home";
 
 export default function Services({ items, aboutContent }: ServicesProps) {
   return (

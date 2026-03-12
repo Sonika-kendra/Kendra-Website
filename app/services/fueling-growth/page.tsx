@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { pageMeta } from "@config/site";
-import { serviceDetailPages } from "@content/services";
+import { serviceDetailPages } from "@/config/pages/services";
 import { ServiceDetailPage } from "@features/services";
 
 export const metadata: Metadata = pageMeta.consulting as Metadata;

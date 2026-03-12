@@ -1,7 +1,7 @@
 "use client";
 
 import { createContext, useContext, useState, ReactNode } from "react";
-import LeadPopUp from "@/components/common/LeadPopup";
+import LeadPopUp from "@/components/common/sections/leadPopup/LeadPopup";
 
 type ModalContextType = {
   openLeadPopUp: () => void;

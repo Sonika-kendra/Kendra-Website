@@ -1,3 +1,3 @@
-export { default as Footer } from "../../footer/Footer";
-export { default as CTA } from "../../footer/CTA";
-export { default as Subscription } from "../../footer/Subscription";
+export { default as Footer } from "./sections/Footer";
+export { default as CTA } from "./sections/CTA";
+export { default as Subscription } from "./sections/Subscription";

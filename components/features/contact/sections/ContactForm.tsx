@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Send, Loader2 } from "lucide-react";
-import { contactFormContent } from "@/config/contact";
+import { contactFormContent } from "@/config/pages/contact";
 
 type ContactFormResponse = {
   success?: boolean;

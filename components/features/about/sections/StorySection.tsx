@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { aboutStoryRows } from "@content/about";
+import { aboutStoryRows } from "@/config/pages/about";
 
 export default function StorySection() {
   return (

@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { pageMeta } from "@config/site";
-import { servicesOverview } from "@content/services";
+import { servicesOverview } from "@/config/pages/services";
 import { WebsiteUrlConfig } from "@/config/routing";
 
-import HeroSection from "@components/common/HeroSection";
-import { aboutHero } from "@content/about";
+import HeroSection from "@/components/common/sections/HeroSection";
+import { aboutHero } from "@/config/pages/about";
 
 export const metadata: Metadata = pageMeta.services as Metadata;
 

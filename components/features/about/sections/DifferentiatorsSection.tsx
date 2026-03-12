@@ -6,7 +6,7 @@ import {
   Handshake,
   Milestone,
 } from "lucide-react";
-import { aboutDifferentiators } from "@content/about";
+import { aboutDifferentiators } from "@/config/pages/about";
 
 const iconMap = {
   BarChart3,

@@ -1,6 +1,6 @@
 import Link from "next/link";
-import HeroSection from "@components/common/HeroSection";
-import { aboutHero } from "@content/about";
+import HeroSection from "@/components/common/sections/HeroSection";
+import { aboutHero } from "@/config/pages/about";
 import { resolveServiceActionClass } from "../config";
 import type { ServicePageConfig } from "../interfaces";
 import ServiceSectionRenderer from "./ServiceSectionRenderer";

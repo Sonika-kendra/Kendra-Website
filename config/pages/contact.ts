@@ -1,4 +1,4 @@
-import { WebsiteUrlConfig } from "./routing";
+import { WebsiteUrlConfig } from "../routing";
 
 export const contactPageHero = {
   title: "Get in Touch",

@@ -1,6 +1,6 @@
 import { Mail, Phone, MapPin } from "lucide-react";
 import { footer } from "@/config/site";
-import { contactInfoContent } from "@/config/contact";
+import { contactInfoContent } from "@/config/pages/contact";
 
 export function ContactInfo() {
   const emailLink =

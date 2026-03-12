@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { aboutCtaContent } from "@/config/about";
+import { aboutCtaContent } from "@/config/pages/about";
 
 export default function CtaSection() {
   return (

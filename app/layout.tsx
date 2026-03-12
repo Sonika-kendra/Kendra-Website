@@ -5,7 +5,7 @@ import { Footer, Subscription } from "@features/footer";
 import type { Metadata, Viewport } from "next";
 import { siteMeta } from "@config/site";
 import { themeConfig } from "@config/theme";
-import { Providers } from "@features/common";
+import { Providers } from "@/components/common";
 import { Analytics } from "@vercel/analytics/next";
 
 export const metadata: Metadata = siteMeta as unknown as Metadata;

@@ -5,9 +5,9 @@ import Link from "next/link";
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { heroSlidContent as slides } from "@content/home";
-import { useModal } from "@/context/ModalContext";
-import { homeHeroContent } from "@/config/home";
+import { heroSlidContent as slides } from "@/config/pages/home";
+import { homeHeroContent } from "@/config/pages/home";
+import { useModal } from "@/components/common/sections/leadPopup/context/ModalContext";
 
 const variants = {
   enter: (direction: number) => ({

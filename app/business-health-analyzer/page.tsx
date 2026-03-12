@@ -1,9 +1,9 @@
 "use client"
 import { BusinessHealthCheck } from "@features/home";
 import Image from "next/image";
-import { aboutHero } from "@content/about";
+import { aboutHero } from "@/config/pages/about";
 import { useRef } from "react";
-import DownloadButton from "@components/common/DownloadButton";
+import DownloadButton from "@/components/common/sections/DownloadButton";
 
 export default function BusinessHealthAnalyzerPage() {
     const pdfRef = useRef<HTMLDivElement>(null);

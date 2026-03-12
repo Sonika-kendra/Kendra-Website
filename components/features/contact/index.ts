@@ -1,4 +1,4 @@
-export { ContactInfo } from "../../contact/ContactInfo";
-export { ContactForm } from "../../contact/ContactForm";
-export { ContactCTA } from "../../contact/ContactCTA";
+export { ContactInfo } from "./sections/ContactInfo";
+export { ContactForm } from "./sections/ContactForm";
+export { ContactCTA } from "./sections/ContactCTA";
 

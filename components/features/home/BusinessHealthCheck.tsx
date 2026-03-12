@@ -1,8 +1,8 @@
 "use client";
 
 import { CheckCircle2, TrendingUp } from "lucide-react";
-import { businessHealthCheckContent } from "@/config/home";
-import { useModal } from "@/context/ModalContext";
+import { businessHealthCheckContent } from "@/config/pages/home";
+import { useModal } from "@/components/common/sections/leadPopup/context/ModalContext";
 
 export default function BusinessHealthCheck() {
   const { openLeadPopUp } = useModal();

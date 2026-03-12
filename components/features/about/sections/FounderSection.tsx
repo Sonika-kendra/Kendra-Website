@@ -1,4 +1,4 @@
-import { founderSectionContent } from "@/config/about";
+import { founderSectionContent } from "@/config/pages/about";
 
 export default function FounderSection() {
   return (

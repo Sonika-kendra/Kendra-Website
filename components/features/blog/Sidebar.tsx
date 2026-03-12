@@ -3,7 +3,7 @@ import Link from "next/link";
 import clsx from "clsx";
 import { getSidebarData } from "@/lib";
 import type { BlogCategory, SidebarPost } from "@/interface/blog";
-import { blogSidebarContent } from "@/config/blog";
+import { blogSidebarContent } from "@/config/pages/blog";
 
 interface SidebarProps {
   activeCategorySlug?: string;

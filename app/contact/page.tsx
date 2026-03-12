@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { pageMeta } from "@config/site";
-import { contactPageHero } from "@config/contact";
-import HeroSection from "@components/common/HeroSection";
-import { aboutHero } from "@content/about";
+import { contactPageHero } from "@/config/pages/contact";
+import HeroSection from "@/components/common/sections/HeroSection";
+import { aboutHero } from "@/config/pages/about";
 import { ContactInfo, ContactForm, ContactCTA } from "@features/contact";
 
 export const metadata: Metadata = pageMeta.contact as Metadata;

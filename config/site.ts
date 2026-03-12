@@ -1,4 +1,4 @@
-import { homeContent } from "@/content/home";
+import { homeContent } from "@/config/pages/home";
 import { WebsiteUrlConfig } from "./routing";
 
 export const siteMeta = {
